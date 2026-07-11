@@ -7,7 +7,7 @@ const portfolioItems = [
     type: "Electronics",
     image: "/portfolio-motor-control-english.png",
     description:
-      "A labeled electronics setup showing motor speed, torque display, tachometer, potentiometer, voltage connections, and student-board wiring.",
+      "Built a complete analog servo motor control system for a DC motor, including speed and position measurement, signal conditioning, and cascaded controllers using operational amplifiers. The project gave hands-on experience with industrial instrumentation, filtering, troubleshooting, and lab instruments such as power supplies, multimeters, oscilloscopes, and function generators.",
   },
   {
     title: "Cascade Control System",
