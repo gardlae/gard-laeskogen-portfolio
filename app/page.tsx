@@ -1,21 +1,25 @@
 import { StoryVideo } from "./StoryVideo";
+import Image from "next/image";
 
 const portfolioItems = [
   {
-    title: "Featured Project",
-    type: "Portfolio",
+    title: "Motor Control Training Board",
+    type: "Electronics",
+    image: "/portfolio-motor-control-english.png",
     description:
-      "Add a short case study here: the problem, what you built, and the result it created.",
+      "A labeled electronics setup showing motor speed, torque display, tachometer, potentiometer, voltage connections, and student-board wiring.",
   },
   {
     title: "Creative Work",
     type: "Story",
+    image: null,
     description:
       "Use this space for writing, media, talks, community work, or anything that shows how you think.",
   },
   {
     title: "Selected Outcome",
     type: "Impact",
+    image: null,
     description:
       "Highlight a measurable win, lesson, or transformation from your work.",
   },
@@ -162,6 +166,15 @@ export default function Home() {
           <div className="grid gap-4 md:grid-cols-3">
             {portfolioItems.map((item) => (
               <article className="border border-[#b9c9bd] bg-white p-5" key={item.title}>
+                {item.image ? (
+                  <Image
+                    alt={`${item.title} portfolio project`}
+                    className="mb-5 aspect-[4/3] w-full object-cover"
+                    height={900}
+                    src={item.image}
+                    width={1200}
+                  />
+                ) : null}
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#c84b31]">
                   {item.type}
                 </p>
