@@ -10,11 +10,11 @@ const portfolioItems = [
       "A labeled electronics setup showing motor speed, torque display, tachometer, potentiometer, voltage connections, and student-board wiring.",
   },
   {
-    title: "Creative Work",
-    type: "Story",
-    image: null,
+    title: "Cascade Control System",
+    type: "Control systems",
+    image: "/control-system-diagram-english.png",
     description:
-      "Use this space for writing, media, talks, community work, or anything that shows how you think.",
+      "A translated block diagram for a cascaded position and speed control loop with feedback from position and speed sensors.",
   },
   {
     title: "Selected Outcome",
