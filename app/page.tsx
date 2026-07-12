@@ -54,6 +54,9 @@ export default function Home() {
           <a className="transition hover:text-[#1e2320]" href="#portfolio">
             Portfolio
           </a>
+          <a className="transition hover:text-[#1e2320]" href="/sports">
+            Sports
+          </a>
         </div>
       </nav>
 
@@ -82,6 +85,12 @@ export default function Home() {
               href="#resume"
             >
               View CV
+            </a>
+            <a
+              className="inline-flex min-h-11 items-center border border-[#9da89d] px-5 text-sm font-semibold text-[#1e2320] transition hover:border-[#1e2320]"
+              href="/sports"
+            >
+              Sports achievements
             </a>
           </div>
         </div>
