@@ -57,6 +57,12 @@ export default function Home() {
           <a className="transition hover:text-[#1e2320]" href="/sports">
             Sports
           </a>
+          <a className="transition hover:text-[#1e2320]" href="/investment">
+            Investment
+          </a>
+          <a className="transition hover:text-[#1e2320]" href="/philosophy">
+            Philosophy
+          </a>
         </div>
       </nav>
 
@@ -91,6 +97,12 @@ export default function Home() {
               href="/sports"
             >
               Sports achievements
+            </a>
+            <a
+              className="inline-flex min-h-11 items-center border border-[#9da89d] px-5 text-sm font-semibold text-[#1e2320] transition hover:border-[#1e2320]"
+              href="/philosophy"
+            >
+              Philosophy
             </a>
           </div>
         </div>
@@ -183,6 +195,40 @@ export default function Home() {
             </p>
           </div>
           <PortfolioCarousel />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
+        <div className="mb-9 max-w-2xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#c84b31]">
+            More
+          </p>
+          <h2 className="text-4xl font-semibold leading-tight">
+            The parts behind the work.
+          </h2>
+        </div>
+        <div className="personal-section-grid">
+          <a className="personal-section-card" href="/sports">
+            <span>Competition</span>
+            <h3>Sports achievements</h3>
+            <p>
+              Endurance results and the competitive background behind my work ethic.
+            </p>
+          </a>
+          <a className="personal-section-card" href="/investment">
+            <span>Capital</span>
+            <h3>Investment</h3>
+            <p>
+              A page reserved for ownership, investment thinking, and lessons learned.
+            </p>
+          </a>
+          <a className="personal-section-card" href="/philosophy">
+            <span>Principles</span>
+            <h3>Philosophy and beliefs</h3>
+            <p>
+              Personal rules, beliefs, and quotes that explain how I try to operate.
+            </p>
+          </a>
         </div>
       </section>
 

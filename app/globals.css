@@ -353,6 +353,159 @@ a {
   font-weight: 750;
 }
 
+.personal-section-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.personal-section-card,
+.investment-card,
+.investment-note,
+.principle-card,
+.quote-card {
+  border: 1px solid #d9cfbf;
+  background: #fffaf1;
+}
+
+.personal-section-card {
+  display: block;
+  min-height: 230px;
+  padding: 24px;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.personal-section-card:hover {
+  border-color: #1e2320;
+  transform: translateY(-2px);
+}
+
+.personal-section-card span,
+.investment-card span {
+  color: #2f6f5e;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.personal-section-card h3,
+.investment-card h3,
+.principle-card h3 {
+  margin-top: 16px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.personal-section-card p,
+.investment-card p,
+.principle-card p {
+  margin-top: 14px;
+  color: #52615a;
+  line-height: 1.7;
+}
+
+.investment-hero {
+  background:
+    linear-gradient(90deg, rgba(16, 24, 21, 0.94), rgba(30, 35, 32, 0.74)),
+    repeating-linear-gradient(
+      135deg,
+      rgba(212, 198, 172, 0.16) 0,
+      rgba(212, 198, 172, 0.16) 2px,
+      transparent 2px,
+      transparent 26px
+    ),
+    linear-gradient(135deg, #1e2320, #2f6f5e);
+}
+
+.investment-note {
+  padding: 28px;
+}
+
+.investment-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.investment-card {
+  padding: 26px;
+}
+
+.philosophy-hero {
+  background:
+    linear-gradient(90deg, rgba(16, 24, 21, 0.98), rgba(16, 24, 21, 0.76)),
+    linear-gradient(135deg, #1e2320 0 54%, #c84b31 54% 68%, #2f6f5e 68% 100%);
+}
+
+.philosophy-statement {
+  border: 1px solid rgba(247, 242, 234, 0.24);
+  background: rgba(247, 242, 234, 0.08);
+  padding: 28px;
+}
+
+.philosophy-statement p {
+  color: #fffaf1;
+  font-size: 25px;
+  font-weight: 650;
+  line-height: 1.32;
+}
+
+.principle-grid,
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.principle-card {
+  padding: 26px;
+}
+
+.trait-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.trait-cloud span {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  border: 1px solid #b9c9bd;
+  background: white;
+  padding: 8px 13px;
+  color: #314139;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.quote-card {
+  margin: 0;
+  padding: 24px;
+}
+
+.quote-card blockquote {
+  color: #1e2320;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+.quote-card figcaption {
+  margin-top: 18px;
+  color: #c84b31;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 520px) {
   nav {
     align-items: flex-start;
@@ -372,7 +525,10 @@ a {
   }
 
   .sports-achievement-grid,
-  .sports-source-grid {
+  .sports-source-grid,
+  .personal-section-grid,
+  .principle-grid,
+  .quote-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -427,7 +583,10 @@ a {
 
   .sports-hero-stack,
   .sports-achievement-grid,
-  .sports-source-grid {
+  .sports-source-grid,
+  .personal-section-grid,
+  .principle-grid,
+  .quote-grid {
     grid-template-columns: 1fr;
   }
 
