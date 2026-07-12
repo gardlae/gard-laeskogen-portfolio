@@ -30,6 +30,27 @@ a {
   text-underline-offset: 4px;
 }
 
+.hero-photo-frame {
+  position: relative;
+  min-height: 560px;
+  overflow: hidden;
+  border: 1px solid #d9cfbf;
+  background: #213f38;
+}
+
+.hero-photo-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 24px;
+  color: white;
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.2;
+  background: linear-gradient(0deg, rgba(16, 24, 21, 0.82), rgba(16, 24, 21, 0));
+}
+
 .story-portrait {
   background:
     linear-gradient(145deg, rgba(33, 63, 56, 0.14), rgba(30, 35, 32, 0.94)),
@@ -54,10 +75,232 @@ a {
     linear-gradient(135deg, #2f6f5e, #c84b31 58%, #d4c6ac);
 }
 
+.cv-timeline {
+  display: grid;
+  gap: 16px;
+}
+
+.cv-item {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.42fr) 1fr;
+  gap: 24px;
+  align-items: stretch;
+  border: 1px solid #d9cfbf;
+  background: #fffaf1;
+  padding: 16px;
+}
+
+.cv-image {
+  min-height: 230px;
+  overflow: hidden;
+  background: #d9cfbf;
+}
+
+.cv-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 4px;
+}
+
+.portfolio-shell {
+  display: grid;
+  gap: 18px;
+}
+
+.portfolio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.carousel-button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid #9eb4a8;
+  background: white;
+  color: #1e2320;
+  font-size: 30px;
+  line-height: 1;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+}
+
+.carousel-button:hover {
+  border-color: #1e2320;
+  background: #1e2320;
+  color: white;
+}
+
+.project-stage {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  min-height: 620px;
+  border: 1px solid #b9c9bd;
+  background: white;
+}
+
+.project-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+}
+
+.project-meta-label {
+  color: #2f6f5e;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.skill-pill {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  border: 1px solid #cbd9cf;
+  background: #f7fbf7;
+  padding: 5px 10px;
+  color: #314139;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.text-link {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  border-bottom: 2px solid #c84b31;
+  color: #1e2320;
+  font-weight: 700;
+}
+
+.project-media {
+  display: grid;
+  grid-auto-columns: minmax(78%, 1fr);
+  grid-auto-flow: column;
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 16px;
+  scroll-snap-type: inline mandatory;
+}
+
+.project-media::-webkit-scrollbar,
+.project-tabs::-webkit-scrollbar {
+  height: 8px;
+}
+
+.project-media::-webkit-scrollbar-thumb,
+.project-tabs::-webkit-scrollbar-thumb {
+  background: #9eb4a8;
+}
+
+.project-image-frame {
+  min-height: 588px;
+  overflow: hidden;
+  background: #d9cfbf;
+  scroll-snap-align: start;
+}
+
+.project-tabs {
+  display: grid;
+  grid-auto-columns: minmax(190px, 1fr);
+  grid-auto-flow: column;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.project-tab {
+  min-height: 52px;
+  border: 1px solid #b9c9bd;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 10px 12px;
+  color: #52615a;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.project-tab[aria-pressed="true"] {
+  border-color: #1e2320;
+  background: #1e2320;
+  color: white;
+}
+
 @media (max-width: 520px) {
   nav {
     align-items: flex-start;
     gap: 16px;
     flex-direction: column;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-photo-frame {
+    min-height: 460px;
+  }
+
+  .cv-item,
+  .project-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .project-stage {
+    min-height: 0;
+  }
+
+  .project-copy {
+    padding: 24px;
+  }
+
+  .project-media {
+    grid-auto-columns: minmax(86%, 1fr);
+  }
+
+  .project-image-frame {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-photo-frame {
+    min-height: 390px;
+  }
+
+  .cv-item {
+    gap: 14px;
+    padding: 12px;
+  }
+
+  .cv-image {
+    min-height: 210px;
+  }
+
+  .portfolio-controls {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .project-copy {
+    padding: 20px;
+  }
+
+  .project-media {
+    grid-auto-columns: minmax(92%, 1fr);
+    padding: 12px;
+  }
+
+  .project-image-frame {
+    min-height: 330px;
   }
 }

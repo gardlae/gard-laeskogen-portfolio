@@ -1,48 +1,39 @@
-import { StoryVideo } from "./StoryVideo";
 import Image from "next/image";
-
-const portfolioItems = [
-  {
-    title: "Motor Control Training Board",
-    type: "Electronics",
-    image: "/portfolio-motor-control-english.png",
-    description:
-      "Built a complete analog servo motor control system for a DC motor, including speed and position measurement, signal conditioning, and cascaded controllers using operational amplifiers. The project gave hands-on experience with industrial instrumentation, filtering, troubleshooting, and lab instruments such as power supplies, multimeters, oscilloscopes, and function generators.",
-  },
-  {
-    title: "Cascade Control System",
-    type: "Control systems",
-    image: "/control-system-diagram-english.png",
-    description:
-      "A translated block diagram for a cascaded position and speed control loop with feedback from position and speed sensors.",
-  },
-  {
-    title: "Selected Outcome",
-    type: "Impact",
-    image: null,
-    description:
-      "Highlight a measurable win, lesson, or transformation from your work.",
-  },
-];
+import { PortfolioCarousel } from "./PortfolioCarousel";
+import { StoryVideo } from "./StoryVideo";
 
 const resumeItems = [
   {
-    period: "Now",
-    role: "Current Role or Focus",
+    period: "Early work",
+    role: "Family business",
+    place: "Sundvolden Hotel",
+    image: "/media/family-business.jpg",
     detail:
-      "A clear one-line description of what you are building, studying, leading, or exploring right now.",
+      "Grew up close to the family business and learned how operations, service, responsibility, and long-term ownership work in practice.",
   },
   {
-    period: "Before",
-    role: "Previous Experience",
+    period: "Service",
+    role: "Norwegian Armed Forces",
+    place: "Field experience",
+    image: "/media/military-field.jpg",
     detail:
-      "Add the role, organization, or chapter that shaped your skills and perspective.",
+      "Developed discipline, endurance, teamwork, and decision-making under pressure through demanding field environments.",
   },
   {
-    period: "Education",
-    role: "Training and Credentials",
+    period: "Student work",
+    role: "Contactor NTNU",
+    place: "Technical student organization",
+    image: "/media/profile-contactor.jpg",
     detail:
-      "List degrees, certificates, programs, or self-directed learning that matter to your story.",
+      "Worked in a technical student environment that strengthened collaboration, practical engineering, and project ownership.",
+  },
+  {
+    period: "Engineering",
+    role: "Electronics and UAV projects",
+    place: "Personal and academic builds",
+    image: "/media/fpv-drone-build.jpg",
+    detail:
+      "Built hands-on systems across drones, analog electronics, RF, control systems, firmware configuration, and rapid prototyping.",
   },
 ];
 
@@ -51,14 +42,14 @@ export default function Home() {
     <main className="min-h-screen bg-[#f7f2ea] text-[#1e2320]">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
         <a className="text-sm font-semibold uppercase tracking-[0.18em]" href="#">
-          Your Name
+          Tord Laeskogen
         </a>
         <div className="flex items-center gap-4 text-sm font-medium text-[#52615a]">
           <a className="transition hover:text-[#1e2320]" href="#story">
             Story
           </a>
           <a className="transition hover:text-[#1e2320]" href="#resume">
-            Resume
+            CV
           </a>
           <a className="transition hover:text-[#1e2320]" href="#portfolio">
             Portfolio
@@ -66,41 +57,47 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-8 sm:px-8 lg:min-h-[calc(100vh-76px)] lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:pb-20">
+      <section className="mx-auto grid max-w-6xl gap-10 px-5 pb-16 pt-8 sm:px-8 lg:min-h-[calc(100vh-76px)] lg:grid-cols-[1fr_0.9fr] lg:items-center lg:pb-20">
         <div className="max-w-3xl">
           <p className="mb-6 w-fit border-b-2 border-[#c84b31] pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#52615a]">
-            Personal story
+            Personal story and technical work
           </p>
           <h1 className="text-5xl font-semibold leading-[1.02] sm:text-6xl lg:text-7xl">
-            A life, a body of work, and the story behind it.
+            Builder across software, electronics, drones, and operations.
           </h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-[#52615a]">
-            Use this site as a home for your story video, resume, portfolio,
-            and the moments that explain where you have been and what you are
-            building next.
+            A portfolio and CV shaped by practical projects: UAV systems,
+            analog control, real-time software, entrepreneurship, service, and
+            family business experience.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a
               className="inline-flex min-h-11 items-center border border-[#1e2320] bg-[#1e2320] px-5 text-sm font-semibold text-white transition hover:bg-[#314139]"
-              href="#story"
+              href="#portfolio"
             >
-              Watch the story
+              View projects
             </a>
             <a
               className="inline-flex min-h-11 items-center border border-[#9da89d] px-5 text-sm font-semibold text-[#1e2320] transition hover:border-[#1e2320]"
-              href="#portfolio"
+              href="#resume"
             >
-              View the work
+              View CV
             </a>
           </div>
         </div>
 
-        <div className="relative min-h-[480px] overflow-hidden bg-[#213f38] text-white">
-          <div className="absolute inset-0 story-portrait" />
-          <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
-            <p className="max-w-sm text-2xl font-semibold leading-tight">
-              Put your strongest image, portrait, or video still here.
-            </p>
+        <div className="hero-photo-frame">
+          <Image
+            alt="Portrait of Tord Laeskogen"
+            className="h-full w-full object-cover"
+            height={1600}
+            unoptimized
+            priority
+            src="/media/profile-contactor.jpg"
+            width={1200}
+          />
+          <div className="hero-photo-caption">
+            <p>Engineering student, builder, and operator.</p>
           </div>
         </div>
       </section>
@@ -115,8 +112,9 @@ export default function Home() {
               Your story, told in your own voice.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-8 text-[#d8ded8]">
-              When your video is ready, place it in this section. The page is
-              built so the video can carry the emotional center of the site.
+              This section is reserved for a personal story video when the film
+              is ready. The rest of the site already carries the CV and
+              portfolio structure.
             </p>
           </div>
 
@@ -125,31 +123,39 @@ export default function Home() {
       </section>
 
       <section id="resume" className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <div className="grid gap-9 lg:grid-cols-[0.72fr_1.28fr]">
-          <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#c84b31]">
-              Resume
-            </p>
-            <h2 className="text-4xl font-semibold leading-tight">
-              The path that shaped the work.
-            </h2>
-          </div>
-          <div className="grid gap-4">
-            {resumeItems.map((item) => (
-              <article
-                className="grid gap-3 border border-[#d9cfbf] bg-[#fffaf1] p-5 sm:grid-cols-[120px_1fr]"
-                key={item.role}
-              >
+        <div className="mb-10 max-w-2xl">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#c84b31]">
+            CV
+          </p>
+          <h2 className="text-4xl font-semibold leading-tight">
+            Experience built through responsibility and practical work.
+          </h2>
+        </div>
+        <div className="cv-timeline">
+          {resumeItems.map((item) => (
+            <article className="cv-item" key={item.role}>
+              <div className="cv-image">
+                <Image
+                  alt={`${item.role} image`}
+                  className="h-full w-full object-cover"
+                  height={900}
+                  src={item.image}
+                  unoptimized
+                  width={1200}
+                />
+              </div>
+              <div className="cv-copy">
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#52615a]">
                   {item.period}
                 </p>
-                <div>
-                  <h3 className="text-xl font-semibold">{item.role}</h3>
-                  <p className="mt-2 leading-7 text-[#52615a]">{item.detail}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+                <h3 className="mt-3 text-2xl font-semibold">{item.role}</h3>
+                <p className="mt-1 text-sm font-semibold text-[#c84b31]">
+                  {item.place}
+                </p>
+                <p className="mt-4 leading-7 text-[#52615a]">{item.detail}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -160,29 +166,14 @@ export default function Home() {
               Portfolio
             </p>
             <h2 className="text-4xl font-semibold leading-tight">
-              Selected work and proof of direction.
+              Swipe through selected projects.
             </h2>
+            <p className="mt-4 leading-7 text-[#52615a]">
+              Projects are grouped by outcome, with duration, skills, links,
+              and supporting media from the portfolio folder.
+            </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {portfolioItems.map((item) => (
-              <article className="border border-[#b9c9bd] bg-white p-5" key={item.title}>
-                {item.image ? (
-                  <Image
-                    alt={`${item.title} portfolio project`}
-                    className="mb-5 aspect-[4/3] w-full object-cover"
-                    height={900}
-                    src={item.image}
-                    width={1200}
-                  />
-                ) : null}
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#c84b31]">
-                  {item.type}
-                </p>
-                <h3 className="mt-6 text-2xl font-semibold">{item.title}</h3>
-                <p className="mt-4 leading-7 text-[#52615a]">{item.description}</p>
-              </article>
-            ))}
-          </div>
+          <PortfolioCarousel />
         </div>
       </section>
 
@@ -191,13 +182,13 @@ export default function Home() {
           <div>
             <h2 className="text-3xl font-semibold">Ready for the next chapter.</h2>
             <p className="mt-3 max-w-2xl leading-7 text-[#52615a]">
-              Add your email, social links, or a simple invitation for the
-              people you want to hear from.
+              Use this space for contact details, GitHub, LinkedIn, or a short
+              invitation for people you want to hear from.
             </p>
           </div>
           <a
             className="inline-flex min-h-11 w-fit items-center border border-[#1e2320] px-5 text-sm font-semibold transition hover:bg-[#1e2320] hover:text-white"
-            href="mailto:you@example.com"
+            href="mailto:tml@sundvolden.no"
           >
             Contact me
           </a>

@@ -1,43 +1,4 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
 export function StoryVideo() {
-  const [hasVideo, setHasVideo] = useState(false);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    fetch("/story-video.mp4", { method: "HEAD" })
-      .then((response) => {
-        if (isMounted) {
-          setHasVideo(response.ok);
-        }
-      })
-      .catch(() => {
-        if (isMounted) {
-          setHasVideo(false);
-        }
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  if (hasVideo) {
-    return (
-      <video
-        className="aspect-video w-full bg-black object-cover"
-        controls
-        playsInline
-        preload="metadata"
-      >
-        <source src="/story-video.mp4" type="video/mp4" />
-      </video>
-    );
-  }
-
   return (
     <div className="video-frame">
       <div className="flex h-full min-h-[320px] flex-col justify-between p-6 sm:p-8">
@@ -51,7 +12,7 @@ export function StoryVideo() {
           </div>
         </div>
         <p className="max-w-md text-xl font-semibold leading-snug">
-          Add your finished story film as story-video.mp4 to feature it here.
+          Add your story film here when it is ready.
         </p>
       </div>
     </div>
