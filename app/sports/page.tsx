@@ -84,7 +84,7 @@ const sourceCards: SportSource[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "Sports Achievements | Tord Laeskogen",
+  title: "Sports Achievements | Gard Laeskogen",
   description:
     "Selected sports achievements in triathlon, running, skiing, orienteering, and skating.",
 };
@@ -94,7 +94,7 @@ export default function SportsPage() {
     <main className="min-h-screen bg-[#f7f2ea] text-[#1e2320]">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
         <Link className="text-sm font-semibold uppercase tracking-[0.18em]" href="/">
-          Tord Laeskogen
+          Gard Laeskogen
         </Link>
         <div className="flex items-center gap-4 text-sm font-medium text-[#52615a]">
           <Link className="transition hover:text-[#1e2320]" href="/#story">

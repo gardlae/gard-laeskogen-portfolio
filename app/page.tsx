@@ -42,7 +42,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#f7f2ea] text-[#1e2320]">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
         <a className="text-sm font-semibold uppercase tracking-[0.18em]" href="#">
-          Tord Laeskogen
+          Gard Laeskogen
         </a>
         <div className="flex items-center gap-4 text-sm font-medium text-[#52615a]">
           <a className="transition hover:text-[#1e2320]" href="#story">
@@ -109,7 +109,7 @@ export default function Home() {
 
         <div className="hero-photo-frame">
           <Image
-            alt="Portrait of Tord Laeskogen"
+            alt="Portrait of Gard Laeskogen"
             className="h-full w-full object-cover"
             height={1600}
             unoptimized

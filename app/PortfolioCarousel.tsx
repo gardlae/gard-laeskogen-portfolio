@@ -10,6 +10,7 @@ type Project = {
   description: string;
   skills: string[];
   images: string[];
+  visualLabel?: string;
   links?: { label: string; href: string }[];
 };
 
@@ -74,7 +75,8 @@ const projects: Project[] = [
       "State machines",
       "Failure handling",
     ],
-    images: ["/media/profile-contactor.jpg"],
+    images: [],
+    visualLabel: "Distributed control, networking, and fault recovery",
     links: [{ label: "GitHub", href: "https://github.com/vehoug/TTK4145.git" }],
   },
   {
@@ -91,7 +93,8 @@ const projects: Project[] = [
       "Product development",
       "CS50: Introduction to Computer Science",
     ],
-    images: ["/media/family-business-portrait.jpg"],
+    images: [],
+    visualLabel: "Startup prototype and company formation",
     links: [
       {
         label: "Demo",
@@ -204,19 +207,27 @@ export function PortfolioCarousel() {
         </div>
 
         <div className="project-media" aria-label={`${activeProject.title} images`}>
-          {activeProject.images.map((image, index) => (
-            <div className="project-image-frame" key={image}>
-              <Image
-                alt={`${activeProject.title} image ${index + 1}`}
-                className="h-full w-full object-cover"
-                height={900}
-                priority={activeIndex === 0 && index === 0}
-                src={image}
-                unoptimized
-                width={1200}
-              />
+          {activeProject.images.length > 0 ? (
+            activeProject.images.map((image, index) => (
+              <div className="project-image-frame" key={image}>
+                <Image
+                  alt={`${activeProject.title} image ${index + 1}`}
+                  className="h-full w-full object-cover"
+                  height={900}
+                  priority={activeIndex === 0 && index === 0}
+                  src={image}
+                  unoptimized
+                  width={1200}
+                />
+              </div>
+            ))
+          ) : (
+            <div className="project-image-frame project-visual-fallback">
+              <p>{activeProject.category}</p>
+              <h4>{activeProject.title}</h4>
+              <span>{activeProject.visualLabel}</span>
             </div>
-          ))}
+          )}
         </div>
       </div>
 

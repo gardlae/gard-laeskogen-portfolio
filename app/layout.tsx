@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Personal Story Portfolio",
-  description: "A personal website for a story video, resume, and portfolio.",
+  title: "Gard Laeskogen Portfolio",
+  description: "Gard Laeskogen's personal website for a story video, resume, and portfolio.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
