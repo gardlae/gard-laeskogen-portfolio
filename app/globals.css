@@ -30,6 +30,11 @@ a {
   text-underline-offset: 4px;
 }
 
+nav > div {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .section-kicker {
   margin-bottom: 16px;
   width: fit-content;
@@ -48,13 +53,14 @@ a {
 
 .hero-board {
   display: grid;
-  min-height: 650px;
-  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+  min-height: min(72vh, 720px);
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
   border: 1px solid #d9cfbf;
   background: #fffaf1;
 }
 
 .hero-board-copy {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -62,8 +68,9 @@ a {
 }
 
 .hero-board-copy h1 {
+  min-width: 0;
   max-width: 780px;
-  font-size: clamp(56px, 10vw, 126px);
+  font-size: clamp(56px, 7.6vw, 98px);
   font-weight: 800;
   letter-spacing: 0;
   line-height: 0.9;
@@ -89,12 +96,84 @@ a {
 }
 
 .hero-board-image {
-  min-height: 650px;
+  min-width: 0;
+  min-height: min(72vh, 720px);
   overflow: hidden;
   background: #213f38;
 }
 
+.front-image-wall {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(0, 0.72fr));
+  grid-auto-rows: clamp(180px, 20vw, 280px);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.front-image-tile {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #d9cfbf;
+  background: #213f38;
+}
+
+.front-image-tile[data-featured="true"] {
+  grid-row: span 2;
+}
+
+.front-image-tile figcaption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 14px 16px;
+  color: white;
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: linear-gradient(0deg, rgba(16, 24, 21, 0.86), rgba(16, 24, 21, 0));
+}
+
+.front-signal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.front-signal-grid a {
+  display: grid;
+  min-height: 180px;
+  align-content: space-between;
+  border: 1px solid #d9cfbf;
+  background: #151815;
+  padding: 22px;
+  color: white;
+  text-decoration: none;
+}
+
+.front-signal-grid span {
+  color: #d4c6ac;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.front-signal-grid strong {
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 0.95;
+}
+
+.front-signal-grid small {
+  color: #d8ded8;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
 .portfolio-overview {
+  margin-bottom: 18px;
   border-right: 1px solid #d9cfbf;
   border-bottom: 1px solid #d9cfbf;
   background: #fffaf1;
@@ -927,6 +1006,10 @@ a {
     gap: 16px;
     flex-direction: column;
   }
+
+  nav > div {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 900px) {
@@ -953,9 +1036,27 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .hero-board {
+    min-height: 0;
+  }
+
   .hero-board-image {
     min-height: 460px;
     order: -1;
+  }
+
+  .front-image-wall {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: clamp(170px, 34vw, 260px);
+  }
+
+  .front-image-tile[data-featured="true"] {
+    grid-column: 1 / -1;
+    grid-row: span 1;
+  }
+
+  .front-signal-grid {
+    grid-template-columns: 1fr;
   }
 
   .portfolio-overview {
@@ -997,6 +1098,46 @@ a {
 }
 
 @media (max-width: 560px) {
+  .home-hero,
+  .story-strip,
+  .portfolio-band {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .hero-board-copy {
+    padding: 24px;
+  }
+
+  .hero-board-copy h1 {
+    font-size: clamp(42px, 14vw, 56px);
+    line-height: 0.96;
+  }
+
+  .hero-board-copy h1 span {
+    font-size: 20px;
+  }
+
+  .hero-board-image {
+    min-height: 380px;
+  }
+
+  .front-image-wall {
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(250px, auto);
+  }
+
+  .front-image-tile,
+  .front-image-tile[data-featured="true"] {
+    min-height: 250px;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .front-signal-grid a {
+    min-height: 150px;
+  }
+
   .hero-photo-frame {
     min-height: 390px;
   }
@@ -1025,6 +1166,11 @@ a {
   }
 
   .project-image-frame {
+    min-height: 330px;
+  }
+
+  .video-tile video,
+  .project-image-frame video {
     min-height: 330px;
   }
 

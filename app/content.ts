@@ -14,6 +14,34 @@ export const videos = [
   { title: "Story clip 04", src: "/media/story-clip-4.mp4" },
 ];
 
+export const homeImages = [
+  {
+    label: "Family business",
+    src: "/media/family-business.jpg",
+    alt: "Gard Laeskogen with family outside Sundvolden Hotel",
+  },
+  {
+    label: "UAV systems",
+    src: "/media/fpv-drone-build.jpg",
+    alt: "FPV drone build",
+  },
+  {
+    label: "Analog electronics",
+    src: "/media/servo-breadboard-full.jpg",
+    alt: "Analog servo controller breadboard",
+  },
+  {
+    label: "Field experience",
+    src: "/media/military-field.jpg",
+    alt: "Field experience in the Norwegian Armed Forces",
+  },
+  {
+    label: "Student work",
+    src: "/media/profile-contactor.jpg",
+    alt: "Gard Laeskogen portrait in Contactor NTNU sweater",
+  },
+];
+
 export const cvItems = [
   {
     period: "Early work",

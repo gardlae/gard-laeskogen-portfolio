@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PortfolioCarousel } from "./PortfolioCarousel";
-import { cvItems, projects, site, videos } from "./content";
+import { cvItems, homeImages, projects, site, videos } from "./content";
 
 export default function Home() {
   return (
@@ -31,44 +31,64 @@ export default function Home() {
         </div>
       </nav>
 
-      <section className="mx-auto max-w-6xl px-5 pb-14 pt-8 sm:px-8">
-        <div className="hero-board">
-          <div className="hero-board-copy">
-            <p className="section-kicker">Personal operating system</p>
-            <h1>
-              {site.name}
-              <span>{site.intro}</span>
-            </h1>
-            <p>{site.note}</p>
+      <section className="home-hero px-5 pb-14 pt-8 sm:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="hero-board">
+            <div className="hero-board-copy">
+              <p className="section-kicker">Personal operating system</p>
+              <h1>
+                {site.name}
+                <span>{site.intro}</span>
+              </h1>
+              <p>{site.note}</p>
+            </div>
+            <div className="hero-board-image">
+              <Image
+                alt="Portrait of Gard Laeskogen"
+                className="h-full w-full object-cover"
+                height={1600}
+                priority
+                src="/media/profile-contactor.jpg"
+                unoptimized
+                width={1200}
+              />
+            </div>
           </div>
-          <div className="hero-board-image">
-            <Image
-              alt="Portrait of Gard Laeskogen"
-              className="h-full w-full object-cover"
-              height={1600}
-              priority
-              src="/media/profile-contactor.jpg"
-              unoptimized
-              width={1200}
-            />
-          </div>
-        </div>
 
-        <div className="portfolio-overview" aria-label="Portfolio overview">
-          <div className="portfolio-overview-header">
-            <span>No.</span>
-            <span>Project</span>
-            <span>Context</span>
-            <span>Duration</span>
+          <div className="front-image-wall" aria-label="Selected images from Gard Laeskogen's background">
+            {homeImages.map((image, index) => (
+              <figure className="front-image-tile" data-featured={index === 0} key={image.src}>
+                <Image
+                  alt={image.alt}
+                  className="h-full w-full object-cover"
+                  height={900}
+                  priority={index === 0}
+                  src={image.src}
+                  unoptimized
+                  width={1200}
+                />
+                <figcaption>{image.label}</figcaption>
+              </figure>
+            ))}
           </div>
-          {projects.map((project, index) => (
-            <a className="portfolio-overview-row" href="#portfolio" key={project.title}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <strong>{project.title}</strong>
-              <span>{project.category}</span>
-              <span>{project.duration}</span>
+
+          <div className="front-signal-grid" aria-label="Site sections">
+            <a href="#portfolio">
+              <span>01</span>
+              <strong>Portfolio</strong>
+              <small>Projects, media, links, and skills.</small>
             </a>
-          ))}
+            <a href="#resume">
+              <span>02</span>
+              <strong>CV</strong>
+              <small>Work, service, studies, and practical background.</small>
+            </a>
+            <a href="/sports">
+              <span>03</span>
+              <strong>Sports</strong>
+              <small>Results grouped by sport and year.</small>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -104,6 +124,22 @@ export default function Home() {
             <p className="mt-4 leading-7 text-[#52615a]">
               Duration, context, description, skills, media, and links.
             </p>
+          </div>
+          <div className="portfolio-overview" aria-label="Portfolio overview">
+            <div className="portfolio-overview-header">
+              <span>No.</span>
+              <span>Project</span>
+              <span>Context</span>
+              <span>Duration</span>
+            </div>
+            {projects.map((project, index) => (
+              <a className="portfolio-overview-row" href="#portfolio" key={project.title}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{project.title}</strong>
+                <span>{project.category}</span>
+                <span>{project.duration}</span>
+              </a>
+            ))}
           </div>
           <PortfolioCarousel />
         </div>
