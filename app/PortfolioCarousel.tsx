@@ -2,131 +2,7 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-
-type Project = {
-  title: string;
-  category: string;
-  duration: string;
-  description: string;
-  skills: string[];
-  images: string[];
-  visualLabel?: string;
-  links?: { label: string; href: string }[];
-};
-
-const projects: Project[] = [
-  {
-    title: "FPV Drone Builds",
-    category: "UAV systems",
-    duration: "Mar 2025 - Present",
-    description:
-      "Built and modified 20+ drone configurations, ranging from FPV quadcopters to fixed-wing systems, with variations in communication methods, payload capability, firmware, and operating environment. The work has focused mainly on adapting off-the-shelf products, including configurations for GNSS-denied and EW-disrupted conditions.",
-    skills: [
-      "Analog radio",
-      "Software-defined radio",
-      "Mechatronics",
-      "Soldering",
-      "Part sourcing",
-      "Firmware configuration",
-      "UAV prototyping",
-      "Production-oriented design",
-    ],
-    images: [
-      "/media/fpv-drone-build.jpg",
-      "/media/fpv-drone-table.jpg",
-      "/media/signal-box-exterior.jpg",
-      "/media/signal-box-interior.jpg",
-    ],
-  },
-  {
-    title: "Analog Servo Controller",
-    category: "Analog control",
-    duration: "Jan 2023 - Mar 2023",
-    description:
-      "Built and tested an analog servo motor control system for a DC motor, including speed and position measurement, controller tuning, and frequency-response analysis.",
-    skills: [
-      "Analog electronics",
-      "Signal conditioning",
-      "Op-amp circuits",
-      "PI control",
-      "Position control",
-      "Oscilloscope measurements",
-      "Bode plot analysis",
-    ],
-    images: [
-      "/media/servo-labeled-system.png",
-      "/media/control-system-diagram.png",
-      "/media/servo-breadboard-full.jpg",
-      "/media/servo-schematic.png",
-    ],
-  },
-  {
-    title: "Distributed Elevator System",
-    category: "Real-time systems",
-    duration: "Jan 2026 - May 2026",
-    description:
-      "Built software for coordinating multiple elevators with distributed call handling, button light synchronization, door logic, network fault tolerance, and recovery from elevator failures without losing active calls.",
-    skills: [
-      "Real-time systems",
-      "Distributed systems",
-      "Networking",
-      "Fault tolerance",
-      "Concurrency",
-      "State machines",
-      "Failure handling",
-    ],
-    images: [],
-    visualLabel: "Distributed control, networking, and fault recovery",
-    links: [{ label: "GitHub", href: "https://github.com/vehoug/TTK4145.git" }],
-  },
-  {
-    title: "TieUp Social Platform",
-    category: "Startup prototype",
-    duration: "Apr 2021 - Aug 2021",
-    description:
-      "Started building a social platform for organizing physical meetups as society reopened after COVID lockdowns. The project led to company registration, grant work, mentor conversations, an early prototype, and a shift toward software development.",
-    skills: [
-      "Company registration",
-      "Grant applications",
-      "Prototyping",
-      "Mentor outreach",
-      "Product development",
-      "CS50: Introduction to Computer Science",
-    ],
-    images: [],
-    visualLabel: "Startup prototype and company formation",
-    links: [
-      {
-        label: "Demo",
-        href: "https://marvelapp.com/prototype/14aj7hae/screen/78212187",
-      },
-    ],
-  },
-  {
-    title: "Flipper Zero and Signal Testing",
-    category: "Security and RF",
-    duration: "Ongoing",
-    description:
-      "Explored portable tools and signal setups for understanding wireless systems, testing behavior, and building practical intuition around network disturbance and RF experimentation.",
-    skills: [
-      "Pen testing basics",
-      "Wireless systems",
-      "Signal testing",
-      "RF tools",
-      "Experiment design",
-    ],
-    images: ["/media/flipper-zero.jpg", "/media/signal-box-interior.jpg"],
-  },
-  {
-    title: "Cutlery Sorting Machine",
-    category: "Mechatronics concept",
-    duration: "Prototype",
-    description:
-      "Concept and lab setup for a sorting mechanism, combining sensing, actuation, mechanical layout, and control thinking.",
-    skills: ["Mechatronics", "Sensors", "Mechanical layout", "Prototyping"],
-    images: ["/media/cutlery-sorting-machine.png"],
-  },
-];
+import { projects } from "./content";
 
 export function PortfolioCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -195,18 +71,35 @@ export function PortfolioCarousel() {
               </dd>
             </div>
           </dl>
-          {activeProject.links ? (
+          {activeProject.github || activeProject.demo ? (
             <div className="mt-7 flex flex-wrap gap-3">
-              {activeProject.links.map((link) => (
-                <a className="text-link" href={link.href} key={link.href}>
-                  {link.label}
+              {activeProject.github ? (
+                <a className="text-link" href={activeProject.github}>
+                  GitHub
                 </a>
-              ))}
+              ) : null}
+              {activeProject.demo ? (
+                <a className="text-link" href={activeProject.demo}>
+                  Demo
+                </a>
+              ) : null}
             </div>
           ) : null}
         </div>
 
         <div className="project-media" aria-label={`${activeProject.title} images`}>
+          {activeProject.video ? (
+            <div className="project-image-frame">
+              <video
+                aria-label={`${activeProject.title} video`}
+                controls
+                muted
+                playsInline
+                preload="metadata"
+                src={activeProject.video}
+              />
+            </div>
+          ) : null}
           {activeProject.images.length > 0 ? (
             activeProject.images.map((image, index) => (
               <div className="project-image-frame" key={image}>

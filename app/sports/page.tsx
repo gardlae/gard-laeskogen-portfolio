@@ -1,12 +1,7 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-
-type Achievement = {
-  title: string;
-  period: string;
-  detail: string;
-};
+import { site, sportsAchievements, sportsExtraLinks, sportsIntro } from "../content";
 
 type SportSource = {
   title: string;
@@ -14,33 +9,6 @@ type SportSource = {
   href: string;
   image?: string;
 };
-
-const achievements: Achievement[] = [
-  {
-    title: "Winner, Student-NM Triathlon",
-    period: "2024",
-    detail:
-      "Won the men's Other Bikes class at Student-NM Triathlon, combining swimming, cycling, and running in Trondheim.",
-  },
-  {
-    title: "Fastest Norwegian 10 km time",
-    period: "2016",
-    detail:
-      "Ranked fastest in Norway for 10 km in the boys 12-13 age group, with a strong local Hytteplanmila performance.",
-  },
-  {
-    title: "2nd place, uphill running",
-    period: "2017",
-    detail:
-      "Placed second in the 2003 men's class in Odd-Bjorn Hjelmeset's terrain and uphill running event.",
-  },
-  {
-    title: "Cross-country skiing and endurance base",
-    period: "Youth years",
-    detail:
-      "Competed in cross-country skiing, running, orienteering, skating, and other endurance-focused events.",
-  },
-];
 
 const sourceCards: SportSource[] = [
   {
@@ -91,41 +59,38 @@ export const metadata: Metadata = {
 
 export default function SportsPage() {
   return (
-    <main className="min-h-screen bg-[#f7f2ea] text-[#1e2320]">
+    <main className="min-h-screen bg-[#f4efe5] text-[#151815]">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
-        <Link className="text-sm font-semibold uppercase tracking-[0.18em]" href="/">
-          Gard Laeskogen
-        </Link>
+        <a className="text-sm font-semibold uppercase tracking-[0.18em]" href="/">
+          {site.name}
+        </a>
         <div className="flex items-center gap-4 text-sm font-medium text-[#52615a]">
-          <Link className="transition hover:text-[#1e2320]" href="/#story">
+          <a className="transition hover:text-[#1e2320]" href="/#story">
             Story
-          </Link>
-          <Link className="transition hover:text-[#1e2320]" href="/#resume">
+          </a>
+          <a className="transition hover:text-[#1e2320]" href="/#resume">
             CV
-          </Link>
-          <Link className="transition hover:text-[#1e2320]" href="/#portfolio">
+          </a>
+          <a className="transition hover:text-[#1e2320]" href="/#portfolio">
             Portfolio
-          </Link>
-          <Link className="transition hover:text-[#1e2320]" href="/sports">
+          </a>
+          <a className="transition hover:text-[#1e2320]" href="/sports">
             Sports
-          </Link>
+          </a>
         </div>
       </nav>
 
       <section className="sports-hero px-5 py-16 sm:px-8">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <div>
-            <p className="mb-6 w-fit border-b-2 border-[#c84b31] pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#d4c6ac]">
+            <p className="section-kicker light">
               Sports background
             </p>
             <h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] text-white sm:text-6xl">
-              Endurance, competition, and discipline.
+              Sports
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-[#d8ded8]">
-              Selected results from triathlon, running, cross-country skiing,
-              orienteering, and skating. Sport has been an important part of my
-              discipline, competitiveness, and ability to keep working when
-              things get difficult.
+              {sportsIntro}
             </p>
           </div>
 
@@ -151,26 +116,24 @@ export default function SportsPage() {
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="mb-10 max-w-2xl">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#c84b31]">
-            Highlights
-          </p>
+          <p className="section-kicker">Highlights</p>
           <h2 className="text-4xl font-semibold leading-tight">
-            Competitive results that shaped my work ethic.
+            Selected competitions.
           </h2>
         </div>
 
         <div className="sports-achievement-grid">
-          {achievements.map((achievement) => (
+          {sportsAchievements.map((achievement, index) => (
             <article className="sports-achievement" key={achievement.title}>
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#52615a]">
-                {achievement.period}
+                {String(index + 1).padStart(2, "0")}
               </p>
               <h3 className="mt-4 text-2xl font-semibold leading-tight">
                 {achievement.title}
               </h3>
-              <p className="mt-4 leading-7 text-[#52615a]">
-                {achievement.detail}
-              </p>
+              <a className="mt-5 inline-flex text-link" href={achievement.href}>
+                Open source
+              </a>
             </article>
           ))}
         </div>
@@ -179,9 +142,7 @@ export default function SportsPage() {
       <section className="bg-[#e7efe8] px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <div className="mb-9 max-w-2xl">
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[#2f6f5e]">
-              Sources and photos
-            </p>
+            <p className="section-kicker">Sources and photos</p>
             <h2 className="text-4xl font-semibold leading-tight">
               Articles, results, and visual references.
             </h2>
@@ -211,13 +172,21 @@ export default function SportsPage() {
               </a>
             ))}
           </div>
+
+          <div className="extra-link-list">
+            {sportsExtraLinks.map((href) => (
+              <a href={href} key={href}>
+                {href}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <Link className="text-link" href="/">
+        <a className="text-link" href="/">
           Back to portfolio
-        </Link>
+        </a>
       </section>
     </main>
   );

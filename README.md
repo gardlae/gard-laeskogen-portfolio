@@ -1,97 +1,112 @@
-# vinext-starter
+# Gard Laeskogen Portfolio
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+Personal website for portfolio projects, CV, sports, investment notes, videos, and "The why".
 
-## Prerequisites
+## Project Folder
 
-- Node.js `>=22.13.0`
-
-## Quick Start
+The local project is here:
 
 ```bash
-npm install
-npm run dev
-npm run build
+/Users/gardlaeskogen/Documents/Codex/2026-07-11/i
 ```
 
-This starter does not use `wrangler.jsonc`.
+This folder is already a Git repository.
 
-## Included Shape
+## How The Site Is Built
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
+This is a Vinext/Next-style React site.
 
-## Workspace Auth Headers
+- `app/page.tsx` controls the home page layout.
+- `app/content.ts` is the main text/content file you should edit first.
+- `app/PortfolioCarousel.tsx` controls the swipeable portfolio project viewer.
+- `app/sports/page.tsx` controls `/sports`.
+- `app/investment/page.tsx` controls `/investment`.
+- `app/philosophy/page.tsx` controls `/philosophy`, currently titled "The why".
+- `app/globals.css` controls the visual style.
+- `public/media/` contains images and videos used on the site.
 
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
+## Editing Text Yourself
 
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
+Edit this file:
 
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+app/content.ts
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+That file contains:
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+- `site`: name, intro, contact-level text
+- `videos`: video clips on the home page
+- `cvItems`: CV timeline blocks
+- `projects`: portfolio projects, durations, descriptions, skills, links, media
+- `sportsIntro`, `sportsAchievements`, `sportsExtraLinks`
+- `investmentText`, `investmentLinks`
+- `why`: life rules, what you want to be described as, favorite quotes
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+The Word documents remain your source documents. I did not edit them. The website uses copied text from them.
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+## Editing Images And Videos
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+Put files in:
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+```bash
+public/media/
+```
 
-## Useful Commands
+Then reference them from `app/content.ts` like:
 
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm run db:generate`: generate Drizzle migrations after schema changes
+```ts
+images: ["/media/my-image.jpg"]
+video: "/media/my-video.mp4"
+```
 
-## Learn More
+## Run Locally
 
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+From the project folder:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Then open the local URL printed in the terminal, usually:
+
+```bash
+http://localhost:3000
+```
+
+## Check Before Publishing
+
+```bash
+pnpm lint
+pnpm build
+```
+
+## Put This On Your GitHub
+
+Because `gh` is not installed in this shell, create an empty repository on GitHub in the browser first. Suggested repo name:
+
+```text
+gard-laeskogen-portfolio
+```
+
+Then run these commands from the project folder:
+
+```bash
+cd /Users/gardlaeskogen/Documents/Codex/2026-07-11/i
+git remote add github https://github.com/YOUR-USERNAME/gard-laeskogen-portfolio.git
+git push -u github main
+```
+
+If `github` remote already exists, use:
+
+```bash
+git remote set-url github https://github.com/YOUR-USERNAME/gard-laeskogen-portfolio.git
+git push -u github main
+```
+
+After that, you can clone the project on another device with:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/gard-laeskogen-portfolio.git
+```
