@@ -51,6 +51,13 @@ const sourceCards: SportSource[] = [
   },
 ];
 
+const achievementsBySport = sportsAchievements.reduce<
+  Record<string, typeof sportsAchievements>
+>((groups, achievement) => {
+  groups[achievement.sport] = [...(groups[achievement.sport] ?? []), achievement];
+  return groups;
+}, {});
+
 export const metadata: Metadata = {
   title: "Sports Achievements | Gard Laeskogen",
   description:
@@ -122,19 +129,30 @@ export default function SportsPage() {
           </h2>
         </div>
 
-        <div className="sports-achievement-grid">
-          {sportsAchievements.map((achievement, index) => (
-            <article className="sports-achievement" key={achievement.title}>
-              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#52615a]">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-4 text-2xl font-semibold leading-tight">
-                {achievement.title}
-              </h3>
-              <a className="mt-5 inline-flex text-link" href={achievement.href}>
-                Open source
-              </a>
-            </article>
+        <div className="sports-category-stack">
+          {Object.entries(achievementsBySport).map(([sport, achievements]) => (
+            <section className="sports-category" key={sport}>
+              <div className="sports-category-label">
+                <span>{sport}</span>
+                <small>{achievements.length} result{achievements.length === 1 ? "" : "s"}</small>
+              </div>
+
+              <div className="sports-result-list">
+                {achievements.map((achievement) => (
+                  <article className="sports-result" key={`${achievement.year}-${achievement.event}`}>
+                    <div className="sports-result-year">{achievement.year}</div>
+                    <div className="sports-result-main">
+                      <p>{achievement.result}</p>
+                      <h3>{achievement.event}</h3>
+                    </div>
+                    <div className="sports-result-meta">
+                      <span>{achievement.category}</span>
+                      <a href={achievement.href}>Source</a>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       </section>

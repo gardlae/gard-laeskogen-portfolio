@@ -60,6 +60,35 @@ images: ["/media/my-image.jpg"]
 video: "/media/my-video.mp4"
 ```
 
+## Suggested Image Mapping Workflow
+
+Use `app/content.ts` as the map between projects and images. Each project has:
+
+```ts
+images: ["/media/image-name.jpg"]
+video: "/media/video-name.mp4"
+```
+
+Recommended mapping:
+
+- `FPV-drone builds`: drone builds, FPV frames, fixed-wing, GNSS/EW test equipment, production-oriented drone cases.
+- `Analog servo controller`: servo motor rig, breadboard circuits, control system diagrams, schematics.
+- `Distributed elevator system`: screenshots, diagrams, code architecture, terminal/demo images. Use a fallback label until you have real media.
+- `Social platform (TieUp)`: Marvel prototype screenshots, old logo/product sketches, company setup material.
+- `Flipper-zero exploration`: Flipper Zero device, WiFi devboard, signal testing photos.
+- `Hospitality Investment analysis`: Sundvolden/family business photos, analysis screenshots only if they are safe to share.
+- `Cutlery sorting machine`: CAD, prototype photos, sensor/actuator tests, mechanism sketches.
+
+Practical rule: rename files by project before adding them, for example:
+
+```text
+drone-fpv-frame-01.jpg
+servo-breadboard-01.jpg
+investment-sundvolden-01.jpg
+```
+
+Then add only the correct filenames to the matching project in `app/content.ts`.
+
 ## Run Locally
 
 From the project folder:

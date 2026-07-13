@@ -54,12 +54,19 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="project-index" aria-label="Project index">
+        <div className="portfolio-overview" aria-label="Portfolio overview">
+          <div className="portfolio-overview-header">
+            <span>No.</span>
+            <span>Project</span>
+            <span>Context</span>
+            <span>Duration</span>
+          </div>
           {projects.map((project, index) => (
-            <a href="#portfolio" key={project.title}>
+            <a className="portfolio-overview-row" href="#portfolio" key={project.title}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <strong>{project.title}</strong>
-              <small>{project.category}</small>
+              <span>{project.category}</span>
+              <span>{project.duration}</span>
             </a>
           ))}
         </div>

@@ -169,21 +169,35 @@ export const sportsIntro =
 
 export const sportsAchievements = [
   {
-    title: "Fastest 10km 2016 in Norway, class: boys 12-13-year-olds.",
+    year: "2016",
+    sport: "Running",
+    result: "Fastest 10 km in Norway",
+    event: "Youth 10 km statistics",
+    category: "Boys 12-13",
     href: "https://www.kondis.no/statistikk/ungdomsstatistikk-2016-10-km-gutter/junior/1530144",
   },
   {
-    title:
-      "Winner -Student Norwegian Championship Triathlon, “Other Bikes” Men’s Class, 2024.",
+    year: "2024",
+    sport: "Triathlon",
+    result: "Winner",
+    event: "Student Norwegian Championship Triathlon",
+    category: "Other Bikes, men's class",
     href: "https://studentidrett.no/nyheter/student-nm-triatlon",
   },
   {
-    title:
-      "Winner, G12 Class - Jardarrennet Cross-Country Ski Race, Oslo/Akershus Ski District.",
+    year: "2015",
+    sport: "Cross-country skiing",
+    result: "Winner",
+    event: "Jardarrennet Cross-Country Ski Race",
+    category: "G12, Oslo/Akershus Ski District",
     href: "https://www.google.com/imgres?imgurl=https://langrenn.ilh.no/wp-content/uploads/sites/4/2015/01/Gard-Oslo-Skifestival.jpg&tbnid=kSqoYXMQNGJ_OM&vet=1&imgrefurl=https://langrenn.ilh.no/news/gard-laeskogen-vant-i-jardarrennet-og-hole-gutten-sivert-langerud-imponerte-stort-med-2-pl-i-kvalfoss-rennet-i-skiskyting/&docid=IX3GcW616YJhOM&w=3264&h=2448&source=sh/x/im/m1/1&kgs=1bdcdac97a4321f9&shem=epsd1,nisbtsa2,nisbtsal,rimspwouoe&utm_source=epsd1,nisbtsa2,nisbtsal,rimspwouoe,sh/x/im/m1/1",
   },
   {
-    title: "2nd place, Men 2003/2002 category -Trail Run, 2017.",
+    year: "2017",
+    sport: "Trail running",
+    result: "2nd place",
+    event: "Trail Run",
+    category: "Men 2003/2002",
     href: "https://www.langrenn.com/langrenn-allround/kjempetider-i-odd-bjorn-hjelmesets-terrenglop/",
   },
 ];
