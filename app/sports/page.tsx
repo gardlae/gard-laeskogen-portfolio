@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
@@ -163,7 +162,7 @@ export default function SportsPage() {
                 <div className="sports-source-copy">
                   <p>{card.label}</p>
                   <h3>{card.title}</h3>
-                  <span>Open source <ArrowUpRight aria-hidden="true" size={14} /></span>
+                  <span>Open source <span aria-hidden="true">↗</span></span>
                 </div>
               </a>
             ))}

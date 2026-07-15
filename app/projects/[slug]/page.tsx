@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -46,7 +45,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         <header className="project-detail-header">
           <div className="project-detail-back">
             <Link href="/portfolio">
-              <ArrowLeft aria-hidden="true" size={17} /> Portfolio index
+              <span aria-hidden="true">←</span> Portfolio index
             </Link>
             <span>{String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span>
           </div>
@@ -79,12 +78,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <div className="project-external-links">
                 {project.github ? (
                   <a href={project.github} rel="noreferrer" target="_blank">
-                    GitHub <ArrowUpRight aria-hidden="true" size={16} />
+                    GitHub <span aria-hidden="true">↗</span>
                   </a>
                 ) : null}
                 {project.demo ? (
                   <a href={project.demo} rel="noreferrer" target="_blank">
-                    Demo <ArrowUpRight aria-hidden="true" size={16} />
+                    Demo <span aria-hidden="true">↗</span>
                   </a>
                 ) : null}
               </div>
@@ -120,12 +119,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
       <nav className="project-pagination" aria-label="Project navigation">
         <Link href={`/projects/${previous.slug}`}>
-          <ArrowLeft aria-hidden="true" />
+          <span aria-hidden="true" className="pagination-symbol">←</span>
           <span>Previous project</span>
           <strong>{previous.title}</strong>
         </Link>
         <Link href={`/projects/${next.slug}`}>
-          <ArrowRight aria-hidden="true" />
+          <span aria-hidden="true" className="pagination-symbol">→</span>
           <span>Next project</span>
           <strong>{next.title}</strong>
         </Link>

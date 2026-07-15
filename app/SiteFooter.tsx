@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { site } from "./content";
 
@@ -14,7 +13,7 @@ export function SiteFooter() {
         <Link href="/cv">CV story</Link>
         <Link href="/request">Request documents</Link>
         <a href={site.linkedin} rel="noreferrer" target="_blank">
-          LinkedIn <ArrowUpRight aria-hidden="true" size={14} />
+          LinkedIn <span aria-hidden="true">↗</span>
         </a>
       </div>
       <a className="site-footer-email" href={`mailto:${site.email}`}>

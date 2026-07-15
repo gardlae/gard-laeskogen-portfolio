@@ -1,4 +1,3 @@
-import { ArrowRight, LockKeyhole, Play } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "./SiteFooter";
@@ -32,7 +31,7 @@ export default function Home() {
             <p className="hero-intro">{site.intro}</p>
             <div className="hero-actions">
               <Link href="/portfolio">
-                Explore the work <ArrowRight aria-hidden="true" size={19} />
+                Explore the work <span aria-hidden="true">→</span>
               </Link>
               <Link href="/cv">Read the CV story</Link>
             </div>
@@ -50,7 +49,7 @@ export default function Home() {
         <p className="section-number">00 / Introduction</p>
         <p>{site.note}</p>
         <Link href="/cv">
-          Follow the chronology <ArrowRight aria-hidden="true" size={18} />
+          Follow the chronology <span aria-hidden="true">→</span>
         </Link>
       </section>
 
@@ -61,7 +60,7 @@ export default function Home() {
             <h2>Built in the field.</h2>
           </div>
           <Link className="arrow-link" href="/portfolio">
-            All {projects.length} projects <ArrowRight aria-hidden="true" size={18} />
+            All {projects.length} projects <span aria-hidden="true">→</span>
           </Link>
         </div>
 
@@ -87,7 +86,7 @@ export default function Home() {
                 </p>
                 <h3>{project.title}</h3>
                 <span>{project.duration}</span>
-                <ArrowRight aria-hidden="true" className="row-arrow" size={24} />
+                <span aria-hidden="true" className="row-arrow">→</span>
               </div>
             </Link>
           ))}
@@ -100,7 +99,7 @@ export default function Home() {
           <h2>Experience is easier to understand in sequence.</h2>
           <p>{site.cvIntro}</p>
           <Link className="light-arrow-link" href="/cv">
-            Read the full chronology <ArrowRight aria-hidden="true" size={18} />
+            Read the full chronology <span aria-hidden="true">→</span>
           </Link>
         </div>
         <div className="home-cv-filmstrip">
@@ -135,7 +134,7 @@ export default function Home() {
             <figure key={video.src}>
               <video controls muted playsInline preload="metadata" src={video.src} />
               <figcaption>
-                <Play aria-hidden="true" fill="currentColor" size={13} />
+                <span aria-hidden="true">▶</span>
                 {String(index + 1).padStart(2, "0")} {video.title}
               </figcaption>
             </figure>
@@ -161,7 +160,6 @@ export default function Home() {
           These documents are shared individually with companies and recruiters, not published on the open site.
         </p>
         <Link href="/request">
-          <LockKeyhole aria-hidden="true" size={18} />
           Request access
         </Link>
       </section>
@@ -170,17 +168,17 @@ export default function Home() {
         <Link href="/sports">
           <span>Sports</span>
           <small>Competition and results</small>
-          <ArrowRight aria-hidden="true" />
+          <span aria-hidden="true" className="symbol-icon">→</span>
         </Link>
         <Link href="/investment">
           <span>Investment</span>
           <small>Ownership and strategy</small>
-          <ArrowRight aria-hidden="true" />
+          <span aria-hidden="true" className="symbol-icon">→</span>
         </Link>
         <Link href="/philosophy">
           <span>The why</span>
           <small>Beliefs and principles</small>
-          <ArrowRight aria-hidden="true" />
+          <span aria-hidden="true" className="symbol-icon">→</span>
         </Link>
       </nav>
 

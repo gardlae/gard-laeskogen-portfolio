@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "../SiteFooter";
@@ -49,7 +48,7 @@ export default function PortfolioPage() {
             <h2>{project.title}</h2>
             <span className="project-index-category">{project.category}</span>
             <span className="project-index-duration">{project.duration}</span>
-            <ArrowRight aria-hidden="true" className="project-index-arrow" size={24} />
+            <span aria-hidden="true" className="project-index-arrow">→</span>
           </Link>
         ))}
       </section>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { LockKeyhole } from "lucide-react";
 import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
 import { RequestForm } from "./RequestForm";
@@ -18,7 +17,7 @@ export default function RequestPage() {
           <p className="section-number light">Private material</p>
           <h1>Request detailed CV and portfolio.</h1>
         </div>
-        <LockKeyhole aria-hidden="true" size={54} strokeWidth={1.2} />
+        <span aria-hidden="true" className="request-lock-mark">Private</span>
       </header>
 
       <section className="request-page-body">

@@ -1,6 +1,5 @@
 "use client";
 
-import { LockKeyhole, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -38,7 +37,6 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
       </nav>
 
       <Link className="header-request" href="/request">
-        <LockKeyhole aria-hidden="true" size={15} strokeWidth={1.8} />
         Request documents
       </Link>
 
@@ -49,7 +47,7 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
-        {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        <span aria-hidden="true" className="menu-symbol">{open ? "×" : "≡"}</span>
       </button>
 
       {open ? (
@@ -64,7 +62,6 @@ export function SiteHeader({ overlay = false }: { overlay?: boolean }) {
           </nav>
           <div className="mobile-nav-meta">
             <Link href="/request" onClick={() => setOpen(false)}>
-              <LockKeyhole aria-hidden="true" size={17} />
               Request detailed CV &amp; portfolio
             </Link>
             <a href={`mailto:${site.email}`}>{site.email}</a>

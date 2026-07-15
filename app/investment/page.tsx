@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
 import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
 import { investmentLinks, investmentText } from "../content";
@@ -45,7 +44,7 @@ export default function InvestmentPage() {
           <div className="link-list">
             {investmentLinks.map((link) => (
               <a href={link.href} key={link.href}>
-                {link.label} <ArrowUpRight aria-hidden="true" size={15} />
+                {link.label} <span aria-hidden="true">↗</span>
               </a>
             ))}
           </div>

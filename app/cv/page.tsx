@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ArrowRight, ArrowUpRight, LockKeyhole } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "../SiteFooter";
@@ -21,7 +20,7 @@ export default function CvPage() {
           <h1>{site.cvIntro}</h1>
           <p>{site.headline}</p>
           <a href={site.linkedin} rel="noreferrer" target="_blank">
-            LinkedIn profile <ArrowUpRight aria-hidden="true" size={17} />
+            LinkedIn profile <span aria-hidden="true">↗</span>
           </a>
         </div>
         <div className="cv-story-hero-image">
@@ -105,14 +104,14 @@ export default function CvPage() {
       </section>
 
       <section className="cv-request-band">
-        <LockKeyhole aria-hidden="true" size={28} />
+        <span aria-hidden="true" className="private-mark">Private</span>
         <div>
           <p className="section-number">Private documents</p>
           <h2>Request detailed CV and portfolio for download.</h2>
           <p>Requests are reviewed individually before any documents are shared.</p>
         </div>
         <Link href="/request">
-          Request access <ArrowRight aria-hidden="true" size={18} />
+          Request access <span aria-hidden="true">→</span>
         </Link>
       </section>
 

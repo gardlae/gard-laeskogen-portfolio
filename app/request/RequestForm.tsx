@@ -1,6 +1,5 @@
 "use client";
 
-import { Send } from "lucide-react";
 import { type FormEvent, useState } from "react";
 import { site } from "../content";
 
@@ -68,7 +67,7 @@ export function RequestForm() {
       </label>
 
       <button disabled={!cv && !portfolio} type="submit">
-        Prepare email request <Send aria-hidden="true" size={17} />
+        Prepare email request <span aria-hidden="true">→</span>
       </button>
     </form>
   );

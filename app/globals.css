@@ -160,6 +160,14 @@ a {
   border: 0;
   background: transparent;
   color: inherit;
+  cursor: pointer;
+}
+
+.menu-symbol {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .mobile-nav-panel {
@@ -445,6 +453,8 @@ a {
   position: absolute;
   right: clamp(28px, 5vw, 76px);
   top: clamp(28px, 5vw, 76px);
+  font-size: 28px;
+  line-height: 1;
   transition: transform 160ms ease;
 }
 
@@ -685,10 +695,12 @@ a {
   font-size: 13px;
 }
 
-.home-paths svg {
+.home-paths .symbol-icon {
   position: absolute;
   top: 28px;
   right: 28px;
+  font-size: 28px;
+  line-height: 1;
 }
 
 .site-footer {
@@ -830,6 +842,8 @@ a {
 }
 
 .project-index-arrow {
+  font-size: 25px;
+  line-height: 1;
   transition: transform 160ms ease;
 }
 
@@ -1049,6 +1063,15 @@ a {
   font-size: 44px;
   font-weight: 480;
   line-height: 1;
+}
+
+.project-pagination .pagination-symbol {
+  margin-top: 0;
+  color: inherit;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  text-transform: none;
 }
 
 /* CV */
@@ -1292,6 +1315,15 @@ a {
 .cv-request-band h2 {
   max-width: 850px;
   font-size: 62px;
+}
+
+.private-mark,
+.request-lock-mark {
+  border: 1px solid currentColor;
+  padding: 7px 9px;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  text-transform: uppercase;
 }
 
 .cv-request-band p:last-child {
@@ -2385,7 +2417,7 @@ a {
     min-height: 410px;
   }
 
-  .request-page-header > svg {
+  .request-lock-mark {
     display: none;
   }
 
