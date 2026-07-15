@@ -56,7 +56,21 @@ export const homeImages = [
   },
 ];
 
-export const cvItems = [
+type CvItem = {
+  period: string;
+  role: string;
+  place: string;
+  image: string;
+  detail: string;
+  positions: string[];
+  secondaryImage?: {
+    src: string;
+    alt: string;
+    caption: string;
+  };
+};
+
+export const cvItems: CvItem[] = [
   {
     period: "May 2016 - Present",
     role: "Sundvolden Hotel",
@@ -83,7 +97,7 @@ export const cvItems = [
     period: "Aug 2023 - Aug 2025",
     role: "Contactor NTNU",
     place: "Technical student organization at NTNU",
-    image: "/media/profile-contactor.jpg",
+    image: "/media/contactor-ntnu-team.jpeg",
     detail:
       "Providing long-term relationships for companies relevant to Omega Linjeforening. Organizing company presentations, stands and workshops, and taking responsibility for major projects and collaborations involving Contactor NTNU.",
     positions: [
@@ -91,6 +105,11 @@ export const cvItems = [
       "Deputy Leader | Jan 2024 - Jun 2024",
       "Leader | Jun 2024 - Aug 2025",
     ],
+    secondaryImage: {
+      src: "/media/contactor-ntnu-leadership.jpeg",
+      alt: "Gard Laeskogen with the deputy leader of Contactor NTNU",
+      caption: "Leadership team, Contactor NTNU",
+    },
   },
   {
     period: "Feb 2024 - Present",

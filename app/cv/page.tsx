@@ -69,6 +69,20 @@ export default function CvPage() {
               <ul>
                 {item.positions.map((position) => <li key={position}>{position}</li>)}
               </ul>
+              {item.secondaryImage && (
+                <figure className="cv-chapter-inset">
+                  <div>
+                    <Image
+                      alt={item.secondaryImage.alt}
+                      fill
+                      sizes="(max-width: 860px) 100vw, 34vw"
+                      src={item.secondaryImage.src}
+                      unoptimized
+                    />
+                  </div>
+                  <figcaption>{item.secondaryImage.caption}</figcaption>
+                </figure>
+              )}
             </div>
           </article>
         ))}
