@@ -1,7 +1,9 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { site, sportsAchievements, sportsExtraLinks, sportsIntro } from "../content";
+import { SiteFooter } from "../SiteFooter";
+import { SiteHeader } from "../SiteHeader";
+import { sportsAchievements, sportsExtraLinks, sportsIntro } from "../content";
 
 type SportSource = {
   title: string;
@@ -66,39 +68,15 @@ export const metadata: Metadata = {
 
 export default function SportsPage() {
   return (
-    <main className="min-h-screen bg-[#f4efe5] text-[#151815]">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
-        <a className="text-sm font-semibold uppercase tracking-[0.18em]" href="/">
-          {site.name}
-        </a>
-        <div className="flex items-center gap-4 text-sm font-medium text-[#52615a]">
-          <a className="transition hover:text-[#1e2320]" href="/#story">
-            Story
-          </a>
-          <a className="transition hover:text-[#1e2320]" href="/#resume">
-            CV
-          </a>
-          <a className="transition hover:text-[#1e2320]" href="/#portfolio">
-            Portfolio
-          </a>
-          <a className="transition hover:text-[#1e2320]" href="/sports">
-            Sports
-          </a>
-        </div>
-      </nav>
+    <main>
+      <SiteHeader />
 
-      <section className="sports-hero px-5 py-16 sm:px-8">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+      <section className="sports-hero">
+        <div className="sports-hero-inner">
           <div>
-            <p className="section-kicker light">
-              Sports background
-            </p>
-            <h1 className="max-w-3xl text-5xl font-semibold leading-[1.02] text-white sm:text-6xl">
-              Sports
-            </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-[#d8ded8]">
-              {sportsIntro}
-            </p>
+            <p className="section-number light">Sports background</p>
+            <h1>Sports</h1>
+            <p>{sportsIntro}</p>
           </div>
 
           <div className="sports-hero-stack" aria-label="Sports photo collage">
@@ -121,12 +99,12 @@ export default function SportsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <div className="mb-10 max-w-2xl">
-          <p className="section-kicker">Highlights</p>
-          <h2 className="text-4xl font-semibold leading-tight">
-            Selected competitions.
-          </h2>
+      <section className="sports-results-section">
+        <div className="section-heading-row">
+          <div>
+            <p className="section-number">Highlights</p>
+            <h2>Selected competitions.</h2>
+          </div>
         </div>
 
         <div className="sports-category-stack">
@@ -157,13 +135,13 @@ export default function SportsPage() {
         </div>
       </section>
 
-      <section className="bg-[#e7efe8] px-5 py-16 sm:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-9 max-w-2xl">
-            <p className="section-kicker">Sources and photos</p>
-            <h2 className="text-4xl font-semibold leading-tight">
-              Articles, results, and visual references.
-            </h2>
+      <section className="sports-sources-section">
+        <div>
+          <div className="section-heading-row">
+            <div>
+              <p className="section-number">Sources and photos</p>
+              <h2>Articles, results, and visual references.</h2>
+            </div>
           </div>
 
           <div className="sports-source-grid">
@@ -185,7 +163,7 @@ export default function SportsPage() {
                 <div className="sports-source-copy">
                   <p>{card.label}</p>
                   <h3>{card.title}</h3>
-                  <span>Open source</span>
+                  <span>Open source <ArrowUpRight aria-hidden="true" size={14} /></span>
                 </div>
               </a>
             ))}
@@ -201,11 +179,7 @@ export default function SportsPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <a className="text-link" href="/">
-          Back to portfolio
-        </a>
-      </section>
+      <SiteFooter />
     </main>
   );
 }

@@ -21,8 +21,12 @@ https://github.com/gardlae/gard-laeskogen-portfolio
 This is a small Vinext/Next-style React site. The project has been trimmed down to the files needed for the website: no database starter, no example API routes, and no unused auth helper.
 
 - `app/content.ts` is the main ownership file. Edit your words, project data, links, image lists, and video lists here.
-- `app/page.tsx` controls the home page layout.
-- `app/PortfolioCarousel.tsx` controls the swipeable portfolio project viewer.
+- `app/page.tsx` controls the photo-led home page.
+- `app/portfolio/page.tsx` is the complete project index.
+- `app/projects/[slug]/page.tsx` creates one direct, shareable page for every project.
+- `app/cv/page.tsx` controls the visual CV chronology.
+- `app/request/page.tsx` controls the private-document request page.
+- `app/SiteHeader.tsx` and `app/SiteFooter.tsx` control navigation shared by every page.
 - `app/sports/page.tsx` controls `/sports`.
 - `app/investment/page.tsx` controls `/investment`.
 - `app/philosophy/page.tsx` controls `/philosophy`, currently titled "The why".
@@ -35,9 +39,10 @@ Start review in this order:
 
 1. `app/content.ts` - all words and content mapping.
 2. `app/page.tsx` - home page structure.
-3. `app/PortfolioCarousel.tsx` - portfolio interaction.
-4. `app/sports/page.tsx`, `app/investment/page.tsx`, `app/philosophy/page.tsx` - subpages.
-5. `app/globals.css` - layout, mobile behavior, colors, spacing.
+3. `app/portfolio/page.tsx` and `app/projects/[slug]/page.tsx` - portfolio navigation and project pages.
+4. `app/cv/page.tsx` and `app/request/page.tsx` - CV story and document request flow.
+5. `app/sports/page.tsx`, `app/investment/page.tsx`, `app/philosophy/page.tsx` - subpages.
+6. `app/globals.css` - layout, mobile behavior, colors, spacing.
 
 ## Editing Text Yourself
 
@@ -53,6 +58,7 @@ That file contains:
 - `videos`: video clips on the home page
 - `homeImages`: front page image wall
 - `cvItems`: CV timeline blocks
+- `education`, `featuredSkills`, `additionalExperience`: verified LinkedIn CV details
 - `projects`: portfolio projects, durations, descriptions, skills, links, media
 - `sportsIntro`, `sportsAchievements`, `sportsExtraLinks`
 - `investmentText`, `investmentLinks`
@@ -103,6 +109,22 @@ investment-sundvolden-01.jpg
 ```
 
 Then add only the correct filenames to the matching project in `app/content.ts`.
+
+Every project also has a short URL slug:
+
+```ts
+slug: "analog-servo-controller"
+```
+
+That project opens at `/projects/analog-servo-controller`. Keep slugs short, lowercase, and separated with hyphens.
+
+## Private CV And Portfolio Files
+
+The public website contains only a request form. Submitting it prepares an email to `gard.lae@outlook.com`; no private document is exposed or automatically sent.
+
+Do not place the detailed CV or portfolio in `public/`. Everything in that folder can be downloaded by anyone who knows the URL. After approving a recruiter or company, share the files manually through a restricted OneDrive, Google Drive, or Dropbox link.
+
+To change the destination email, edit `site.email` in `app/content.ts`.
 
 ## Run Locally
 
@@ -156,3 +178,7 @@ After that, you can clone the project on another device with:
 ```bash
 git clone https://github.com/gardlae/gard-laeskogen-portfolio.git
 ```
+
+## Domain
+
+The site can use a custom domain after it is registered. The simplest international option is `gardlaeskogen.com`; `gardlaeskogen.no` is a strong Norwegian alternative. Add the domain to the hosting project first, then copy the DNS records supplied by the host into the registrar's DNS settings.

@@ -1,6 +1,9 @@
 export const site = {
   name: "Gard Laeskogen",
-  email: "tml@sundvolden.no",
+  email: "gard.lae@outlook.com",
+  linkedin: "https://www.linkedin.com/in/gard-laeskogen-0a246527a/",
+  location: "Trondheim, Norway",
+  headline: "Student | M. Sc. Cybernetics and Robotics | NTNU",
   intro:
     "Builder across software, electronics, drones, investments, sports, and operations.",
   note:
@@ -55,41 +58,100 @@ export const homeImages = [
 
 export const cvItems = [
   {
-    period: "Early work",
-    role: "Family business",
-    place: "Sundvolden Hotel",
+    period: "May 2016 - Present",
+    role: "Sundvolden Hotel",
+    place: "Family business",
     image: "/media/family-business.jpg",
     detail:
-      "Grew up close to the family business and learned how operations, service, responsibility, and long-term ownership work in practice.",
+      "Norway's oldest family hotel, running since 1648.",
+    positions: [
+      "Banquet Waiter | May 2016 - Sep 2023",
+      "Maintenance Specialist | Apr 2017 - Aug 2023",
+      "Member, Board of Directors | Aug 2025 - Present",
+    ],
   },
   {
-    period: "Service",
+    period: "Jul 2022 - Jul 2023",
     role: "Norwegian Armed Forces",
-    place: "Field experience",
+    place: "Military service",
     image: "/media/military-field.jpg",
     detail:
-      "Developed discipline, endurance, teamwork, and decision-making under pressure through demanding field environments.",
+      "One year of military service in the Norwegian Armed Forces.",
+    positions: ["Military service | Jul 2022 - Jul 2023"],
   },
   {
-    period: "Student work",
+    period: "Aug 2023 - Aug 2025",
     role: "Contactor NTNU",
-    place: "Technical student organization",
+    place: "Technical student organization at NTNU",
     image: "/media/profile-contactor.jpg",
     detail:
-      "Worked in a technical student environment that strengthened collaboration, practical engineering, and project ownership.",
+      "Providing long-term relationships for companies relevant to Omega Linjeforening. Organizing company presentations, stands and workshops, and taking responsibility for major projects and collaborations involving Contactor NTNU.",
+    positions: [
+      "Company Contact | Aug 2023 - Jan 2024",
+      "Deputy Leader | Jan 2024 - Jun 2024",
+      "Leader | Jun 2024 - Aug 2025",
+    ],
   },
   {
-    period: "Engineering",
-    role: "Electronics and UAV projects",
-    place: "Personal and academic builds",
+    period: "Feb 2024 - Present",
+    role: "Board member",
+    place: "NFEA - Norwegian Association for Electrical and Automation Engineering",
+    image: "/media/servo-breadboard-full.jpg",
+    detail:
+      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies.",
+    positions: ["Member, Board of Directors | Feb 2024 - Present"],
+  },
+  {
+    period: "Apr 2025 - Dec 2025",
+    role: "UAV Engineer",
+    place: "Norwegian Armed Forces",
     image: "/media/fpv-drone-build.jpg",
     detail:
-      "Built hands-on systems across drones, analog electronics, RF, control systems, firmware configuration, and rapid prototyping.",
+      "Coordinating an R&D department, instructing and mentoring, and working as a specialist in technical development.",
+    positions: ["UAV Engineer | Apr 2025 - Dec 2025"],
   },
 ];
 
-export const projects = [
+export const education = [
   {
+    period: "Aug 2023 - Jun 2028",
+    institution: "Norwegian University of Science and Technology (NTNU)",
+    qualification: "M. Sc. Cybernetics and Robotics",
+  },
+  {
+    period: "May 2024 - Aug 2024",
+    institution: "Jönköping International Business School",
+    qualification: "Family Business for Next Generation",
+  },
+];
+
+export const featuredSkills = ["Statistics", "Programming", "Machine vision"];
+
+export const additionalExperience = [
+  {
+    period: "Sep 2019 - Mar 2021",
+    role: "Cross-country coach",
+    place: "Idrettslaget Holevaeringen",
+  },
+];
+
+export type PortfolioProject = {
+  slug: string;
+  title: string;
+  category: string;
+  duration: string;
+  description: string;
+  skills: string[];
+  images: string[];
+  demo?: string;
+  github?: string;
+  video?: string;
+  visualLabel?: string;
+};
+
+export const projects: PortfolioProject[] = [
+  {
+    slug: "fpv-drone-builds",
     title: "FPV-drone builds",
     category: "Work and free time",
     duration: "Mar 2025 - Des 2025",
@@ -115,6 +177,7 @@ export const projects = [
     video: "/media/story-clip-2.mp4",
   },
   {
+    slug: "tieup-social-platform",
     title: "Social platform (TieUp)",
     category: "Free time",
     duration: "Apr 2021-Aug 2021 (2. Year high-school)",
@@ -132,6 +195,7 @@ export const projects = [
     visualLabel: "Startup prototype and company formation",
   },
   {
+    slug: "distributed-elevator-system",
     title: "Distributed elevator system",
     category: "School",
     duration: "Jan 2026-May 2026",
@@ -150,6 +214,7 @@ export const projects = [
     visualLabel: "Distributed control, networking, and fault recovery",
   },
   {
+    slug: "analog-servo-controller",
     title: "Analog servo controller",
     category: "School",
     duration: "Jan 2023-Mar 2023",
@@ -172,6 +237,7 @@ export const projects = [
     ],
   },
   {
+    slug: "flipper-zero-exploration",
     title: "Flipper-zero exploration",
     category: "Free time",
     duration: "Aug 2022-Sep 2023",
@@ -185,6 +251,7 @@ export const projects = [
     images: ["/media/flipper-zero.jpg", "/media/signal-box-interior.jpg"],
   },
   {
+    slug: "hospitality-investment-analysis",
     title: "Hospitality Investment analysis",
     category: "Free time",
     duration: "Des 2025 - Mar 2026",
@@ -194,6 +261,7 @@ export const projects = [
     images: ["/media/family-business.jpg"],
   },
   {
+    slug: "cutlery-sorting-machine",
     title: "Cutlery sorting machine -coming soon",
     category: "Free time",
     duration: "Jul 2026 - Present",

@@ -1,233 +1,190 @@
+import { ArrowRight, LockKeyhole, Play } from "lucide-react";
 import Image from "next/image";
-import { PortfolioCarousel } from "./PortfolioCarousel";
+import Link from "next/link";
+import { SiteFooter } from "./SiteFooter";
+import { SiteHeader } from "./SiteHeader";
 import { cvItems, homeImages, projects, site, videos } from "./content";
+
+const selectedProjects = [projects[0], projects[3], projects[5]];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f4efe5] text-[#151815]">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 sm:px-8">
-        <a className="text-sm font-semibold uppercase tracking-[0.18em]" href="#">
-          {site.name}
-        </a>
-        <div className="flex items-center gap-4 text-sm font-medium text-[#52615a]">
-          <a className="transition hover:text-[#1e2320]" href="#story">
-            Story
-          </a>
-          <a className="transition hover:text-[#1e2320]" href="#resume">
-            CV
-          </a>
-          <a className="transition hover:text-[#1e2320]" href="#portfolio">
-            Portfolio
-          </a>
-          <a className="transition hover:text-[#1e2320]" href="/sports">
-            Sports
-          </a>
-          <a className="transition hover:text-[#1e2320]" href="/investment">
-            Investment
-          </a>
-          <a className="transition hover:text-[#1e2320]" href="/philosophy">
-            Philosophy
-          </a>
-        </div>
-      </nav>
-
-      <section className="home-hero px-5 pb-14 pt-8 sm:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="hero-board">
-            <div className="hero-board-copy">
-              <p className="section-kicker">Personal operating system</p>
-              <h1>
-                {site.name}
-                <span>{site.intro}</span>
-              </h1>
-              <p>{site.note}</p>
-            </div>
-            <div className="hero-board-image">
-              <Image
-                alt="Portrait of Gard Laeskogen"
-                className="h-full w-full object-cover"
-                height={1600}
-                priority
-                src="/media/profile-contactor.jpg"
-                unoptimized
-                width={1200}
-              />
+    <main>
+      <div className="hero-shell">
+        <SiteHeader overlay />
+        <section className="editorial-hero" aria-labelledby="home-title">
+          <Image
+            alt="Gard Laeskogen outside Sundvolden Hotel"
+            className="editorial-hero-image"
+            fill
+            priority
+            sizes="100vw"
+            src="/media/family-business-portrait.jpg"
+            unoptimized
+          />
+          <div className="editorial-hero-shade" />
+          <div className="editorial-hero-copy">
+            <p className="eyebrow-light">{site.location} / Portfolio 2026</p>
+            <h1 id="home-title">
+              Gard
+              <span>Laeskogen</span>
+            </h1>
+            <p className="hero-intro">{site.intro}</p>
+            <div className="hero-actions">
+              <Link href="/portfolio">
+                Explore the work <ArrowRight aria-hidden="true" size={19} />
+              </Link>
+              <Link href="/cv">Read the CV story</Link>
             </div>
           </div>
-
-          <div className="front-image-wall" aria-label="Selected images from Gard Laeskogen's background">
-            {homeImages.map((image, index) => (
-              <figure className="front-image-tile" data-featured={index === 0} key={image.src}>
-                <Image
-                  alt={image.alt}
-                  className="h-full w-full object-cover"
-                  height={900}
-                  priority={index === 0}
-                  src={image.src}
-                  unoptimized
-                  width={1200}
-                />
-                <figcaption>{image.label}</figcaption>
-              </figure>
-            ))}
+          <div className="hero-field-index" aria-label="Areas of work">
+            <span>Cybernetics</span>
+            <span>UAV systems</span>
+            <span>Operations</span>
+            <span>Leadership</span>
           </div>
+        </section>
+      </div>
 
-          <div className="front-signal-grid" aria-label="Site sections">
-            <a href="#portfolio">
-              <span>01</span>
-              <strong>Portfolio</strong>
-              <small>Projects, media, links, and skills.</small>
-            </a>
-            <a href="#resume">
-              <span>02</span>
-              <strong>CV</strong>
-              <small>Work, service, studies, and practical background.</small>
-            </a>
-            <a href="/sports">
-              <span>03</span>
-              <strong>Sports</strong>
-              <small>Results grouped by sport and year.</small>
-            </a>
-          </div>
-        </div>
+      <section className="home-statement">
+        <p className="section-number">00 / Introduction</p>
+        <p>{site.note}</p>
+        <Link href="/cv">
+          Follow the chronology <ArrowRight aria-hidden="true" size={18} />
+        </Link>
       </section>
 
-      <section id="story" className="story-strip px-5 py-16 sm:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="story-heading">
-            <p className="section-kicker">Video and story</p>
-            <h2>
-              {site.storyTitle}
-            </h2>
-            <p>
-              {site.storyIntro}
-            </p>
+      <section className="selected-work-section">
+        <div className="section-heading-row">
+          <div>
+            <p className="section-number">01 / Selected work</p>
+            <h2>Built in the field.</h2>
           </div>
-          <div className="video-grid">
-            {videos.map((video) => (
-              <figure className="video-tile" key={video.src}>
-                <video controls muted playsInline preload="metadata" src={video.src} />
-                <figcaption>{video.title}</figcaption>
-              </figure>
-            ))}
-          </div>
+          <Link className="arrow-link" href="/portfolio">
+            All {projects.length} projects <ArrowRight aria-hidden="true" size={18} />
+          </Link>
         </div>
-      </section>
 
-      <section id="portfolio" className="portfolio-band px-5 py-16 sm:px-8">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-9 max-w-2xl">
-            <p className="section-kicker">Portfolio</p>
-            <h2 className="text-4xl font-semibold leading-tight">
-              {site.portfolioTitle}
-            </h2>
-            <p className="mt-4 leading-7 text-[#52615a]">
-              {site.portfolioIntro}
-            </p>
-          </div>
-          <div className="portfolio-overview" aria-label="Portfolio overview">
-            <div className="portfolio-overview-header">
-              <span>No.</span>
-              <span>Project</span>
-              <span>Context</span>
-              <span>Duration</span>
-            </div>
-            {projects.map((project, index) => (
-              <a className="portfolio-overview-row" href="#portfolio" key={project.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{project.title}</strong>
-                <span>{project.category}</span>
+        <div className="selected-work-list">
+          {selectedProjects.map((project, index) => (
+            <Link className="selected-work-row" href={`/projects/${project.slug}`} key={project.slug}>
+              <div className="selected-work-image">
+                {project.images[0] ? (
+                  <Image
+                    alt={`${project.title} project`}
+                    fill
+                    sizes="(max-width: 800px) 100vw, 44vw"
+                    src={project.images[0]}
+                    unoptimized
+                  />
+                ) : (
+                  <div className="image-fallback">{project.category}</div>
+                )}
+              </div>
+              <div className="selected-work-copy">
+                <p>
+                  {String(index + 1).padStart(2, "0")} / {project.category}
+                </p>
+                <h3>{project.title}</h3>
                 <span>{project.duration}</span>
-              </a>
-            ))}
-          </div>
-          <PortfolioCarousel />
-        </div>
-      </section>
-
-      <section id="resume" className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <div className="mb-10 max-w-2xl">
-          <p className="section-kicker">CV</p>
-          <h2 className="text-4xl font-semibold leading-tight">
-            {site.cvIntro}
-          </h2>
-        </div>
-        <div className="cv-timeline">
-          {cvItems.map((item) => (
-            <article className="cv-item" key={item.role}>
-              <div className="cv-image">
-                <Image
-                  alt={`${item.role} image`}
-                  className="h-full w-full object-cover"
-                  height={900}
-                  src={item.image}
-                  unoptimized
-                  width={1200}
-                />
+                <ArrowRight aria-hidden="true" className="row-arrow" size={24} />
               </div>
-              <div className="cv-copy">
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#52615a]">
-                  {item.period}
-                </p>
-                <h3 className="mt-3 text-2xl font-semibold">{item.role}</h3>
-                <p className="mt-1 text-sm font-semibold text-[#c84b31]">
-                  {item.place}
-                </p>
-                <p className="mt-4 leading-7 text-[#52615a]">{item.detail}</p>
-              </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <div className="mb-9 max-w-2xl">
-          <p className="section-kicker">More</p>
-          <h2 className="text-4xl font-semibold leading-tight">
-            {site.moreIntro}
-          </h2>
+      <section className="home-cv-section">
+        <div className="home-cv-heading">
+          <p className="section-number light">02 / CV story</p>
+          <h2>Experience is easier to understand in sequence.</h2>
+          <p>{site.cvIntro}</p>
+          <Link className="light-arrow-link" href="/cv">
+            Read the full chronology <ArrowRight aria-hidden="true" size={18} />
+          </Link>
         </div>
-        <div className="personal-section-grid">
-          <a className="personal-section-card" href="/sports">
-            <span>Competition</span>
-            <h3>Sports achievements</h3>
-            <p>
-              Endurance results and the competitive background behind my work ethic.
-            </p>
-          </a>
-          <a className="personal-section-card" href="/investment">
-            <span>Capital</span>
-            <h3>Investment</h3>
-            <p>
-              A page reserved for ownership, investment thinking, and lessons learned.
-            </p>
-          </a>
-          <a className="personal-section-card" href="/philosophy">
-            <span>Principles</span>
-            <h3>Philosophy and beliefs</h3>
-            <p>
-              Personal rules, beliefs, and quotes that explain how I try to operate.
-            </p>
-          </a>
+        <div className="home-cv-filmstrip">
+          {cvItems.slice(0, 3).map((item, index) => (
+            <figure key={item.role}>
+              <Image
+                alt={`${item.role} chapter`}
+                fill
+                sizes="(max-width: 760px) 82vw, 30vw"
+                src={item.image}
+                unoptimized
+              />
+              <figcaption>
+                <span>Chapter {String(index + 1).padStart(2, "0")}</span>
+                <strong>{item.role}</strong>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <div className="grid gap-7 border-t border-[#d9cfbf] pt-10 md:grid-cols-[1fr_auto] md:items-center">
+      <section className="story-reel-section">
+        <div className="section-heading-row">
           <div>
-            <h2 className="text-3xl font-semibold">{site.contactTitle}</h2>
-            <p className="mt-3 max-w-2xl leading-7 text-[#52615a]">
-              {site.contactIntro}
-            </p>
+            <p className="section-number">03 / Story reel</p>
+            <h2>{site.storyTitle}</h2>
           </div>
-          <a
-            className="inline-flex min-h-11 w-fit items-center border border-[#1e2320] px-5 text-sm font-semibold transition hover:bg-[#1e2320] hover:text-white"
-            href="mailto:tml@sundvolden.no"
-          >
-            Contact me
-          </a>
+          <p className="section-side-copy">{site.storyIntro}</p>
+        </div>
+        <div className="story-reel">
+          {videos.map((video, index) => (
+            <figure key={video.src}>
+              <video controls muted playsInline preload="metadata" src={video.src} />
+              <figcaption>
+                <Play aria-hidden="true" fill="currentColor" size={13} />
+                {String(index + 1).padStart(2, "0")} {video.title}
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
+
+      <section className="image-ledger" aria-label="Background in images">
+        {homeImages.slice(0, 4).map((image) => (
+          <figure key={image.src}>
+            <Image alt={image.alt} fill sizes="(max-width: 760px) 50vw, 25vw" src={image.src} unoptimized />
+            <figcaption>{image.label}</figcaption>
+          </figure>
+        ))}
+      </section>
+
+      <section className="private-documents-band">
+        <div>
+          <p className="section-number light">Private material</p>
+          <h2>Detailed CV and project portfolio.</h2>
+        </div>
+        <p>
+          These documents are shared individually with companies and recruiters, not published on the open site.
+        </p>
+        <Link href="/request">
+          <LockKeyhole aria-hidden="true" size={18} />
+          Request access
+        </Link>
+      </section>
+
+      <nav className="home-paths" aria-label="Additional pages">
+        <Link href="/sports">
+          <span>Sports</span>
+          <small>Competition and results</small>
+          <ArrowRight aria-hidden="true" />
+        </Link>
+        <Link href="/investment">
+          <span>Investment</span>
+          <small>Ownership and strategy</small>
+          <ArrowRight aria-hidden="true" />
+        </Link>
+        <Link href="/philosophy">
+          <span>The why</span>
+          <small>Beliefs and principles</small>
+          <ArrowRight aria-hidden="true" />
+        </Link>
+      </nav>
+
+      <SiteFooter />
     </main>
   );
 }
