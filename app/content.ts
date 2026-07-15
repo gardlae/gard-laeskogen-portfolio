@@ -5,6 +5,17 @@ export const site = {
     "Builder across software, electronics, drones, investments, sports, and operations.",
   note:
     "Portfolio, CV, sports, investment notes, and the why behind how I spend my time.",
+  storyTitle: "Video and story",
+  storyIntro:
+    "Short clips from projects and moments I want to use in the story.",
+  portfolioTitle: "Portfolio",
+  portfolioIntro: "Duration, context, description, skills, media, and links.",
+  cvTitle: "CV",
+  cvIntro: "Experience built through responsibility and practical work.",
+  moreTitle: "More",
+  moreIntro: "The parts behind the work.",
+  contactTitle: "Contact",
+  contactIntro: "Reach out by email.",
 };
 
 export const videos = [
@@ -83,7 +94,7 @@ export const projects = [
     category: "Work and free time",
     duration: "Mar 2025 - Des 2025",
     description:
-      "Built and modified 20+ drone configurations, ranging from FPV quadcopters to fixed-wing systems, with variations in communication methods, payload capability, firmware, and operating environment. The work has focused mainly on adapting off-the-shelf products, including configurations for GNSS-denied and EW-disrupted conditions. Specific technical information around the different project are information I cannot share at this point.",
+      "Built and modified 20+ drone configurations, ranging from FPV quadcopters to fixed-wing systems, with variations in communication methods, payload capability, firmware, and operating environment. The work has focused mainly on adapting off-the-shelf products, including configurations for GNSS-denied and EW-disrupted conditions.\n\nSpecific technical information around the different project are information I cannot share at this point.",
     skills: [
       "Analog radio",
       "software-defined radio",
@@ -109,7 +120,7 @@ export const projects = [
     duration: "Apr 2021-Aug 2021 (2. Year high-school)",
     demo: "https://marvelapp.com/prototype/14aj7hae/screen/78212187",
     description:
-      "Started building a social platform, to facilitate physical meetups like social training and events when the lockdown was coming to an end during COVID. I got the company registered built an early prototype, spoke with mentors but soon realized I didn't have the software skillset needed to build this. This lack of knowledge motivated me to start getting into software programming. I started by taking the CS50: Introduction to Computer Science -online Harvard course and changed courses in school to pursuit this direction.",
+      "Started building a social platform, to facilitate physical meetups like social training and events when the lockdown was coming to an end during COVID. I got the company registered built an early prototype, spoke with mentors but soon realized I didn’t have the software skillset needed to build this.\n\nThis lack of knowledge motivated me to start getting into software programming. I started by taking the CS50: Introduction to Computer Science -online Harvard course and changed courses in school to pursuit this direction.",
     skills: [
       "Company registration",
       "grant applications",

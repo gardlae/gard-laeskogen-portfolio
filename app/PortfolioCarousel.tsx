@@ -58,7 +58,7 @@ export function PortfolioCarousel() {
             </div>
             <div>
               <dt className="project-meta-label">Description</dt>
-              <dd className="mt-2 leading-7 text-[#52615a]">{activeProject.description}</dd>
+              <dd className="project-description">{activeProject.description}</dd>
             </div>
             <div>
               <dt className="project-meta-label">Skills</dt>

@@ -97,10 +97,10 @@ export default function Home() {
           <div className="story-heading">
             <p className="section-kicker">Video and story</p>
             <h2>
-              More video, less placeholder.
+              {site.storyTitle}
             </h2>
             <p>
-              Short clips from projects and moments I want to use in the story.
+              {site.storyIntro}
             </p>
           </div>
           <div className="video-grid">
@@ -119,10 +119,10 @@ export default function Home() {
           <div className="mb-9 max-w-2xl">
             <p className="section-kicker">Portfolio</p>
             <h2 className="text-4xl font-semibold leading-tight">
-              Projects first, with your wording.
+              {site.portfolioTitle}
             </h2>
             <p className="mt-4 leading-7 text-[#52615a]">
-              Duration, context, description, skills, media, and links.
+              {site.portfolioIntro}
             </p>
           </div>
           <div className="portfolio-overview" aria-label="Portfolio overview">
@@ -149,7 +149,7 @@ export default function Home() {
         <div className="mb-10 max-w-2xl">
           <p className="section-kicker">CV</p>
           <h2 className="text-4xl font-semibold leading-tight">
-            Experience built through responsibility and practical work.
+            {site.cvIntro}
           </h2>
         </div>
         <div className="cv-timeline">
@@ -184,7 +184,7 @@ export default function Home() {
         <div className="mb-9 max-w-2xl">
           <p className="section-kicker">More</p>
           <h2 className="text-4xl font-semibold leading-tight">
-            The parts behind the work.
+            {site.moreIntro}
           </h2>
         </div>
         <div className="personal-section-grid">
@@ -215,10 +215,9 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-7 border-t border-[#d9cfbf] pt-10 md:grid-cols-[1fr_auto] md:items-center">
           <div>
-            <h2 className="text-3xl font-semibold">Ready for the next chapter.</h2>
+            <h2 className="text-3xl font-semibold">{site.contactTitle}</h2>
             <p className="mt-3 max-w-2xl leading-7 text-[#52615a]">
-              Use this space for contact details, GitHub, LinkedIn, or a short
-              invitation for people you want to hear from.
+              {site.contactIntro}
             </p>
           </div>
           <a

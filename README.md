@@ -1,4 +1,4 @@
-# Gard Laeskogen Portfolio
+# Gard Laeskogen Portfolio Website
 
 Personal website for portfolio projects, CV, sports, investment notes, videos, and "The why".
 
@@ -10,20 +10,34 @@ The local project is here:
 /Users/gardlaeskogen/Documents/Codex/2026-07-11/i
 ```
 
-This folder is already a Git repository.
+This folder is already a Git repository. The intended public GitHub repository is:
+
+```text
+https://github.com/gardlae/gard-laeskogen-portfolio
+```
 
 ## How The Site Is Built
 
-This is a Vinext/Next-style React site.
+This is a small Vinext/Next-style React site. The project has been trimmed down to the files needed for the website: no database starter, no example API routes, and no unused auth helper.
 
+- `app/content.ts` is the main ownership file. Edit your words, project data, links, image lists, and video lists here.
 - `app/page.tsx` controls the home page layout.
-- `app/content.ts` is the main text/content file you should edit first.
 - `app/PortfolioCarousel.tsx` controls the swipeable portfolio project viewer.
 - `app/sports/page.tsx` controls `/sports`.
 - `app/investment/page.tsx` controls `/investment`.
 - `app/philosophy/page.tsx` controls `/philosophy`, currently titled "The why".
 - `app/globals.css` controls the visual style.
 - `public/media/` contains images and videos used on the site.
+
+## Code Review Map
+
+Start review in this order:
+
+1. `app/content.ts` - all words and content mapping.
+2. `app/page.tsx` - home page structure.
+3. `app/PortfolioCarousel.tsx` - portfolio interaction.
+4. `app/sports/page.tsx`, `app/investment/page.tsx`, `app/philosophy/page.tsx` - subpages.
+5. `app/globals.css` - layout, mobile behavior, colors, spacing.
 
 ## Editing Text Yourself
 
@@ -37,13 +51,14 @@ That file contains:
 
 - `site`: name, intro, contact-level text
 - `videos`: video clips on the home page
+- `homeImages`: front page image wall
 - `cvItems`: CV timeline blocks
 - `projects`: portfolio projects, durations, descriptions, skills, links, media
 - `sportsIntro`, `sportsAchievements`, `sportsExtraLinks`
 - `investmentText`, `investmentLinks`
 - `why`: life rules, what you want to be described as, favorite quotes
 
-The Word documents remain your source documents. I did not edit them. The website uses copied text from them.
+The Word documents remain your source documents. Do not edit them from the website code. Copy your approved wording from the documents into `app/content.ts`.
 
 ## Editing Images And Videos
 
@@ -113,29 +128,31 @@ pnpm build
 
 ## Put This On Your GitHub
 
-Because `gh` is not installed in this shell, create an empty repository on GitHub in the browser first. Suggested repo name:
+Because `gh` is not installed in this shell, create an empty public repository on GitHub in the browser first:
 
 ```text
 gard-laeskogen-portfolio
 ```
 
-Then run these commands from the project folder:
+Owner: `gardlae`
+
+Then run these commands:
 
 ```bash
 cd /Users/gardlaeskogen/Documents/Codex/2026-07-11/i
-git remote add github https://github.com/YOUR-USERNAME/gard-laeskogen-portfolio.git
+git remote add github https://github.com/gardlae/gard-laeskogen-portfolio.git
 git push -u github main
 ```
 
 If `github` remote already exists, use:
 
 ```bash
-git remote set-url github https://github.com/YOUR-USERNAME/gard-laeskogen-portfolio.git
+git remote set-url github https://github.com/gardlae/gard-laeskogen-portfolio.git
 git push -u github main
 ```
 
 After that, you can clone the project on another device with:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/gard-laeskogen-portfolio.git
+git clone https://github.com/gardlae/gard-laeskogen-portfolio.git
 ```

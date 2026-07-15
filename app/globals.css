@@ -424,6 +424,13 @@ nav > div {
   text-transform: uppercase;
 }
 
+.project-description {
+  margin-top: 8px;
+  color: #52615a;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
 .skill-pill {
   display: inline-flex;
   min-height: 30px;
