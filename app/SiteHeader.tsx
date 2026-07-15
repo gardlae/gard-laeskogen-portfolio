@@ -45,7 +45,8 @@ export function SiteHeader() {
         <div className="rail-contact">
           <div className="availability"><span /> Available for conversations</div>
           <p>{site.location}</p>
-          <Link className="rail-request" href="/request">Request detailed documents</Link>
+          <Link className="rail-request" href="/request#schedule">Schedule a chat</Link>
+          <Link href="/request#documents">Request detailed CV</Link>
           <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn <span aria-hidden="true">↗</span></a>
         </div>
       </header>
@@ -73,7 +74,8 @@ export function SiteHeader() {
                 </Link>
               ))}
             </nav>
-            <Link href="/request" onClick={() => setOpen(false)}>Request detailed documents</Link>
+            <Link href="/request#schedule" onClick={() => setOpen(false)}>Schedule a chat</Link>
+            <Link href="/request#documents" onClick={() => setOpen(false)}>Request detailed CV</Link>
             <a href={`mailto:${site.email}`}>{site.email}</a>
           </div>
         )}

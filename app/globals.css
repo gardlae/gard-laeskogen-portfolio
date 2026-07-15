@@ -28,6 +28,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans), Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
   letter-spacing: 0;
 }
 
@@ -36,6 +38,16 @@ button,
 input,
 textarea {
   font-family: var(--font-sans), Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+.rail-brand strong,
+.button-primary,
+.button-secondary {
+  font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
 }
 
 a {
@@ -116,7 +128,7 @@ a {
   place-items: center;
   background: var(--blue);
   color: white;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
 }
@@ -133,7 +145,7 @@ a {
 
 .rail-brand small {
   color: #aeb8b3;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
   text-transform: uppercase;
 }
@@ -169,7 +181,7 @@ a {
 
 .rail-nav a span {
   color: #77817c;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
 }
 
@@ -194,7 +206,7 @@ a {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
   text-transform: uppercase;
 }
@@ -234,7 +246,7 @@ a {
 .project-code,
 .project-toolbar,
 .section-title-row > span {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0;
@@ -349,7 +361,7 @@ a {
   margin-top: 24px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
   text-transform: uppercase;
 }
@@ -434,7 +446,7 @@ a {
   padding: 8px 10px;
   background: rgba(18, 21, 20, 0.86);
   color: white;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
   text-transform: uppercase;
 }
@@ -459,7 +471,7 @@ a {
 
 .profile-facts dt {
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
   text-transform: uppercase;
 }
@@ -615,7 +627,7 @@ a {
   height: 24px;
   place-items: center;
   background: var(--surface);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
 }
 
@@ -631,7 +643,7 @@ a {
   justify-content: space-between;
   gap: 8px;
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 7px;
   text-transform: uppercase;
 }
@@ -669,7 +681,7 @@ a {
   place-items: center;
   background: var(--green);
   color: white;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 9px;
   text-align: center;
   text-transform: uppercase;
@@ -742,7 +754,7 @@ a {
 
 .project-summary dt {
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
   text-transform: uppercase;
 }
@@ -776,7 +788,7 @@ a {
   padding: 6px 8px;
   background: #fafbfa;
   color: #39403d;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 7px;
   text-transform: uppercase;
 }
@@ -852,7 +864,7 @@ a {
 
 .compact-pagination span {
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
   text-transform: uppercase;
 }
@@ -969,7 +981,7 @@ a {
   height: 24px;
   place-items: center;
   background: white;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
 }
 
@@ -990,7 +1002,7 @@ a {
 .experience-card-body > p:first-child {
   margin: 0;
   color: var(--blue-dark);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 7px;
   text-transform: uppercase;
 }
@@ -1031,7 +1043,7 @@ a {
 .experience-card li {
   border-top: 1px solid var(--line);
   padding: 6px 0;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 6px;
   line-height: 1.35;
   text-transform: uppercase;
@@ -1067,7 +1079,7 @@ a {
 
 .education-rows span {
   color: #9ca8a2;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 6px;
   text-transform: uppercase;
 }
@@ -1144,7 +1156,7 @@ a {
   display: flex;
   justify-content: space-between;
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 7px;
   text-transform: uppercase;
 }
@@ -1182,7 +1194,7 @@ a {
 
 .sports-discipline-panel > div > span {
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 7px;
 }
 
@@ -1228,7 +1240,7 @@ a {
 
 .source-grid small {
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 6px;
   text-transform: uppercase;
 }
@@ -1324,7 +1336,7 @@ a {
   border: 1px solid var(--line);
   padding: 7px 9px;
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 7px;
   text-transform: uppercase;
 }
@@ -1390,7 +1402,7 @@ a {
 .character-panel > div > span,
 .quotes-panel blockquote > span {
   color: var(--blue-dark);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
 }
 
@@ -1492,7 +1504,7 @@ a {
 
 .request-process li > span {
   color: #77817c;
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
 }
 
@@ -1526,7 +1538,7 @@ a {
   grid-column: 1 / -1;
   margin-bottom: 8px;
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 8px;
   text-transform: uppercase;
 }
@@ -1563,7 +1575,7 @@ a {
 .request-form-grid label > span,
 .request-message-field > span {
   color: var(--muted);
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: 7px;
   text-transform: uppercase;
 }
@@ -1672,7 +1684,7 @@ a {
 }
 
 /* Tablet and mobile navigation */
-@media (max-width: 1020px) {
+@media (max-width: 1080px) {
   .site-rail {
     display: none;
   }
@@ -1751,7 +1763,7 @@ a {
 
   .mobile-nav-panel nav span {
     color: #7e8983;
-    font-family: var(--font-mono), monospace;
+    font-family: var(--font-sans), Arial, sans-serif;
     font-size: 8px;
   }
 
@@ -2217,5 +2229,799 @@ a {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Recruiter-focused typography and homepage */
+.rail-brand strong {
+  font-size: 15px;
+}
+
+.rail-brand small,
+.rail-nav a span,
+.availability,
+.status-line,
+.private-badge,
+.kicker,
+.panel-heading,
+.project-code,
+.project-toolbar,
+.section-title-row > span {
+  font-size: 11px;
+}
+
+.rail-nav a strong {
+  font-size: 14px;
+}
+
+.rail-contact {
+  font-size: 12px;
+}
+
+.button-primary,
+.button-secondary {
+  min-height: 48px;
+  padding: 0 18px;
+  font-size: 14px;
+}
+
+.inline-link {
+  font-size: 13px;
+}
+
+.page-heading > p {
+  font-size: 16px;
+}
+
+.site-footer {
+  font-size: 11px;
+}
+
+.recruiter-home {
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.recruiter-hero {
+  display: grid;
+  height: 48svh;
+  min-height: 390px;
+  max-height: 520px;
+  grid-template-columns: minmax(520px, 1.25fr) minmax(320px, 0.75fr);
+}
+
+.recruiter-intro,
+.recruiter-portrait {
+  min-width: 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.recruiter-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 34px;
+}
+
+.recruiter-intro-copy {
+  max-width: 780px;
+}
+
+.recruiter-intro h1 {
+  margin: 0;
+  font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
+  font-size: 68px;
+  font-weight: 680;
+  line-height: 0.98;
+}
+
+.recruiter-role {
+  margin: 18px 0 0;
+  color: var(--blue-dark);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.recruiter-summary {
+  max-width: 680px;
+  margin: 10px 0 0;
+  color: #3f4743;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.recruiter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-items: center;
+}
+
+.recruiter-text-link {
+  margin-left: 8px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 3px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.recruiter-portrait {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.recruiter-portrait img {
+  object-fit: cover;
+  object-position: center 28%;
+}
+
+.recruiter-portrait figcaption {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 14px;
+  background: rgba(18, 21, 20, 0.9);
+  color: white;
+  font-size: 11px;
+}
+
+.recruiter-portrait figcaption span:last-child {
+  color: #cbd5d0;
+  text-align: right;
+}
+
+.recruiter-proof {
+  display: grid;
+  min-height: 104px;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(180px, 0.8fr);
+}
+
+.recruiter-proof article,
+.recruiter-proof > a {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: auto 1fr;
+  gap: 13px;
+  align-items: center;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 22px;
+  text-decoration: none;
+}
+
+.recruiter-proof article strong {
+  color: var(--blue-dark);
+  font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
+  font-size: 34px;
+  line-height: 1;
+}
+
+.recruiter-proof article span {
+  max-width: 160px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.recruiter-proof > a {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  background: #e7edf8;
+}
+
+.recruiter-proof > a span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.recruiter-proof > a strong {
+  font-size: 14px;
+}
+
+.recruiter-work {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 0 22px 16px;
+}
+
+.recruiter-work > header {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.recruiter-work > header .kicker {
+  margin-bottom: 4px;
+}
+
+.recruiter-work h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.recruiter-work > header > a {
+  color: var(--blue-dark);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.recruiter-projects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.recruiter-projects > a {
+  display: grid;
+  min-width: 0;
+  min-height: 96px;
+  grid-template-columns: 76px 26px minmax(0, 1fr) 20px;
+  gap: 10px;
+  align-items: center;
+  border-right: 1px solid var(--line);
+  padding: 10px 14px 10px 0;
+  text-decoration: none;
+}
+
+.recruiter-projects > a:last-child {
+  border-right: 0;
+}
+
+.recruiter-projects figure {
+  position: relative;
+  width: 66px;
+  height: 66px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.recruiter-projects figure img {
+  object-fit: cover;
+}
+
+.recruiter-projects > a > span,
+.recruiter-projects small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.recruiter-projects > a > div {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.recruiter-projects small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recruiter-projects strong {
+  font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+.recruiter-projects b {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Readable typography throughout the supporting pages */
+.project-card-index,
+.project-card-body > div,
+.project-card-body > div span,
+.project-summary dt,
+.experience-card-image > span,
+.experience-card-body > p:first-child,
+.education-rows span,
+.achievement-grid a > div,
+.sports-discipline-panel > div > span,
+.source-grid small,
+.panel-state,
+.principles-panel summary span,
+.character-panel > div > span,
+.quotes-panel blockquote > span {
+  font-size: 11px;
+}
+
+.card-arrow,
+.media-fallback,
+.sports-profile-image figcaption {
+  font-size: 11px;
+}
+
+.project-card-body p,
+.experience-card h4,
+.experience-detail,
+.education-rows p,
+.achievement-grid small,
+.source-grid strong,
+.sports-discipline-panel strong,
+.principles-panel details p,
+.character-panel p,
+.quotes-panel blockquote p {
+  font-size: 13px;
+}
+
+.project-summary dd,
+.project-links a,
+.experience-card li,
+.education-rows strong,
+.additional-links,
+.holding-links a {
+  font-size: 12px;
+}
+
+.project-card-body {
+  min-height: 198px;
+}
+
+.project-card-body h2 {
+  font-size: 21px;
+}
+
+.project-summary h1 {
+  font-size: 46px;
+}
+
+.project-description p,
+.cv-overview-copy > p:not(.kicker),
+.investment-panel > p {
+  font-size: 15px;
+}
+
+.skill-chips span {
+  font-size: 11px;
+}
+
+.experience-card h3 {
+  font-size: 19px;
+}
+
+.experience-card h4,
+.experience-detail {
+  min-height: 38px;
+}
+
+.experience-card li {
+  line-height: 1.45;
+}
+
+/* Contact and document request */
+.contact-heading h1 {
+  max-width: 720px;
+}
+
+.contact-workspace {
+  display: grid;
+  min-height: 520px;
+  flex: 1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-left: 1px solid var(--line);
+}
+
+.contact-card {
+  display: flex;
+  min-width: 0;
+  scroll-margin-top: 80px;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 28px 32px 30px;
+  background: var(--surface);
+}
+
+.contact-card-dark {
+  background: var(--rail);
+  color: white;
+}
+
+.contact-card-number {
+  color: var(--blue-dark);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.contact-card-dark .contact-card-number {
+  color: #91b5ff;
+}
+
+.contact-card > div:nth-child(2) {
+  max-width: 520px;
+  margin-top: 64px;
+}
+
+.contact-card h2 {
+  margin: 0;
+  font-size: 40px;
+  line-height: 1.05;
+}
+
+.contact-card > div:nth-child(2) p {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.contact-card-dark > div:nth-child(2) p {
+  color: #aeb8b3;
+}
+
+.document-request-form,
+.schedule-form {
+  display: grid;
+  gap: 14px;
+  margin-top: auto;
+  padding: 40px 0 0;
+}
+
+.schedule-form {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.document-request-form label,
+.schedule-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.document-request-form label > span,
+.schedule-form label > span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.contact-card-dark .schedule-form label > span {
+  color: #aeb8b3;
+}
+
+.document-request-form input,
+.schedule-form input {
+  width: 100%;
+  height: 52px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  padding: 0 14px;
+  background: #fafbfa;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.document-request-form button,
+.schedule-form button {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  padding: 0 18px;
+  background: var(--blue);
+  color: white;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.schedule-form button,
+.schedule-form > p {
+  grid-column: 1 / -1;
+}
+
+.document-request-form > p,
+.schedule-form > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.contact-card-dark .schedule-form > p {
+  color: #8f9a94;
+}
+
+@media (max-width: 1240px) {
+  .recruiter-hero {
+    min-height: 420px;
+    grid-template-columns: minmax(440px, 1.15fr) minmax(290px, 0.85fr);
+  }
+
+  .recruiter-intro {
+    padding: 26px;
+  }
+
+  .recruiter-intro h1 {
+    font-size: 58px;
+  }
+
+  .recruiter-summary {
+    font-size: 17px;
+  }
+
+  .recruiter-proof article,
+  .recruiter-proof > a {
+    padding: 16px;
+  }
+
+  .recruiter-projects > a {
+    grid-template-columns: 58px 22px minmax(0, 1fr) 18px;
+    gap: 7px;
+  }
+
+  .recruiter-projects figure {
+    width: 50px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .recruiter-hero {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  }
+
+  .recruiter-intro {
+    min-height: 460px;
+  }
+
+  .recruiter-proof {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-workspace {
+    min-height: 560px;
+  }
+
+  .contact-card {
+    padding: 26px;
+  }
+
+  .contact-card > div:nth-child(2) {
+    margin-top: 46px;
+  }
+
+  .contact-card h2 {
+    font-size: 34px;
+  }
+
+  .schedule-form {
+    grid-template-columns: 1fr;
+  }
+
+  .schedule-form button,
+  .schedule-form > p {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .mobile-brand strong {
+    font-size: 15px;
+  }
+
+  .mobile-nav-panel nav span,
+  .mobile-nav-panel > a {
+    font-size: 11px;
+  }
+
+  .home-page {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .recruiter-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .recruiter-intro {
+    min-height: 460px;
+    padding: 22px 20px;
+  }
+
+  .recruiter-intro h1 {
+    font-size: 46px;
+    line-height: 1;
+  }
+
+  .recruiter-role {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .recruiter-summary {
+    font-size: 17px;
+    line-height: 1.45;
+  }
+
+  .recruiter-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recruiter-actions .button-primary {
+    grid-column: 1 / -1;
+  }
+
+  .recruiter-actions .button-secondary {
+    justify-content: center;
+  }
+
+  .recruiter-text-link {
+    align-self: center;
+    justify-self: center;
+    margin-left: 0;
+    font-size: 13px;
+  }
+
+  .recruiter-portrait {
+    min-height: 260px;
+  }
+
+  .recruiter-portrait figcaption {
+    display: grid;
+    font-size: 11px;
+  }
+
+  .recruiter-portrait figcaption span:last-child {
+    text-align: left;
+  }
+
+  .recruiter-proof {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .recruiter-proof article,
+  .recruiter-proof > a {
+    min-height: 112px;
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 15px;
+  }
+
+  .recruiter-proof article strong {
+    font-size: 30px;
+  }
+
+  .recruiter-proof article span {
+    font-size: 12px;
+  }
+
+  .recruiter-work {
+    padding: 0 14px 14px;
+  }
+
+  .recruiter-work > header {
+    align-items: flex-end;
+  }
+
+  .recruiter-work h2 {
+    font-size: 22px;
+  }
+
+  .recruiter-work > header > a {
+    max-width: 110px;
+    padding-bottom: 3px;
+    text-align: right;
+  }
+
+  .recruiter-projects {
+    display: flex;
+    gap: 9px;
+    overflow-x: auto;
+    padding: 12px 0 2px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .recruiter-projects > a {
+    min-width: 84vw;
+    min-height: 100px;
+    grid-template-columns: 72px 24px minmax(0, 1fr) 18px;
+    border: 1px solid var(--line);
+    padding: 10px;
+    scroll-snap-align: start;
+  }
+
+  .recruiter-projects figure {
+    width: 62px;
+    height: 72px;
+  }
+
+  .project-card-body > div,
+  .project-card-index,
+  .project-summary dt,
+  .experience-card-image > span,
+  .experience-card-body > p:first-child,
+  .experience-card li,
+  .education-rows span,
+  .achievement-grid a > div,
+  .sports-discipline-panel > div > span,
+  .source-grid small,
+  .panel-state,
+  .principles-panel summary span,
+  .character-panel > div > span,
+  .quotes-panel blockquote > span,
+  .cv-overview-copy .skill-chips span {
+    font-size: 11px;
+  }
+
+  .cv-overview aside p {
+    font-size: 12px;
+  }
+
+  .cv-overview aside a {
+    font-size: 11px;
+  }
+
+  .project-card-body p,
+  .experience-card h4,
+  .experience-detail,
+  .education-rows p,
+  .achievement-grid small,
+  .source-grid strong,
+  .sports-discipline-panel strong,
+  .principles-panel details p,
+  .character-panel p,
+  .quotes-panel blockquote p,
+  .cv-overview-copy > p:not(.kicker) {
+    font-size: 13px;
+  }
+
+  .cv-overview-copy h1 {
+    font-size: 29px;
+  }
+
+  .contact-heading h1 {
+    font-size: 38px;
+  }
+
+  .contact-heading > p {
+    font-size: 15px;
+  }
+
+  .contact-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    min-height: 520px;
+    padding: 24px 20px;
+  }
+
+  .contact-card > div:nth-child(2) {
+    margin-top: 42px;
+  }
+
+  .contact-card h2 {
+    font-size: 34px;
+  }
+
+  .document-request-form,
+  .schedule-form {
+    padding-top: 36px;
   }
 }

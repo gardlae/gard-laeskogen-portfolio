@@ -21,6 +21,18 @@ export const site = {
   contactIntro: "Reach out by email.",
 };
 
+// Recruiter overview: keep this short enough to understand in one screen.
+export const recruiterOverview = {
+  focus: "Cybernetics / UAV systems / leadership",
+  summary:
+    "I combine engineering work with practical execution, leadership, and experience from operational environments.",
+  proof: [
+    { value: "20+", label: "UAV configurations built or modified" },
+    { value: "3", label: "Leadership roles in Contactor NTNU" },
+    { value: "2", label: "Current board roles" },
+  ],
+};
+
 export const videos = [
   { title: "Story clip 01", src: "/media/story-clip-1.mp4" },
   { title: "Story clip 02", src: "/media/story-clip-2.mp4" },

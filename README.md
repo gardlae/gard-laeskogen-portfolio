@@ -55,6 +55,7 @@ app/content.ts
 That file contains:
 
 - `site`: name, intro, contact-level text
+- `recruiterOverview`: the short homepage summary and proof points recruiters see first
 - `videos`: video clips on the home page
 - `homeImages`: front page image wall
 - `cvItems`: CV timeline blocks
@@ -118,9 +119,11 @@ slug: "analog-servo-controller"
 
 That project opens at `/projects/analog-servo-controller`. Keep slugs short, lowercase, and separated with hyphens.
 
-## Private CV And Portfolio Files
+## Contact, Scheduling, And Private Files
 
-The public website contains only a request form. Submitting it prepares an email to `gard.lae@outlook.com`; no private document is exposed or automatically sent.
+The document request asks only for the visitor's company or organisation. Submitting it prepares an email to `gard.lae@outlook.com`; no private document is exposed or automatically sent.
+
+The scheduling form asks for an organisation and a proposed date and time. It prepares an email containing the visitor's local time and time zone. The appointment is not treated as confirmed until you reply. This avoids publishing calendar access or availability rules on the public site.
 
 Do not place the detailed CV or portfolio in `public/`. Everything in that folder can be downloaded by anyone who knows the URL. After approving a recruiter or company, share the files manually through a restricted OneDrive, Google Drive, or Dropbox link.
 

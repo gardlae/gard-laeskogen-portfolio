@@ -2,75 +2,92 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
-import { projects, site } from "./content";
+import { projects, recruiterOverview, site } from "./content";
 
-const selectedProjects = [projects[0], projects[2], projects[3], projects[5]];
+const selectedProjects = [projects[0], projects[3], projects[5]];
 
 export default function Home() {
   return (
     <main className="site-main">
       <SiteHeader />
       <div className="page-content home-page">
-        <section className="home-dashboard" aria-labelledby="home-title">
-          <div className="home-profile-panel">
-            <div className="status-line"><span /> Trondheim, Norway / Portfolio 2026</div>
-            <div>
-              <p className="kicker">Cybernetics · UAV systems · Operations</p>
-              <h1 id="home-title">Gard<br />Laeskogen</h1>
-              <p className="home-lead">{site.intro}</p>
+        <section className="recruiter-home" aria-labelledby="home-title">
+          <div className="recruiter-hero">
+            <div className="recruiter-intro">
+              <div className="status-line"><span /> {site.location} / Available for conversations</div>
+              <div className="recruiter-intro-copy">
+                <p className="kicker">{recruiterOverview.focus}</p>
+                <h1 id="home-title">Gard Laeskogen</h1>
+                <p className="recruiter-role">{site.headline}</p>
+                <p className="recruiter-summary">{recruiterOverview.summary}</p>
+              </div>
+              <div className="recruiter-actions" aria-label="Primary actions">
+                <Link className="button-primary" href="/portfolio">See selected work <span>→</span></Link>
+                <Link className="button-secondary" href="/request#schedule">Schedule a chat</Link>
+                <Link className="recruiter-text-link" href="/request#documents">Request detailed CV</Link>
+              </div>
             </div>
-            <div className="primary-actions">
-              <Link className="button-primary" href="/portfolio">View portfolio <span>→</span></Link>
-              <Link className="button-secondary" href="/cv">Experience</Link>
-            </div>
-          </div>
 
-          <figure className="home-portrait">
+            <figure className="recruiter-portrait">
             <Image
               alt="Gard Laeskogen"
               fill
               priority
-              sizes="(max-width: 900px) 100vw, 34vw"
+              sizes="(max-width: 700px) 100vw, 38vw"
               src="/media/profile-contactor.jpg"
               unoptimized
             />
-            <figcaption>M. Sc. Cybernetics and Robotics / NTNU</figcaption>
-          </figure>
+              <figcaption>
+                <span>Gard Laeskogen</span>
+                <span>M. Sc. Cybernetics and Robotics / NTNU</span>
+              </figcaption>
+            </figure>
+          </div>
 
-          <aside className="home-focus-panel">
-            <div className="panel-heading"><span>Current profile</span><span>2026</span></div>
-            <dl className="profile-facts">
-              <div><dt>Education</dt><dd>Cybernetics &amp; Robotics</dd></div>
-              <div><dt>Focus</dt><dd>Autonomous systems</dd></div>
-              <div><dt>Experience</dt><dd>Engineering &amp; leadership</dd></div>
-              <div><dt>Background</dt><dd>Family business &amp; sport</dd></div>
-            </dl>
-            <a className="inline-link" href={`mailto:${site.email}`}>{site.email} <span>↗</span></a>
-          </aside>
+          <section className="recruiter-proof" aria-label="Evidence">
+            {recruiterOverview.proof.map((item) => (
+              <article key={item.label}>
+                <strong>{item.value}</strong>
+                <span>{item.label}</span>
+              </article>
+            ))}
+            <Link href="/cv">
+              <span>Full experience</span>
+              <strong>Open CV story →</strong>
+            </Link>
+          </section>
 
-          <section className="home-work-panel">
-            <div className="panel-heading">
-              <span>Selected work</span>
-              <Link href="/portfolio">All {projects.length} projects →</Link>
-            </div>
-            <div className="home-project-grid">
+          <section className="recruiter-work" aria-labelledby="selected-work-title">
+            <header>
+              <div>
+                <p className="kicker">Proof through work</p>
+                <h2 id="selected-work-title">Selected projects</h2>
+              </div>
+              <Link href="/portfolio">View all {projects.length} projects →</Link>
+            </header>
+            <div className="recruiter-projects">
               {selectedProjects.map((project, index) => (
                 <Link href={`/projects/${project.slug}`} key={project.slug}>
-                  <span className="project-code">P{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{project.title}</strong>
-                  <small>{project.category}</small>
-                  <span aria-hidden="true">→</span>
+                  <figure>
+                    <Image
+                      alt=""
+                      fill
+                      loading="eager"
+                      sizes="(max-width: 700px) 30vw, 10vw"
+                      src={project.images[0]}
+                      unoptimized
+                    />
+                  </figure>
+                  <span>0{index + 1}</span>
+                  <div>
+                    <small>{project.category}</small>
+                    <strong>{project.title}</strong>
+                  </div>
+                  <b aria-hidden="true">→</b>
                 </Link>
               ))}
             </div>
           </section>
-
-          <nav className="home-path-panel" aria-label="More about Gard Laeskogen">
-            <div className="panel-heading"><span>Beyond engineering</span></div>
-            <Link href="/sports"><span>Sports</span><small>Results &amp; dedication</small><b>→</b></Link>
-            <Link href="/investment"><span>Investment</span><small>Strategy &amp; ownership</small><b>→</b></Link>
-            <Link href="/philosophy"><span>Principles</span><small>Beliefs &amp; direction</small><b>→</b></Link>
-          </nav>
         </section>
         <SiteFooter />
       </div>
