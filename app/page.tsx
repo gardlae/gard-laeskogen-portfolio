@@ -65,7 +65,6 @@ export default function Home() {
             <Link className="featured-project" href={`/projects/${project.slug}`} key={project.slug}>
               <ProjectMediaView
                 media={project.cover}
-                priority={index === 0}
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
               <div>

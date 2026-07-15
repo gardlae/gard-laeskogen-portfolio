@@ -15,8 +15,8 @@ export function ResponsiveImage({
 }: ResponsiveImageProps) {
   const extensionIndex = src.lastIndexOf(".");
   const stem = extensionIndex > -1 ? src.slice(0, extensionIndex) : src;
-  const avif = `${stem}-640.avif 640w, ${stem}-1280.avif 1280w`;
-  const webp = `${stem}-640.webp 640w, ${stem}-1280.webp 1280w`;
+  const avif = `${stem}-640.avif 640w, ${stem}-768.avif 768w, ${stem}-1280.avif 1280w`;
+  const webp = `${stem}-640.webp 640w, ${stem}-768.webp 768w, ${stem}-1280.webp 1280w`;
 
   return (
     <picture className={`responsive-image ${className}`}>

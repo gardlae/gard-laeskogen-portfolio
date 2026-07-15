@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const mediaDirectory = join(root, "public", "media");
-const widths = [640, 1280];
+const widths = [640, 768, 1280];
 const sources = [
   "family-business-portrait.jpg",
   "family-business.jpg",
@@ -34,6 +34,7 @@ mkdirSync(join(root, "tmp"), { recursive: true });
 for (const sourceName of sources) {
   const input = join(mediaDirectory, sourceName);
   const stem = basename(sourceName, extname(sourceName));
+  const isPhotograph = /\.jpe?g$/i.test(sourceName);
 
   for (const width of widths) {
     const resized = join(root, "tmp", `${stem}-${width}.png`);
@@ -42,7 +43,16 @@ for (const sourceName of sources) {
 
     run("sips", ["--resampleWidth", String(width), "--setProperty", "format", "png", input, "--out", resized]);
     run("cwebp", ["-quiet", "-mt", "-q", "82", resized, "-o", webp]);
-    run("avifenc", ["--jobs", "all", "--speed", "8", "--qcolor", "62", "--ignore-exif", "--ignore-xmp", resized, avif]);
+    run("avifenc", [
+      "--jobs", "all",
+      "--speed", "8",
+      "--qcolor", isPhotograph ? "55" : "62",
+      "--yuv", isPhotograph ? "420" : "444",
+      "--ignore-exif",
+      "--ignore-xmp",
+      resized,
+      avif,
+    ]);
     rmSync(resized, { force: true });
   }
 }

@@ -106,7 +106,7 @@ Reference media with site-root paths such as:
 src: "/media/fpv-drone-build.jpg"
 ```
 
-Generate local 640 px and 1280 px AVIF/WebP variants after changing a published image:
+Generate local 640 px, 768 px, and 1280 px AVIF/WebP variants after changing a published image:
 
 ```bash
 pnpm media:optimize

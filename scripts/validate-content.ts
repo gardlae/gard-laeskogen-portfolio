@@ -43,7 +43,7 @@ for (const project of allProjects) {
 
     if (project.visibility === "public" && item.kind === "image") {
       const stem = item.src.slice(0, item.src.lastIndexOf("."));
-      for (const width of [640, 1280]) {
+      for (const width of [640, 768, 1280]) {
         for (const format of ["avif", "webp"]) {
           checkMediaPath(`${stem}-${width}.${format}`, project.title);
         }

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { preload } from "react-dom";
 import { Analytics } from "./Analytics";
 import { site } from "./content";
 import "./globals.css";
@@ -59,6 +60,15 @@ const personStructuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  preload("/media/family-business-portrait-768.avif", {
+    as: "image",
+    fetchPriority: "high",
+    imageSizes: "100vw",
+    imageSrcSet:
+      "/media/family-business-portrait-640.avif 640w, /media/family-business-portrait-768.avif 768w, /media/family-business-portrait-1280.avif 1280w",
+    type: "image/avif",
+  });
+
   return (
     <html lang="en">
       <body>
