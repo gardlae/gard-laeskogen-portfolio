@@ -30,6 +30,7 @@ export function RequestForm() {
 
   return (
     <form className="document-request-form" onSubmit={submitRequest}>
+      <div className="panel-heading"><span>Request form</span><span>Secure by email</span></div>
       <fieldset>
         <legend>Documents requested</legend>
         <label className="check-row">

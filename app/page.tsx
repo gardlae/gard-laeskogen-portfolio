@@ -2,187 +2,78 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
-import { cvItems, homeImages, projects, site, videos } from "./content";
+import { projects, site } from "./content";
 
-const selectedProjects = [projects[0], projects[3], projects[5]];
+const selectedProjects = [projects[0], projects[2], projects[3], projects[5]];
 
 export default function Home() {
   return (
-    <main>
-      <div className="hero-shell">
-        <SiteHeader overlay />
-        <section className="editorial-hero" aria-labelledby="home-title">
-          <Image
-            alt="Gard Laeskogen outside Sundvolden Hotel"
-            className="editorial-hero-image"
-            fill
-            priority
-            sizes="100vw"
-            src="/media/family-business-portrait.jpg"
-            unoptimized
-          />
-          <div className="editorial-hero-shade" />
-          <div className="editorial-hero-copy">
-            <p className="eyebrow-light">{site.location} / Portfolio 2026</p>
-            <h1 id="home-title">
-              Gard
-              <span>Laeskogen</span>
-            </h1>
-            <p className="hero-intro">{site.intro}</p>
-            <div className="hero-actions">
-              <Link href="/portfolio">
-                Explore the work <span aria-hidden="true">→</span>
-              </Link>
-              <Link href="/cv">Read the CV story</Link>
+    <main className="site-main">
+      <SiteHeader />
+      <div className="page-content home-page">
+        <section className="home-dashboard" aria-labelledby="home-title">
+          <div className="home-profile-panel">
+            <div className="status-line"><span /> Trondheim, Norway / Portfolio 2026</div>
+            <div>
+              <p className="kicker">Cybernetics · UAV systems · Operations</p>
+              <h1 id="home-title">Gard<br />Laeskogen</h1>
+              <p className="home-lead">{site.intro}</p>
+            </div>
+            <div className="primary-actions">
+              <Link className="button-primary" href="/portfolio">View portfolio <span>→</span></Link>
+              <Link className="button-secondary" href="/cv">Experience</Link>
             </div>
           </div>
-          <div className="hero-field-index" aria-label="Areas of work">
-            <span>Cybernetics</span>
-            <span>UAV systems</span>
-            <span>Operations</span>
-            <span>Leadership</span>
-          </div>
-        </section>
-      </div>
 
-      <section className="home-statement">
-        <p className="section-number">00 / Introduction</p>
-        <p>{site.note}</p>
-        <Link href="/cv">
-          Follow the chronology <span aria-hidden="true">→</span>
-        </Link>
-      </section>
-
-      <section className="selected-work-section">
-        <div className="section-heading-row">
-          <div>
-            <p className="section-number">01 / Selected work</p>
-            <h2>Built in the field.</h2>
-          </div>
-          <Link className="arrow-link" href="/portfolio">
-            All {projects.length} projects <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-
-        <div className="selected-work-list">
-          {selectedProjects.map((project, index) => (
-            <Link className="selected-work-row" href={`/projects/${project.slug}`} key={project.slug}>
-              <div className="selected-work-image">
-                {project.images[0] ? (
-                  <Image
-                    alt={`${project.title} project`}
-                    fill
-                    sizes="(max-width: 800px) 100vw, 44vw"
-                    src={project.images[0]}
-                    unoptimized
-                  />
-                ) : (
-                  <div className="image-fallback">{project.category}</div>
-                )}
-              </div>
-              <div className="selected-work-copy">
-                <p>
-                  {String(index + 1).padStart(2, "0")} / {project.category}
-                </p>
-                <h3>{project.title}</h3>
-                <span>{project.duration}</span>
-                <span aria-hidden="true" className="row-arrow">→</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="home-cv-section">
-        <div className="home-cv-heading">
-          <p className="section-number light">02 / CV story</p>
-          <h2>Experience is easier to understand in sequence.</h2>
-          <p>{site.cvIntro}</p>
-          <Link className="light-arrow-link" href="/cv">
-            Read the full chronology <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-        <div className="home-cv-filmstrip">
-          {cvItems.slice(0, 3).map((item, index) => (
-            <figure key={item.role}>
-              <Image
-                alt={`${item.role} chapter`}
-                fill
-                sizes="(max-width: 760px) 82vw, 30vw"
-                src={item.image}
-                unoptimized
-              />
-              <figcaption>
-                <span>Chapter {String(index + 1).padStart(2, "0")}</span>
-                <strong>{item.role}</strong>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      <section className="story-reel-section">
-        <div className="section-heading-row">
-          <div>
-            <p className="section-number">03 / Story reel</p>
-            <h2>{site.storyTitle}</h2>
-          </div>
-          <p className="section-side-copy">{site.storyIntro}</p>
-        </div>
-        <div className="story-reel">
-          {videos.map((video, index) => (
-            <figure key={video.src}>
-              <video controls muted playsInline preload="metadata" src={video.src} />
-              <figcaption>
-                <span aria-hidden="true">▶</span>
-                {String(index + 1).padStart(2, "0")} {video.title}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-
-      <section className="image-ledger" aria-label="Background in images">
-        {homeImages.slice(0, 4).map((image) => (
-          <figure key={image.src}>
-            <Image alt={image.alt} fill sizes="(max-width: 760px) 50vw, 25vw" src={image.src} unoptimized />
-            <figcaption>{image.label}</figcaption>
+          <figure className="home-portrait">
+            <Image
+              alt="Gard Laeskogen"
+              fill
+              priority
+              sizes="(max-width: 900px) 100vw, 34vw"
+              src="/media/profile-contactor.jpg"
+              unoptimized
+            />
+            <figcaption>M. Sc. Cybernetics and Robotics / NTNU</figcaption>
           </figure>
-        ))}
-      </section>
 
-      <section className="private-documents-band">
-        <div>
-          <p className="section-number light">Private material</p>
-          <h2>Detailed CV and project portfolio.</h2>
-        </div>
-        <p>
-          These documents are shared individually with companies and recruiters, not published on the open site.
-        </p>
-        <Link href="/request">
-          Request access
-        </Link>
-      </section>
+          <aside className="home-focus-panel">
+            <div className="panel-heading"><span>Current profile</span><span>2026</span></div>
+            <dl className="profile-facts">
+              <div><dt>Education</dt><dd>Cybernetics &amp; Robotics</dd></div>
+              <div><dt>Focus</dt><dd>Autonomous systems</dd></div>
+              <div><dt>Experience</dt><dd>Engineering &amp; leadership</dd></div>
+              <div><dt>Background</dt><dd>Family business &amp; sport</dd></div>
+            </dl>
+            <a className="inline-link" href={`mailto:${site.email}`}>{site.email} <span>↗</span></a>
+          </aside>
 
-      <nav className="home-paths" aria-label="Additional pages">
-        <Link href="/sports">
-          <span>Sports</span>
-          <small>Competition and results</small>
-          <span aria-hidden="true" className="symbol-icon">→</span>
-        </Link>
-        <Link href="/investment">
-          <span>Investment</span>
-          <small>Ownership and strategy</small>
-          <span aria-hidden="true" className="symbol-icon">→</span>
-        </Link>
-        <Link href="/philosophy">
-          <span>The why</span>
-          <small>Beliefs and principles</small>
-          <span aria-hidden="true" className="symbol-icon">→</span>
-        </Link>
-      </nav>
+          <section className="home-work-panel">
+            <div className="panel-heading">
+              <span>Selected work</span>
+              <Link href="/portfolio">All {projects.length} projects →</Link>
+            </div>
+            <div className="home-project-grid">
+              {selectedProjects.map((project, index) => (
+                <Link href={`/projects/${project.slug}`} key={project.slug}>
+                  <span className="project-code">P{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{project.title}</strong>
+                  <small>{project.category}</small>
+                  <span aria-hidden="true">→</span>
+                </Link>
+              ))}
+            </div>
+          </section>
 
-      <SiteFooter />
+          <nav className="home-path-panel" aria-label="More about Gard Laeskogen">
+            <div className="panel-heading"><span>Beyond engineering</span></div>
+            <Link href="/sports"><span>Sports</span><small>Results &amp; dedication</small><b>→</b></Link>
+            <Link href="/investment"><span>Investment</span><small>Strategy &amp; ownership</small><b>→</b></Link>
+            <Link href="/philosophy"><span>Principles</span><small>Beliefs &amp; direction</small><b>→</b></Link>
+          </nav>
+        </section>
+        <SiteFooter />
+      </div>
     </main>
   );
 }

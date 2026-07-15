@@ -10,30 +10,29 @@ export const metadata: Metadata = {
 
 export default function RequestPage() {
   return (
-    <main>
+    <main className="site-main">
       <SiteHeader />
-      <header className="request-page-header">
-        <div>
-          <p className="section-number light">Private material</p>
-          <h1>Request detailed CV and portfolio.</h1>
-        </div>
-        <span aria-hidden="true" className="request-lock-mark">Private</span>
-      </header>
+      <div className="page-content compact-page full-height-page">
+        <header className="page-heading request-heading">
+          <div><p className="kicker">Private material</p><h1>Document request</h1></div>
+          <p>The detailed CV and project portfolio are shared directly with selected companies and recruiters.</p>
+        </header>
 
-      <section className="request-page-body">
-        <div className="request-explanation">
-          <p>
-            The full documents are not stored on the public website. Each request is reviewed before access is granted.
-          </p>
-          <ol>
-            <li><span>01</span> Complete the request.</li>
-            <li><span>02</span> Your email app opens with the details.</li>
-            <li><span>03</span> Gard reviews the request and replies directly.</li>
-          </ol>
-        </div>
-        <RequestForm />
-      </section>
-      <SiteFooter />
+        <section className="request-workspace">
+          <aside className="request-process">
+            <div className="private-badge"><span /> Controlled access</div>
+            <h2>Request detailed material</h2>
+            <p>The files are not stored on the public website. Gard reviews each request and replies directly.</p>
+            <ol>
+              <li><span>01</span><div><strong>Complete request</strong><p>Add your company and hiring context.</p></div></li>
+              <li><span>02</span><div><strong>Prepare email</strong><p>Your email app opens with the request.</p></div></li>
+              <li><span>03</span><div><strong>Direct review</strong><p>Access is approved and shared individually.</p></div></li>
+            </ol>
+          </aside>
+          <RequestForm />
+        </section>
+        <SiteFooter />
+      </div>
     </main>
   );
 }

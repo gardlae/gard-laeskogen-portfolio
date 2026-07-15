@@ -6,9 +6,7 @@ import { SiteFooter } from "../../SiteFooter";
 import { SiteHeader } from "../../SiteHeader";
 import { projects } from "../../content";
 
-type ProjectPageProps = {
-  params: Promise<{ slug: string }>;
-};
+type ProjectPageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
@@ -17,119 +15,84 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
   const project = projects.find((item) => item.slug === slug);
-
-  if (!project) {
-    return { title: "Project not found | Gard Laeskogen" };
-  }
-
-  return {
-    title: `${project.title} | Gard Laeskogen`,
-    description: project.description.split("\n")[0],
-  };
+  return project
+    ? { title: `${project.title} | Gard Laeskogen`, description: project.description.split("\n")[0] }
+    : { title: "Project not found | Gard Laeskogen" };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
   const index = projects.findIndex((item) => item.slug === slug);
-
   if (index < 0) notFound();
 
   const project = projects[index];
   const previous = projects[(index - 1 + projects.length) % projects.length];
   const next = projects[(index + 1) % projects.length];
+  const leadImage = project.images[0];
+  const additionalImages = project.images.slice(1);
 
   return (
-    <main>
+    <main className="site-main">
       <SiteHeader />
-      <article className="project-detail">
-        <header className="project-detail-header">
-          <div className="project-detail-back">
-            <Link href="/portfolio">
-              <span aria-hidden="true">←</span> Portfolio index
-            </Link>
-            <span>{String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span>
-          </div>
-          <p className="section-number">{project.category}</p>
-          <h1>{project.title}</h1>
-          <div className="project-detail-meta">
-            <div>
-              <span>Duration</span>
-              <strong>{project.duration}</strong>
-            </div>
-            <div>
-              <span>Skills</span>
-              <strong>{project.skills.length} areas</strong>
-            </div>
-          </div>
-        </header>
+      <div className="page-content compact-page">
+        <div className="project-toolbar">
+          <Link href="/portfolio">← All projects</Link>
+          <span>{String(index + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span>
+        </div>
 
-        <section className="project-detail-body">
-          <div className="project-description-large">
-            {project.description.split("\n\n").map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-          <div className="project-skill-list">
-            <p className="section-number">Skills and methods</p>
-            <ul>
-              {project.skills.map((skill) => <li key={skill}>{skill}</li>)}
-            </ul>
-            {project.github || project.demo ? (
-              <div className="project-external-links">
-                {project.github ? (
-                  <a href={project.github} rel="noreferrer" target="_blank">
-                    GitHub <span aria-hidden="true">↗</span>
-                  </a>
-                ) : null}
-                {project.demo ? (
-                  <a href={project.demo} rel="noreferrer" target="_blank">
-                    Demo <span aria-hidden="true">↗</span>
-                  </a>
-                ) : null}
+        <article className="project-workspace">
+          <figure className="project-lead-media">
+            {leadImage ? (
+              <Image alt={`${project.title} project`} fill priority sizes="(max-width: 900px) 100vw, 58vw" src={leadImage} unoptimized />
+            ) : (
+              <div className="media-fallback"><span>{project.visualLabel || project.category}</span></div>
+            )}
+          </figure>
+
+          <div className="project-summary">
+            <div className="project-summary-top">
+              <p className="kicker">{project.category}</p>
+              <h1>{project.title}</h1>
+              <dl>
+                <div><dt>Duration</dt><dd>{project.duration}</dd></div>
+                <div><dt>Methods</dt><dd>{project.skills.length} listed</dd></div>
+              </dl>
+            </div>
+            <div className="project-description">
+              {project.description.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
+            <div className="skill-chips" aria-label="Skills and methods">
+              {project.skills.map((skill) => <span key={skill}>{skill}</span>)}
+            </div>
+            {(project.github || project.demo) && (
+              <div className="project-links">
+                {project.github && <a href={project.github} rel="noreferrer" target="_blank">GitHub ↗</a>}
+                {project.demo && <a href={project.demo} rel="noreferrer" target="_blank">Demo ↗</a>}
               </div>
-            ) : null}
+            )}
           </div>
-        </section>
+        </article>
 
-        <section className="project-gallery" aria-label={`${project.title} media`}>
-          {project.video ? (
-            <figure className="project-gallery-video">
-              <video controls muted playsInline preload="metadata" src={project.video} />
-            </figure>
-          ) : null}
-          {project.images.length ? project.images.map((src, imageIndex) => (
-            <figure className="project-gallery-image" key={src}>
-              <Image
-                alt={`${project.title}, view ${imageIndex + 1}`}
-                fill
-                sizes="(max-width: 760px) 100vw, 76vw"
-                src={src}
-                unoptimized
-              />
-              <figcaption>{String(imageIndex + 1).padStart(2, "0")} / {project.title}</figcaption>
-            </figure>
-          )) : (
-            <div className="project-gallery-fallback">
-              <span>{project.category}</span>
-              <strong>{project.visualLabel}</strong>
+        {(project.video || additionalImages.length > 0) && (
+          <section className="project-media-strip" aria-label={`${project.title} media`}>
+            <div className="panel-heading"><span>Additional media</span></div>
+            <div>
+              {project.video && <video controls muted playsInline preload="metadata" src={project.video} />}
+              {additionalImages.map((src, mediaIndex) => (
+                <figure key={src}>
+                  <Image alt={`${project.title}, view ${mediaIndex + 2}`} fill sizes="(max-width: 700px) 78vw, 24vw" src={src} unoptimized />
+                </figure>
+              ))}
             </div>
-          )}
-        </section>
-      </article>
+          </section>
+        )}
 
-      <nav className="project-pagination" aria-label="Project navigation">
-        <Link href={`/projects/${previous.slug}`}>
-          <span aria-hidden="true" className="pagination-symbol">←</span>
-          <span>Previous project</span>
-          <strong>{previous.title}</strong>
-        </Link>
-        <Link href={`/projects/${next.slug}`}>
-          <span aria-hidden="true" className="pagination-symbol">→</span>
-          <span>Next project</span>
-          <strong>{next.title}</strong>
-        </Link>
-      </nav>
-      <SiteFooter />
+        <nav className="compact-pagination" aria-label="Project navigation">
+          <Link href={`/projects/${previous.slug}`}><span>← Previous</span><strong>{previous.title}</strong></Link>
+          <Link href={`/projects/${next.slug}`}><span>Next →</span><strong>{next.title}</strong></Link>
+        </nav>
+        <SiteFooter />
+      </div>
     </main>
   );
 }

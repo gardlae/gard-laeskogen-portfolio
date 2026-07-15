@@ -4,61 +4,49 @@ import { SiteHeader } from "../SiteHeader";
 import { why } from "../content";
 
 export const metadata: Metadata = {
-  title: "The why | Gard Laeskogen",
+  title: "Principles | Gard Laeskogen",
   description: "The foundation, life rules, and quotes behind the work.",
 };
 
 export default function PhilosophyPage() {
   return (
-    <main>
+    <main className="site-main">
       <SiteHeader />
-
-      <section className="subpage-hero philosophy-hero">
-        <div>
-          <p className="section-number light">The why</p>
-          <h1>The why</h1>
+      <div className="page-content compact-page">
+        <header className="page-heading philosophy-heading">
+          <div><p className="kicker">Direction / Character</p><h1>Principles</h1></div>
           <p>{why.intro}</p>
-        </div>
-      </section>
+        </header>
 
-      <section className="philosophy-section">
-        <div className="two-column-ledger">
-          <div>
-            <p className="section-number">Life rules</p>
-            <h2>Life rules</h2>
-          </div>
-          <div className="stack-list">
-            {why.lifeRules.map((rule) => (
-              <article key={rule}>
+        <section className="principles-dashboard">
+          <div className="principles-panel">
+            <div className="panel-heading"><span>Life rules</span><span>{why.lifeRules.length}</span></div>
+            {why.lifeRules.map((rule, index) => (
+              <details open={index === 0} key={rule}>
+                <summary><span>{String(index + 1).padStart(2, "0")}</span> Principle</summary>
                 <p>{rule}</p>
-              </article>
+              </details>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="traits-section">
-        <div>
-          <p className="section-number">What I would like to be described as</p>
-          <div className="trait-cloud">
-            {why.describedAs.map((trait) => (
-              <span key={trait}>{trait}</span>
+          <div className="character-panel">
+            <div className="panel-heading"><span>Desired character</span></div>
+            {why.describedAs.map((trait, index) => (
+              <div key={trait}><span>{String(index + 1).padStart(2, "0")}</span><p>{trait}</p></div>
             ))}
           </div>
-        </div>
-      </section>
 
-      <section className="quotes-section">
-        <p className="section-number">Favorite quotes</p>
-        <div className="quote-grid">
-          {why.quotes.map((quote) => (
-            <figure className="quote-card" key={quote}>
-              <blockquote>{quote}</blockquote>
-            </figure>
-          ))}
-        </div>
-      </section>
-      <SiteFooter />
+          <div className="quotes-panel">
+            <div className="panel-heading"><span>Reference quotes</span><span>{why.quotes.length}</span></div>
+            <div>
+              {why.quotes.map((quote, index) => (
+                <blockquote key={quote}><span>Q{String(index + 1).padStart(2, "0")}</span><p>{quote}</p></blockquote>
+              ))}
+            </div>
+          </div>
+        </section>
+        <SiteFooter />
+      </div>
     </main>
   );
 }

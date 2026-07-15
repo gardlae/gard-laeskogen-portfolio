@@ -1,14 +1,9 @@
-import type { Metadata } from "next";
-import { IBM_Plex_Mono, Manrope, Newsreader } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { DM_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
+const dmSans = DM_Sans({
   variable: "--font-sans",
-  subsets: ["latin"],
-});
-
-const newsreader = Newsreader({
-  variable: "--font-serif",
   subsets: ["latin"],
 });
 
@@ -28,18 +23,16 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${manrope.variable} ${newsreader.variable} ${plexMono.variable}`}
-      >
-        {children}
-      </body>
+      <body className={`${dmSans.variable} ${plexMono.variable}`}>{children}</body>
     </html>
   );
 }

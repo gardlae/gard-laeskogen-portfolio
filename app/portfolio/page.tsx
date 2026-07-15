@@ -12,48 +12,39 @@ export const metadata: Metadata = {
 
 export default function PortfolioPage() {
   return (
-    <main>
+    <main className="site-main">
       <SiteHeader />
-      <header className="index-hero">
-        <p className="section-number">Portfolio / {String(projects.length).padStart(2, "0")} projects</p>
-        <h1>Work, experiments, and systems.</h1>
-        <p>
-          Each project opens as its own page, with a direct link you can share.
-        </p>
-      </header>
+      <div className="page-content compact-page">
+        <header className="page-heading">
+          <div>
+            <p className="kicker">Portfolio / {String(projects.length).padStart(2, "0")} projects</p>
+            <h1>Selected work</h1>
+          </div>
+          <p>Engineering, software, electronics, analysis, and independently initiated work.</p>
+        </header>
 
-      <section className="project-index" aria-label="Portfolio projects">
-        <div className="project-index-labels" aria-hidden="true">
-          <span>No.</span>
-          <span>Project</span>
-          <span>Context</span>
-          <span>Duration</span>
-        </div>
-        {projects.map((project, index) => (
-          <Link className="project-index-row" href={`/projects/${project.slug}`} key={project.slug}>
-            <span className="project-index-number">{String(index + 1).padStart(2, "0")}</span>
-            <div className="project-index-image">
-              {project.images[0] ? (
-                <Image
-                  alt=""
-                  fill
-                  sizes="(max-width: 760px) 100vw, 220px"
-                  src={project.images[0]}
-                  unoptimized
-                />
-              ) : (
-                <div className="image-fallback">{project.category}</div>
-              )}
-            </div>
-            <h2>{project.title}</h2>
-            <span className="project-index-category">{project.category}</span>
-            <span className="project-index-duration">{project.duration}</span>
-            <span aria-hidden="true" className="project-index-arrow">→</span>
-          </Link>
-        ))}
-      </section>
-
-      <SiteFooter />
+        <section className="project-card-grid" aria-label="Portfolio projects">
+          {projects.map((project, index) => (
+            <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug}>
+              <div className="project-card-image">
+                {project.images[0] ? (
+                  <Image alt={`${project.title} project`} fill sizes="(max-width: 700px) 100vw, 28vw" src={project.images[0]} unoptimized />
+                ) : (
+                  <div className="media-fallback"><span>{project.category}</span></div>
+                )}
+                <span className="project-card-index">{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <div className="project-card-body">
+                <div><span>{project.category}</span><span>{project.duration}</span></div>
+                <h2>{project.title}</h2>
+                <p>{project.description.split("\n")[0]}</p>
+                <span className="card-arrow">Open project →</span>
+              </div>
+            </Link>
+          ))}
+        </section>
+        <SiteFooter />
+      </div>
     </main>
   );
 }
