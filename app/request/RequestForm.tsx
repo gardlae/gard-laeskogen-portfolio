@@ -1,84 +1,100 @@
 "use client";
 
-import { type FormEvent } from "react";
+import { type FormEvent, useState } from "react";
 import { site } from "../content";
+import { buildDocumentRequestMailto } from "./mailto";
+
+function CopyEmailButton({ className = "" }: { className?: string }) {
+  const [copied, setCopied] = useState(false);
+
+  function legacyCopy() {
+    const textarea = document.createElement("textarea");
+    textarea.value = site.email;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    textarea.remove();
+  }
+
+  async function copyEmail() {
+    let copiedWithClipboard = false;
+    try {
+      if (navigator.clipboard?.writeText) {
+        await Promise.race([
+          navigator.clipboard.writeText(site.email),
+          new Promise((_, reject) => window.setTimeout(() => reject(new Error("Clipboard timeout")), 600)),
+        ]);
+        copiedWithClipboard = true;
+      }
+    } catch {
+      copiedWithClipboard = false;
+    }
+
+    if (!copiedWithClipboard) legacyCopy();
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2200);
+  }
+
+  return (
+    <button className={className} onClick={copyEmail} type="button">
+      {copied ? "Email copied" : "Copy email"}
+    </button>
+  );
+}
 
 export function RequestForm() {
   function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const organisation = data.get("organisation") || "Not provided";
-    const subject = `Detailed CV and portfolio request - ${organisation}`;
-    const body = [
-      `Company or organisation: ${organisation}`,
-      "",
-      "I would like to request Gard Laeskogen's detailed CV and project portfolio.",
-    ].join("\n");
-
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const organisation = String(data.get("organisation") || "Not provided");
+    window.location.href = buildDocumentRequestMailto(site.email, organisation);
   }
 
   return (
     <form className="document-request-form" onSubmit={submitRequest}>
       <label>
         <span>Company or organisation</span>
-        <input
-          autoComplete="organization"
-          name="organisation"
-          placeholder="Where are you contacting me from?"
-          required
-          type="text"
-        />
+        <input autoComplete="organization" name="organisation" required type="text" />
       </label>
-      <button type="submit">
-        Request documents <span aria-hidden="true">→</span>
-      </button>
-      <p>Your email app opens with the request prepared. Nothing private is published on this site.</p>
+      <button className="button button-light" type="submit">Prepare request email</button>
+      <div className="form-fallback">
+        <span>No email app?</span>
+        <CopyEmailButton />
+      </div>
     </form>
   );
 }
 
-export function ScheduleForm() {
-  function submitSchedule(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const rawTime = String(data.get("time") || "");
-    const proposedTime = new Date(rawTime);
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const formattedTime = Number.isNaN(proposedTime.getTime())
-      ? rawTime
-      : new Intl.DateTimeFormat("en-GB", {
-          dateStyle: "full",
-          timeStyle: "short",
-          timeZone: timezone,
-        }).format(proposedTime);
-    const organisation = data.get("organisation") || "Not provided";
-    const subject = `Conversation request - ${organisation}`;
-    const body = [
-      `Company or organisation: ${organisation}`,
-      `Proposed time: ${formattedTime}`,
-      `Time zone: ${timezone}`,
-      "",
-      "I would like to arrange a short conversation. Please confirm whether this time works for you.",
-    ].join("\n");
-
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }
+export function BookingPanel() {
+  const [showBooking, setShowBooking] = useState(false);
+  const bookingAvailable = Boolean(site.bookingUrl);
 
   return (
-    <form className="schedule-form" onSubmit={submitSchedule}>
-      <label>
-        <span>Company or organisation</span>
-        <input autoComplete="organization" name="organisation" required type="text" />
-      </label>
-      <label>
-        <span>Proposed date and time</span>
-        <input name="time" required type="datetime-local" />
-      </label>
-      <button type="submit">
-        Propose this time <span aria-hidden="true">→</span>
-      </button>
-      <p>The time is sent by email and added only after both sides confirm.</p>
-    </form>
+    <div className="booking-panel">
+      {bookingAvailable && !showBooking && (
+        <button className="button button-dark" onClick={() => setShowBooking(true)} type="button">
+          Open booking calendar
+        </button>
+      )}
+      {bookingAvailable && showBooking && (
+        <iframe
+          allow="payment"
+          loading="lazy"
+          src={site.bookingUrl}
+          title="Book a conversation with Gard Laeskogen"
+        />
+      )}
+      {!bookingAvailable && (
+        <div className="booking-fallback">
+          <a className="button button-dark" href={`mailto:${site.email}?subject=${encodeURIComponent("Conversation with Gard Laeskogen")}`}>
+            Email to arrange a time
+          </a>
+          <CopyEmailButton className="copy-button" />
+        </div>
+      )}
+    </div>
   );
 }

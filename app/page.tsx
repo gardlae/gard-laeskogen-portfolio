@@ -1,96 +1,85 @@
-import Image from "next/image";
 import Link from "next/link";
+import { featuredProjects, recruiterOverview, site } from "./content";
+import { ProjectMediaView } from "./ProjectMedia";
+import { ResponsiveImage } from "./ResponsiveImage";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
-import { projects, recruiterOverview, site } from "./content";
 
-const selectedProjects = [projects[0], projects[3], projects[5]];
+function projectSummary(project: (typeof featuredProjects)[number]) {
+  return project.outcome || project.contribution || project.context || "";
+}
 
 export default function Home() {
   return (
-    <main className="site-main">
+    <main>
       <SiteHeader />
-      <div className="page-content home-page">
-        <section className="recruiter-home" aria-labelledby="home-title">
-          <div className="recruiter-hero">
-            <div className="recruiter-intro">
-              <div className="status-line"><span /> {site.location} / Available for conversations</div>
-              <div className="recruiter-intro-copy">
-                <p className="kicker">{recruiterOverview.focus}</p>
-                <h1 id="home-title">Gard Laeskogen</h1>
-                <p className="recruiter-role">{site.headline}</p>
-                <p className="recruiter-summary">{recruiterOverview.summary}</p>
-              </div>
-              <div className="recruiter-actions" aria-label="Primary actions">
-                <Link className="button-primary" href="/portfolio">See selected work <span>→</span></Link>
-                <Link className="button-secondary" href="/request#schedule">Schedule a chat</Link>
-                <Link className="recruiter-text-link" href="/request#documents">Request detailed CV</Link>
-              </div>
-            </div>
 
-            <figure className="recruiter-portrait">
-            <Image
-              alt="Gard Laeskogen"
-              fill
+      <section className="home-hero" aria-labelledby="home-title">
+        <div className="hero-media">
+          {site.storyVideo ? (
+            <video controls playsInline poster={site.storyPoster} preload="metadata">
+              <source src={site.storyVideo} type="video/mp4" />
+            </video>
+          ) : (
+            <ResponsiveImage
+              alt="Gard Laeskogen outside Sundvolden Hotel"
               priority
-              sizes="(max-width: 700px) 100vw, 38vw"
-              src="/media/profile-contactor.jpg"
-              unoptimized
+              sizes="100vw"
+              src={site.storyPoster}
             />
-              <figcaption>
-                <span>Gard Laeskogen</span>
-                <span>M. Sc. Cybernetics and Robotics / NTNU</span>
-              </figcaption>
-            </figure>
+          )}
+        </div>
+        <div className="hero-scrim" aria-hidden="true" />
+        <div className="hero-content page-shell">
+          <p className="eyebrow">Builder-operator / {site.location}</p>
+          <h1 id="home-title">Gard Laeskogen</h1>
+          <p className="hero-role">{site.headline}</p>
+          <p className="hero-summary">{recruiterOverview.summary}</p>
+          <div className="hero-actions" aria-label="Primary actions">
+            <Link className="button button-light" href="/portfolio">View work</Link>
+            <Link className="button button-quiet" href="/cv">Experience</Link>
+            <Link className="text-action" href="/request">Book a conversation →</Link>
           </div>
-
-          <section className="recruiter-proof" aria-label="Evidence">
-            {recruiterOverview.proof.map((item) => (
-              <article key={item.label}>
-                <strong>{item.value}</strong>
-                <span>{item.label}</span>
-              </article>
-            ))}
-            <Link href="/cv">
-              <span>Full experience</span>
-              <strong>Open CV story →</strong>
-            </Link>
-          </section>
-
-          <section className="recruiter-work" aria-labelledby="selected-work-title">
-            <header>
-              <div>
-                <p className="kicker">Proof through work</p>
-                <h2 id="selected-work-title">Selected projects</h2>
-              </div>
-              <Link href="/portfolio">View all {projects.length} projects →</Link>
-            </header>
-            <div className="recruiter-projects">
-              {selectedProjects.map((project, index) => (
-                <Link href={`/projects/${project.slug}`} key={project.slug}>
-                  <figure>
-                    <Image
-                      alt=""
-                      fill
-                      loading="eager"
-                      sizes="(max-width: 700px) 30vw, 10vw"
-                      src={project.images[0]}
-                      unoptimized
-                    />
-                  </figure>
-                  <span>0{index + 1}</span>
-                  <div>
-                    <small>{project.category}</small>
-                    <strong>{project.title}</strong>
-                  </div>
-                  <b aria-hidden="true">→</b>
-                </Link>
-              ))}
+        </div>
+        <div className="proof-band page-shell" aria-label="Selected evidence">
+          {recruiterOverview.proof.map((item) => (
+            <div key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
             </div>
-          </section>
-        </section>
-        <SiteFooter />
-      </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="featured-work page-shell" aria-labelledby="featured-title">
+        <header className="section-heading">
+          <div>
+            <p className="eyebrow">Selected work</p>
+            <h2 id="featured-title">Engineering in practice</h2>
+          </div>
+          <Link href="/portfolio">All projects →</Link>
+        </header>
+
+        <div className="featured-grid">
+          {featuredProjects.map((project, index) => (
+            <Link className="featured-project" href={`/projects/${project.slug}`} key={project.slug}>
+              <ProjectMediaView
+                media={project.cover}
+                priority={index === 0}
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div>
+                <p><span>0{index + 1}</span>{project.category}</p>
+                <h3>{project.title}</h3>
+                <p>{projectSummary(project)}</p>
+                <span>Open case study →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <SiteFooter />
     </main>
   );
 }

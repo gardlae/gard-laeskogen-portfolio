@@ -4,11 +4,18 @@ import { site } from "./content";
 export function SiteFooter() {
   return (
     <footer className="site-footer">
-      <span>Gard Laeskogen / {new Date().getFullYear()}</span>
+      <div>
+        <strong>Gard Laeskogen</strong>
+        <span>{site.location}</span>
+      </div>
+      <nav aria-label="Footer navigation">
+        <Link href="/portfolio">Work</Link>
+        <Link href="/cv">Experience</Link>
+        <Link href="/about">About</Link>
+        <Link href="/request">Contact</Link>
+      </nav>
       <div>
         <a href={`mailto:${site.email}`}>{site.email}</a>
-        <Link href="/request#schedule">Schedule a chat</Link>
-        <Link href="/request#documents">Detailed CV</Link>
         <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn ↗</a>
       </div>
     </footer>

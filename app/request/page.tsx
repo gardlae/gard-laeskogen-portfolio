@@ -1,44 +1,43 @@
 import type { Metadata } from "next";
+import { site } from "../content";
 import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
-import { RequestForm, ScheduleForm } from "./RequestForm";
+import { BookingPanel, RequestForm } from "./RequestForm";
 
 export const metadata: Metadata = {
-  title: "Contact | Gard Laeskogen",
-  description: "Request Gard Laeskogen's detailed documents or propose a conversation.",
+  title: "Contact",
+  description: "Book a conversation or request Gard Laeskogen's detailed documents.",
+  alternates: { canonical: `${site.canonicalUrl}/request` },
 };
 
-export default function RequestPage() {
+export default function ContactPage() {
   return (
-    <main className="site-main">
+    <main>
       <SiteHeader />
-      <div className="page-content compact-page full-height-page">
-        <header className="page-heading contact-heading">
-          <div><p className="kicker">Contact</p><h1>Continue the conversation</h1></div>
-          <p>Request the detailed material or propose a short conversation. Both options take less than a minute.</p>
+      <div className="page-shell page-top contact-page">
+        <header className="page-intro contact-intro">
+          <p className="eyebrow">Contact</p>
+          <h1>Book a conversation</h1>
+          <p>Request the detailed material or arrange a short conversation.</p>
         </header>
 
-        <section className="contact-workspace">
-          <article className="contact-card" id="documents">
-            <div className="contact-card-number">01 / Private documents</div>
-            <div>
-              <h2>Detailed CV and portfolio</h2>
-              <p>The files are shared directly with selected companies and recruiters.</p>
-            </div>
-            <RequestForm />
+        <section className="contact-layout">
+          <article id="schedule">
+            <div><span>01</span><p className="eyebrow">Conversation</p></div>
+            <h2>Schedule a short chat</h2>
+            <p>Email remains available when the booking service is blocked or unavailable.</p>
+            <BookingPanel />
           </article>
 
-          <article className="contact-card contact-card-dark" id="schedule">
-            <div className="contact-card-number">02 / Conversation</div>
-            <div>
-              <h2>Schedule a short chat</h2>
-              <p>Suggest a time. Gard confirms the appointment directly by email.</p>
-            </div>
-            <ScheduleForm />
+          <article className="document-panel" id="documents">
+            <div><span>02</span><p className="eyebrow">Private documents</p></div>
+            <h2>Detailed CV and portfolio</h2>
+            <p>The files are shared directly with selected companies and recruiters.</p>
+            <RequestForm />
           </article>
         </section>
-        <SiteFooter />
       </div>
+      <SiteFooter />
     </main>
   );
 }

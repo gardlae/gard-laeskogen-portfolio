@@ -1,50 +1,82 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { featuredProjects, publicProjects, site } from "../content";
+import { ProjectMediaView } from "../ProjectMedia";
 import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
-import { projects } from "../content";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Gard Laeskogen",
-  description: "Projects across UAV systems, software, electronics, analysis, and prototyping.",
+  title: "Work",
+  description: "Selected work across UAV systems, software, analog electronics, and analysis.",
+  alternates: { canonical: `${site.canonicalUrl}/portfolio` },
 };
+
+const secondaryProjects = publicProjects.filter((project) => !project.featured);
+
+function summary(project: (typeof publicProjects)[number]) {
+  return project.outcome || project.contribution || project.context || "";
+}
+function ProjectRow({
+  project,
+  index,
+}: {
+  project: (typeof publicProjects)[number];
+  index: number;
+}) {
+  return (
+    <Link className="work-row" href={`/projects/${project.slug}`}>
+      <ProjectMediaView media={project.cover} sizes="(max-width: 768px) 100vw, 32vw" />
+      <div className="work-row-copy">
+        <div className="work-meta">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <span>{project.category}</span>
+          <span>{project.duration}</span>
+        </div>
+        <h2>{project.title}</h2>
+        <p>{summary(project)}</p>
+        <strong>Open case study →</strong>
+      </div>
+    </Link>
+  );
+}
 
 export default function PortfolioPage() {
   return (
-    <main className="site-main">
+    <main>
       <SiteHeader />
-      <div className="page-content compact-page">
-        <header className="page-heading">
-          <div>
-            <p className="kicker">Portfolio / {String(projects.length).padStart(2, "0")} projects</p>
-            <h1>Selected work</h1>
-          </div>
+      <div className="page-shell page-top">
+        <header className="page-intro work-intro">
+          <p className="eyebrow">Work / {String(publicProjects.length).padStart(2, "0")}</p>
+          <h1>Selected technical work</h1>
           <p>Engineering, software, electronics, analysis, and independently initiated work.</p>
         </header>
 
-        <section className="project-card-grid" aria-label="Portfolio projects">
-          {projects.map((project, index) => (
-            <Link className="project-card" href={`/projects/${project.slug}`} key={project.slug}>
-              <div className="project-card-image">
-                {project.images[0] ? (
-                  <Image alt={`${project.title} project`} fill sizes="(max-width: 700px) 100vw, 28vw" src={project.images[0]} unoptimized />
-                ) : (
-                  <div className="media-fallback"><span>{project.category}</span></div>
-                )}
-                <span className="project-card-index">{String(index + 1).padStart(2, "0")}</span>
-              </div>
-              <div className="project-card-body">
-                <div><span>{project.category}</span><span>{project.duration}</span></div>
-                <h2>{project.title}</h2>
-                <p>{project.description.split("\n")[0]}</p>
-                <span className="card-arrow">Open project →</span>
-              </div>
-            </Link>
+        <section className="work-list" aria-label="Featured projects">
+          {featuredProjects.map((project, index) => (
+            <ProjectRow index={index} key={project.slug} project={project} />
           ))}
         </section>
-        <SiteFooter />
+
+        <section className="secondary-work" aria-labelledby="secondary-title">
+          <header>
+            <p className="eyebrow">Additional work</p>
+            <h2 id="secondary-title">Earlier and independent projects</h2>
+          </header>
+          <div>
+            {secondaryProjects.map((project, index) => (
+              <Link href={`/projects/${project.slug}`} key={project.slug}>
+                <span>{String(featuredProjects.length + index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{project.title}</h3>
+                  <p>{project.category} / {project.duration}</p>
+                </div>
+                <strong>View →</strong>
+              </Link>
+            ))}
+          </div>
+        </section>
       </div>
+      <SiteFooter />
     </main>
   );
 }

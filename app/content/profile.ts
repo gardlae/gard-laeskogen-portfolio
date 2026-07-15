@@ -1,0 +1,23 @@
+import type { SiteConfig } from "./types";
+
+export const site: SiteConfig = {
+  name: "Gard Laeskogen",
+  email: "gard.lae@outlook.com",
+  linkedin: "https://www.linkedin.com/in/gard-laeskogen-0a246527a/",
+  location: "Trondheim, Norway",
+  headline: "Student | M. Sc. Cybernetics and Robotics | NTNU",
+  canonicalUrl: "https://www.gardlaeskogen.com",
+  bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
+  storyVideo: process.env.NEXT_PUBLIC_STORY_VIDEO || undefined,
+  storyPoster: "/media/family-business-portrait.jpg",
+};
+export const recruiterOverview = {
+  focus: "Cybernetics / UAV systems / leadership",
+  summary:
+    "I combine engineering work with practical execution, leadership, and experience from operational environments.",
+  proof: [
+    { value: "20+", label: "UAV configurations built or modified" },
+    { value: "3", label: "Leadership roles in Contactor NTNU" },
+    { value: "2", label: "Current board roles" },
+  ],
+};

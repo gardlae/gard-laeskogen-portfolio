@@ -1,187 +1,181 @@
-# Gard Laeskogen Portfolio Website
+# Gard Laeskogen Portfolio
 
-Personal website for portfolio projects, CV, sports, investment notes, videos, and "The why".
+Recruiter-first portfolio for technical work, experience, personal background, and contact.
 
-## Project Folder
+## Project Location
 
-The local project is here:
-
-```bash
+```text
 /Users/gardlaeskogen/Documents/Codex/2026-07-11/i
 ```
 
-This folder is already a Git repository. The intended public GitHub repository is:
+GitHub: [gardlae/gard-laeskogen-portfolio](https://github.com/gardlae/gard-laeskogen-portfolio)
+
+Production: [www.gardlaeskogen.com](https://www.gardlaeskogen.com)
+
+## Site Structure
+
+The public navigation has four sections:
+
+- `Work` at `/portfolio`
+- `Experience` at `/cv`
+- `About` at `/about`
+- `Contact` at `/request`
+
+Every public project has a direct URL at `/projects/[slug]`. Sports and principles are sections within About. Investment, Flipper Zero, and Cutlery Sorting remain unpublished drafts.
+
+## Gard-Owned Content
+
+All substantive wording lives in four plain TypeScript files:
 
 ```text
-https://github.com/gardlae/gard-laeskogen-portfolio
+app/content/profile.ts
+app/content/projects.ts
+app/content/experience.ts
+app/content/about.ts
 ```
 
-## How The Site Is Built
+The page components control layout only. Gard owns these content fields:
 
-This is a small Vinext/Next-style React site. The project has been trimmed down to the files needed for the website: no database starter, no example API routes, and no unused auth helper.
+### Profile
 
-- `app/content.ts` is the main ownership file. Edit your words, project data, links, image lists, and video lists here.
-- `app/page.tsx` controls the photo-led home page.
-- `app/portfolio/page.tsx` is the complete project index.
-- `app/projects/[slug]/page.tsx` creates one direct, shareable page for every project.
-- `app/cv/page.tsx` controls the visual CV chronology.
-- `app/request/page.tsx` controls the private-document request page.
-- `app/SiteHeader.tsx` and `app/SiteFooter.tsx` control navigation shared by every page.
-- `app/sports/page.tsx` controls `/sports`.
-- `app/investment/page.tsx` controls `/investment`.
-- `app/philosophy/page.tsx` controls `/philosophy`, currently titled "The why".
-- `app/globals.css` controls the visual style.
-- `public/media/` contains images and videos used on the site.
+Edit `app/content/profile.ts` for:
 
-## Code Review Map
+- name, email, location, LinkedIn, and role
+- homepage summary and proof metrics
+- canonical domain
+- optional story video and poster
 
-Start review in this order:
+### Projects
 
-1. `app/content.ts` - all words and content mapping.
-2. `app/page.tsx` - home page structure.
-3. `app/portfolio/page.tsx` and `app/projects/[slug]/page.tsx` - portfolio navigation and project pages.
-4. `app/cv/page.tsx` and `app/request/page.tsx` - CV story and document request flow.
-5. `app/sports/page.tsx`, `app/investment/page.tsx`, `app/philosophy/page.tsx` - subpages.
-6. `app/globals.css` - layout, mobile behavior, colors, spacing.
+Edit `app/content/projects.ts`. Each project supports:
 
-## Editing Text Yourself
-
-Edit this file:
-
-```bash
-app/content.ts
+```ts
+{
+  visibility: "public" | "draft",
+  featured: true | false,
+  context: "",
+  role: "",
+  challenge: "",
+  contribution: "",
+  outcome: "",
+  constraints: "",
+  methods: [],
+  cover: {},
+  media: [],
+}
 ```
 
-That file contains:
+Optional sections are not rendered when their fields are missing. Do not add instruction text or placeholders to a public field. Set `visibility: "draft"` until the evidence and wording are ready.
 
-- `site`: name, intro, contact-level text
-- `recruiterOverview`: the short homepage summary and proof points recruiters see first
-- `videos`: video clips on the home page
-- `homeImages`: front page image wall
-- `cvItems`: CV timeline blocks
-- `education`, `featuredSkills`, `additionalExperience`: verified LinkedIn CV details
-- `projects`: portfolio projects, durations, descriptions, skills, links, media
-- `sportsIntro`, `sportsAchievements`, `sportsExtraLinks`
-- `investmentText`, `investmentLinks`
-- `why`: life rules, what you want to be described as, favorite quotes
+The three featured projects are shown on the homepage. A public project can use an approved local image or a text-based technical graphic as its cover.
 
-The Word documents remain your source documents. Do not edit them from the website code. Copy your approved wording from the documents into `app/content.ts`.
+### Experience
 
-## Editing Images And Videos
+Edit `app/content/experience.ts` for:
 
-Put files in:
+- chronology and positions
+- summaries
+- responsibilities
+- impact
+- local evidence images
+- education and additional experience
 
-```bash
+Missing responsibility or impact fields stay hidden.
+
+### About
+
+Edit `app/content/about.ts` for:
+
+- personal background
+- sports results and source links
+- principles, desired character, and quotes
+
+Sports imagery must be user-owned. External articles are text links only.
+
+## Images And Video
+
+Store public media in:
+
+```text
 public/media/
 ```
 
-Then reference them from `app/content.ts` like:
+Reference media with site-root paths such as:
 
 ```ts
-images: ["/media/my-image.jpg"]
-video: "/media/my-video.mp4"
+src: "/media/fpv-drone-build.jpg"
 ```
 
-## Suggested Image Mapping Workflow
+Generate local 640 px and 1280 px AVIF/WebP variants after changing a published image:
 
-Use `app/content.ts` as the map between projects and images. Each project has:
-
-```ts
-images: ["/media/image-name.jpg"]
-video: "/media/video-name.mp4"
+```bash
+pnpm media:optimize
 ```
 
-Recommended mapping:
+The optimization source list is in `scripts/optimize-media.mjs`. Add a new published filename there before running the command.
 
-- `FPV-drone builds`: drone builds, FPV frames, fixed-wing, GNSS/EW test equipment, production-oriented drone cases.
-- `Analog servo controller`: servo motor rig, breadboard circuits, control system diagrams, schematics.
-- `Distributed elevator system`: screenshots, diagrams, code architecture, terminal/demo images. Use a fallback label until you have real media.
-- `Social platform (TieUp)`: Marvel prototype screenshots, old logo/product sketches, company setup material.
-- `Flipper-zero exploration`: Flipper Zero device, WiFi devboard, signal testing photos.
-- `Hospitality Investment analysis`: Sundvolden/family business photos, analysis screenshots only if they are safe to share.
-- `Cutlery sorting machine`: CAD, prototype photos, sensor/actuator tests, mechanism sketches.
+Published video should have a poster, use `preload="none"` away from the first view, and remain close to or below 4 MB. Do not put private reports, a detailed CV, or a restricted portfolio in `public/`; every file there is publicly downloadable.
 
-Practical rule: rename files by project before adding them, for example:
+## Contact Configuration
 
-```text
-drone-fpv-frame-01.jpg
-servo-breadboard-01.jpg
-investment-sundvolden-01.jpg
+Create a local `.env.local` based on `.env.example`:
+
+```bash
+NEXT_PUBLIC_BOOKING_URL=https://cal.com/your-page
+NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN=your-token
+NEXT_PUBLIC_STORY_VIDEO=/media/story-final.mp4
 ```
 
-Then add only the correct filenames to the matching project in `app/content.ts`.
+- Without `NEXT_PUBLIC_BOOKING_URL`, Contact shows email and copy-email fallbacks.
+- The Cal.com iframe is created only after the visitor opens the calendar.
+- Cloudflare Web Analytics is absent unless its token is configured.
+- The detailed-document request prepares an email and never sends files automatically.
 
-Every project also has a short URL slug:
-
-```ts
-slug: "analog-servo-controller"
-```
-
-That project opens at `/projects/analog-servo-controller`. Keep slugs short, lowercase, and separated with hyphens.
-
-## Contact, Scheduling, And Private Files
-
-The document request asks only for the visitor's company or organisation. Submitting it prepares an email to `gard.lae@outlook.com`; no private document is exposed or automatically sent.
-
-The scheduling form asks for an organisation and a proposed date and time. It prepares an email containing the visitor's local time and time zone. The appointment is not treated as confirmed until you reply. This avoids publishing calendar access or availability rules on the public site.
-
-Do not place the detailed CV or portfolio in `public/`. Everything in that folder can be downloaded by anyone who knows the URL. After approving a recruiter or company, share the files manually through a restricted OneDrive, Google Drive, or Dropbox link.
-
-To change the destination email, edit `site.email` in `app/content.ts`.
+Approved detailed files should be shared manually through a restricted OneDrive or equivalent link.
 
 ## Run Locally
-
-From the project folder:
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Then open the local URL printed in the terminal, usually:
+Open [http://localhost:3000](http://localhost:3000).
+
+## Required Checks
+
+Run everything before deployment:
 
 ```bash
-http://localhost:3000
+pnpm check
 ```
 
-## Check Before Publishing
+Or run each stage separately:
 
 ```bash
+pnpm content:check
 pnpm lint
 pnpm build
 ```
 
-## Put This On Your GitHub
+The content check fails for duplicate or invalid slugs, invalid dates, missing public text, missing media and responsive variants, draft leakage, invalid project links, and unknown static internal routes.
 
-Because `gh` is not installed in this shell, create an empty public repository on GitHub in the browser first:
+## Deployment And Domain
+
+The canonical URL is configured as:
 
 ```text
-gard-laeskogen-portfolio
+https://www.gardlaeskogen.com
 ```
 
-Owner: `gardlae`
+The site includes canonical metadata, Open Graph and Twitter metadata, Person and CreativeWork structured data, `robots.txt`, and `sitemap.xml`. Draft projects and Investment are excluded from public discovery.
 
-Then run these commands:
+Push source updates to GitHub:
 
 ```bash
-cd /Users/gardlaeskogen/Documents/Codex/2026-07-11/i
-git remote add github https://github.com/gardlae/gard-laeskogen-portfolio.git
-git push -u github main
+git add .
+git commit -m "Describe the change"
+git push github main
 ```
 
-If `github` remote already exists, use:
-
-```bash
-git remote set-url github https://github.com/gardlae/gard-laeskogen-portfolio.git
-git push -u github main
-```
-
-After that, you can clone the project on another device with:
-
-```bash
-git clone https://github.com/gardlae/gard-laeskogen-portfolio.git
-```
-
-## Domain
-
-The site can use a custom domain after it is registered. The simplest international option is `gardlaeskogen.com`; `gardlaeskogen.no` is a strong Norwegian alternative. Add the domain to the hosting project first, then copy the DNS records supplied by the host into the registrar's DNS settings.
+The production host is configured separately through the Sites project in `.openai/hosting.json`.

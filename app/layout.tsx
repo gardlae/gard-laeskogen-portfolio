@@ -1,37 +1,74 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { Analytics } from "./Analytics";
+import { site } from "./content";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-
-const manrope = Manrope({
-  variable: "--font-display",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Gard Laeskogen Portfolio",
+  metadataBase: new URL(site.canonicalUrl),
+  title: {
+    default: "Gard Laeskogen | Cybernetics, UAV Systems, Leadership",
+    template: "%s | Gard Laeskogen",
+  },
   description:
-    "Gard Laeskogen's portfolio across cybernetics, UAV systems, electronics, operations, and leadership.",
+    "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
+  alternates: { canonical: site.canonicalUrl },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    url: site.canonicalUrl,
+    siteName: site.name,
+    title: "Gard Laeskogen | Cybernetics, UAV Systems, Leadership",
+    description:
+      "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
+    images: [{ url: "/social-card.jpg", width: 1200, height: 630, alt: "Gard Laeskogen" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gard Laeskogen | Cybernetics, UAV Systems, Leadership",
+    description:
+      "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
+    images: ["/social-card.jpg"],
+  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#f4f3ef",
+};
+
+const personStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.canonicalUrl,
+  email: `mailto:${site.email}`,
+  sameAs: [site.linkedin],
+  homeLocation: { "@type": "Place", name: site.location },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Norwegian University of Science and Technology (NTNU)",
+  },
+  knowsAbout: ["Cybernetics", "Robotics", "UAV systems", "Analog electronics", "Leadership"],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${manrope.variable}`}>{children}</body>
+      <body>
+        <script
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData).replace(/</g, "\\u003c") }}
+          type="application/ld+json"
+        />
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
