@@ -99,7 +99,7 @@ export const professionalExperience: ExperienceItem[] = [
 
 export const leadershipAndActivities: ExperienceItem[] = [
   {
-    period: "Feb 2024 - Present",
+    period: "Feb 2024 - Feb 2026",
     role: "Member, Board of Directors",
     place: "NFEA - Norwegian Association for Electrical and Automation Engineering",
     summary:
@@ -107,7 +107,7 @@ export const leadershipAndActivities: ExperienceItem[] = [
     evidence: [],
   },
   {
-    period: "May 2024 - Present",
+    period: "May 2024 - Aug 2025",
     role: "Leader",
     place: "Contactor NTNU",
     responsibilities: [
