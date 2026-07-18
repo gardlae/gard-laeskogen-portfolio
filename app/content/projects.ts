@@ -145,9 +145,9 @@ export const allProjects: PortfolioProject[] = [
       "early-stage product development",
     ],
     cover: {
-      kind: "graphic",
-      label: "TieUp",
-      detail: "Startup prototype and company formation",
+      kind: "image",
+      src: "/media/tieup-first-sketch.png",
+      alt: "Early hand-drawn TieUp login and sign-up interface",
     },
     media: [],
     links: [

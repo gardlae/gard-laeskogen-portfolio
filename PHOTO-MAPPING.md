@@ -32,6 +32,7 @@ Approved for public website: Yes
 | `control-system-diagram.png` (source: `control-system-diagram-english.png`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
 | `servo-breadboard-full.jpg` (source: `IMG_6505.jpg`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
 | `servo-schematic.png` (source: `signal-2026-07-11-07-26-27-941_002.png`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
+| `tieup-first-sketch.png` (source: `IMG_3466.PNG`) | `tieup-social-platform` | Cover | Confirmed by Gard |
 | `family-business.jpg` | `hospitality-investment-analysis` | Cover | Needs confirmation |
 
 ## Experience Images

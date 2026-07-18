@@ -23,6 +23,7 @@ const sources = [
   "control-system-diagram.png",
   "servo-breadboard-full.jpg",
   "servo-schematic.png",
+  "tieup-first-sketch.png",
 ];
 
 function run(command, args) {
