@@ -130,9 +130,9 @@ export default function ExperiencePage() {
           </figure>
 
           <aside className="cv-snapshot" aria-label="CV overview">
-            <div><span>Current</span><strong>Graduate MSc student / NTNU</strong></div>
+            <div><span>Current</span><strong>MSc Cybernetics and Robotics/NTNU</strong></div>
             <div><span>2026-27</span><strong>Graduate study / UC Berkeley</strong></div>
-            <div><span>Progress</span><strong>3 years / 172.5 ECTS passed</strong></div>
+            <div><span>Progress</span><strong>3 years</strong></div>
             <div><span>Main profile</span><strong>Autonomous Systems</strong></div>
           </aside>
         </header>

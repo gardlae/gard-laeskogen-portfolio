@@ -164,7 +164,7 @@ export const education: EducationItem[] = [
     qualification: "MSc Cybernetics and Robotics",
     location: "Trondheim, Norway",
     status: "current",
-    detail: "Three academic years completed / 172.5 ECTS passed / Main profile: Autonomous Systems",
+    detail: "Three academic years completed / Main profile: Autonomous Systems",
   },
   {
     period: "Aug 2026 - Jun 2027",
@@ -190,7 +190,7 @@ export const selectedCourses: SelectedCourse[] = [
   },
 ];
 
-// Source: NTNU transcript supplied by Gard, covering 172.5 passed ECTS through spring 2026.
+// Source: NTNU transcript supplied by Gard, covering studies through spring 2026.
 export const academicAreas: AcademicArea[] = [
   {
     label: "Control and autonomy",
