@@ -9,11 +9,14 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "vinext start",
+    "preview": "pnpm build && vite preview",
+    "deploy": "pnpm build && wrangler deploy",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "content:check": "node --experimental-strip-types scripts/validate-content.ts",
     "media:optimize": "node scripts/optimize-media.mjs",
     "check": "pnpm content:check && pnpm lint && pnpm build"
   },
+  "packageManager": "pnpm@11.9.0",
   "dependencies": {
     "next": "16.2.6",
     "react": "19.2.6",

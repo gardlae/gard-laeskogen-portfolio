@@ -173,6 +173,22 @@ https://www.gardlaeskogen.com
 
 The site includes canonical metadata, Open Graph and Twitter metadata, Person and CreativeWork structured data, `robots.txt`, and `sitemap.xml`. Draft projects and Investment are excluded from public discovery.
 
+Production is configured for Cloudflare Workers with Static Assets. [`wrangler.jsonc`](wrangler.jsonc) defines the Worker name and runtime, and the Cloudflare Vite plugin packages the application and its static media together.
+
+Connect the repository through Cloudflare Workers Builds:
+
+1. Open Cloudflare Dashboard > Workers & Pages > Create application.
+2. Select `Import a repository` and connect GitHub.
+3. Choose `gardlae/gard-laeskogen-portfolio` and branch `main`.
+4. Set the build command to `pnpm build`.
+5. Set the deploy command to `pnpm wrangler deploy`.
+6. Save and deploy, then verify the generated `workers.dev` URL.
+7. Open the Worker > Settings > Domains & Routes > Add > Custom Domain.
+8. Remove the old `www` CNAME to `custom-domains.chatgpt.site`, then add `www.gardlaeskogen.com` as the Worker custom domain.
+9. Remove the old apex A records, then add `gardlaeskogen.com` as a second Worker custom domain. The Worker redirects it to the canonical `www` address.
+
+The Worker name in Cloudflare must be exactly `gard-laeskogen-portfolio`, matching `wrangler.jsonc`. Every push to `main` then triggers an automatic build and deployment.
+
 Push source updates to GitHub:
 
 ```bash
@@ -181,4 +197,4 @@ git commit -m "Describe the change"
 git push github main
 ```
 
-The production host is configured separately through the Sites project in `.openai/hosting.json`.
+Cloudflare Workers deploys every successful commit pushed to `main`. Static assets are served globally with managed HTTPS, while the Worker remains available for future APIs or authentication.
