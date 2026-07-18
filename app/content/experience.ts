@@ -1,4 +1,4 @@
-import type { EducationItem, ExperienceItem, SkillGroup } from "./types";
+import type { AcademicArea, EducationItem, ExperienceItem, SkillGroup } from "./types";
 
 // Source: CV notes for website.docx. Gard owns and approves the wording in this file.
 export const professionalExperience: ExperienceItem[] = [
@@ -145,19 +145,69 @@ export const leadershipAndActivities: ExperienceItem[] = [
 
 export const education: EducationItem[] = [
   {
-    period: "Expected Jun 2028",
+    period: "2023 - Expected Jun 2028",
     institution: "Norwegian University of Science and Technology (NTNU)",
     qualification: "MSc Cybernetics and Robotics",
     location: "Trondheim, Norway",
     status: "current",
+    detail: "Three academic years completed / 172.5 ECTS passed / Main profile: Autonomous Systems",
   },
   {
     period: "Aug 2026 - Jun 2027",
     institution: "University of California, Berkeley",
-    qualification: "BISP study program",
+    qualification: "Graduate student, Berkeley International Study Program",
     location: "California, United States",
     status: "upcoming",
-    detail: "Robotics and AI",
+    detail: "Graduate coursework in robotics and AI",
+  },
+];
+
+// Source: NTNU transcript supplied by Gard, covering 172.5 passed ECTS through spring 2026.
+export const academicAreas: AcademicArea[] = [
+  {
+    label: "Control and autonomy",
+    courses: [
+      "Introduction to Cybernetics",
+      "Control Engineering",
+      "Modeling and Simulation",
+      "Optimization and Control",
+      "Robot Vision",
+    ],
+  },
+  {
+    label: "Real-time and embedded systems",
+    courses: [
+      "Real-Time Programming",
+      "Embedded Computer Systems",
+      "Instrumentation and Measurement",
+      "Industrial Electrotechnics",
+    ],
+  },
+  {
+    label: "Software and computer science",
+    courses: [
+      "Information Technology",
+      "Procedural and Object-Oriented Programming",
+      "Algorithms and Data Structures",
+      "Computer Architecture",
+    ],
+  },
+  {
+    label: "Mathematics and physical systems",
+    courses: [
+      "Mathematics 1-4",
+      "Statistics",
+      "Physics",
+      "Analog and Digital Electronics",
+    ],
+  },
+  {
+    label: "Leadership and context",
+    courses: [
+      "Technology Management",
+      "Leadership in Voluntary Organizations",
+      "Examen Philosophicum for Science and Technology",
+    ],
   },
 ];
 

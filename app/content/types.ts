@@ -93,6 +93,11 @@ export type EducationItem = {
   detail?: string;
 };
 
+export type AcademicArea = {
+  label: string;
+  courses: string[];
+};
+
 export type SkillGroup = {
   label: string;
   values: string[];

@@ -50,5 +50,6 @@ Approved for public website: Yes
 | Published file | Current assignment | Placement | Approval |
 | --- | --- | --- | --- |
 | `family-business-portrait.jpg` | Homepage | Hero poster | Needs confirmation |
+| `cv-portrait.jpg` (source: `IMG_3082.jpg`) | Experience page | Hero portrait | Confirmed by Gard |
 
 When a mapping is confirmed, update the approval column to `Confirmed by Gard`, update the relevant entry in `app/content/projects.ts`, `app/content/experience.ts`, or `app/content/profile.ts`, and run `pnpm check` before deployment.

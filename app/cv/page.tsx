@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  academicAreas,
   education,
   languages,
   leadershipAndActivities,
@@ -108,7 +109,7 @@ export default function ExperiencePage() {
             <p className="eyebrow">Gard Laeskogen / Curriculum vitae</p>
             <h1>Cybernetics, robotics and operational experience.</h1>
             <p className="cv-hero-summary">
-              Master’s student in Cybernetics and Robotics with hands-on experience from the Norwegian Special Operations Command. Experience includes leadership, problem-solving under pressure, and strategic communication. Seeking a challenging role in technology or defence.
+              Graduate student in Cybernetics and Robotics at NTNU and incoming graduate student at UC Berkeley for 2026-27. Three years of the integrated master&apos;s program are complete, with Autonomous Systems as the main profile.
             </p>
             <div className="cv-hero-actions">
               <Link className="button button-dark" href="/portfolio">View engineering work</Link>
@@ -128,24 +129,45 @@ export default function ExperiencePage() {
           </figure>
 
           <aside className="cv-snapshot" aria-label="CV overview">
-            <div><span>Current</span><strong>MSc Cybernetics and Robotics / NTNU</strong></div>
-            <div><span>2026-27</span><strong>Robotics and AI / UC Berkeley</strong></div>
-            <div><span>Selected engineering</span><strong>Lead R&amp;D Engineer / UAV Unit</strong></div>
-            <div><span>Contact</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
+            <div><span>Current</span><strong>Graduate MSc student / NTNU</strong></div>
+            <div><span>2026-27</span><strong>Graduate study / UC Berkeley</strong></div>
+            <div><span>Progress</span><strong>3 years / 172.5 ECTS passed</strong></div>
+            <div><span>Main profile</span><strong>Autonomous Systems</strong></div>
           </aside>
         </header>
 
         <section className="cv-education" id="education" aria-labelledby="education-title">
           <header><p className="eyebrow">Education</p><h2 id="education-title">Academic direction</h2></header>
-          <div className="cv-education-list">
-            {education.map((item) => (
-              <article key={item.institution}>
-                <div><time>{item.period}</time>{item.status === "upcoming" && <span>Upcoming</span>}</div>
-                <h3>{item.qualification}</h3>
-                <p>{item.institution}</p>
-                <small>{item.detail ? `${item.detail} / ` : ""}{item.location}</small>
-              </article>
-            ))}
+          <div className="cv-academic-content">
+            <div className="cv-education-list">
+              {education.map((item) => (
+                <article key={item.institution}>
+                  <div>
+                    <time>{item.period}</time>
+                    {item.status === "current" && <span>Current</span>}
+                    {item.status === "upcoming" && <span>Upcoming</span>}
+                  </div>
+                  <h3>{item.qualification}</h3>
+                  <p>{item.institution}</p>
+                  <small>{item.detail ? `${item.detail} / ` : ""}{item.location}</small>
+                </article>
+              ))}
+            </div>
+
+            <details className="cv-coursework">
+              <summary>
+                <span>Completed coursework</span>
+                <strong>23 courses across 5 academic areas</strong>
+              </summary>
+              <div className="cv-coursework-grid">
+                {academicAreas.map((area) => (
+                  <section key={area.label}>
+                    <h3>{area.label}</h3>
+                    <p>{area.courses.join(" / ")}</p>
+                  </section>
+                ))}
+              </div>
+            </details>
           </div>
         </section>
 
