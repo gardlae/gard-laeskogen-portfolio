@@ -1,7 +1,6 @@
 export const personalBackground = {
   intro:
     "I combine engineering work with practical execution, leadership, and experience from operational environments.",
-  familyBusiness: "Norway's oldest family hotel, running since 1648.",
 };
 
 export const sportsIntro =

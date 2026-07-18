@@ -34,7 +34,6 @@ export default function AboutPage() {
           <div className="background-copy">
             <p className="eyebrow">01 / Personal background</p>
             <h2>Family business and operational environments</h2>
-            <p>{personalBackground.familyBusiness}</p>
           </div>
           <figure className="background-main-image">
             <Image alt="Gard Laeskogen with family outside Sundvolden Hotel" fill priority sizes="(max-width: 768px) 100vw, 64vw" src="/media/family-business.jpg" unoptimized />
