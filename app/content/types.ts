@@ -4,6 +4,7 @@ export type SiteConfig = {
   phone: string;
   linkedin: string;
   github: string;
+  yCombinator: string;
   location: string;
   headline: string;
   canonicalUrl: string;

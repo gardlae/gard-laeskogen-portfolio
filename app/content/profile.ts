@@ -6,6 +6,7 @@ export const site: SiteConfig = {
   phone: "+47 466 34 552",
   linkedin: "https://www.linkedin.com/in/gard-laeskogen",
   github: "https://github.com/gardlae",
+  yCombinator: "https://www.startupschool.org/cofounder-matching/settings",
   location: "California, USA",
   headline: "Student | M. Sc. Cybernetics and Robotics | NTNU",
   canonicalUrl: "https://www.gardlaeskogen.com",
@@ -20,6 +21,6 @@ export const recruiterOverview = {
   proof: [
     { value: "20+", label: "UAV configurations built or modified" },
     { value: "5+", label: "Leadership roles across engineering and organisations" },
-    { value: "2", label: "Current board roles" },
+    { value: "Startup", label: "Computer vision internship experience" },
   ],
 };

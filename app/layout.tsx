@@ -51,7 +51,7 @@ const personStructuredData = {
   name: site.name,
   url: site.canonicalUrl,
   email: `mailto:${site.email}`,
-  sameAs: [site.linkedin, site.github],
+  sameAs: [site.linkedin, site.github, site.yCombinator],
   homeLocation: { "@type": "Place", name: site.location },
   alumniOf: {
     "@type": "CollegeOrUniversity",
