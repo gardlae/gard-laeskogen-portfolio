@@ -956,7 +956,7 @@ button {
 
 .cv-education-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .cv-academic-content {
@@ -2499,7 +2499,7 @@ button {
 
 .cv-education-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .cv-education-list article {
@@ -2605,6 +2605,35 @@ button {
   color: var(--ink-soft);
   font-size: 11px;
   line-height: 1.55;
+}
+
+.cv-selected-courses {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.3fr) minmax(0, 1fr);
+  gap: 24px;
+  padding-top: 18px;
+}
+
+.cv-selected-courses h3 {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.cv-selected-courses ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cv-selected-courses li {
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.cv-selected-courses strong {
+  color: var(--ink);
 }
 
 .cv-section {
@@ -2929,6 +2958,18 @@ button {
     border-left: 0;
     padding: 22px 0 0;
   }
+
+  .cv-education-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cv-education-list article:nth-child(3) {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-left: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -3053,10 +3094,19 @@ button {
     padding: 17px 0;
   }
 
+  .cv-education-list article:nth-child(3) {
+    margin-top: 0;
+  }
+
   .cv-coursework summary {
     align-items: flex-start;
     flex-direction: column;
     gap: 4px;
+  }
+
+  .cv-selected-courses {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .cv-entry,

@@ -7,6 +7,7 @@ import {
   languages,
   leadershipAndActivities,
   professionalExperience,
+  selectedCourses,
   skillGroups,
   site,
 } from "../content";
@@ -168,6 +169,18 @@ export default function ExperiencePage() {
                 ))}
               </div>
             </details>
+
+            <section className="cv-selected-courses" aria-labelledby="selected-courses-title">
+              <h3 id="selected-courses-title">Selected courses</h3>
+              <ul>
+                {selectedCourses.map((course) => (
+                  <li key={`${course.title}-${course.provider}`}>
+                    <strong>{course.title}</strong>
+                    <span> - {course.provider}{course.period ? ` / ${course.period}` : ""}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </div>
         </section>
 

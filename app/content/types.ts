@@ -98,6 +98,12 @@ export type AcademicArea = {
   courses: string[];
 };
 
+export type SelectedCourse = {
+  title: string;
+  provider: string;
+  period?: string;
+};
+
 export type SkillGroup = {
   label: string;
   values: string[];

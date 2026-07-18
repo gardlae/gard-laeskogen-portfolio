@@ -1,4 +1,10 @@
-import type { AcademicArea, EducationItem, ExperienceItem, SkillGroup } from "./types";
+import type {
+  AcademicArea,
+  EducationItem,
+  ExperienceItem,
+  SelectedCourse,
+  SkillGroup,
+} from "./types";
 
 // Source: CV notes for website.docx. Gard owns and approves the wording in this file.
 export const professionalExperience: ExperienceItem[] = [
@@ -93,6 +99,14 @@ export const professionalExperience: ExperienceItem[] = [
 
 export const leadershipAndActivities: ExperienceItem[] = [
   {
+    period: "Feb 2024 - Present",
+    role: "Member, Board of Directors",
+    place: "NFEA - Norwegian Association for Electrical and Automation Engineering",
+    summary:
+      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies.",
+    evidence: [],
+  },
+  {
     period: "May 2024 - Present",
     role: "Leader",
     place: "Contactor NTNU",
@@ -159,6 +173,20 @@ export const education: EducationItem[] = [
     location: "California, United States",
     status: "upcoming",
     detail: "Graduate coursework in robotics and AI",
+  },
+  {
+    period: "May 2024 - Aug 2024",
+    institution: "Jönköping University - Jönköping International Business School",
+    qualification: "Family Business for Next Generation",
+    location: "Jönköping, Sweden",
+    detail: "Course",
+  },
+];
+
+export const selectedCourses: SelectedCourse[] = [
+  {
+    title: "Governance Course",
+    provider: "FBN Norwegian Family Ownership",
   },
 ];
 
