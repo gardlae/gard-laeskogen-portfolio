@@ -14,8 +14,9 @@ export const metadata: Metadata = {
     "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
   alternates: { canonical: site.canonicalUrl },
   icons: {
-    icon: "/favicon-transparent.svg",
-    shortcut: "/favicon-transparent.svg",
+    icon: "/favicon-sundvolden.png?v=1",
+    shortcut: "/favicon-sundvolden.png?v=1",
+    apple: "/favicon-sundvolden.png?v=1",
   },
   openGraph: {
     type: "website",

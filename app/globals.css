@@ -184,18 +184,7 @@ button {
 .site-brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
-}
-
-.site-logo {
-  width: 66px;
-  height: 48px;
-  flex: 0 0 auto;
-  background-image: url("/media/sundvolden-logo.png");
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 135px 48px;
 }
 
 .site-brand strong {
@@ -2187,12 +2176,6 @@ button {
 
   .site-brand strong {
     font-size: 14px;
-  }
-
-  .site-logo {
-    width: 58px;
-    height: 42px;
-    background-size: 118px 42px;
   }
 
   .home-hero {
