@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import {
-  personalBackground,
-  site,
-  sportsAchievements,
-  sportsExtraLinks,
-  sportsIntro,
-  why,
-} from "../content";
+import { site, sportsAchievements, sportsExtraLinks, sportsIntro, why } from "../content";
 import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
 
@@ -24,28 +17,9 @@ export default function AboutPage() {
     <main>
       <SiteHeader />
       <div className="page-shell page-top about-page">
-        <header className="page-intro about-intro">
-          <p className="eyebrow">About</p>
-          <h1>Background, discipline, and direction</h1>
-          <p>{personalBackground.intro}</p>
-        </header>
-
-        <section className="background-section" id="background">
-          <div className="background-copy">
-            <p className="eyebrow">01 / Personal background</p>
-            <h2>Family business and operational environments</h2>
-          </div>
-          <figure className="background-main-image">
-            <Image alt="Gard Laeskogen with family outside Sundvolden Hotel" fill priority sizes="(max-width: 768px) 100vw, 64vw" src="/media/family-business.jpg" unoptimized />
-          </figure>
-          <figure className="background-secondary-image">
-            <Image alt="Field experience in the Norwegian Armed Forces" fill sizes="(max-width: 768px) 46vw, 24vw" src="/media/military-field.jpg" unoptimized />
-          </figure>
-        </section>
-
         <section className="sports-section" id="sports">
           <header className="section-heading">
-            <div><p className="eyebrow">02 / Sports discipline</p><h2>Selected verified results</h2></div>
+            <div><p className="eyebrow">Sports</p><h2>Sports</h2></div>
             <p>{sportsIntro}</p>
           </header>
           <div className="sports-groups">
@@ -70,7 +44,7 @@ export default function AboutPage() {
 
         <section className="principles-section" id="principles">
           <header className="section-heading">
-            <div><p className="eyebrow">03 / Principles</p><h2>Direction and character</h2></div>
+            <div><p className="eyebrow">Principles</p><h2>Principles</h2></div>
             <p>{why.intro}</p>
           </header>
           <div className="principles-layout">
@@ -88,6 +62,15 @@ export default function AboutPage() {
               </details>
             </aside>
           </div>
+        </section>
+
+        <section className="background-section background-section-images-only" id="background" aria-label="Personal background photographs">
+          <figure className="background-main-image">
+            <Image alt="Gard Laeskogen with family outside Sundvolden Hotel" fill priority sizes="(max-width: 768px) 100vw, 64vw" src="/media/family-business.jpg" unoptimized />
+          </figure>
+          <figure className="background-secondary-image">
+            <Image alt="Field experience in the Norwegian Armed Forces" fill sizes="(max-width: 768px) 46vw, 24vw" src="/media/military-field.jpg" unoptimized />
+          </figure>
         </section>
       </div>
       <SiteFooter />

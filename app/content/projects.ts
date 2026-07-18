@@ -165,6 +165,12 @@ export const allProjects: PortfolioProject[] = [
       alt: "Gard Laeskogen with family outside Sundvolden Hotel",
     },
     media: [],
+    links: [
+      {
+        label: "Sundvolden Hotel",
+        href: "https://sundvolden.no/?gad_source=1&gad_campaignid=11416463408&gbraid=0AAAAADoYwh_IsvNoIGrD1_BhEz6ykjyNw&gclid=CjwKCAjwyOzSBhBTEiwAmxvJ-r9HoEJGyJFqLg_pVHdk3OYVg2v-HwrKolfAVO-XSsxgReA5NGQFsxoC5nkQAvD_BwE",
+      },
+    ],
   },
   {
     slug: "flipper-zero-exploration",
@@ -197,9 +203,9 @@ export const allProjects: PortfolioProject[] = [
     context: "Coming soon.",
     methods: ["mechatronics", "sensors", "mechanical layout", "prototyping"],
     cover: {
-      kind: "image",
-      src: "/media/cutlery-sorting-machine.png",
-      alt: "Cutlery sorting machine prototype",
+      kind: "graphic",
+      label: "Coming soon",
+      detail: "Cutlery sorting machine",
     },
     media: [],
   },

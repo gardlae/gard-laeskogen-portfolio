@@ -103,7 +103,7 @@ export const leadershipAndActivities: ExperienceItem[] = [
     role: "Member, Board of Directors",
     place: "NFEA - Norwegian Association for Electrical and Automation Engineering",
     summary:
-      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies.",
+      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies. I joined the board through the Contactor NTNU leadership role.",
     evidence: [],
   },
   {
@@ -115,33 +115,12 @@ export const leadershipAndActivities: ExperienceItem[] = [
       "Organized company presentations, stands, and workshops with partner companies.",
     ],
     impact: ["Generated NOK 0.9 million in revenue for the Omega student association."],
-    evidence: [
-      {
-        src: "/media/contactor-ntnu-team.jpeg",
-        alt: "Contactor NTNU team outside the NTNU main building",
-        presentation: "photo",
-      },
-      {
-        src: "/media/contactor-ntnu-leadership.jpeg",
-        alt: "Gard Laeskogen with the deputy leader of Contactor NTNU",
-        caption: "Leader and deputy leader",
-        presentation: "photo",
-      },
-    ],
-  },
-  {
-    period: "Aug 2023 - Present",
-    role: "Competitive Athlete",
-    place: "NTNUI Triathlon",
-    impact: [
-      "Competed in national and regional triathlons and running events, including winning the student Norwegian championship in the 'other bikes' category.",
-    ],
     evidence: [],
   },
   {
     period: "Dec 2020 - Dec 2021",
-    role: "Leader",
-    place: "Local political youth party",
+    role: "District Leader",
+    place: "Local political youth party district",
     responsibilities: ["Held meetings and debates."],
     evidence: [],
   },

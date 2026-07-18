@@ -3180,3 +3180,267 @@ button {
     min-height: 220px;
   }
 }
+
+/* Recruiter feedback pass: wider CV rows, visible details, and expanded work media. */
+.home-hero {
+  min-height: 100svh;
+}
+
+.hero-content {
+  padding-bottom: 86px;
+}
+
+.work-list {
+  margin-top: 34px;
+}
+
+.work-row {
+  grid-template-columns: minmax(420px, 0.96fr) minmax(0, 1.04fr);
+  gap: 42px;
+  min-height: 0;
+  padding-block: 42px;
+}
+
+.work-media-strip {
+  display: grid;
+  grid-auto-columns: minmax(360px, 78%);
+  grid-auto-flow: column;
+  gap: 14px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+.work-media-strip > .project-media,
+.work-media-strip > .project-graphic {
+  width: 100%;
+  min-height: 360px;
+  aspect-ratio: 16 / 10;
+  scroll-snap-align: start;
+}
+
+.work-row-copy {
+  padding: 4px 0;
+}
+
+.work-row h2 {
+  margin-top: 42px;
+  font-size: clamp(42px, 4vw, 68px);
+}
+
+.work-row h2 + p {
+  display: block;
+  max-width: 780px;
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1.58;
+  -webkit-line-clamp: unset;
+}
+
+.work-row-copy > a {
+  margin-top: auto;
+  padding-top: 28px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.cv-hero {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+}
+
+.cv-hero-copy {
+  max-width: 1040px;
+  padding-right: 0;
+}
+
+.cv-hero-summary {
+  max-width: 920px;
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.cv-education {
+  grid-template-columns: minmax(190px, 0.24fr) minmax(0, 1fr);
+  gap: 44px;
+}
+
+.cv-education h2,
+.cv-section-heading h2 {
+  font-size: clamp(42px, 4.6vw, 64px);
+}
+
+.cv-coursework summary {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  padding: 22px 0;
+}
+
+.cv-coursework summary span {
+  font-size: 22px;
+}
+
+.cv-coursework summary strong {
+  font-size: 14px;
+}
+
+.cv-coursework summary b {
+  color: var(--signal);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.cv-coursework[open] summary b {
+  transform: rotate(45deg);
+}
+
+.cv-coursework-grid h3,
+.cv-selected-courses h3,
+.cv-entry-details h4 {
+  font-size: 13px;
+}
+
+.cv-coursework-grid p,
+.cv-selected-courses li {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.cv-section-heading {
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+.cv-entry,
+.cv-entry:not(:has(.cv-entry-media)) {
+  grid-template-columns: 150px minmax(0, 1fr);
+  padding: 32px 0 36px;
+}
+
+.cv-entry-heading p {
+  font-size: 12px;
+}
+
+.cv-entry-heading h3 {
+  font-size: clamp(34px, 3.6vw, 52px);
+}
+
+.cv-entry-mark {
+  border-radius: 0;
+  background: transparent;
+  mix-blend-mode: multiply;
+  filter: grayscale(0.2) contrast(1.04);
+}
+
+.cv-entry-summary {
+  max-width: 960px;
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.cv-entry-disclosure {
+  border-top: 1px solid var(--line);
+  margin-top: 20px;
+  padding-top: 18px;
+}
+
+.cv-entry-expanded {
+  padding-top: 0;
+}
+
+.cv-entry-details {
+  max-width: 1100px;
+  gap: 54px;
+}
+
+.cv-entry-details li {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.58;
+}
+
+.cv-entry blockquote {
+  max-width: 1100px;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.background-section-images-only {
+  grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+  grid-template-rows: minmax(460px, 1fr);
+  border-top: 1px solid var(--ink);
+  border-bottom: 0;
+  margin-top: 22px;
+  padding: 46px 0 0;
+}
+
+.background-section-images-only .background-main-image,
+.background-section-images-only .background-secondary-image {
+  min-height: 460px;
+}
+
+.sports-section {
+  padding-top: 12px;
+}
+
+.sports-section .section-heading {
+  align-items: flex-start;
+}
+
+.sports-section .section-heading > p {
+  max-width: 760px;
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.sports-groups strong {
+  font-size: 18px;
+}
+
+@media (max-width: 1080px) {
+  .work-row {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .work-media-strip {
+    grid-auto-columns: minmax(300px, 78vw);
+  }
+
+  .cv-education {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-media-strip {
+    grid-auto-columns: minmax(260px, 86vw);
+  }
+
+  .work-media-strip > .project-media,
+  .work-media-strip > .project-graphic {
+    min-height: 280px;
+  }
+
+  .cv-entry,
+  .cv-entry:not(:has(.cv-entry-media)) {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-coursework summary {
+    grid-template-columns: 1fr auto;
+  }
+
+  .cv-coursework summary strong {
+    grid-column: 1 / -1;
+  }
+
+  .background-section-images-only {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, minmax(300px, 1fr));
+  }
+}

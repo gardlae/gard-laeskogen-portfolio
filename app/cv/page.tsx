@@ -63,8 +63,7 @@ function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number 
         {item.summary && <p className="cv-entry-summary">{item.summary}</p>}
 
         {hasDetails && (
-          <details className="cv-entry-disclosure" open={item.initiallyExpanded}>
-            <summary><span>Responsibilities and evidence</span><span aria-hidden="true">+</span></summary>
+          <div className="cv-entry-disclosure">
             <div className="cv-entry-expanded">
               {item.positions && <ul className="cv-positions">{item.positions.map((value) => <li key={value}>{value}</li>)}</ul>}
               {(item.responsibilities || item.impact) && (
@@ -73,7 +72,7 @@ function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number 
                     <div><h4>Responsibility</h4><ul>{item.responsibilities.map((value) => <li key={value}>{value}</li>)}</ul></div>
                   )}
                   {item.impact && (
-                    <div><h4>Evidence</h4><ul>{item.impact.map((value) => <li key={value}>{value}</li>)}</ul></div>
+                    <div><h4>Impact</h4><ul>{item.impact.map((value) => <li key={value}>{value}</li>)}</ul></div>
                   )}
                 </div>
               )}
@@ -94,7 +93,7 @@ function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number 
                 </div>
               )}
             </div>
-          </details>
+          </div>
         )}
       </div>
     </article>
@@ -119,17 +118,6 @@ export default function ExperiencePage() {
             </div>
           </div>
 
-          <figure className="cv-portrait">
-            <Image
-              alt="Gard Laeskogen"
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 38vw"
-              src="/media/cv-portrait.jpg"
-              unoptimized
-            />
-          </figure>
-
           <aside className="cv-snapshot" aria-label="CV overview">
             <div><span>Current</span><strong>MSc Cybernetics and Robotics/NTNU</strong></div>
             <div><span>2026-27</span><strong>Graduate study / UC Berkeley</strong></div>
@@ -139,7 +127,7 @@ export default function ExperiencePage() {
         </header>
 
         <section className="cv-education" id="education" aria-labelledby="education-title">
-          <header><p className="eyebrow">Education</p><h2 id="education-title">Academic direction</h2></header>
+          <header><h2 id="education-title">Education</h2></header>
           <div className="cv-academic-content">
             <div className="cv-education-list">
               {education.map((item) => (
@@ -160,6 +148,7 @@ export default function ExperiencePage() {
               <summary>
                 <span>Completed coursework</span>
                 <strong>23 courses across 5 academic areas</strong>
+                <b aria-hidden="true">+</b>
               </summary>
               <div className="cv-coursework-grid">
                 {academicAreas.map((area) => (
@@ -172,7 +161,7 @@ export default function ExperiencePage() {
             </details>
 
             <section className="cv-selected-courses" aria-labelledby="selected-courses-title">
-              <h3 id="selected-courses-title">Selected courses</h3>
+              <h3 id="selected-courses-title">Courses outside school</h3>
               <ul>
                 {selectedCourses.map((course) => (
                   <li key={`${course.title}-${course.provider}`}>
@@ -200,15 +189,14 @@ export default function ExperiencePage() {
 
         <section className="cv-section" id="experience" aria-labelledby="experience-title">
           <header className="cv-section-heading">
-            <div><p className="eyebrow">Professional experience</p><h2 id="experience-title">Engineering and operations</h2></div>
-            <p>Computer vision, UAV development, operational environments, and work in the family business.</p>
+            <div><h2 id="experience-title">Experience</h2></div>
           </header>
           <div>{professionalExperience.map((item, index) => <ExperienceEntry index={index} item={item} key={`${item.role}-${item.period}`} />)}</div>
         </section>
 
         <section className="cv-section" id="leadership" aria-labelledby="leadership-title">
           <header className="cv-section-heading">
-            <div><p className="eyebrow">Leadership and activities</p><h2 id="leadership-title">Responsibility beyond the role</h2></div>
+            <div><h2 id="leadership-title">Leadership and activities</h2></div>
           </header>
           <div>{leadershipAndActivities.map((item, index) => <ExperienceEntry index={index} item={item} key={`${item.role}-${item.period}`} />)}</div>
         </section>
