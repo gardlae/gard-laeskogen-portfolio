@@ -75,9 +75,9 @@ export const allProjects: PortfolioProject[] = [
       "state machines",
     ],
     cover: {
-      kind: "graphic",
-      label: "Distributed control",
-      detail: "Networking and fault recovery",
+      kind: "image",
+      src: "/media/distributed-elevator-system.jpg",
+      alt: "Laboratory elevator rigs used for distributed control testing",
     },
     media: [],
     links: [

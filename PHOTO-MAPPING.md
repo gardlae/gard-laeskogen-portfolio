@@ -21,6 +21,7 @@ Approved for public website: Yes
 
 | Published file | Current assignment | Placement | Approval |
 | --- | --- | --- | --- |
+| `distributed-elevator-system.jpg` (source: `signal-2026-07-11-07-30-23-935.png`) | `distributed-elevator-system` | Cover | Confirmed by Gard |
 | `fpv-drone-build.jpg` | `fpv-drone-builds` | Cover | Needs confirmation |
 | `fpv-drone-flight.jpg` (source: `drone.jpg`) | `fpv-drone-builds` | Supporting | Confirmed by Gard |
 | `story-clip-2.mp4` | `fpv-drone-builds` | Supporting video | Needs confirmation |

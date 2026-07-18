@@ -13,6 +13,7 @@ const sources = [
   "profile-contactor.jpg",
   "contactor-ntnu-team.jpeg",
   "contactor-ntnu-leadership.jpeg",
+  "distributed-elevator-system.jpg",
   "fpv-drone-build.jpg",
   "fpv-drone-flight.jpg",
   "fpv-drone-table.jpg",
