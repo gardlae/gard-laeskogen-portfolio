@@ -28,10 +28,10 @@ Approved for public website: Yes
 | `fpv-drone-table.jpg` | `fpv-drone-builds` | Supporting | Needs confirmation |
 | `signal-box-exterior.jpg` | `fpv-drone-builds` | Supporting | Needs confirmation |
 | `signal-box-interior.jpg` | `fpv-drone-builds` | Supporting | Needs confirmation |
-| `servo-labeled-system.png` | `analog-servo-controller` | Cover | Needs confirmation |
-| `control-system-diagram.png` | `analog-servo-controller` | Supporting | Needs confirmation |
-| `servo-breadboard-full.jpg` | `analog-servo-controller` | Supporting | Needs confirmation |
-| `servo-schematic.png` | `analog-servo-controller` | Supporting | Needs confirmation |
+| `servo-labeled-system.png` (English version of `signal-2026-07-11-07-26-27-941.jpg`) | `analog-servo-controller` | Cover | Confirmed by Gard |
+| `control-system-diagram.png` (source: `control-system-diagram-english.png`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
+| `servo-breadboard-full.jpg` (source: `IMG_6505.jpg`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
+| `servo-schematic.png` (source: `signal-2026-07-11-07-26-27-941_002.png`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
 | `family-business.jpg` | `hospitality-investment-analysis` | Cover | Needs confirmation |
 
 ## Experience Images
