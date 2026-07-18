@@ -19,6 +19,11 @@ export default function ContactPage() {
           <p className="eyebrow">Contact</p>
           <h1>Book a conversation</h1>
           <p>Request the detailed material or arrange a short conversation.</p>
+          <div className="contact-links" aria-label="Contact links">
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn ↗</a>
+            <a href={site.github} rel="noreferrer" target="_blank">GitHub ↗</a>
+          </div>
         </header>
 
         <section className="contact-layout">

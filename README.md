@@ -136,6 +136,8 @@ NEXT_PUBLIC_STORY_VIDEO=/media/story-final.mp4
 
 Approved detailed files should be shared manually through a restricted OneDrive or equivalent link.
 
+Photo assignments are tracked in [`PHOTO-MAPPING.md`](PHOTO-MAPPING.md). Treat that file as the source of truth and do not infer a project or experience from appearance alone.
+
 ## Run Locally
 
 ```bash

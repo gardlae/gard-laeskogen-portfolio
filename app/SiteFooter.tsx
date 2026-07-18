@@ -17,6 +17,7 @@ export function SiteFooter() {
       <div>
         <a href={`mailto:${site.email}`}>{site.email}</a>
         <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn ↗</a>
+        <a href={site.github} rel="noreferrer" target="_blank">GitHub ↗</a>
       </div>
     </footer>
   );

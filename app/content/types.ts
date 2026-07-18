@@ -3,6 +3,7 @@ export type SiteConfig = {
   email: string;
   phone: string;
   linkedin: string;
+  github: string;
   location: string;
   headline: string;
   canonicalUrl: string;
