@@ -30,6 +30,11 @@ export const allProjects: PortfolioProject[] = [
     },
     media: [
       {
+        kind: "image",
+        src: "/media/fpv-drone-flight.jpg",
+        alt: "FPV drone flying outdoors",
+      },
+      {
         kind: "video",
         src: "/media/story-clip-2.mp4",
         poster: "/media/story-clip-2-poster.jpg",

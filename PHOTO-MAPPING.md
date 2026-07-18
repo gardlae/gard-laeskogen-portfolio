@@ -22,6 +22,7 @@ Approved for public website: Yes
 | Published file | Current assignment | Placement | Approval |
 | --- | --- | --- | --- |
 | `fpv-drone-build.jpg` | `fpv-drone-builds` | Cover | Needs confirmation |
+| `fpv-drone-flight.jpg` (source: `drone.jpg`) | `fpv-drone-builds` | Supporting | Confirmed by Gard |
 | `story-clip-2.mp4` | `fpv-drone-builds` | Supporting video | Needs confirmation |
 | `fpv-drone-table.jpg` | `fpv-drone-builds` | Supporting | Needs confirmation |
 | `signal-box-exterior.jpg` | `fpv-drone-builds` | Supporting | Needs confirmation |
