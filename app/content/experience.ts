@@ -212,9 +212,44 @@ export const academicAreas: AcademicArea[] = [
 ];
 
 export const skillGroups: SkillGroup[] = [
-  { label: "Programming", values: ["Python", "C", "C++"] },
-  { label: "Tools", values: ["Excel", "LaTeX"] },
-  { label: "Working knowledge", values: ["HTML", "CSS"] },
+  {
+    label: "UAV and mechatronics",
+    values: [
+      "UAV design and integration",
+      "Mechatronics",
+      "Prototyping",
+      "Production-oriented design",
+    ],
+  },
+  {
+    label: "Radio and embedded systems",
+    values: [
+      "Analog radio",
+      "Software-defined radio",
+      "Firmware",
+      "Soldering",
+    ],
+  },
+  {
+    label: "Distributed real-time software",
+    values: [
+      "Real-time systems",
+      "Distributed systems",
+      "Networking",
+      "Fault tolerance",
+      "Concurrency",
+    ],
+  },
+  {
+    label: "Control and instrumentation",
+    values: [
+      "Analog electronics",
+      "Signal conditioning",
+      "PI and position control",
+      "Oscilloscope measurements",
+      "Frequency-response analysis",
+    ],
+  },
 ];
 
 export const featuredSkills = skillGroups.flatMap((group) => group.values);
