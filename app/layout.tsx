@@ -7,29 +7,29 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.canonicalUrl),
   title: {
-    default: "Gard Laeskogen | Cybernetics, UAV Systems, Leadership",
+    default: "Gard Laeskogen",
     template: "%s | Gard Laeskogen",
   },
   description:
     "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
   alternates: { canonical: site.canonicalUrl },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/favicon-transparent.svg",
+    shortcut: "/favicon-transparent.svg",
   },
   openGraph: {
     type: "website",
     locale: "en_GB",
     url: site.canonicalUrl,
     siteName: site.name,
-    title: "Gard Laeskogen | Cybernetics, UAV Systems, Leadership",
+    title: "Gard Laeskogen",
     description:
       "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
     images: [{ url: "/social-card.jpg", width: 1200, height: 630, alt: "Gard Laeskogen" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gard Laeskogen | Cybernetics, UAV Systems, Leadership",
+    title: "Gard Laeskogen",
     description:
       "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
     images: ["/social-card.jpg"],

@@ -26,7 +26,6 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="header-inner">
         <Link className="site-brand" href="/">
-          <span>GL</span>
           <strong>Gard Laeskogen</strong>
         </Link>
 
