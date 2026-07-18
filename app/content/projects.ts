@@ -25,25 +25,15 @@ export const allProjects: PortfolioProject[] = [
     ],
     cover: {
       kind: "image",
-      src: "/media/fpv-drone-build.jpg",
-      alt: "FPV drone build",
+      src: "/media/fpv-drone-flight.jpg",
+      alt: "FPV drone flying outdoors",
     },
     media: [
-      {
-        kind: "image",
-        src: "/media/fpv-drone-flight.jpg",
-        alt: "FPV drone flying outdoors",
-      },
       {
         kind: "video",
         src: "/media/story-clip-2.mp4",
         poster: "/media/story-clip-2-poster.jpg",
         alt: "FPV drone project video",
-      },
-      {
-        kind: "image",
-        src: "/media/fpv-drone-table.jpg",
-        alt: "FPV drone on a workbench",
       },
       {
         kind: "image",
