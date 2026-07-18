@@ -1,4 +1,4 @@
-import type { EducationItem, ExperienceItem } from "./types";
+import type { EducationItem, ExperienceItem, SkillGroup } from "./types";
 
 // Source: CV notes for website.docx. Gard owns and approves the wording in this file.
 export const professionalExperience: ExperienceItem[] = [
@@ -28,6 +28,7 @@ export const professionalExperience: ExperienceItem[] = [
     impact: ["More than USD 1 million in R&D funding."],
     recommendation:
       "During his employment, Gard worked as an engineer in a UAV unit with Norwegian and international partners. He showed a very high level of dedication and ownership towards the unit's task, demonstrated a high working capacity, and achieved results above expectations. He was easy to cooperate with, communicated very well with colleagues, and is strongly recommended for similar work.",
+    initiallyExpanded: true,
     evidence: [
       {
         src: "/media/norwegian-armed-forces-mark.jpg",
@@ -59,12 +60,12 @@ export const professionalExperience: ExperienceItem[] = [
     ],
   },
   {
-    period: "Aug 2017 - Present",
+    period: "Aug 2017 - Aug 2023",
     role: "Part-time Employee and Board Member",
     place: "Sundvolden Hotel",
     location: "Krokkleiva, Norway",
     summary: "Our family business.",
-    positions: ["Hotel trainee | Aug 2017 - Aug 2023", "Board member"],
+    positions: ["Hotel trainee", "Board member"],
     responsibilities: [
       "Rotated across reception, restaurant, conference, and maintenance departments.",
       "Lived at the hotel for six months during COVID and ran the a la carte restaurant that summer.",
@@ -72,14 +73,19 @@ export const professionalExperience: ExperienceItem[] = [
     ],
     evidence: [
       {
-        src: "/media/family-business.jpg",
-        alt: "Gard Laeskogen with his family outside Sundvolden Hotel",
-        presentation: "photo",
-      },
-      {
         src: "/media/sundvolden-mark.png",
         alt: "Sundvolden Hotel mark",
         presentation: "mark",
+      },
+    ],
+    links: [
+      {
+        label: "Family business background",
+        href: "https://www.linkedin.com/posts/sundvolden-hotel_dehistoriske-familiebedrift-sundvoldenhotel-activity-7476937451584958464-0Ilb",
+      },
+      {
+        label: "Board work at Sundvolden",
+        href: "https://www.linkedin.com/posts/sundvolden-hotel_styremaeote-sundvoldenhotel-dehistoriske-activity-7475929603681955841-bAFT",
       },
     ],
   },
@@ -94,7 +100,7 @@ export const leadershipAndActivities: ExperienceItem[] = [
       "Managed relationships with key industry partners.",
       "Organized company presentations, stands, and workshops with partner companies.",
     ],
-    impact: ["Generated NOK 0.9 million in revenue for Omega Linjeforening."],
+    impact: ["Generated NOK 0.9 million in revenue for the Omega student association."],
     evidence: [
       {
         src: "/media/contactor-ntnu-team.jpeg",
@@ -141,7 +147,7 @@ export const education: EducationItem[] = [
   {
     period: "Expected Jun 2028",
     institution: "Norwegian University of Science and Technology (NTNU)",
-    qualification: "M.Sc. Cybernetics and Robotics",
+    qualification: "MSc Cybernetics and Robotics",
     location: "Trondheim, Norway",
     status: "current",
   },
@@ -155,7 +161,13 @@ export const education: EducationItem[] = [
   },
 ];
 
-export const featuredSkills = ["Python", "C", "C++", "Excel", "LaTeX", "HTML", "CSS"];
+export const skillGroups: SkillGroup[] = [
+  { label: "Programming", values: ["Python", "C", "C++"] },
+  { label: "Tools", values: ["Excel", "LaTeX"] },
+  { label: "Working knowledge", values: ["HTML", "CSS"] },
+];
+
+export const featuredSkills = skillGroups.flatMap((group) => group.values);
 
 export const languages = ["Norwegian | Native", "English | Fluent"];
 

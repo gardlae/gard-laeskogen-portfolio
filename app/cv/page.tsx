@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   education,
-  featuredSkills,
   languages,
   leadershipAndActivities,
   professionalExperience,
+  skillGroups,
   site,
 } from "../content";
 import type { ExperienceItem } from "../content/types";
@@ -21,6 +21,17 @@ export const metadata: Metadata = {
 };
 
 function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number }) {
+  const mark = item.evidence.find((evidence) => evidence.presentation === "mark");
+  const photos = item.evidence.filter((evidence) => evidence.presentation === "photo");
+  const hasDetails = Boolean(
+    item.positions?.length ||
+      item.responsibilities?.length ||
+      item.impact?.length ||
+      item.recommendation ||
+      item.links?.length ||
+      photos.length,
+  );
+
   return (
     <article className="cv-entry">
       <div className="cv-entry-meta">
@@ -34,12 +45,12 @@ function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number 
             <p>{item.place}{item.location ? ` / ${item.location}` : ""}</p>
             <h3>{item.role}</h3>
           </div>
-          {item.evidence.find((evidence) => evidence.presentation === "mark") && (
+          {mark && (
             <Image
-              alt={item.evidence.find((evidence) => evidence.presentation === "mark")!.alt}
+              alt={mark.alt}
               className="cv-entry-mark"
               height={72}
-              src={item.evidence.find((evidence) => evidence.presentation === "mark")!.src}
+              src={mark.src}
               unoptimized
               width={72}
             />
@@ -47,32 +58,42 @@ function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number 
         </div>
 
         {item.summary && <p className="cv-entry-summary">{item.summary}</p>}
-        {item.positions && <ul className="cv-positions">{item.positions.map((value) => <li key={value}>{value}</li>)}</ul>}
 
-        {(item.responsibilities || item.impact) && (
-          <div className="cv-entry-details">
-            {item.responsibilities && (
-              <div><h4>Responsibility</h4><ul>{item.responsibilities.map((value) => <li key={value}>{value}</li>)}</ul></div>
-            )}
-            {item.impact && (
-              <div><h4>Evidence</h4><ul>{item.impact.map((value) => <li key={value}>{value}</li>)}</ul></div>
-            )}
-          </div>
+        {hasDetails && (
+          <details className="cv-entry-disclosure" open={item.initiallyExpanded}>
+            <summary><span>Responsibilities and evidence</span><span aria-hidden="true">+</span></summary>
+            <div className="cv-entry-expanded">
+              {item.positions && <ul className="cv-positions">{item.positions.map((value) => <li key={value}>{value}</li>)}</ul>}
+              {(item.responsibilities || item.impact) && (
+                <div className="cv-entry-details">
+                  {item.responsibilities && (
+                    <div><h4>Responsibility</h4><ul>{item.responsibilities.map((value) => <li key={value}>{value}</li>)}</ul></div>
+                  )}
+                  {item.impact && (
+                    <div><h4>Evidence</h4><ul>{item.impact.map((value) => <li key={value}>{value}</li>)}</ul></div>
+                  )}
+                </div>
+              )}
+              {item.recommendation && <blockquote>{item.recommendation}<cite>Recommendation from unit leadership</cite></blockquote>}
+              {photos.length > 0 && (
+                <div className="cv-entry-media">
+                  {photos.map((evidence) => (
+                    <figure key={evidence.src}>
+                      <ResponsiveImage alt={evidence.alt} sizes="(max-width: 768px) 100vw, 38vw" src={evidence.src} />
+                      {evidence.caption && <figcaption>{evidence.caption}</figcaption>}
+                    </figure>
+                  ))}
+                </div>
+              )}
+              {item.links && (
+                <div className="cv-source-links">
+                  {item.links.map((link) => <a href={link.href} key={link.href} rel="noreferrer" target="_blank">{link.label}</a>)}
+                </div>
+              )}
+            </div>
+          </details>
         )}
-
-        {item.recommendation && <blockquote>{item.recommendation}<cite>Recommendation from unit leadership</cite></blockquote>}
       </div>
-
-      {item.evidence.find((evidence) => evidence.presentation === "photo") && (
-        <div className="cv-entry-media">
-          {item.evidence.filter((evidence) => evidence.presentation === "photo").map((evidence) => (
-            <figure key={evidence.src}>
-              <ResponsiveImage alt={evidence.alt} sizes="(max-width: 768px) 100vw, 31vw" src={evidence.src} />
-              {evidence.caption && <figcaption>{evidence.caption}</figcaption>}
-            </figure>
-          ))}
-        </div>
-      )}
     </article>
   );
 }
@@ -84,16 +105,15 @@ export default function ExperiencePage() {
       <div className="page-shell page-top cv-page">
         <header className="cv-hero">
           <div className="cv-hero-copy">
-            <p className="eyebrow">Curriculum vitae / 2026</p>
-            <h1>Engineering shaped by operational responsibility.</h1>
+            <p className="eyebrow">Gard Laeskogen / Curriculum vitae</p>
+            <h1>Cybernetics, robotics and operational experience.</h1>
             <p className="cv-hero-summary">
-              Master’s student in Cybernetics and Robotics with hands-on experience from the Norwegian Special Operations Command. Experience includes leadership, problem-solving under pressure, and strategic communication.
+              Master’s student in Cybernetics and Robotics with hands-on experience from the Norwegian Special Operations Command. Experience includes leadership, problem-solving under pressure, and strategic communication. Seeking a challenging role in technology or defence.
             </p>
-            <nav className="cv-jump-links" aria-label="CV sections">
-              <a href="#experience">Experience</a>
-              <a href="#education">Education</a>
-              <a href="#leadership">Leadership</a>
-            </nav>
+            <div className="cv-hero-actions">
+              <Link className="button button-dark" href="/portfolio">View engineering work</Link>
+              <Link className="button button-light" href="/request#documents">Request detailed CV</Link>
+            </div>
           </div>
 
           <figure className="cv-portrait">
@@ -107,15 +127,11 @@ export default function ExperiencePage() {
             />
           </figure>
 
-          <aside className="cv-contact-rail">
-            <div><span>Based in</span><strong>{site.location}</strong></div>
-            <div><span>Focus</span><strong>Cybernetics / Robotics / UAV systems</strong></div>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
-            <a href={`tel:${site.phone.replaceAll(" ", "")}`}>{site.phone}</a>
-            <div className="cv-hero-actions">
-              <Link className="button button-dark" href="/portfolio">View engineering work</Link>
-              <Link className="button button-light" href="/request#documents">Request detailed CV</Link>
-            </div>
+          <aside className="cv-snapshot" aria-label="CV overview">
+            <div><span>Current</span><strong>MSc Cybernetics and Robotics / NTNU</strong></div>
+            <div><span>2026-27</span><strong>Robotics and AI / UC Berkeley</strong></div>
+            <div><span>Selected engineering</span><strong>Lead R&amp;D Engineer / UAV Unit</strong></div>
+            <div><span>Contact</span><a href={`mailto:${site.email}`}>{site.email}</a></div>
           </aside>
         </header>
 
@@ -136,7 +152,7 @@ export default function ExperiencePage() {
         <section className="cv-section" id="experience" aria-labelledby="experience-title">
           <header className="cv-section-heading">
             <div><p className="eyebrow">Professional experience</p><h2 id="experience-title">Engineering and operations</h2></div>
-            <p>Selected work across computer vision, UAV development, operational environments, and a family business.</p>
+            <p>Computer vision, UAV development, operational environments, and work in the family business.</p>
           </header>
           <div>{professionalExperience.map((item, index) => <ExperienceEntry index={index} item={item} key={`${item.role}-${item.period}`} />)}</div>
         </section>
@@ -151,7 +167,7 @@ export default function ExperiencePage() {
         <section className="cv-capabilities" aria-labelledby="capabilities-title">
           <header><p className="eyebrow">Skills and interests</p><h2 id="capabilities-title">Working toolkit</h2></header>
           <div>
-            <section><h3>Programming and tools</h3><ul>{featuredSkills.map((skill) => <li key={skill}>{skill}</li>)}</ul></section>
+            {skillGroups.map((group) => <section key={group.label}><h3>{group.label}</h3><ul>{group.values.map((skill) => <li key={skill}>{skill}</li>)}</ul></section>)}
             <section><h3>Languages</h3><ul>{languages.map((language) => <li key={language}>{language}</li>)}</ul></section>
           </div>
           <aside><p>Need the formal CV or an extended portfolio?</p><Link className="button button-dark" href="/request#documents">Request detailed documents</Link></aside>

@@ -69,6 +69,14 @@ for (const item of [...professionalExperience, ...leadershipAndActivities]) {
   for (const evidence of item.evidence) {
     checkMediaPath(evidence.src, `${item.role} experience`);
   }
+
+  for (const link of item.links ?? []) {
+    try {
+      new URL(link.href);
+    } catch {
+      fail(`${item.role}: invalid evidence link ${link.href}`);
+    }
+  }
 }
 
 if (publicProjects.some((project) => project.visibility !== "public")) {

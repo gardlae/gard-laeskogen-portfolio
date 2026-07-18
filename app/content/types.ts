@@ -63,6 +63,11 @@ export type ExperienceEvidence = {
   presentation?: "photo" | "mark";
 };
 
+export type ExperienceLink = {
+  label: string;
+  href: string;
+};
+
 export type ExperienceItem = {
   period: string;
   role: string;
@@ -73,6 +78,8 @@ export type ExperienceItem = {
   responsibilities?: string[];
   impact?: string[];
   recommendation?: string;
+  initiallyExpanded?: boolean;
+  links?: ExperienceLink[];
   evidence: ExperienceEvidence[];
 };
 
@@ -83,4 +90,9 @@ export type EducationItem = {
   location: string;
   status?: "current" | "upcoming";
   detail?: string;
+};
+
+export type SkillGroup = {
+  label: string;
+  values: string[];
 };
