@@ -1503,7 +1503,8 @@ button {
 }
 
 .booking-panel,
-.document-request-form {
+.document-request-form,
+.contact-message-form {
   margin-top: auto;
   padding-top: 22px;
 }
@@ -1532,11 +1533,17 @@ button {
   cursor: pointer;
 }
 
-.document-request-form label {
+.document-request-form label,
+.contact-message-form label {
   display: block;
 }
 
-.document-request-form label span {
+.contact-message-form label + label {
+  margin-top: 12px;
+}
+
+.document-request-form label span,
+.contact-message-form label span {
   display: block;
   margin-bottom: 8px;
   color: #c7ccce;
@@ -1545,19 +1552,50 @@ button {
   text-transform: uppercase;
 }
 
-.document-request-form input {
+.document-request-form input,
+.contact-message-form input,
+.contact-message-form textarea {
   width: 100%;
-  height: 50px;
   border: 1px solid #687075;
   border-radius: 0;
-  padding: 0 14px;
   background: #25292c;
   color: var(--white);
   font-size: 16px;
 }
 
-.document-request-form > button {
+.document-request-form input,
+.contact-message-form input {
+  height: 50px;
+  padding: 0 14px;
+}
+
+.contact-message-form textarea {
+  min-height: 124px;
+  resize: vertical;
+  padding: 14px;
+  font: inherit;
+  line-height: 1.45;
+}
+
+.document-request-form > button,
+.contact-message-form > button {
   margin-top: 12px;
+}
+
+.contact-message-form > button:disabled {
+  opacity: 0.62;
+  cursor: progress;
+}
+
+.form-status {
+  margin-top: 12px;
+  color: #d9f1df;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-status-error {
+  color: #ffd5d5;
 }
 
 .form-fallback {

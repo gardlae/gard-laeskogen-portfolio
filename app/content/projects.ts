@@ -171,10 +171,10 @@ export const allProjects: PortfolioProject[] = [
     title: "Flipper-zero exploration",
     category: "Free time",
     duration: "Aug 2022-Sep 2023",
-    visibility: "draft",
+    visibility: "public",
     featured: false,
     contribution:
-      "Bought and set up flipper-zero with WiFi-Devboard. Experimented with different use cases like: TV controller, RFID card, WiFi disturbance, Disturbance of Bluetooth units",
+      "Bought and set up Flipper Zero with WiFi Devboard. Experimented with different use cases like TV controller, RFID card, WiFi disturbance, and disturbance of Bluetooth units.",
     methods: [
       "embedded setup",
       "wireless protocol fundamentals",
@@ -189,10 +189,10 @@ export const allProjects: PortfolioProject[] = [
   },
   {
     slug: "cutlery-sorting-machine",
-    title: "Cutlery sorting machine -coming soon",
+    title: "Cutlery sorting machine - coming soon",
     category: "Free time",
     duration: "Jul 2026 - Present",
-    visibility: "draft",
+    visibility: "public",
     featured: false,
     context: "Coming soon.",
     methods: ["mechatronics", "sensors", "mechanical layout", "prototyping"],

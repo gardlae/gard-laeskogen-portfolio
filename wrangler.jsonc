@@ -4,5 +4,10 @@
   "compatibility_date": "2026-07-18",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./worker/index.ts",
-  "workers_dev": true
+  "workers_dev": true,
+  "vars": {
+    "CONTACT_TO_EMAIL": "gard@sundvolden.no",
+    "CONTACT_FROM_EMAIL": "website@gardlaeskogen.com",
+    "NEXT_PUBLIC_BOOKING_URL": "https://cal.com/gard-laeskogen-s4byyh/quick-chat"
+  }
 }

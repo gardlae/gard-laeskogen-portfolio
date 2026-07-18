@@ -18,7 +18,7 @@ export default function ContactPage() {
         <header className="page-intro contact-intro">
           <p className="eyebrow">Contact</p>
           <h1>Set up a chat</h1>
-          <p>Arrange a short chat or request the detailed CV and portfolio.</p>
+          <p>Book a short conversation or send a direct message.</p>
           <div className="contact-links" aria-label="Contact links">
             <a href={`mailto:${site.email}`}>{site.email}</a>
             <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn ↗</a>
@@ -31,14 +31,14 @@ export default function ContactPage() {
           <article id="schedule">
             <div><span>01</span><p className="eyebrow">Chat</p></div>
             <h2>Find a time to talk</h2>
-            <p>Email remains available when the booking service is blocked or unavailable.</p>
+            <p>Pick an available slot directly in the calendar.</p>
             <BookingPanel />
           </article>
 
           <article className="document-panel" id="documents">
-            <div><span>02</span><p className="eyebrow">Private documents</p></div>
-            <h2>Detailed CV and portfolio</h2>
-            <p>The files are shared directly with selected companies and recruiters.</p>
+            <div><span>02</span><p className="eyebrow">Message</p></div>
+            <h2>Send a note</h2>
+            <p>Send a short message without opening your own email app.</p>
             <RequestForm />
           </article>
         </section>
