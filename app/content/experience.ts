@@ -190,6 +190,13 @@ export const selectedCourses: SelectedCourse[] = [
   },
 ];
 
+export const hackathons = [
+  {
+    title: "AI on Watch DNV Hackathon 2025",
+    href: "https://technologyinsights.dnv.com/ai-on-watch---insights-from-the-dnv-brain-hackathon-2025/?utm_medium=DNV&utm_campaign=GROUP%2CALADEC%2CAI-DIGITALIZATION%2CGRD&utm_source=linkedin&utm_content=7d57bde053f04ef9b17c38e8f9c1474b-4411",
+  },
+] satisfies import("./types").Hackathon[];
+
 // Source: NTNU transcript supplied by Gard, covering studies through spring 2026.
 export const academicAreas: AcademicArea[] = [
   {

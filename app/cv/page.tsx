@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   academicAreas,
   education,
+  hackathons,
   languages,
   leadershipAndActivities,
   professionalExperience,
@@ -180,6 +181,19 @@ export default function ExperiencePage() {
                   </li>
                 ))}
               </ul>
+            </section>
+
+            <section className="cv-selected-courses" aria-labelledby="hackathons-title">
+              <h3 id="hackathons-title">Hackathons</h3>
+              <ol>
+                {hackathons.map((hackathon) => (
+                  <li key={hackathon.title}>
+                    <a href={hackathon.href} rel="noreferrer" target="_blank">
+                      <strong>{hackathon.title}</strong>
+                    </a>
+                  </li>
+                ))}
+              </ol>
             </section>
           </div>
         </section>

@@ -83,7 +83,7 @@ export const allProjects: PortfolioProject[] = [
     category: "School",
     duration: "Jan 2023-Mar 2023",
     visibility: "public",
-    featured: true,
+    featured: false,
     contribution:
       "Built and tested an analog servo motor control system for a DC motor, including speed and position measurement, controller tuning, and frequency-response analysis.",
     methods: [
@@ -124,7 +124,7 @@ export const allProjects: PortfolioProject[] = [
     category: "Free time",
     duration: "Apr 2021-Aug 2021 (2. Year high-school)",
     visibility: "public",
-    featured: false,
+    featured: true,
     context:
       "Started building a social platform, to facilitate physical meetups like social training and events when the lockdown was coming to an end during COVID. I got the company registered built an early prototype, spoke with mentors but soon realized I didn’t have the software skillset needed to build this.\n\nThis lack of knowledge motivated me to start getting into software programming. I started by taking the CS50: Introduction to Computer Science -online Harvard course and changed courses in school to pursuit this direction.",
     methods: [

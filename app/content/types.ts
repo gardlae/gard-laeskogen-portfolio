@@ -105,6 +105,11 @@ export type SelectedCourse = {
   period?: string;
 };
 
+export type Hackathon = {
+  title: string;
+  href: string;
+};
+
 export type SkillGroup = {
   label: string;
   values: string[];

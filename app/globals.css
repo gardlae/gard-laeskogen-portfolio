@@ -2620,7 +2620,8 @@ button {
   text-transform: uppercase;
 }
 
-.cv-selected-courses ul {
+.cv-selected-courses ul,
+.cv-selected-courses ol {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -2634,6 +2635,11 @@ button {
 
 .cv-selected-courses strong {
   color: var(--ink);
+}
+
+.cv-selected-courses a:hover strong {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .cv-section {
