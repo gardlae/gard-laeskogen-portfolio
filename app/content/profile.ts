@@ -6,7 +6,7 @@ export const site: SiteConfig = {
   phone: "+47 466 34 552",
   linkedin: "https://www.linkedin.com/in/gard-laeskogen",
   github: "https://github.com/gardlae",
-  yCombinator: "https://www.startupschool.org/cofounder-matching/settings",
+  yCombinator: "https://www.startupschool.org/cofounder-matching",
   location: "California, USA",
   headline: "Student | M. Sc. Cybernetics and Robotics | NTNU",
   canonicalUrl: "https://www.gardlaeskogen.com",
