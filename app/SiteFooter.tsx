@@ -16,9 +16,9 @@ export function SiteFooter() {
       </nav>
       <div>
         <a href={`mailto:${site.email}`}>{site.email}</a>
-        <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn ↗</a>
-        <a href={site.github} rel="noreferrer" target="_blank">GitHub ↗</a>
-        <a href={site.yCombinator} rel="noreferrer" target="_blank">YC Cofounder Matching ↗</a>
+        <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn</a>
+        <a href={site.github} rel="noreferrer" target="_blank">GitHub</a>
+        <a href={site.yCombinator} rel="noreferrer" target="_blank">YC Cofounder Matching</a>
       </div>
     </footer>
   );
