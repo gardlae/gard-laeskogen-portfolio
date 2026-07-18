@@ -21,9 +21,9 @@ export default function ContactPage() {
           <p>Book a short conversation or send a direct message.</p>
           <div className="contact-links" aria-label="Contact links">
             <a href={`mailto:${site.email}`}>{site.email}</a>
-            <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn ↗</a>
-            <a href={site.github} rel="noreferrer" target="_blank">GitHub ↗</a>
-            <a href={site.yCombinator} rel="noreferrer" target="_blank">In my area? Let’s chat on YC ↗</a>
+            <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn</a>
+            <a href={site.github} rel="noreferrer" target="_blank">GitHub</a>
+            <a href={site.yCombinator} rel="noreferrer" target="_blank">In my area? Let’s chat on YC</a>
           </div>
         </header>
 
@@ -38,7 +38,6 @@ export default function ContactPage() {
           <article className="document-panel" id="documents">
             <div><span>02</span><p className="eyebrow">Message</p></div>
             <h2>Send a note</h2>
-            <p>Send a short message without opening your own email app.</p>
             <RequestForm />
           </article>
         </section>

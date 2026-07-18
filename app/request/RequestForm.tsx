@@ -105,17 +105,11 @@ export function RequestForm() {
 }
 
 export function BookingPanel() {
-  const [showBooking, setShowBooking] = useState(false);
   const bookingAvailable = Boolean(site.bookingUrl);
 
   return (
     <div className="booking-panel">
-      {bookingAvailable && !showBooking && (
-        <button className="button button-dark" onClick={() => setShowBooking(true)} type="button">
-          Open booking calendar
-        </button>
-      )}
-      {bookingAvailable && showBooking && (
+      {bookingAvailable && (
         <iframe
           allow="payment"
           loading="lazy"
