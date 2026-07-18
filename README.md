@@ -5,7 +5,7 @@ Recruiter-first portfolio for technical work, experience, personal background, a
 ## Project Location
 
 ```text
-/Users/gardlaeskogen/Documents/Codex/2026-07-11/i
+/Users/gardlaeskogen/Documents/personlig/CV/gard-laeskogen-portifolio
 ```
 
 GitHub: [gardlae/gard-laeskogen-portfolio](https://github.com/gardlae/gard-laeskogen-portfolio)
@@ -73,14 +73,17 @@ The three featured projects are shown on the homepage. A public project can use 
 
 Edit `app/content/experience.ts` for:
 
-- chronology and positions
+- professional chronology in `professionalExperience`
+- leadership and activities in `leadershipAndActivities`
 - summaries
 - responsibilities
 - impact
 - local evidence images
-- education and additional experience
+- education, skills, and languages
 
 Missing responsibility or impact fields stay hidden.
+
+Evidence is mapped inside the experience it belongs to. Use `presentation: "photo"` for documentary photographs and `presentation: "mark"` for an organization mark. If the source document does not clearly assign an image to an experience, leave `evidence: []`; do not use a nearby project or sports image as decoration.
 
 ### About
 

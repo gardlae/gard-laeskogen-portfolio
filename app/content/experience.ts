@@ -1,105 +1,163 @@
-import type { ExperienceItem } from "./types";
+import type { EducationItem, ExperienceItem } from "./types";
 
-export const experience: ExperienceItem[] = [
+// Source: CV notes for website.docx. Gard owns and approves the wording in this file.
+export const professionalExperience: ExperienceItem[] = [
   {
-    period: "May 2016 - Present",
-    role: "Sundvolden Hotel",
-    place: "Family business",
-    summary: "Norway's oldest family hotel, running since 1648.",
-    positions: [
-      "Banquet Waiter | May 2016 - Sep 2023",
-      "Maintenance Specialist | Apr 2017 - Aug 2023",
-      "Member, Board of Directors | Aug 2025 - Present",
+    period: "Jun 2026 - Aug 2026",
+    role: "Computer Vision Intern",
+    place: "Stealth startup",
+    location: "United Kingdom",
+    evidence: [
+      {
+        src: "/media/stealth-startup-mark.jpg",
+        alt: "Stealth startup mark",
+        presentation: "mark",
+      },
+    ],
+  },
+  {
+    period: "Mar 2025 - Dec 2025",
+    role: "Lead R&D Engineer, UAV Unit",
+    place: "Norwegian Armed Forces",
+    location: "Norway",
+    responsibilities: [
+      "Coordinated the R&D branch.",
+      "Instructed and mentored colleagues.",
+      "Worked as a specialist in technical development with Norwegian and international partners.",
+    ],
+    impact: ["More than USD 1 million in R&D funding."],
+    recommendation:
+      "During his employment, Gard worked as an engineer in a UAV unit with Norwegian and international partners. He showed a very high level of dedication and ownership towards the unit's task, demonstrated a high working capacity, and achieved results above expectations. He was easy to cooperate with, communicated very well with colleagues, and is strongly recommended for similar work.",
+    evidence: [
+      {
+        src: "/media/norwegian-armed-forces-mark.jpg",
+        alt: "Norwegian Armed Forces mark",
+        presentation: "mark",
+      },
+    ],
+  },
+  {
+    period: "Aug 2023 - Aug 2024",
+    role: "Operator, Specialist",
+    place: "Norwegian Armed Forces",
+    location: "Norway",
+    responsibilities: [
+      "Worked in small teams capable of completing extended missions in hostile environments.",
+      "Instructed units in complex mission-solving techniques.",
+      "Handled complex communication systems during missions.",
+    ],
+    impact: [
+      "Developed expertise in rapid decision-making, teamwork, and resilience under extreme conditions.",
+      "Awarded first place in an internal competition focused on physical and technical skills.",
+    ],
+    evidence: [
+      {
+        src: "/media/norwegian-armed-forces-mark.jpg",
+        alt: "Norwegian Armed Forces mark",
+        presentation: "mark",
+      },
+    ],
+  },
+  {
+    period: "Aug 2017 - Present",
+    role: "Part-time Employee and Board Member",
+    place: "Sundvolden Hotel",
+    location: "Krokkleiva, Norway",
+    summary: "Our family business.",
+    positions: ["Hotel trainee | Aug 2017 - Aug 2023", "Board member"],
+    responsibilities: [
+      "Rotated across reception, restaurant, conference, and maintenance departments.",
+      "Lived at the hotel for six months during COVID and ran the a la carte restaurant that summer.",
+      "Contributed to executive strategy meetings and decisions affecting hotel operations.",
     ],
     evidence: [
       {
         src: "/media/family-business.jpg",
-        alt: "Gard Laeskogen with family outside Sundvolden Hotel",
+        alt: "Gard Laeskogen with his family outside Sundvolden Hotel",
+        presentation: "photo",
       },
-    ],
-  },
-  {
-    period: "Jul 2022 - Jul 2023",
-    role: "Norwegian Armed Forces",
-    place: "Military service",
-    summary: "One year of military service in the Norwegian Armed Forces.",
-    positions: ["Military service | Jul 2022 - Jul 2023"],
-    evidence: [
       {
-        src: "/media/military-field.jpg",
-        alt: "Field experience in the Norwegian Armed Forces",
+        src: "/media/sundvolden-mark.png",
+        alt: "Sundvolden Hotel mark",
+        presentation: "mark",
       },
     ],
   },
+];
+
+export const leadershipAndActivities: ExperienceItem[] = [
   {
-    period: "Aug 2023 - Aug 2025",
-    role: "Contactor NTNU",
-    place: "Technical student organization at NTNU",
-    positions: [
-      "Company Contact | Aug 2023 - Jan 2024",
-      "Deputy Leader | Jan 2024 - Jun 2024",
-      "Leader | Jun 2024 - Aug 2025",
-    ],
+    period: "May 2024 - Present",
+    role: "Leader",
+    place: "Contactor NTNU",
     responsibilities: [
-      "Providing long-term relationships for companies relevant to Omega Linjeforening. Organizing company presentations, stands and workshops, and taking responsibility for major projects and collaborations involving Contactor NTNU.",
+      "Managed relationships with key industry partners.",
+      "Organized company presentations, stands, and workshops with partner companies.",
     ],
+    impact: ["Generated NOK 0.9 million in revenue for Omega Linjeforening."],
     evidence: [
       {
         src: "/media/contactor-ntnu-team.jpeg",
         alt: "Contactor NTNU team outside the NTNU main building",
+        presentation: "photo",
       },
       {
         src: "/media/contactor-ntnu-leadership.jpeg",
         alt: "Gard Laeskogen with the deputy leader of Contactor NTNU",
-        caption: "Leadership team, Contactor NTNU",
+        caption: "Leader and deputy leader",
+        presentation: "photo",
       },
     ],
   },
   {
-    period: "Feb 2024 - Present",
-    role: "Board member",
-    place:
-      "NFEA - Norwegian Association for Electrical and Automation Engineering",
-    summary:
-      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies.",
-    positions: ["Member, Board of Directors | Feb 2024 - Present"],
+    period: "Aug 2023 - Present",
+    role: "Competitive Athlete",
+    place: "NTNUI Triathlon",
+    impact: [
+      "Competed in national and regional triathlons and running events, including winning the student Norwegian championship in the 'other bikes' category.",
+    ],
     evidence: [],
   },
   {
-    period: "Apr 2025 - Dec 2025",
-    role: "UAV Engineer",
-    place: "Norwegian Armed Forces",
-    positions: ["UAV Engineer | Apr 2025 - Dec 2025"],
-    responsibilities: [
-      "Coordinating an R&D department, instructing and mentoring, and working as a specialist in technical development.",
-    ],
-    evidence: [
-      {
-        src: "/media/fpv-drone-build.jpg",
-        alt: "FPV drone engineering work",
-      },
-    ],
+    period: "Dec 2020 - Dec 2021",
+    role: "Leader",
+    place: "Local political youth party",
+    responsibilities: ["Held meetings and debates."],
+    evidence: [],
   },
-];
-export const education = [
-  {
-    period: "Aug 2023 - Jun 2028",
-    institution: "Norwegian University of Science and Technology (NTNU)",
-    qualification: "M. Sc. Cybernetics and Robotics",
-  },
-  {
-    period: "May 2024 - Aug 2024",
-    institution: "Jönköping International Business School",
-    qualification: "Family Business for Next Generation",
-  },
-];
-
-export const featuredSkills = ["Statistics", "Programming", "Machine vision"];
-
-export const additionalExperience = [
   {
     period: "Sep 2019 - Mar 2021",
-    role: "Cross-country coach",
-    place: "Idrettslaget Holevaeringen",
+    role: "Cross-country Coach",
+    place: "Holeværing IL",
+    location: "Sundvollen, Norway",
+    responsibilities: [
+      "Coached and mentored young athletes in cross-country skiing, focusing on skill development and team spirit.",
+    ],
+    evidence: [],
   },
 ];
+
+export const education: EducationItem[] = [
+  {
+    period: "Expected Jun 2028",
+    institution: "Norwegian University of Science and Technology (NTNU)",
+    qualification: "M.Sc. Cybernetics and Robotics",
+    location: "Trondheim, Norway",
+    status: "current",
+  },
+  {
+    period: "Aug 2026 - Jun 2027",
+    institution: "University of California, Berkeley",
+    qualification: "BISP study program",
+    location: "California, United States",
+    status: "upcoming",
+    detail: "Robotics and AI",
+  },
+];
+
+export const featuredSkills = ["Python", "C", "C++", "Excel", "LaTeX", "HTML", "CSS"];
+
+export const languages = ["Norwegian | Native", "English | Fluent"];
+
+// Backwards-compatible export for any code importing the original name.
+export const experience = professionalExperience;

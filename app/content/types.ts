@@ -1,6 +1,7 @@
 export type SiteConfig = {
   name: string;
   email: string;
+  phone: string;
   linkedin: string;
   location: string;
   headline: string;
@@ -59,15 +60,27 @@ export type ExperienceEvidence = {
   src: string;
   alt: string;
   caption?: string;
+  presentation?: "photo" | "mark";
 };
 
 export type ExperienceItem = {
   period: string;
   role: string;
   place: string;
+  location?: string;
   summary?: string;
-  positions: string[];
+  positions?: string[];
   responsibilities?: string[];
   impact?: string[];
+  recommendation?: string;
   evidence: ExperienceEvidence[];
+};
+
+export type EducationItem = {
+  period: string;
+  institution: string;
+  qualification: string;
+  location: string;
+  status?: "current" | "upcoming";
+  detail?: string;
 };

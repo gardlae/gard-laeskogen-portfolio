@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { allProjects, featuredProjects, publicProjects } from "../app/content/projects.ts";
+import { leadershipAndActivities, professionalExperience } from "../app/content/experience.ts";
 import { buildDocumentRequestMailto } from "../app/request/mailto.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -57,6 +58,16 @@ for (const project of allProjects) {
     } catch {
       fail(`${project.title}: invalid external link ${link.href}`);
     }
+  }
+}
+
+for (const item of [...professionalExperience, ...leadershipAndActivities]) {
+  if (!/\b(19|20)\d{2}\b/.test(item.period)) {
+    fail(`${item.role}: experience period needs a four-digit year`);
+  }
+
+  for (const evidence of item.evidence) {
+    checkMediaPath(evidence.src, `${item.role} experience`);
   }
 }
 

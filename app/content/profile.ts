@@ -3,6 +3,7 @@ import type { SiteConfig } from "./types";
 export const site: SiteConfig = {
   name: "Gard Laeskogen",
   email: "gard.lae@outlook.com",
+  phone: "+47 466 34 552",
   linkedin: "https://www.linkedin.com/in/gard-laeskogen-0a246527a/",
   location: "Trondheim, Norway",
   headline: "Student | M. Sc. Cybernetics and Robotics | NTNU",

@@ -2,112 +2,159 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  additionalExperience,
   education,
-  experience,
   featuredSkills,
-  recruiterOverview,
+  languages,
+  leadershipAndActivities,
+  professionalExperience,
   site,
 } from "../content";
+import type { ExperienceItem } from "../content/types";
+import { ResponsiveImage } from "../ResponsiveImage";
 import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
 
 export const metadata: Metadata = {
   title: "Experience",
-  description: "Experience, education, leadership, and technical work.",
+  description: "Gard Laeskogen's engineering, operational, leadership, and academic experience.",
   alternates: { canonical: `${site.canonicalUrl}/cv` },
 };
+
+function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number }) {
+  return (
+    <article className="cv-entry">
+      <div className="cv-entry-meta">
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <time>{item.period}</time>
+      </div>
+
+      <div className="cv-entry-copy">
+        <div className="cv-entry-heading">
+          <div>
+            <p>{item.place}{item.location ? ` / ${item.location}` : ""}</p>
+            <h3>{item.role}</h3>
+          </div>
+          {item.evidence.find((evidence) => evidence.presentation === "mark") && (
+            <Image
+              alt={item.evidence.find((evidence) => evidence.presentation === "mark")!.alt}
+              className="cv-entry-mark"
+              height={72}
+              src={item.evidence.find((evidence) => evidence.presentation === "mark")!.src}
+              unoptimized
+              width={72}
+            />
+          )}
+        </div>
+
+        {item.summary && <p className="cv-entry-summary">{item.summary}</p>}
+        {item.positions && <ul className="cv-positions">{item.positions.map((value) => <li key={value}>{value}</li>)}</ul>}
+
+        {(item.responsibilities || item.impact) && (
+          <div className="cv-entry-details">
+            {item.responsibilities && (
+              <div><h4>Responsibility</h4><ul>{item.responsibilities.map((value) => <li key={value}>{value}</li>)}</ul></div>
+            )}
+            {item.impact && (
+              <div><h4>Evidence</h4><ul>{item.impact.map((value) => <li key={value}>{value}</li>)}</ul></div>
+            )}
+          </div>
+        )}
+
+        {item.recommendation && <blockquote>{item.recommendation}<cite>Recommendation from unit leadership</cite></blockquote>}
+      </div>
+
+      {item.evidence.find((evidence) => evidence.presentation === "photo") && (
+        <div className="cv-entry-media">
+          {item.evidence.filter((evidence) => evidence.presentation === "photo").map((evidence) => (
+            <figure key={evidence.src}>
+              <ResponsiveImage alt={evidence.alt} sizes="(max-width: 768px) 100vw, 31vw" src={evidence.src} />
+              {evidence.caption && <figcaption>{evidence.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )}
+    </article>
+  );
+}
 
 export default function ExperiencePage() {
   return (
     <main>
       <SiteHeader />
-      <div className="page-shell page-top experience-page">
-        <header className="experience-intro">
-          <div>
-            <p className="eyebrow">Experience / CV</p>
-            <h1>Technical depth.<br />Operational responsibility.</h1>
-            <p>{recruiterOverview.summary}</p>
-            <div className="method-list" aria-label="Selected skills">
-              {featuredSkills.map((skill) => <span key={skill}>{skill}</span>)}
-            </div>
+      <div className="page-shell page-top cv-page">
+        <header className="cv-hero">
+          <div className="cv-hero-copy">
+            <p className="eyebrow">Curriculum vitae / 2026</p>
+            <h1>Engineering shaped by operational responsibility.</h1>
+            <p className="cv-hero-summary">
+              Master’s student in Cybernetics and Robotics with hands-on experience from the Norwegian Special Operations Command. Experience includes leadership, problem-solving under pressure, and strategic communication.
+            </p>
+            <nav className="cv-jump-links" aria-label="CV sections">
+              <a href="#experience">Experience</a>
+              <a href="#education">Education</a>
+              <a href="#leadership">Leadership</a>
+            </nav>
           </div>
-          <figure>
+
+          <figure className="cv-portrait">
             <Image
               alt="Gard Laeskogen"
               fill
               priority
-              sizes="(max-width: 768px) 100vw, 36vw"
-              src="/media/profile-contactor.jpg"
+              sizes="(max-width: 768px) 100vw, 38vw"
+              src="/media/cv-portrait.jpg"
               unoptimized
             />
           </figure>
-          <aside>
-            <span>{site.headline}</span>
-            <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn profile ↗</a>
-            <Link href="/request#documents">Request detailed CV →</Link>
+
+          <aside className="cv-contact-rail">
+            <div><span>Based in</span><strong>{site.location}</strong></div>
+            <div><span>Focus</span><strong>Cybernetics / Robotics / UAV systems</strong></div>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <a href={`tel:${site.phone.replaceAll(" ", "")}`}>{site.phone}</a>
+            <div className="cv-hero-actions">
+              <Link className="button button-dark" href="/portfolio">View engineering work</Link>
+              <Link className="button button-light" href="/request#documents">Request detailed CV</Link>
+            </div>
           </aside>
         </header>
 
-        <section className="experience-list" aria-labelledby="career-title">
-          <header className="section-heading">
-            <div><p className="eyebrow">Chronology</p><h2 id="career-title">Responsibility over time</h2></div>
-          </header>
-
-          {experience.map((item, index) => (
-            <article className="experience-entry" key={`${item.role}-${item.period}`}>
-              <div className="experience-index">
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <time>{item.period}</time>
-              </div>
-              <div className="experience-entry-copy">
-                <p>{item.place}</p>
-                <h3>{item.role}</h3>
-                {item.summary && <p className="entry-summary">{item.summary}</p>}
-                {item.responsibilities && (
-                  <div className="entry-block"><h4>Responsibility</h4>{item.responsibilities.map((value) => <p key={value}>{value}</p>)}</div>
-                )}
-                {item.impact && (
-                  <div className="entry-block"><h4>Impact</h4>{item.impact.map((value) => <p key={value}>{value}</p>)}</div>
-                )}
-                <ul>{item.positions.map((position) => <li key={position}>{position}</li>)}</ul>
-              </div>
-              {item.evidence[0] ? (
-                <div className="experience-evidence">
-                  <figure>
-                    <Image alt={item.evidence[0].alt} fill sizes="(max-width: 768px) 100vw, 30vw" src={item.evidence[0].src} unoptimized />
-                  </figure>
-                  {item.evidence[1] && (
-                    <figure>
-                      <Image alt={item.evidence[1].alt} fill sizes="(max-width: 768px) 44vw, 15vw" src={item.evidence[1].src} unoptimized />
-                      {item.evidence[1].caption && <figcaption>{item.evidence[1].caption}</figcaption>}
-                    </figure>
-                  )}
-                </div>
-              ) : <div className="experience-evidence-empty" aria-hidden="true"><span>Board responsibility</span></div>}
-            </article>
-          ))}
-        </section>
-
-        <section className="education-section" id="education">
-          <header><p className="eyebrow">Education</p><h2>Academic foundation</h2></header>
-          <div>
+        <section className="cv-education" id="education" aria-labelledby="education-title">
+          <header><p className="eyebrow">Education</p><h2 id="education-title">Academic direction</h2></header>
+          <div className="cv-education-list">
             {education.map((item) => (
               <article key={item.institution}>
-                <time>{item.period}</time>
+                <div><time>{item.period}</time>{item.status === "upcoming" && <span>Upcoming</span>}</div>
                 <h3>{item.qualification}</h3>
                 <p>{item.institution}</p>
-              </article>
-            ))}
-            {additionalExperience.map((item) => (
-              <article key={item.role}>
-                <time>{item.period}</time>
-                <h3>{item.role}</h3>
-                <p>{item.place}</p>
+                <small>{item.detail ? `${item.detail} / ` : ""}{item.location}</small>
               </article>
             ))}
           </div>
-          <Link className="button button-dark" href="/request#documents">Request detailed documents</Link>
+        </section>
+
+        <section className="cv-section" id="experience" aria-labelledby="experience-title">
+          <header className="cv-section-heading">
+            <div><p className="eyebrow">Professional experience</p><h2 id="experience-title">Engineering and operations</h2></div>
+            <p>Selected work across computer vision, UAV development, operational environments, and a family business.</p>
+          </header>
+          <div>{professionalExperience.map((item, index) => <ExperienceEntry index={index} item={item} key={`${item.role}-${item.period}`} />)}</div>
+        </section>
+
+        <section className="cv-section" id="leadership" aria-labelledby="leadership-title">
+          <header className="cv-section-heading">
+            <div><p className="eyebrow">Leadership and activities</p><h2 id="leadership-title">Responsibility beyond the role</h2></div>
+          </header>
+          <div>{leadershipAndActivities.map((item, index) => <ExperienceEntry index={index} item={item} key={`${item.role}-${item.period}`} />)}</div>
+        </section>
+
+        <section className="cv-capabilities" aria-labelledby="capabilities-title">
+          <header><p className="eyebrow">Skills and interests</p><h2 id="capabilities-title">Working toolkit</h2></header>
+          <div>
+            <section><h3>Programming and tools</h3><ul>{featuredSkills.map((skill) => <li key={skill}>{skill}</li>)}</ul></section>
+            <section><h3>Languages</h3><ul>{languages.map((language) => <li key={language}>{language}</li>)}</ul></section>
+          </div>
+          <aside><p>Need the formal CV or an extended portfolio?</p><Link className="button button-dark" href="/request#documents">Request detailed documents</Link></aside>
         </section>
       </div>
       <SiteFooter />
