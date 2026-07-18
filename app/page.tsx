@@ -38,7 +38,7 @@ export default function Home() {
           <div className="hero-actions" aria-label="Primary actions">
             <Link className="button button-light" href="/portfolio">View work</Link>
             <Link className="button button-quiet" href="/cv">Experience</Link>
-            <Link className="text-action" href="/request">Book a conversation →</Link>
+            <Link className="text-action" href="/request">Set up a chat →</Link>
           </div>
         </div>
         <div className="proof-band page-shell" aria-label="Selected evidence">

@@ -84,12 +84,12 @@ export function BookingPanel() {
           allow="payment"
           loading="lazy"
           src={site.bookingUrl}
-          title="Book a conversation with Gard Laeskogen"
+          title="Set up a chat with Gard Laeskogen"
         />
       )}
       {!bookingAvailable && (
         <div className="booking-fallback">
-          <a className="button button-dark" href={`mailto:${site.email}?subject=${encodeURIComponent("Conversation with Gard Laeskogen")}`}>
+          <a className="button button-dark" href={`mailto:${site.email}?subject=${encodeURIComponent("Chat with Gard Laeskogen")}`}>
             Email to arrange a time
           </a>
           <CopyEmailButton className="copy-button" />

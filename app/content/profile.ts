@@ -6,7 +6,7 @@ export const site: SiteConfig = {
   phone: "+47 466 34 552",
   linkedin: "https://www.linkedin.com/in/gard-laeskogen",
   github: "https://github.com/gardlae",
-  location: "Trondheim, Norway",
+  location: "California, USA",
   headline: "Student | M. Sc. Cybernetics and Robotics | NTNU",
   canonicalUrl: "https://www.gardlaeskogen.com",
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "",
@@ -19,7 +19,7 @@ export const recruiterOverview = {
     "I combine engineering work with practical execution, leadership, and experience from operational environments.",
   proof: [
     { value: "20+", label: "UAV configurations built or modified" },
-    { value: "3", label: "Leadership roles in Contactor NTNU" },
+    { value: "5+", label: "Leadership roles across engineering and organisations" },
     { value: "2", label: "Current board roles" },
   ],
 };
