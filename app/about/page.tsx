@@ -5,7 +5,7 @@ import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "Story",
   description: "Personal background, sports discipline, and principles.",
   alternates: { canonical: `${site.canonicalUrl}/about` },
 };

@@ -32,6 +32,7 @@ export default function Home() {
           <div className="hero-actions" aria-label="Primary actions">
             <Link className="button button-light" href="/portfolio">Portfolio</Link>
             <Link className="button button-quiet" href="/cv">CV</Link>
+            <Link className="button button-quiet" href="/about">Story</Link>
             <Link className="text-action" href="/request">Set up a chat →</Link>
           </div>
         </div>

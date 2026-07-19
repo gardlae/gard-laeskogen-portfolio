@@ -121,7 +121,13 @@ export const leadershipAndActivities: ExperienceItem[] = [
       "Organized company presentations, stands, and workshops with partner companies.",
     ],
     impact: ["Generated NOK 0.9 million in revenue for the Omega student association."],
-    evidence: [],
+    evidence: [
+      {
+        src: "/media/contactor-ntnu-mark.jpeg",
+        alt: "Contactor NTNU mark",
+        presentation: "mark",
+      },
+    ],
   },
   {
     period: "Dec 2020 - Dec 2021",
