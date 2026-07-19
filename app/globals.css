@@ -3382,6 +3382,10 @@ button {
   min-height: 460px;
 }
 
+.background-section-images-only .background-secondary-image img {
+  object-position: 38% center;
+}
+
 .sports-section {
   padding-top: 12px;
 }

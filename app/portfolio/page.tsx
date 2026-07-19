@@ -6,7 +6,7 @@ import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Work",
+  title: "Portfolio",
   description: "Selected work across UAV systems, software, analog electronics, and analysis.",
   alternates: { canonical: `${site.canonicalUrl}/portfolio` },
 };
@@ -52,7 +52,7 @@ export default function PortfolioPage() {
       <SiteHeader />
       <div className="page-shell page-top">
         <header className="page-intro work-intro">
-          <p className="eyebrow">Work / {String(publicProjects.length).padStart(2, "0")}</p>
+          <p className="eyebrow">Portfolio / {String(publicProjects.length).padStart(2, "0")}</p>
           <h1>Selected technical work</h1>
           <p>Engineering, software, electronics, analysis, and independently initiated work.</p>
         </header>

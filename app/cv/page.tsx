@@ -18,7 +18,7 @@ import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Experience",
+  title: "CV",
   description: "Gard Laeskogen's engineering, operational, leadership, and academic experience.",
   alternates: { canonical: `${site.canonicalUrl}/cv` },
 };
@@ -113,7 +113,7 @@ export default function ExperiencePage() {
               Graduate student in Cybernetics and Robotics at NTNU and incoming graduate student at UC Berkeley for 2026-27. Three years of the integrated master&apos;s program are complete, with Autonomous Systems as the main profile.
             </p>
             <div className="cv-hero-actions">
-              <Link className="button button-dark" href="/portfolio">View engineering work</Link>
+              <Link className="button button-dark" href="/portfolio">View portfolio</Link>
               <Link className="button button-light" href="/request#documents">Request detailed CV</Link>
             </div>
           </div>

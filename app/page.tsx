@@ -30,8 +30,8 @@ export default function Home() {
           <h1 id="home-title">Gard Laeskogen</h1>
           <p className="hero-role">{site.headline}</p>
           <div className="hero-actions" aria-label="Primary actions">
-            <Link className="button button-light" href="/portfolio">View work</Link>
-            <Link className="button button-quiet" href="/cv">Experience</Link>
+            <Link className="button button-light" href="/portfolio">Portfolio</Link>
+            <Link className="button button-quiet" href="/cv">CV</Link>
             <Link className="text-action" href="/request">Set up a chat →</Link>
           </div>
         </div>

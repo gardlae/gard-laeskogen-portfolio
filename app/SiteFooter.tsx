@@ -9,8 +9,8 @@ export function SiteFooter() {
         <span>{site.location}</span>
       </div>
       <nav aria-label="Footer navigation">
-        <Link href="/portfolio">Work</Link>
-        <Link href="/cv">Experience</Link>
+        <Link href="/cv">CV</Link>
+        <Link href="/portfolio">Portfolio</Link>
         <Link href="/about">About</Link>
         <Link href="/request">Contact</Link>
       </nav>
