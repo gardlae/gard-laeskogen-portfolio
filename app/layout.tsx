@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { preload } from "react-dom";
 import { Analytics } from "./Analytics";
 import { site } from "./content";
+import { SiteFooter } from "./SiteFooter";
+import { SiteHeader } from "./SiteHeader";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -65,15 +66,6 @@ const personStructuredData = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  preload("/media/family-business-portrait-768.avif", {
-    as: "image",
-    fetchPriority: "high",
-    imageSizes: "100vw",
-    imageSrcSet:
-      "/media/family-business-portrait-640.avif 640w, /media/family-business-portrait-768.avif 768w, /media/family-business-portrait-1280.avif 1280w",
-    type: "image/avif",
-  });
-
   return (
     <html lang="en">
       <body>
@@ -81,7 +73,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData).replace(/</g, "\\u003c") }}
           type="application/ld+json"
         />
+        <SiteHeader />
         {children}
+        <SiteFooter />
         <Analytics />
       </body>
     </html>

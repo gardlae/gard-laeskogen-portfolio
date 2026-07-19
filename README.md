@@ -1,31 +1,25 @@
 # Gard Laeskogen Portfolio
 
-Recruiter-first portfolio for technical work, experience, personal background, and contact.
+Personal CV and technical portfolio for Gard Laeskogen.
 
-## Project Location
+- Production: [www.gardlaeskogen.com](https://www.gardlaeskogen.com)
+- GitHub: [gardlae/gard-laeskogen-portfolio](https://github.com/gardlae/gard-laeskogen-portfolio)
+- Local project: `/Users/gardlaeskogen/Documents/personlig/CV/gard-laeskogen-portifolio`
 
-```text
-/Users/gardlaeskogen/Documents/personlig/CV/gard-laeskogen-portifolio
-```
+## Public Structure
 
-GitHub: [gardlae/gard-laeskogen-portfolio](https://github.com/gardlae/gard-laeskogen-portfolio)
+The primary navigation is:
 
-Production: [www.gardlaeskogen.com](https://www.gardlaeskogen.com)
-
-## Site Structure
-
-The public navigation has four sections:
-
-- `Work` at `/portfolio`
-- `Experience` at `/cv`
-- `About` at `/about`
+- `CV` at `/cv`
+- `Portfolio` at `/portfolio`
+- `Story` at `/about`
 - `Contact` at `/request`
 
-Every public project has a direct URL at `/projects/[slug]`. Sports and principles are sections within About. Investment, Flipper Zero, and Cutlery Sorting remain unpublished drafts.
+Every public project has a direct route at `/projects/[slug]`. Flipper Zero exploration and the coming-soon Cutlery Sorting Machine are intentionally public. The unfinished standalone Investment section remains excluded from navigation and search indexing.
 
-## Gard-Owned Content
+## Edit Content
 
-All substantive wording lives in four plain TypeScript files:
+Gard owns the substantive wording in four plain TypeScript modules:
 
 ```text
 app/content/profile.ts
@@ -34,111 +28,25 @@ app/content/experience.ts
 app/content/about.ts
 ```
 
-The page components control layout only. Gard owns these content fields:
+Page components control presentation. Optional project and experience fields remain hidden when empty. Do not publish placeholder instructions. Set a project to `visibility: "draft"` until its wording and evidence are approved.
 
-### Profile
+Photo assignments are tracked in [`PHOTO-MAPPING.md`](PHOTO-MAPPING.md). Do not assign an image to a project or experience by appearance alone.
 
-Edit `app/content/profile.ts` for:
+## Public Media
 
-- name, email, location, LinkedIn, and role
-- homepage summary and proof metrics
-- canonical domain
-- optional story video and poster
+Store approved public media in `public/media/` and reference it with a root path such as `/media/fpv-drone-flight.jpg`.
 
-### Projects
-
-Edit `app/content/projects.ts`. Each project supports:
-
-```ts
-{
-  visibility: "public" | "draft",
-  featured: true | false,
-  context: "",
-  role: "",
-  challenge: "",
-  contribution: "",
-  outcome: "",
-  constraints: "",
-  methods: [],
-  cover: {},
-  media: [],
-}
-```
-
-Optional sections are not rendered when their fields are missing. Do not add instruction text or placeholders to a public field. Set `visibility: "draft"` until the evidence and wording are ready.
-
-The three featured projects are shown on the homepage. A public project can use an approved local image or a text-based technical graphic as its cover.
-
-### Experience
-
-Edit `app/content/experience.ts` for:
-
-- professional chronology in `professionalExperience`
-- leadership and activities in `leadershipAndActivities`
-- summaries
-- responsibilities
-- impact
-- local evidence images
-- education, skills, and languages
-
-Missing responsibility or impact fields stay hidden.
-
-Evidence is mapped inside the experience it belongs to. Use `presentation: "photo"` for documentary photographs and `presentation: "mark"` for an organization mark. If the source document does not clearly assign an image to an experience, leave `evidence: []`; do not use a nearby project or sports image as decoration.
-
-### About
-
-Edit `app/content/about.ts` for:
-
-- personal background
-- sports results and source links
-- principles, desired character, and quotes
-
-Sports imagery must be user-owned. External articles are text links only.
-
-## Images And Video
-
-Store public media in:
-
-```text
-public/media/
-```
-
-Reference media with site-root paths such as:
-
-```ts
-src: "/media/fpv-drone-build.jpg"
-```
-
-Generate local 640 px, 768 px, and 1280 px AVIF/WebP variants after changing a published image:
+After adding or replacing a published image, update the source list in `scripts/optimize-media.mjs` and generate responsive AVIF/WebP variants:
 
 ```bash
 pnpm media:optimize
 ```
 
-The optimization source list is in `scripts/optimize-media.mjs`. Add a new published filename there before running the command.
+Keep videos close to or below 4 MB, provide a poster, and avoid offscreen preloading. Never put a private CV, restricted portfolio, or confidential report in `public/`; every file in that directory is downloadable.
 
-Published video should have a poster, use `preload="none"` away from the first view, and remain close to or below 4 MB. Do not put private reports, a detailed CV, or a restricted portfolio in `public/`; every file there is publicly downloadable.
+## Local Setup
 
-## Contact Configuration
-
-Create a local `.env.local` based on `.env.example`:
-
-```bash
-NEXT_PUBLIC_BOOKING_URL=https://cal.com/your-page
-NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN=your-token
-NEXT_PUBLIC_STORY_VIDEO=/media/story-final.mp4
-```
-
-- Without `NEXT_PUBLIC_BOOKING_URL`, Contact shows email and copy-email fallbacks.
-- The Cal.com iframe is created only after the visitor opens the calendar.
-- Cloudflare Web Analytics is absent unless its token is configured.
-- The detailed-document request prepares an email and never sends files automatically.
-
-Approved detailed files should be shared manually through a restricted OneDrive or equivalent link.
-
-Photo assignments are tracked in [`PHOTO-MAPPING.md`](PHOTO-MAPPING.md). Treat that file as the source of truth and do not infer a project or experience from appearance alone.
-
-## Run Locally
+Requirements: Node.js 22.13 or newer and pnpm 11.
 
 ```bash
 pnpm install
@@ -147,56 +55,58 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Required Checks
+Create `.env.local` from `.env.example` for contact delivery and optional integrations:
 
-Run everything before deployment:
+```dotenv
+NEXT_PUBLIC_BOOKING_URL=https://cal.com/gard-laeskogen-s4byyh/quick-chat
+RESEND_API_KEY=
+CONTACT_TO_EMAIL=gard@sundvolden.no
+CONTACT_FROM_EMAIL=website@gardlaeskogen.com
+NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN=
+NEXT_PUBLIC_STORY_VIDEO=
+```
+
+The sender domain must be verified in Resend. `RESEND_API_KEY` is a secret and must only exist in local or hosting environment variables. Contact includes a copy-email fallback. Detailed documents are shared manually through a restricted OneDrive or equivalent link.
+
+## Quality Checks
+
+Run the complete publication gate:
 
 ```bash
 pnpm check
 ```
 
-Or run each stage separately:
+It runs content validation, contact-route tests, lint, TypeScript checking, and a production build. Useful individual commands are:
 
 ```bash
 pnpm content:check
+pnpm test:contact
 pnpm lint
+pnpm typecheck
 pnpm build
+pnpm audit --prod
 ```
 
-The content check fails for duplicate or invalid slugs, invalid dates, missing public text, missing media and responsive variants, draft leakage, invalid project links, and unknown static internal routes.
+The content validator checks slugs, dates, public copy, media and responsive variants, draft leakage, project links, experience evidence, and internal routes.
 
-## Deployment And Domain
+## Deployment
 
-The canonical URL is configured as:
+The canonical origin is `https://www.gardlaeskogen.com`. The application includes canonical and social metadata, Person and CreativeWork structured data, `robots.txt`, and a sitemap containing only public routes.
 
-```text
-https://www.gardlaeskogen.com
+Source is mirrored to GitHub and the OpenAI Sites remote. The current Sites project ID is stored in `.openai/hosting.json`. Publishing through the Sites deployment flow builds from `main` and serves the custom domain.
+
+For a direct Cloudflare Worker deployment, configure the required environment variables and run:
+
+```bash
+pnpm deploy
 ```
 
-The site includes canonical metadata, Open Graph and Twitter metadata, Person and CreativeWork structured data, `robots.txt`, and `sitemap.xml`. Draft projects and Investment are excluded from public discovery.
+That command builds the vinext application and deploys the generated `dist/server/wrangler.json` configuration. The root `wrangler.jsonc` supplies the Worker entry point and non-secret defaults; never commit `RESEND_API_KEY` there.
 
-Production is configured for Cloudflare Workers with Static Assets. [`wrangler.jsonc`](wrangler.jsonc) defines the Worker name and runtime, and the Cloudflare Vite plugin packages the application and its static media together.
-
-Connect the repository through Cloudflare Workers Builds:
-
-1. Open Cloudflare Dashboard > Workers & Pages > Create application.
-2. Select `Import a repository` and connect GitHub.
-3. Choose `gardlae/gard-laeskogen-portfolio` and branch `main`.
-4. Set the build command to `pnpm build`.
-5. Set the deploy command to `pnpm wrangler deploy`.
-6. Save and deploy, then verify the generated `workers.dev` URL.
-7. Open the Worker > Settings > Domains & Routes > Add > Custom Domain.
-8. Remove the old `www` CNAME to `custom-domains.chatgpt.site`, then add `www.gardlaeskogen.com` as the Worker custom domain.
-9. Remove the old apex A records, then add `gardlaeskogen.com` as a second Worker custom domain. The Worker redirects it to the canonical `www` address.
-
-The Worker name in Cloudflare must be exactly `gard-laeskogen-portfolio`, matching `wrangler.jsonc`. Every push to `main` then triggers an automatic build and deployment.
-
-Push source updates to GitHub:
+Push source changes to GitHub with:
 
 ```bash
 git add .
 git commit -m "Describe the change"
 git push github main
 ```
-
-Cloudflare Workers deploys every successful commit pushed to `main`. Static assets are served globally with managed HTTPS, while the Worker remains available for future APIs or authentication.

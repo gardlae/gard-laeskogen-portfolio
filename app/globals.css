@@ -18,6 +18,19 @@
   box-sizing: border-box;
 }
 
+.sr-only,
+.contact-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -874,20 +887,6 @@ button {
   line-height: 1.65;
 }
 
-.cv-jump-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 36px;
-}
-
-.cv-jump-links a {
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 4px;
-  font-size: 12px;
-  font-weight: 750;
-}
-
 .cv-portrait {
   position: relative;
   min-height: 460px;
@@ -897,34 +896,6 @@ button {
 .cv-portrait img {
   object-fit: cover;
   object-position: center;
-}
-
-.cv-contact-rail {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-  border-left: 1px solid var(--line);
-  padding: 42px 0 42px 28px;
-}
-
-.cv-contact-rail > div:not(.cv-hero-actions) {
-  display: grid;
-  gap: 5px;
-}
-
-.cv-contact-rail span {
-  color: var(--ink-soft);
-  font-size: 10px;
-  text-transform: uppercase;
-}
-
-.cv-contact-rail strong,
-.cv-contact-rail > a {
-  font-size: 12px;
-}
-
-.cv-contact-rail > a:first-of-type {
-  margin-top: auto;
 }
 
 .cv-hero-actions {
@@ -1243,10 +1214,6 @@ button {
 }
 
 /* About */
-.about-intro {
-  margin-bottom: 54px;
-}
-
 .background-section {
   display: grid;
   grid-template-columns: 0.72fr 1.18fr 0.52fr;
@@ -1503,7 +1470,6 @@ button {
 }
 
 .booking-panel,
-.document-request-form,
 .contact-message-form {
   margin-top: auto;
   padding-top: 22px;
@@ -1533,7 +1499,6 @@ button {
   cursor: pointer;
 }
 
-.document-request-form label,
 .contact-message-form label {
   display: block;
 }
@@ -1542,7 +1507,6 @@ button {
   margin-top: 12px;
 }
 
-.document-request-form label span,
 .contact-message-form label span {
   display: block;
   margin-bottom: 8px;
@@ -1552,7 +1516,6 @@ button {
   text-transform: uppercase;
 }
 
-.document-request-form input,
 .contact-message-form input,
 .contact-message-form textarea {
   width: 100%;
@@ -1563,7 +1526,6 @@ button {
   font-size: 16px;
 }
 
-.document-request-form input,
 .contact-message-form input {
   height: 50px;
   padding: 0 14px;
@@ -1577,7 +1539,6 @@ button {
   line-height: 1.45;
 }
 
-.document-request-form > button,
 .contact-message-form > button {
   margin-top: 12px;
 }
@@ -1703,20 +1664,6 @@ button {
     font-size: 49px;
   }
 
-  .cv-contact-rail {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: 0.7fr 1fr auto auto;
-    align-items: center;
-    border-top: 1px solid var(--line);
-    border-left: 0;
-    padding: 18px 0;
-  }
-
-  .cv-contact-rail > a:first-of-type {
-    margin-top: 0;
-  }
-
   .cv-hero-actions {
     grid-column: 1 / -1;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1780,8 +1727,8 @@ button {
     position: relative;
     z-index: 2;
     display: flex;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1848,6 +1795,10 @@ button {
     padding-top: 7px;
     font-family: var(--font-sans);
     font-size: 10px;
+  }
+
+  .mobile-navigation a[aria-current="page"] {
+    font-weight: 700;
   }
 
   .home-hero {
@@ -2079,21 +2030,8 @@ button {
     font-size: 14px;
   }
 
-  .cv-jump-links {
-    gap: 14px;
-    margin-top: 24px;
-  }
-
   .cv-portrait {
     min-height: 370px;
-  }
-
-  .cv-contact-rail {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .cv-contact-rail > a:first-of-type {
-    grid-column: 1;
   }
 
   .cv-education {
@@ -2247,14 +2185,14 @@ button {
   }
 
   .hero-actions .button {
-    min-height: 42px;
+    min-height: 44px;
     padding: 9px 12px;
     font-size: 12px;
   }
 
   .hero-actions .text-action {
     width: 100%;
-    min-height: 34px;
+    min-height: 44px;
   }
 
   .featured-project {
@@ -2324,11 +2262,6 @@ button {
     min-height: 300px;
   }
 
-  .cv-contact-rail {
-    grid-template-columns: 1fr;
-  }
-
-  .cv-contact-rail > a:first-of-type,
   .cv-hero-actions {
     grid-column: 1;
   }

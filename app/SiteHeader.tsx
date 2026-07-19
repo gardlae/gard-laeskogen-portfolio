@@ -57,7 +57,12 @@ export function SiteHeader() {
         <div className={open ? "mobile-navigation is-open" : "mobile-navigation"} id="mobile-navigation">
           <nav aria-label="Mobile navigation">
             {navigation.map((item, index) => (
-              <Link href={item.href} key={item.href} onClick={() => setOpen(false)}>
+              <Link
+                aria-current={isActive(item.href) ? "page" : undefined}
+                href={item.href}
+                key={item.href}
+                onClick={() => setOpen(false)}
+              >
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 {item.label}
               </Link>

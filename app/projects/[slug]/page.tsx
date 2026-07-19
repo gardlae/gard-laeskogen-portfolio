@@ -8,8 +8,6 @@ import {
   type PortfolioProject,
 } from "../../content";
 import { ProjectMediaView } from "../../ProjectMedia";
-import { SiteFooter } from "../../SiteFooter";
-import { SiteHeader } from "../../SiteHeader";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
@@ -27,15 +25,24 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   if (!project) return { title: "Project not found" };
 
   const image = project.cover.kind === "image" ? project.cover.src : "/social-card.jpg";
+  const url = `${site.canonicalUrl}/projects/${project.slug}`;
+  const socialTitle = `${project.title} | ${site.name}`;
   return {
     title: project.title,
     description: projectDescription(project),
-    alternates: { canonical: `${site.canonicalUrl}/projects/${project.slug}` },
+    alternates: { canonical: url },
     openGraph: {
-      title: `${project.title} | ${site.name}`,
+      title: socialTitle,
       description: projectDescription(project),
       images: [image],
       type: "article",
+      url,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: socialTitle,
+      description: projectDescription(project),
+      images: [image],
     },
   };
 }
@@ -68,7 +75,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <main>
-      <SiteHeader />
       <script
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         type="application/ld+json"
@@ -148,7 +154,6 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </Link>
         </nav>
       </article>
-      <SiteFooter />
     </main>
   );
 }

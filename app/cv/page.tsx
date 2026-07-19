@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,18 +9,16 @@ import {
   professionalExperience,
   selectedCourses,
   skillGroups,
-  site,
 } from "../content";
 import type { ExperienceItem } from "../content/types";
+import { buildPageMetadata } from "../metadata";
 import { ResponsiveImage } from "../ResponsiveImage";
-import { SiteFooter } from "../SiteFooter";
-import { SiteHeader } from "../SiteHeader";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "CV",
   description: "Gard Laeskogen's engineering, operational, leadership, and academic experience.",
-  alternates: { canonical: `${site.canonicalUrl}/cv` },
-};
+  path: "/cv",
+});
 
 function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number }) {
   const mark = item.evidence.find((evidence) => evidence.presentation === "mark");
@@ -103,7 +100,6 @@ function ExperienceEntry({ item, index }: { item: ExperienceItem; index: number 
 export default function ExperiencePage() {
   return (
     <main>
-      <SiteHeader />
       <div className="page-shell page-top cv-page">
         <header className="cv-hero">
           <div className="cv-hero-copy">
@@ -211,7 +207,6 @@ export default function ExperiencePage() {
           <aside><p>Need the formal CV or an extended portfolio?</p><Link className="button button-dark" href="/request#documents">Request detailed documents</Link></aside>
         </section>
       </div>
-      <SiteFooter />
     </main>
   );
 }

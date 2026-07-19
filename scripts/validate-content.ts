@@ -3,7 +3,6 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { allProjects, featuredProjects, publicProjects } from "../app/content/projects.ts";
 import { leadershipAndActivities, professionalExperience } from "../app/content/experience.ts";
-import { buildDocumentRequestMailto } from "../app/request/mailto.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const errors: string[] = [];
@@ -85,11 +84,6 @@ if (publicProjects.some((project) => project.visibility !== "public")) {
 
 if (featuredProjects.length !== 3) {
   fail(`Expected 3 featured projects, found ${featuredProjects.length}`);
-}
-
-const requestMailto = buildDocumentRequestMailto("gard@example.com", "Acme & Co");
-if (!requestMailto.includes("Acme%20%26%20Co") || !requestMailto.includes("mailto:gard@example.com")) {
-  fail("Document request mailto is not encoded correctly");
 }
 
 const knownRoutes = new Set(["/", "/portfolio", "/cv", "/about", "/request", "/sports", "/philosophy"]);

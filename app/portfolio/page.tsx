@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { publicProjects, site } from "../content";
+import { publicProjects } from "../content";
+import { buildPageMetadata } from "../metadata";
 import { ProjectMediaView } from "../ProjectMedia";
-import { SiteFooter } from "../SiteFooter";
-import { SiteHeader } from "../SiteHeader";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Portfolio",
   description: "Selected work across UAV systems, software, analog electronics, and analysis.",
-  alternates: { canonical: `${site.canonicalUrl}/portfolio` },
-};
+  path: "/portfolio",
+});
 
 function summary(project: (typeof publicProjects)[number]) {
   return project.outcome || project.contribution || project.context || "";
@@ -49,7 +47,6 @@ function ProjectRow({
 export default function PortfolioPage() {
   return (
     <main>
-      <SiteHeader />
       <div className="page-shell page-top">
         <header className="page-intro work-intro">
           <p className="eyebrow">Portfolio / {String(publicProjects.length).padStart(2, "0")}</p>
@@ -62,7 +59,6 @@ export default function PortfolioPage() {
           ))}
         </section>
       </div>
-      <SiteFooter />
     </main>
   );
 }

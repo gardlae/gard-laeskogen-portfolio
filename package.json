@@ -10,34 +10,36 @@
     "build": "vinext build && node scripts/copy-hosting-config.mjs",
     "start": "vinext start",
     "preview": "pnpm build && vite preview",
-    "deploy": "pnpm build && wrangler deploy",
+    "deploy": "pnpm build && wrangler deploy --config dist/server/wrangler.json",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "typecheck": "tsc --noEmit",
     "content:check": "node --experimental-strip-types scripts/validate-content.ts",
+    "test:contact": "node --experimental-strip-types scripts/test-contact-route.ts",
     "media:optimize": "node scripts/optimize-media.mjs",
-    "check": "pnpm content:check && pnpm lint && pnpm build"
+    "check": "pnpm content:check && pnpm test:contact && pnpm lint && pnpm typecheck && pnpm build"
   },
   "packageManager": "pnpm@11.9.0",
   "dependencies": {
-    "next": "16.2.6",
-    "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/vite-plugin": "1.45.1",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
-    "@vitejs/plugin-react": "6.0.2",
-    "@vitejs/plugin-rsc": "0.5.26",
+    "@vitejs/plugin-react": "6.0.3",
+    "@vitejs/plugin-rsc": "0.5.28",
     "eslint": "9.39.4",
-    "eslint-config-next": "16.2.6",
-    "react-server-dom-webpack": "19.2.6",
+    "eslint-config-next": "16.2.10",
+    "react-server-dom-webpack": "19.2.7",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "vinext": "0.0.50",
-    "vite": "8.0.13",
-    "wrangler": "4.92.0"
+    "vite": "8.1.5",
+    "wrangler": "4.112.0"
   },
   "type": "module"
 }

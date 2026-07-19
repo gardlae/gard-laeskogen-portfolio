@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import { site } from "../content";
 
 function CopyEmailButton({ className = "" }: { className?: string }) {
@@ -47,6 +47,11 @@ function CopyEmailButton({ className = "" }: { className?: string }) {
 export function RequestForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
+  const startedAt = useRef<number | null>(null);
+
+  function markInteraction() {
+    startedAt.current ??= Date.now();
+  }
 
   async function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -55,6 +60,7 @@ export function RequestForm() {
     const name = String(data.get("name") || "");
     const contact = String(data.get("contact") || "");
     const message = String(data.get("message") || "");
+    const website = String(data.get("website") || "");
 
     setStatus("sending");
     setError("");
@@ -63,13 +69,20 @@ export function RequestForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, contact, message }),
+        body: JSON.stringify({
+          name,
+          contact,
+          message,
+          startedAt: startedAt.current ?? Date.now(),
+          website,
+        }),
       });
       const result = await response.json().catch(() => ({}));
 
       if (!response.ok) throw new Error(result.error || "Message could not be sent.");
 
       form.reset();
+      startedAt.current = null;
       setStatus("sent");
     } catch (requestError) {
       setStatus("error");
@@ -78,7 +91,18 @@ export function RequestForm() {
   }
 
   return (
-    <form className="contact-message-form" onSubmit={submitRequest}>
+    <form
+      className="contact-message-form"
+      onFocusCapture={markInteraction}
+      onPointerDown={markInteraction}
+      onSubmit={submitRequest}
+    >
+      <div aria-hidden="true" className="contact-honeypot">
+        <label>
+          <span>Website</span>
+          <input autoComplete="off" name="website" tabIndex={-1} type="text" />
+        </label>
+      </div>
       <label>
         <span>Name</span>
         <input autoComplete="name" maxLength={120} name="name" required type="text" />
@@ -94,8 +118,8 @@ export function RequestForm() {
       <button className="button button-light" disabled={status === "sending"} type="submit">
         {status === "sending" ? "Sending" : "Submit"}
       </button>
-      {status === "sent" && <p className="form-status">Message sent.</p>}
-      {status === "error" && <p className="form-status form-status-error">{error}</p>}
+      {status === "sent" && <p aria-live="polite" className="form-status" role="status">Message sent.</p>}
+      {status === "error" && <p className="form-status form-status-error" role="alert">{error}</p>}
       <div className="form-fallback">
         <span>Fallback</span>
         <CopyEmailButton />

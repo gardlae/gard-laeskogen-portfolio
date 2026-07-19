@@ -5,13 +5,13 @@ export const allProjects: PortfolioProject[] = [
     slug: "fpv-drone-builds",
     title: "FPV-drone builds",
     category: "Work and free time",
-    duration: "Mar 2025 - Des 2025",
+    duration: "Mar 2025 - Dec 2025",
     visibility: "public",
     featured: true,
     contribution:
       "Built and modified 20+ drone configurations, ranging from FPV quadcopters to fixed-wing systems, with variations in communication methods, payload capability, firmware, and operating environment. The work has focused mainly on adapting off-the-shelf products, including configurations for GNSS-denied and EW-disrupted conditions.",
     constraints:
-      "Specific technical information around the different project are information I cannot share at this point.",
+      "I cannot share specific technical information about the individual projects at this point.",
     methods: [
       "Analog radio",
       "software-defined radio",
@@ -35,18 +35,13 @@ export const allProjects: PortfolioProject[] = [
         poster: "/media/story-clip-2-poster.jpg",
         alt: "FPV drone project video",
       },
-      {
-        kind: "image",
-        src: "/media/signal-box-exterior.jpg",
-        alt: "Portable communications equipment enclosure",
-      },
     ],
   },
   {
     slug: "distributed-elevator-system",
     title: "Distributed elevator system",
     category: "School",
-    duration: "Jan 2026-May 2026",
+    duration: "Jan 2026 - May 2026",
     visibility: "public",
     featured: true,
     contribution:
@@ -76,7 +71,7 @@ export const allProjects: PortfolioProject[] = [
     slug: "analog-servo-controller",
     title: "Analog servo controller",
     category: "School",
-    duration: "Jan 2023-Mar 2023",
+    duration: "Jan 2023 - Mar 2023",
     visibility: "public",
     featured: false,
     contribution:
@@ -117,11 +112,11 @@ export const allProjects: PortfolioProject[] = [
     slug: "tieup-social-platform",
     title: "Social platform (TieUp)",
     category: "Free time",
-    duration: "Apr 2021-Aug 2021 (2. Year high-school)",
+    duration: "Apr 2021 - Aug 2021 (second year of high school)",
     visibility: "public",
     featured: true,
     context:
-      "Started building a social platform, to facilitate physical meetups like social training and events when the lockdown was coming to an end during COVID. I got the company registered built an early prototype, spoke with mentors but soon realized I didn’t have the software skillset needed to build this.\n\nThis lack of knowledge motivated me to start getting into software programming. I started by taking the CS50: Introduction to Computer Science -online Harvard course and changed courses in school to pursuit this direction.",
+      "Started building a social platform to facilitate physical meetups, such as social training and events, as the COVID lockdown was coming to an end. I registered the company, built an early prototype, and spoke with mentors, but soon realized I did not yet have the software skills needed to build it.\n\nThat knowledge gap motivated me to start programming. I began with Harvard's online CS50: Introduction to Computer Science course and changed subjects at school to pursue this direction.",
     methods: [
       "Company registration",
       "grant applications",
@@ -144,15 +139,15 @@ export const allProjects: PortfolioProject[] = [
   },
   {
     slug: "hospitality-investment-analysis",
-    title: "Hospitality Investment analysis",
+    title: "Hospitality investment analysis",
     category: "Free time",
-    duration: "Des 2025 - Mar 2026",
+    duration: "Dec 2025 - Mar 2026",
     visibility: "public",
     featured: false,
     contribution:
-      "Built data/drive analysis to evaluate impact of specific investment at our family business. The project combined historical room-night data, group booking demand, accounting figures, construction cost assumptions, live competitor pricing, and financial benchmarks to estimate capacity effects, revenue upside, and profitability scenarios.",
+      "Built a data-driven analysis to evaluate the impact of a specific investment in our family business. The project combined historical room-night data, group booking demand, accounting figures, construction cost assumptions, live competitor pricing, and financial benchmarks to estimate capacity effects, revenue upside, and profitability scenarios.",
     constraints:
-      "Data used for development is proprietary property so cannot share repo.",
+      "The data used is proprietary, so I cannot share the repository.",
     methods: ["data analysis", "financial modelling"],
     cover: {
       kind: "image",
@@ -169,13 +164,13 @@ export const allProjects: PortfolioProject[] = [
   },
   {
     slug: "flipper-zero-exploration",
-    title: "Flipper-zero exploration",
+    title: "Flipper Zero exploration",
     category: "Free time",
-    duration: "Aug 2022-Sep 2023",
+    duration: "Aug 2022 - Sep 2023",
     visibility: "public",
     featured: false,
     contribution:
-      "Bought and set up Flipper Zero with WiFi Devboard. Experimented with different use cases like TV controller, RFID card, WiFi disturbance, and disturbance of Bluetooth units.",
+      "Bought and set up a Flipper Zero with a Wi-Fi development board. Experimented with infrared remote control, RFID, Wi-Fi tooling, and Bluetooth protocol exploration.",
     methods: [
       "embedded setup",
       "wireless protocol fundamentals",

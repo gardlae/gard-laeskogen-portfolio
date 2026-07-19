@@ -1,19 +1,16 @@
-import type { Metadata } from "next";
 import { site } from "../content";
-import { SiteFooter } from "../SiteFooter";
-import { SiteHeader } from "../SiteHeader";
+import { buildPageMetadata } from "../metadata";
 import { BookingPanel, RequestForm } from "./RequestForm";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Contact",
   description: "Set up a chat or request Gard Laeskogen's detailed CV and portfolio.",
-  alternates: { canonical: `${site.canonicalUrl}/request` },
-};
+  path: "/request",
+});
 
 export default function ContactPage() {
   return (
     <main>
-      <SiteHeader />
       <div className="page-shell page-top contact-page">
         <header className="page-intro contact-intro">
           <p className="eyebrow">Contact</p>
@@ -42,7 +39,6 @@ export default function ContactPage() {
           </article>
         </section>
       </div>
-      <SiteFooter />
     </main>
   );
 }

@@ -1,14 +1,10 @@
 import Link from "next/link";
 import { site } from "./content";
 import { ResponsiveImage } from "./ResponsiveImage";
-import { SiteFooter } from "./SiteFooter";
-import { SiteHeader } from "./SiteHeader";
 
 export default function Home() {
   return (
     <main>
-      <SiteHeader />
-
       <section className="home-hero" aria-labelledby="home-title">
         <div className="hero-media">
           {site.storyVideo ? (
@@ -37,8 +33,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <SiteFooter />
     </main>
   );
 }

@@ -8,6 +8,7 @@ function withSecurityHeaders(response: Response) {
 
   headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
   headers.set("X-Content-Type-Options", "nosniff");
+  headers.set("X-Frame-Options", "DENY");
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   headers.set(
     "Permissions-Policy",
@@ -24,8 +25,11 @@ function withSecurityHeaders(response: Response) {
 const worker = {
   async fetch(request: Request, env: HandlerEnv, ctx: HandlerContext) {
     const url = new URL(request.url);
+    const isPublicHost =
+      url.hostname === "gardlaeskogen.com" || url.hostname === "www.gardlaeskogen.com";
 
-    if (url.hostname === "gardlaeskogen.com") {
+    if (isPublicHost && (url.protocol !== "https:" || url.hostname === "gardlaeskogen.com")) {
+      url.protocol = "https:";
       url.hostname = "www.gardlaeskogen.com";
       return withSecurityHeaders(Response.redirect(url.toString(), 308));
     }

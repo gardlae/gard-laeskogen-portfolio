@@ -1,22 +1,20 @@
-import type { Metadata } from "next";
 import Image from "next/image";
-import { site, sportsAchievements, sportsExtraLinks, sportsIntro, why } from "../content";
-import { SiteFooter } from "../SiteFooter";
-import { SiteHeader } from "../SiteHeader";
+import { sportsAchievements, sportsExtraLinks, sportsIntro, why } from "../content";
+import { buildPageMetadata } from "../metadata";
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
   title: "Story",
   description: "Personal background, sports discipline, and principles.",
-  alternates: { canonical: `${site.canonicalUrl}/about` },
-};
+  path: "/about",
+});
 
 const sports = [...new Set(sportsAchievements.map((achievement) => achievement.sport))];
 
 export default function AboutPage() {
   return (
     <main>
-      <SiteHeader />
       <div className="page-shell page-top about-page">
+        <h1 className="sr-only">Story</h1>
         <section className="sports-section" id="sports">
           <header className="section-heading">
             <div><p className="eyebrow">Sports</p><h2>Sports</h2></div>
@@ -73,7 +71,6 @@ export default function AboutPage() {
           </figure>
         </section>
       </div>
-      <SiteFooter />
     </main>
   );
 }
