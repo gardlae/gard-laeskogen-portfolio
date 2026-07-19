@@ -31,7 +31,7 @@ export const professionalExperience: ExperienceItem[] = [
       "Instructed and mentored colleagues.",
       "Worked as a specialist in technical development with Norwegian and international partners.",
     ],
-    impact: ["More than USD 1 million in R&D funding."],
+    impact: ["1+ million USD in R&D funding."],
     recommendation:
       "During his employment, Gard worked as an engineer in a UAV unit with Norwegian and international partners. He showed a very high level of dedication and ownership towards the unit's task, demonstrated a high working capacity, and achieved results above expectations. He was easy to cooperate with, communicated very well with colleagues, and is strongly recommended for similar work.",
     initiallyExpanded: true,
@@ -103,7 +103,8 @@ export const leadershipAndActivities: ExperienceItem[] = [
     role: "Member, Board of Directors",
     place: "NFEA - Norwegian Association for Electrical and Automation Engineering",
     summary:
-      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies. I joined the board through the Contactor NTNU leadership role.",
+      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies.",
+    responsibilities: ["Joined the board through the Contactor NTNU leadership role."],
     evidence: [
       {
         src: "/media/nfea-mark.jpeg",
