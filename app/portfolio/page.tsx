@@ -54,7 +54,6 @@ export default function PortfolioPage() {
         <header className="page-intro work-intro">
           <p className="eyebrow">Portfolio / {String(publicProjects.length).padStart(2, "0")}</p>
           <h1>Selected technical work</h1>
-          <p>Engineering, software, electronics, analysis, and independently initiated work.</p>
         </header>
 
         <section className="work-list" aria-label="Projects">
