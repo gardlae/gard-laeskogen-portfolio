@@ -254,6 +254,8 @@ export const skillGroups: SkillGroup[] = [
     values: [
       "UAV design and integration",
       "Mechatronics",
+      "3D modelling",
+      "3D printing",
       "Prototyping",
       "Production-oriented design",
     ],
