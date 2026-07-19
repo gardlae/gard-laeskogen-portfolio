@@ -15,11 +15,12 @@ export const metadata: Metadata = {
   alternates: { canonical: site.canonicalUrl },
   icons: {
     icon: [
-      { url: "/favicon.ico?v=3", sizes: "any" },
-      { url: "/favicon-sundvolden.png?v=3", type: "image/png", sizes: "256x256" },
+      { url: "/gard-laeskogen-favicon.svg?v=4", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=4", sizes: "any" },
+      { url: "/gard-laeskogen-favicon-256.png?v=4", type: "image/png", sizes: "256x256" },
     ],
-    shortcut: "/favicon.ico?v=3",
-    apple: "/favicon-sundvolden.png?v=3",
+    shortcut: "/favicon.ico?v=4",
+    apple: "/gard-laeskogen-favicon-256.png?v=4",
   },
   openGraph: {
     type: "website",
