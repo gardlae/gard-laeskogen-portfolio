@@ -1,6 +1,6 @@
 "use client";
 
-import { type FormEvent, useRef, useState } from "react";
+import { type FormEvent, useState } from "react";
 import { site } from "../content";
 
 function CopyEmailButton({ className = "" }: { className?: string }) {
@@ -47,11 +47,7 @@ function CopyEmailButton({ className = "" }: { className?: string }) {
 export function RequestForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [error, setError] = useState("");
-  const startedAt = useRef<number | null>(null);
-
-  function markInteraction() {
-    startedAt.current ??= Date.now();
-  }
+  const [startedAt, setStartedAt] = useState(() => Date.now());
 
   async function submitRequest(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -73,7 +69,7 @@ export function RequestForm() {
           name,
           contact,
           message,
-          startedAt: startedAt.current ?? Date.now(),
+          startedAt,
           website,
         }),
       });
@@ -82,7 +78,7 @@ export function RequestForm() {
       if (!response.ok) throw new Error(result.error || "Message could not be sent.");
 
       form.reset();
-      startedAt.current = null;
+      setStartedAt(Date.now());
       setStatus("sent");
     } catch (requestError) {
       setStatus("error");
@@ -91,12 +87,7 @@ export function RequestForm() {
   }
 
   return (
-    <form
-      className="contact-message-form"
-      onFocusCapture={markInteraction}
-      onPointerDown={markInteraction}
-      onSubmit={submitRequest}
-    >
+    <form className="contact-message-form" onSubmit={submitRequest}>
       <div aria-hidden="true" className="contact-honeypot">
         <label>
           <span>Website</span>

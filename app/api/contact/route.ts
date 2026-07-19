@@ -4,7 +4,6 @@ const MAX_NAME_LENGTH = 120;
 const MAX_CONTACT_LENGTH = 180;
 const MAX_MESSAGE_LENGTH = 2500;
 const MAX_BODY_BYTES = 12_000;
-const MIN_FORM_FILL_MS = 1_500;
 const MAX_FORM_AGE_MS = 2 * 60 * 60 * 1000;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 5;
@@ -35,7 +34,9 @@ function isAllowedOrigin(request: Request) {
 }
 
 function isRateLimited(request: Request) {
-  const ip = request.headers.get("cf-connecting-ip")?.trim() || "unknown";
+  const ip = request.headers.get("cf-connecting-ip")?.trim();
+  if (!ip) return false;
+
   const now = Date.now();
   const recent = (requestTimesByIp.get(ip) ?? []).filter((time) => now - time < RATE_LIMIT_WINDOW_MS);
 
@@ -93,7 +94,7 @@ export async function POST(request: Request) {
     return Response.json({ error: "Name, contact info, and message are required." }, { status: 400 });
   }
 
-  if (!Number.isFinite(startedAt) || formAge < MIN_FORM_FILL_MS || formAge > MAX_FORM_AGE_MS) {
+  if (!Number.isFinite(startedAt) || formAge < 0 || formAge > MAX_FORM_AGE_MS) {
     return Response.json({ error: "Please refresh the page and try again." }, { status: 400 });
   }
 

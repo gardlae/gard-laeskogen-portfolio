@@ -8,14 +8,16 @@ process.env.CONTACT_FROM_EMAIL = "website@example.com";
 const originalFetch = globalThis.fetch;
 const canonicalOrigin = "https://www.gardlaeskogen.com";
 
-function contactRequest(body: Record<string, unknown>, ip: string, origin = canonicalOrigin) {
+function contactRequest(body: Record<string, unknown>, ip?: string, origin = canonicalOrigin) {
+  const headers: Record<string, string> = {
+    "content-type": "application/json",
+    origin,
+  };
+  if (ip) headers["cf-connecting-ip"] = ip;
+
   return new Request(`${canonicalOrigin}/api/contact`, {
     method: "POST",
-    headers: {
-      "cf-connecting-ip": ip,
-      "content-type": "application/json",
-      origin,
-    },
+    headers,
     body: JSON.stringify(body),
   });
 }
@@ -53,10 +55,10 @@ try {
   );
   assert.equal(missingFields.status, 400);
 
-  const tooFast = await POST(
+  const immediateSubmission = await POST(
     contactRequest(validPayload({ startedAt: Date.now() }), "test-timing"),
   );
-  assert.equal(tooFast.status, 400);
+  assert.equal(immediateSubmission.status, 200);
 
   let honeypotFetchCalled = false;
   globalThis.fetch = async () => {
@@ -92,6 +94,10 @@ try {
     (await POST(contactRequest(validPayload(), "test-rate-limit"))).status,
     429,
   );
+
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    assert.equal((await POST(contactRequest(validPayload()))).status, 200);
+  }
 
   globalThis.fetch = async () => {
     throw new Error("upstream unavailable");
