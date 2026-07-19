@@ -8,7 +8,7 @@ export const site: SiteConfig = {
   github: "https://github.com/gardlae",
   yCombinator: "https://www.startupschool.org/cofounder-matching",
   location: "California, USA",
-  headline: "Student | M. Sc. Cybernetics and Robotics | NTNU",
+  headline: "M. Sc. Cybernetics and Robotics | NTNU",
   canonicalUrl: "https://www.gardlaeskogen.com",
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://cal.com/gard-laeskogen-s4byyh/quick-chat",
   storyVideo: process.env.NEXT_PUBLIC_STORY_VIDEO || undefined,
