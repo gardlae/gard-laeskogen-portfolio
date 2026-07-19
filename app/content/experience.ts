@@ -103,8 +103,10 @@ export const leadershipAndActivities: ExperienceItem[] = [
     role: "Member, Board of Directors",
     place: "NFEA - Norwegian Association for Electrical and Automation Engineering",
     summary:
-      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies.",
-    responsibilities: ["Joined the board through the Contactor NTNU leadership role."],
+      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies. I joined the board through my leadership role at Contactor NTNU.",
+    responsibilities: [
+      "Student representative, supporting the organization's work with students.",
+    ],
     evidence: [
       {
         src: "/media/nfea-mark.jpeg",
