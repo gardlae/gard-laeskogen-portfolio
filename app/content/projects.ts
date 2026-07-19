@@ -92,19 +92,19 @@ export const allProjects: PortfolioProject[] = [
     ],
     cover: {
       kind: "image",
-      src: "/media/servo-labeled-system.png",
-      alt: "Analog servo motor system with English labels",
+      src: "/media/servo-breadboard-full.jpg",
+      alt: "Full analog servo controller breadboard",
     },
     media: [
       {
         kind: "image",
-        src: "/media/control-system-diagram.png",
-        alt: "Analog servo control system block diagram",
+        src: "/media/servo-labeled-system.png",
+        alt: "Analog servo motor system with English labels",
       },
       {
         kind: "image",
-        src: "/media/servo-breadboard-full.jpg",
-        alt: "Full analog servo controller breadboard",
+        src: "/media/control-system-diagram.png",
+        alt: "Analog servo control system block diagram",
       },
       {
         kind: "image",
