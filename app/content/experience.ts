@@ -138,13 +138,19 @@ export const leadershipAndActivities: ExperienceItem[] = [
   },
   {
     period: "Sep 2019 - Mar 2021",
-    role: "Cross-country Coach",
+    role: "Cross-country Skiing Coach",
     place: "Holeværing IL",
     location: "Sundvollen, Norway",
     responsibilities: [
       "Coached and mentored young athletes in cross-country skiing, focusing on skill development and team spirit.",
     ],
-    evidence: [],
+    evidence: [
+      {
+        src: "/media/holevaeringen-il-mark.jpeg",
+        alt: "Holeværingen IL mark",
+        presentation: "mark",
+      },
+    ],
   },
 ];
 
