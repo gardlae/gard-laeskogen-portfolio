@@ -4,7 +4,6 @@ import {
   academicAreas,
   education,
   hackathons,
-  languages,
   leadershipAndActivities,
   professionalExperience,
   selectedCourses,
@@ -202,7 +201,6 @@ export default function ExperiencePage() {
           <header><p className="eyebrow">Skills and interests</p><h2 id="capabilities-title">Working toolkit</h2></header>
           <div>
             {skillGroups.map((group) => <section key={group.label}><h3>{group.label}</h3><ul>{group.values.map((skill) => <li key={skill}>{skill}</li>)}</ul></section>)}
-            <section><h3>Languages</h3><ul>{languages.map((language) => <li key={language}>{language}</li>)}</ul></section>
           </div>
           <aside><p>Need the formal CV or an extended portfolio?</p><Link className="button button-dark" href="/request#documents">Request detailed documents</Link></aside>
         </section>

@@ -281,17 +281,14 @@ export const skillGroups: SkillGroup[] = [
     label: "Control and instrumentation",
     values: [
       "Analog electronics",
-      "Signal conditioning",
-      "PI and position control",
-      "Oscilloscope measurements",
+      "Measurement systems",
+      "PID and model predictive control (MPC)",
       "Frequency-response analysis",
     ],
   },
 ];
 
 export const featuredSkills = skillGroups.flatMap((group) => group.values);
-
-export const languages = ["Norwegian | Native", "English | Fluent"];
 
 // Backwards-compatible export for any code importing the original name.
 export const experience = professionalExperience;
