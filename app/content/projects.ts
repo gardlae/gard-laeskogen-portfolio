@@ -40,11 +40,6 @@ export const allProjects: PortfolioProject[] = [
         src: "/media/signal-box-exterior.jpg",
         alt: "Portable communications equipment enclosure",
       },
-      {
-        kind: "image",
-        src: "/media/signal-box-interior.jpg",
-        alt: "Electronics inside a portable communications enclosure",
-      },
     ],
   },
   {
