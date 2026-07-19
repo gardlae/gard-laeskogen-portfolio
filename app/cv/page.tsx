@@ -180,6 +180,7 @@ export default function ExperiencePage() {
                     <a href={hackathon.href} rel="noreferrer" target="_blank">
                       <strong>{hackathon.title}</strong>
                     </a>
+                    <p>{hackathon.summary}</p>
                   </li>
                 ))}
               </ol>

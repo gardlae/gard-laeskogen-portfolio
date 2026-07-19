@@ -108,6 +108,7 @@ export type SelectedCourse = {
 export type Hackathon = {
   title: string;
   href: string;
+  summary: string;
 };
 
 export type SkillGroup = {
