@@ -104,7 +104,13 @@ export const leadershipAndActivities: ExperienceItem[] = [
     place: "NFEA - Norwegian Association for Electrical and Automation Engineering",
     summary:
       "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies. I joined the board through the Contactor NTNU leadership role.",
-    evidence: [],
+    evidence: [
+      {
+        src: "/media/nfea-mark.jpeg",
+        alt: "NFEA mark",
+        presentation: "mark",
+      },
+    ],
   },
   {
     period: "May 2024 - Aug 2025",
