@@ -4,6 +4,7 @@ import { site } from "../../content";
 const MAX_NAME_LENGTH = 120;
 const MAX_CONTACT_LENGTH = 180;
 const MAX_MESSAGE_LENGTH = 2500;
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type ContactPayload = {
   name?: unknown;
@@ -36,6 +37,7 @@ export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_TO_EMAIL || site.email;
   const fromEmail = process.env.CONTACT_FROM_EMAIL || "website@gardlaeskogen.com";
+  const replyTo = EMAIL_PATTERN.test(contact) ? contact : undefined;
 
   if (!apiKey) {
     return NextResponse.json({ error: "Contact form delivery is not configured yet." }, { status: 503 });
@@ -52,7 +54,7 @@ export async function POST(request: Request) {
       to: [toEmail],
       subject: `Website message from ${name}`,
       text: [`Name: ${name}`, `Contact: ${contact}`, "", "Message:", message].join("\n"),
-      reply_to: toEmail,
+      ...(replyTo ? { reply_to: replyTo } : {}),
     }),
   });
 
