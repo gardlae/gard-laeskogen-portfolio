@@ -10,6 +10,7 @@ const sources = [
   "family-business-portrait.jpg",
   "family-business.jpg",
   "military-field.jpg",
+  "military-hero.jpg",
   "distributed-elevator-system.jpg",
   "fpv-drone-flight.jpg",
   "servo-labeled-system.png",

@@ -3749,10 +3749,6 @@ button {
   object-position: 36% 26%;
 }
 
-.hero-media-field img {
-  transform: scale(1.12);
-}
-
 @media (max-width: 1080px) {
   .home-project-row {
     grid-template-columns: 48px minmax(0, 0.78fr) minmax(0, 1fr);
@@ -3779,11 +3775,7 @@ button {
 
   .hero-media-field picture,
   .hero-media-field img {
-    object-position: 41% 30%;
-  }
-
-  .hero-media-field img {
-    transform: scale(1.18);
+    object-position: 14% center;
   }
 
   .hero-content {
@@ -3863,7 +3855,7 @@ button {
 @media (max-width: 420px) {
   .hero-media-field picture,
   .hero-media-field img {
-    object-position: 39% 30%;
+    object-position: 14% center;
   }
 
   .hero-content {
