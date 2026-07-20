@@ -3,7 +3,7 @@ import { publicProjects, site } from "./content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-07-15");
-  const pages = ["", "/portfolio", "/cv", "/about", "/request"];
+  const pages = [""];
 
   return [
     ...pages.map((path, index) => ({

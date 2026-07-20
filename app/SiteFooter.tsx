@@ -1,25 +1,15 @@
-import Link from "next/link";
 import { site } from "./content";
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer">
-      <div>
-        <strong>Gard Laeskogen</strong>
-        <span>{site.location}</span>
-      </div>
-      <nav aria-label="Footer navigation">
-        <Link href="/cv">CV</Link>
-        <Link href="/portfolio">Portfolio</Link>
-        <Link href="/about">Story</Link>
-        <Link href="/request">Contact</Link>
-      </nav>
-      <div>
-        <a href={`mailto:${site.email}`}>{site.email}</a>
-        <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn</a>
-        <a href={site.github} rel="noreferrer" target="_blank">GitHub</a>
-        <a href={site.yCombinator} rel="noreferrer" target="_blank">YC Cofounder Matching</a>
-      </div>
+    <footer className="site-footer" id="contact">
+      <strong>Gard Laeskogen</strong>
+      <span>{site.location}</span>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <a href={`tel:${site.phone.replaceAll(" ", "")}`}>{site.phone}</a>
+      <a href={site.bookingUrl} rel="noreferrer" target="_blank">Calendar</a>
+      <a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn</a>
+      <a href={site.github} rel="noreferrer" target="_blank">GitHub</a>
     </footer>
   );
 }

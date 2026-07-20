@@ -5,10 +5,9 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navigation = [
-  { href: "/cv", label: "CV" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/about", label: "Story" },
-  { href: "/request", label: "Contact" },
+  { href: "/#portfolio", label: "Portfolio" },
+  { href: "/#cv", label: "CV" },
+  { href: "/#story", label: "Drive" },
 ];
 
 export function SiteHeader() {
@@ -16,10 +15,12 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
   function isActive(href: string) {
-    if (href === "/portfolio") {
+    if (href === "/#portfolio") {
       return pathname.startsWith("/portfolio") || pathname.startsWith("/projects");
     }
-    return pathname.startsWith(href);
+    if (href === "/#cv") return pathname.startsWith("/cv");
+    if (href === "/#story") return pathname.startsWith("/about");
+    return pathname === "/";
   }
 
   return (

@@ -21,7 +21,7 @@ export function ProjectMediaView({
         className={`project-graphic ${className}`}
         role="img"
       >
-        <span>System / Software</span>
+        <span>Project</span>
         <strong>{media.label}</strong>
         {media.detail && <small>{media.detail}</small>}
         <i aria-hidden="true" />

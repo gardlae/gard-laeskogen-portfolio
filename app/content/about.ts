@@ -60,15 +60,6 @@ export const why = {
   describedAs: [
     "Someone I would want to have by my side through a long and difficult mission.",
     "Someone who is honest and doesn't talk behind the back of others",
-    "Terrible to compete against",
     "Someone who said what he thought",
-    "Family man (prioritized family at all levels)",
-  ],
-  quotes: [
-    "Who dares, wins -SAS",
-    "There is no alpha in consensus. -Peter Thiels",
-    "Some men see things as they are and say “why?” I dream things that never were and say “why not?” - George Bernard Shaw.",
-    "In the long history of the world, only a few generations have been granted the role of defending freedom in its hour of maximum danger. I do not shrink from this responsibility -I welcome it -John F. Kennedy",
-    "You and I have the courage to say to our enemies: ‘There is a price we will not pay. There is a point beyond which they must not advance.’ And this - this is the meaning in the phrase of Barry Goldwater’s ‘peace through strength.’ - Ronald Reagan.",
   ],
 };

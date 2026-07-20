@@ -12,7 +12,7 @@ export const site: SiteConfig = {
   canonicalUrl: "https://www.gardlaeskogen.com",
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://cal.com/gard-laeskogen-s4byyh/quick-chat",
   storyVideo: process.env.NEXT_PUBLIC_STORY_VIDEO || undefined,
-  storyPoster: "/media/family-business-portrait.jpg",
+  storyPoster: "/media/military-field.jpg",
 };
 export const recruiterOverview = {
   focus: "Cybernetics / UAV systems / leadership",

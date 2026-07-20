@@ -38,36 +38,6 @@ export const allProjects: PortfolioProject[] = [
     ],
   },
   {
-    slug: "distributed-elevator-system",
-    title: "Distributed elevator system",
-    category: "School",
-    duration: "Jan 2026 - May 2026",
-    visibility: "public",
-    featured: true,
-    contribution:
-      "Built software for coordinating multiple elevators, with distributed call handling.",
-    methods: [
-      "Real-time systems",
-      "distributed systems",
-      "networking",
-      "fault tolerance",
-      "concurrency",
-      "state machines",
-    ],
-    cover: {
-      kind: "image",
-      src: "/media/distributed-elevator-system.jpg",
-      alt: "Laboratory elevator rigs used for distributed control testing",
-    },
-    media: [],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/vehoug/TTK4145.git",
-      },
-    ],
-  },
-  {
     slug: "analog-servo-controller",
     title: "Analog servo controller",
     category: "School",
@@ -138,6 +108,36 @@ export const allProjects: PortfolioProject[] = [
     ],
   },
   {
+    slug: "distributed-elevator-system",
+    title: "Distributed elevator system",
+    category: "School",
+    duration: "Jan 2026 - May 2026",
+    visibility: "public",
+    featured: true,
+    contribution:
+      "Built software for coordinating multiple elevators, with distributed call handling.",
+    methods: [
+      "Real-time systems",
+      "distributed systems",
+      "networking",
+      "fault tolerance",
+      "concurrency",
+      "state machines",
+    ],
+    cover: {
+      kind: "image",
+      src: "/media/distributed-elevator-system.jpg",
+      alt: "Laboratory elevator rigs used for distributed control testing",
+    },
+    media: [],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/vehoug/TTK4145.git",
+      },
+    ],
+  },
+  {
     slug: "hospitality-investment-analysis",
     title: "Hospitality investment analysis",
     category: "Free time",
@@ -150,9 +150,9 @@ export const allProjects: PortfolioProject[] = [
       "The data used is proprietary, so I cannot share the repository.",
     methods: ["data analysis", "financial modelling"],
     cover: {
-      kind: "image",
-      src: "/media/family-business.jpg",
-      alt: "Gard Laeskogen with family outside Sundvolden Hotel",
+      kind: "graphic",
+      label: "Hospitality investment analysis",
+      detail: "No public image",
     },
     media: [],
     links: [
@@ -196,6 +196,23 @@ export const allProjects: PortfolioProject[] = [
       kind: "graphic",
       label: "Coming soon",
       detail: "Cutlery sorting machine",
+    },
+    media: [],
+  },
+  {
+    slug: "sundvolden-hotel-project",
+    title: "Sundvolden Hotel project",
+    category: "Draft",
+    duration: "Started at age 13",
+    visibility: "draft",
+    featured: false,
+    context:
+      "I started working at Sundvolden Hotel when I was 13. The rest of this story needs Gard's approval before publication.",
+    methods: [],
+    cover: {
+      kind: "graphic",
+      label: "Draft",
+      detail: "Sundvolden Hotel project",
     },
     media: [],
   },

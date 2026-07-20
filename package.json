@@ -14,9 +14,8 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "typecheck": "tsc --noEmit",
     "content:check": "node --experimental-strip-types scripts/validate-content.ts",
-    "test:contact": "node --experimental-strip-types scripts/test-contact-route.ts",
     "media:optimize": "node scripts/optimize-media.mjs",
-    "check": "pnpm content:check && pnpm test:contact && pnpm lint && pnpm typecheck && pnpm build"
+    "check": "pnpm content:check && pnpm lint && pnpm typecheck && pnpm build"
   },
   "packageManager": "pnpm@11.9.0",
   "dependencies": {

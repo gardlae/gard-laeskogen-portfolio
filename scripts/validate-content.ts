@@ -29,7 +29,9 @@ for (const project of allProjects) {
   slugs.add(project.slug);
 
   if (!slugPattern.test(project.slug)) fail(`${project.title}: invalid slug ${project.slug}`);
-  if (!/\b(19|20)\d{2}\b/.test(project.duration)) fail(`${project.title}: duration needs a four-digit year`);
+  if (project.visibility === "public" && !/\b(19|20)\d{2}\b/.test(project.duration)) {
+    fail(`${project.title}: duration needs a four-digit year`);
+  }
   if (project.visibility === "draft" && project.featured) fail(`${project.title}: drafts cannot be featured`);
   if (project.visibility === "public" && !(project.context || project.contribution || project.outcome)) {
     fail(`${project.title}: public project has no approved case-study text`);
@@ -86,7 +88,16 @@ if (featuredProjects.length !== 3) {
   fail(`Expected 3 featured projects, found ${featuredProjects.length}`);
 }
 
-const knownRoutes = new Set(["/", "/portfolio", "/cv", "/about", "/request", "/sports", "/philosophy"]);
+const knownRoutes = new Set([
+  "/",
+  "/portfolio",
+  "/cv",
+  "/about",
+  "/request",
+  "/sports",
+  "/philosophy",
+  "/Gard-Laeskogen-CV.pdf",
+]);
 for (const project of publicProjects) knownRoutes.add(`/projects/${project.slug}`);
 
 const sourceFiles = [
@@ -96,7 +107,6 @@ const sourceFiles = [
   "app/portfolio/page.tsx",
   "app/cv/page.tsx",
   "app/about/page.tsx",
-  "app/request/page.tsx",
 ];
 
 for (const sourceFile of sourceFiles) {

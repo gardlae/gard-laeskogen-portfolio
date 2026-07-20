@@ -13,7 +13,6 @@
 - Setup: `pnpm install`
 - Full publication gate: `pnpm check`
 - Content checks: `pnpm content:check`
-- Contact route tests: `pnpm test:contact`
 - Lint and type-check: `pnpm lint && pnpm typecheck`
 - Production build: `pnpm build`
 

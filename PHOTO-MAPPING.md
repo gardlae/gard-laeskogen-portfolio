@@ -29,7 +29,7 @@ Approved for public website: Yes
 | `servo-breadboard-full.jpg` (source: `IMG_0168.jpg`) | `analog-servo-controller` | Cover | Confirmed by Gard |
 | `servo-schematic.png` (source: `signal-2026-07-11-07-26-27-941_002.png`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
 | `tieup-first-sketch.png` (source: `IMG_3466.PNG`) | `tieup-social-platform` | Cover | Confirmed by Gard |
-| `family-business.jpg` | `hospitality-investment-analysis` and Story | Cover / story image | Confirmed by Gard |
+| `family-business.jpg` | Unused | None | Removed from public experience per Gard |
 
 ## Experience Images
 
@@ -46,7 +46,7 @@ Approved for public website: Yes
 
 | Published file | Current assignment | Placement | Approval |
 | --- | --- | --- | --- |
-| `family-business-portrait.jpg` | Homepage | Hero poster | Confirmed by Gard |
-| `military-field.jpg` (source: `IMG_9094.jpg`) | Story | Supporting image | Confirmed by Gard |
+| `family-business-portrait.jpg` | Unused | None | Removed from public experience per Gard |
+| `military-field.jpg` (source: `IMG_9094.jpg`) | Homepage | Hero | Confirmed by Gard |
 
 When a mapping is confirmed, update the approval column to `Confirmed by Gard`, update the relevant entry in `app/content/projects.ts`, `app/content/experience.ts`, or `app/content/profile.ts`, and run `pnpm check` before deployment.

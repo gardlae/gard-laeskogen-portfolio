@@ -8,6 +8,7 @@ import {
   type PortfolioProject,
 } from "../../content";
 import { ProjectMediaView } from "../../ProjectMedia";
+import { TieUpDemo } from "../../TieUpDemo";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
@@ -63,6 +64,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     { label: "Outcome", value: project.outcome === leadText ? undefined : project.outcome },
     { label: "Constraints", value: project.constraints },
   ].filter((section) => section.value);
+  const tieUpPrototype = project.slug === "tieup-social-platform"
+    ? project.links?.find((link) => link.label === "Prototype")
+    : undefined;
+  const externalLinks = project.links?.filter((link) => link !== tieUpPrototype);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -81,7 +86,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       />
       <article className="page-shell project-page page-top">
         <nav className="project-toolbar" aria-label="Project position">
-          <Link href="/portfolio">← All projects</Link>
+          <Link href="/#portfolio">← All projects</Link>
           <span>{String(index + 1).padStart(2, "0")} / {String(publicProjects.length).padStart(2, "0")}</span>
         </nav>
 
@@ -100,9 +105,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {leadText.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               </div>
             )}
-            {project.links && (
+            {externalLinks && externalLinks.length > 0 && (
               <div className="project-external-links">
-                {project.links.map((link) => (
+                {externalLinks.map((link) => (
                   <a href={link.href} key={link.href} rel="noreferrer" target="_blank">{link.label} ↗</a>
                 ))}
               </div>
@@ -144,11 +149,20 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </section>
         )}
 
+        {tieUpPrototype && (
+          <section className="prototype-section" aria-labelledby="prototype-title">
+            <header className="section-heading">
+              <div><p className="eyebrow">Prototype</p><h2 id="prototype-title">Marvel demo</h2></div>
+            </header>
+            <TieUpDemo />
+          </section>
+        )}
+
         <nav className="project-pagination" aria-label="Project navigation">
           <Link href={`/projects/${previous.slug}`}>
             <span>Previous</span><strong>← {previous.title}</strong>
           </Link>
-          <Link href="/portfolio"><span>Index</span><strong>All projects</strong></Link>
+          <Link href="/#portfolio"><span>Index</span><strong>All projects</strong></Link>
           <Link href={`/projects/${next.slug}`}>
             <span>Next</span><strong>{next.title} →</strong>
           </Link>
