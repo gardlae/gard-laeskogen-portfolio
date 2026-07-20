@@ -1,4 +1,5 @@
-const tieUpEmbedUrl = "https://marvelapp.com/prototype/14aj7hae?emb=1&";
+const tieUpEmbedUrl =
+  "https://marvelapp.com/prototype/14aj7hae/screen/78212187?emb=1";
 
 export function TieUpDemo({ compact = false }: { compact?: boolean }) {
   return (
@@ -6,7 +7,7 @@ export function TieUpDemo({ compact = false }: { compact?: boolean }) {
       <iframe
         allow="fullscreen"
         loading="eager"
-        referrerPolicy="no-referrer"
+        referrerPolicy="strict-origin-when-cross-origin"
         src={tieUpEmbedUrl}
         title="Interactive TieUp prototype"
       />
