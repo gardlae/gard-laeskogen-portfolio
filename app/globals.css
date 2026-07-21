@@ -505,7 +505,7 @@ button {
 
 .home-education-strip time,
 .home-experience-list time,
-.home-experience-list span {
+.home-experience-index {
   color: var(--ink-soft);
   font-size: 11px;
 }
@@ -525,20 +525,102 @@ button {
   font-size: 12px;
 }
 
-.home-experience-list article {
-  display: grid;
-  grid-template-columns: 128px minmax(0, 1fr) 42px;
-  gap: 22px;
+.home-experience-entry {
   border-bottom: 1px solid var(--line);
-  padding: 17px 0;
 }
 
-.home-experience-list article:last-child {
+.home-experience-entry:last-child {
   border-bottom-color: var(--ink);
 }
 
-.home-experience-list span {
+.home-experience-entry summary {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr) 32px 24px;
+  align-items: start;
+  gap: 22px;
+  padding: 17px 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.home-experience-entry summary::-webkit-details-marker {
+  display: none;
+}
+
+.home-experience-index,
+.home-experience-toggle {
   justify-self: end;
+}
+
+.home-experience-toggle {
+  color: var(--signal);
+  font-size: 24px;
+  line-height: 0.7;
+  transition: transform 160ms ease;
+}
+
+.home-experience-entry[open] .home-experience-toggle {
+  transform: rotate(45deg);
+}
+
+.home-experience-entry summary:hover h3,
+.home-experience-entry summary:focus-visible h3 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.home-experience-entry summary:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+}
+
+.home-experience-details {
+  display: grid;
+  max-width: 920px;
+  gap: 22px;
+  margin-left: 150px;
+  padding: 0 0 30px;
+}
+
+.home-experience-details > p,
+.home-experience-details li,
+.home-experience-details blockquote {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.home-experience-details h4 {
+  margin-bottom: 8px;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.home-experience-details ul {
+  display: grid;
+  gap: 6px;
+  padding-left: 20px;
+}
+
+.home-experience-details blockquote {
+  border-left: 2px solid var(--signal);
+  margin: 0;
+  padding-left: 18px;
+}
+
+.home-experience-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.home-experience-links a {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .home-story-grid {
@@ -3837,13 +3919,18 @@ button {
     padding: 16px 0;
   }
 
-  .home-experience-list article {
-    grid-template-columns: 1fr 34px;
+  .home-experience-entry summary {
+    grid-template-columns: 1fr 30px 20px;
     gap: 8px 14px;
   }
 
   .home-experience-list time {
     grid-column: 1 / -1;
+  }
+
+  .home-experience-details {
+    margin-left: 0;
+    padding-bottom: 26px;
   }
 
   .site-footer {

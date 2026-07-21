@@ -89,14 +89,69 @@ function ExperienceCompact() {
 
         <div className="home-experience-list">
           {entries.map((item, index) => (
-            <article key={`${item.role}-${item.period}`}>
-              <time>{item.period}</time>
-              <div>
-                <h3>{item.role}</h3>
-                <p>{item.place}{item.location ? ` / ${item.location}` : ""}</p>
+            <details
+              className="home-experience-entry"
+              key={`${item.role}-${item.period}`}
+            >
+              <summary>
+                <time>{item.period}</time>
+                <div>
+                  <h3>{item.role}</h3>
+                  <p>{item.place}{item.location ? ` / ${item.location}` : ""}</p>
+                </div>
+                <span className="home-experience-index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span aria-hidden="true" className="home-experience-toggle">+</span>
+              </summary>
+
+              <div className="home-experience-details">
+                {item.summary && <p>{item.summary}</p>}
+
+                {item.positions && item.positions.length > 0 && (
+                  <div>
+                    <h4>Positions</h4>
+                    <ul>
+                      {item.positions.map((position) => <li key={position}>{position}</li>)}
+                    </ul>
+                  </div>
+                )}
+
+                {item.responsibilities && item.responsibilities.length > 0 && (
+                  <div>
+                    <h4>Responsibilities</h4>
+                    <ul>
+                      {item.responsibilities.map((responsibility) => (
+                        <li key={responsibility}>{responsibility}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {item.impact && item.impact.length > 0 && (
+                  <div>
+                    <h4>Impact</h4>
+                    <ul>
+                      {item.impact.map((impact) => <li key={impact}>{impact}</li>)}
+                    </ul>
+                  </div>
+                )}
+
+                {item.recommendation && (
+                  <blockquote>{item.recommendation}</blockquote>
+                )}
+
+                {item.links && item.links.length > 0 && (
+                  <div className="home-experience-links">
+                    {item.links.map((link) => (
+                      <a href={link.href} key={link.href} rel="noreferrer" target="_blank">
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-            </article>
+            </details>
           ))}
         </div>
       </div>
