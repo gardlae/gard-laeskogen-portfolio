@@ -3828,7 +3828,8 @@ button {
 
 .hero-media-field picture,
 .hero-media-field img {
-  object-position: 36% 26%;
+  object-fit: contain;
+  object-position: right center;
 }
 
 @media (max-width: 1080px) {
@@ -3857,7 +3858,7 @@ button {
 
   .hero-media-field picture,
   .hero-media-field img {
-    object-position: 14% center;
+    object-position: center;
   }
 
   .hero-content {
@@ -3942,7 +3943,7 @@ button {
 @media (max-width: 420px) {
   .hero-media-field picture,
   .hero-media-field img {
-    object-position: 14% center;
+    object-position: center;
   }
 
   .hero-content {
