@@ -63,8 +63,7 @@ function ExperienceCompact() {
     <section className="home-section home-cv" id="cv" aria-labelledby="cv-title">
       <div className="page-shell">
         <header className="home-section-heading">
-          <p className="eyebrow">Experience / CV</p>
-          <h2 id="cv-title">Engineering, operations, leadership.</h2>
+          <p className="eyebrow" id="cv-title">Experience / CV</p>
           <div className="home-cv-actions">
             <a
               className="button button-dark"
