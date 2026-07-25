@@ -372,6 +372,11 @@ button {
   font-size: clamp(40px, 4.5vw, 64px);
 }
 
+.home-portfolio .home-section-heading h2 {
+  grid-column: 2 / -1;
+  white-space: nowrap;
+}
+
 .home-section-heading > p {
   color: var(--ink-soft);
   font-size: 15px;
@@ -3888,6 +3893,11 @@ button {
   .home-section-heading > p,
   .home-cv-actions {
     grid-column: auto;
+  }
+
+  .home-portfolio .home-section-heading h2 {
+    grid-column: auto;
+    font-size: 28px;
   }
 
   .home-project-row {
