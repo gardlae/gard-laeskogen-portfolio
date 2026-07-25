@@ -33,6 +33,14 @@ export const sportsAchievements = [
   },
   {
     year: "2024",
+    sport: "Running",
+    result: "Class winner · 2:51:51",
+    event: "Trondheim Marathon",
+    category: "Men 18–22",
+    href: "https://marathonview.net/race/137720?category=M18-22",
+  },
+  {
+    year: "2024",
     sport: "Triathlon",
     result: "Winner",
     event: "Student Norwegian Championship Triathlon",

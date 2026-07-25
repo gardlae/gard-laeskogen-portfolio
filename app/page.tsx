@@ -160,7 +160,7 @@ function ExperienceCompact() {
 }
 
 export default function Home() {
-  const featuredSports = sportsAchievements.slice(0, 4);
+  const featuredSports = sportsAchievements;
 
   return (
     <main>
