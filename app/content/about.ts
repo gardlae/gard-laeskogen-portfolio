@@ -8,14 +8,6 @@ export const sportsIntro =
 
 export const sportsAchievements = [
   {
-    year: "2015",
-    sport: "Cross-country skiing",
-    result: "Winner",
-    event: "Jardarrennet Cross-Country Ski Race",
-    category: "G12, Oslo/Akershus Ski District",
-    href: "https://langrenn.ilh.no/news/gard-laeskogen-vant-i-jardarrennet-og-hole-gutten-sivert-langerud-imponerte-stort-med-2-pl-i-kvalfoss-rennet-i-skiskyting/",
-  },
-  {
     year: "2016",
     sport: "Running",
     result: "Fastest 10 km in Norway",
@@ -24,12 +16,12 @@ export const sportsAchievements = [
     href: "https://www.kondis.no/statistikk/ungdomsstatistikk-2016-10-km-gutter/junior/1530144",
   },
   {
-    year: "2017",
-    sport: "Trail running",
-    result: "2nd place",
-    event: "Trail Run",
-    category: "Men 2003/2002",
-    href: "https://www.langrenn.com/langrenn-allround/kjempetider-i-odd-bjorn-hjelmesets-terrenglop/",
+    year: "2024",
+    sport: "Triathlon",
+    result: "Winner",
+    event: "Student Norwegian Championship Triathlon",
+    category: "Other Bikes, men's class",
+    href: "https://studentidrett.no/nyheter/student-nm-triatlon",
   },
   {
     year: "2024",
@@ -40,12 +32,20 @@ export const sportsAchievements = [
     href: "https://marathonview.net/race/137720?category=M18-22",
   },
   {
-    year: "2024",
-    sport: "Triathlon",
+    year: "2015",
+    sport: "Cross-country skiing",
     result: "Winner",
-    event: "Student Norwegian Championship Triathlon",
-    category: "Other Bikes, men's class",
-    href: "https://studentidrett.no/nyheter/student-nm-triatlon",
+    event: "Jardarrennet Cross-Country Ski Race",
+    category: "G12, Oslo/Akershus Ski District",
+    href: "https://langrenn.ilh.no/news/gard-laeskogen-vant-i-jardarrennet-og-hole-gutten-sivert-langerud-imponerte-stort-med-2-pl-i-kvalfoss-rennet-i-skiskyting/",
+  },
+  {
+    year: "2017",
+    sport: "Trail running",
+    result: "2nd place",
+    event: "Trail Run",
+    category: "Men 2003/2002",
+    href: "https://www.langrenn.com/langrenn-allround/kjempetider-i-odd-bjorn-hjelmesets-terrenglop/",
   },
 ];
 
