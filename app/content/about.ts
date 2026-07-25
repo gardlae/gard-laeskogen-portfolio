@@ -10,7 +10,7 @@ export const sportsAchievements = [
   {
     year: "2016",
     sport: "Running",
-    result: "Fastest 10 km in Norway · 35:12",
+    result: "Fastest 10 km in Norway in my age class · 35:12",
     event: "Youth 10 km statistics",
     category: "Boys 12-13",
     href: "https://www.kondis.no/statistikk/ungdomsstatistikk-2016-10-km-gutter/junior/1530144",
