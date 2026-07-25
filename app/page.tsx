@@ -234,8 +234,7 @@ export default function Home() {
             <section aria-labelledby="principles-title">
               <h3 id="principles-title">Why I do what I do</h3>
               <p className="principles-summary">
-                I work to become a better version of myself, do what is right even when it is
-                uncomfortable, and choose how I respond when circumstances are beyond my control.
+                I know there is a better version of myself, and I strive to become it.
               </p>
             </section>
           </div>
