@@ -197,7 +197,17 @@ button {
 .site-brand {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   text-decoration: none;
+}
+
+.site-brand-mark {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 50%;
+  background: url("/gard-laeskogen-favicon.svg") center / cover no-repeat;
 }
 
 .site-brand strong {
@@ -432,6 +442,13 @@ button {
   grid-column: 1 / -1;
 }
 
+.home-project-row-fpv-drone-builds .image-media,
+.home-project-row-fpv-drone-builds .image-media .responsive-image,
+.project-page-fpv-drone-builds .project-hero .image-media,
+.project-page-fpv-drone-builds .project-hero .image-media .responsive-image {
+  object-position: left center;
+}
+
 .home-project-copy {
   display: grid;
   align-content: center;
@@ -447,7 +464,7 @@ button {
   display: -webkit-box;
   overflow: hidden;
   color: var(--ink-soft);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -485,6 +502,14 @@ button {
   gap: 8px;
 }
 
+.home-cv .home-section-heading {
+  grid-template-columns: 1fr;
+}
+
+.home-cv .home-cv-actions {
+  grid-column: 1;
+}
+
 .button-disabled {
   border-color: var(--line);
   background: #e6e5df;
@@ -494,7 +519,7 @@ button {
 
 .home-education-strip {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   border-bottom: 1px solid var(--ink);
 }
 
@@ -509,7 +534,12 @@ button {
 }
 
 .home-education-strip time,
-.home-experience-list time,
+.home-experience-list time {
+  color: var(--ink-soft);
+  font-size: 14px;
+  font-weight: 750;
+}
+
 .home-experience-index {
   color: var(--ink-soft);
   font-size: 11px;
@@ -527,7 +557,7 @@ button {
 .home-experience-list p {
   margin-top: 4px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .home-experience-entry {
@@ -591,7 +621,7 @@ button {
 .home-experience-details li,
 .home-experience-details blockquote {
   color: var(--ink);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
 }
 
@@ -686,18 +716,18 @@ button {
 .home-story-panel time,
 .home-story-panel article span {
   color: var(--ink-soft);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .home-story-panel a span {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
 }
 
 .home-story-panel a strong,
 .home-story-panel article p {
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.45;
 }
 
@@ -731,9 +761,32 @@ button {
 }
 
 .prototype-frame-shell iframe {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   border: 0;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.prototype-preview {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #111 url("/media/tieup-demo-preview.jpg") center / contain no-repeat;
+  transition: opacity 180ms ease;
+}
+
+.prototype-frame-shell.is-loaded iframe {
+  opacity: 1;
+}
+
+.prototype-frame-shell.is-loaded .prototype-preview {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .prototype-fallback {
@@ -1170,7 +1223,7 @@ button {
 .case-copy p {
   margin-top: 10px;
   color: var(--ink-soft);
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.62;
 }
 
@@ -1219,7 +1272,7 @@ button {
 .case-details aside li {
   border-top: 1px solid var(--line);
   padding: 10px 0;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .evidence-section {

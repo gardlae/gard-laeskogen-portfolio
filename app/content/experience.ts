@@ -13,6 +13,12 @@ export const professionalExperience: ExperienceItem[] = [
     role: "Computer Vision Intern",
     place: "Stealth startup",
     location: "United Kingdom",
+    responsibilities: [
+      "Worked on a CUAS system.",
+      "Conducted testing.",
+      "Debugged computer-vision software.",
+      "Developed internal tools.",
+    ],
     evidence: [
       {
         src: "/media/stealth-startup-mark.jpg",
@@ -27,6 +33,7 @@ export const professionalExperience: ExperienceItem[] = [
     place: "Norwegian Armed Forces",
     location: "Norway",
     responsibilities: [
+      "Co-founded the UAV unit.",
       "Coordinated the R&D branch.",
       "Instructed and mentored colleagues.",
       "Worked as a specialist in technical development with Norwegian and international partners.",
@@ -103,7 +110,7 @@ export const leadershipAndActivities: ExperienceItem[] = [
     role: "Member, Board of Directors",
     place: "NFEA - Norwegian Association for Electrical and Automation Engineering",
     summary:
-      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies. I joined the board through my leadership role at Contactor NTNU.",
+      "A politically independent, non-profit membership organization focused on electrical engineering and automation, representing around 270 member companies. I was asked to join the board through my leadership role at Contactor NTNU.",
     responsibilities: [
       "Student representative, supporting the organization's work with students.",
     ],
@@ -121,7 +128,7 @@ export const leadershipAndActivities: ExperienceItem[] = [
     place: "Contactor NTNU",
     responsibilities: [
       "Managed relationships with key industry partners.",
-      "Organized company presentations, stands, and workshops with partner companies.",
+      "Organized company presentations, company visits, and workshops with partner companies.",
     ],
     impact: ["Generated NOK 0.9 million in revenue for the Omega student association."],
     evidence: [
@@ -173,13 +180,6 @@ export const education: EducationItem[] = [
     location: "California, United States",
     status: "upcoming",
     detail: "Graduate coursework in robotics and AI",
-  },
-  {
-    period: "May 2024 - Aug 2024",
-    institution: "Jönköping University - Jönköping International Business School",
-    qualification: "Family Business for Next Generation",
-    location: "Jönköping, Sweden",
-    detail: "Course",
   },
 ];
 

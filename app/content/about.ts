@@ -4,13 +4,13 @@ export const personalBackground = {
 };
 
 export const sportsIntro =
-  "This was my life. Until aged 14 one of my dreams was to become the world's best cross-country skier. I am sharing this side to show the level of dedication I put into this goal, through some competitions. This lifestyle built many of the traits that still define me.";
+  "Until age 14, one of my dreams was to become the world's best cross-country skier. This was my life. Preparing for this dream built many of the traits that still define me.";
 
 export const sportsAchievements = [
   {
     year: "2016",
     sport: "Running",
-    result: "Fastest 10 km in Norway",
+    result: "Fastest 10 km in Norway · 35:12",
     event: "Youth 10 km statistics",
     category: "Boys 12-13",
     href: "https://www.kondis.no/statistikk/ungdomsstatistikk-2016-10-km-gutter/junior/1530144",
@@ -43,7 +43,7 @@ export const sportsAchievements = [
     year: "2017",
     sport: "Trail running",
     result: "2nd place",
-    event: "Trail Run",
+    event: "Eat Move Sleep Trail Run",
     category: "Men 2003/2002",
     href: "https://www.langrenn.com/langrenn-allround/kjempetider-i-odd-bjorn-hjelmesets-terrenglop/",
   },

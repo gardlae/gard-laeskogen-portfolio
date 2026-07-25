@@ -27,7 +27,7 @@ function PortfolioPreview({ project, index }: {
 
   return (
     <article
-      className={`home-project-row${media.length === 0 ? " home-project-row-text-only" : ""}${isTieUp ? " home-project-row-prototype" : ""}`}
+      className={`home-project-row home-project-row-${project.slug}${media.length === 0 ? " home-project-row-text-only" : ""}${isTieUp ? " home-project-row-prototype" : ""}`}
       id={`project-${project.slug}`}
     >
       <div className="home-project-index">{String(index + 1).padStart(2, "0")}</div>

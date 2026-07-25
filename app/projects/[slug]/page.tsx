@@ -84,7 +84,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         type="application/ld+json"
       />
-      <article className="page-shell project-page page-top">
+      <article className={`page-shell project-page project-page-${project.slug} page-top`}>
         <nav className="project-toolbar" aria-label="Project position">
           <Link href="/#portfolio">← All projects</Link>
           <span>{String(index + 1).padStart(2, "0")} / {String(publicProjects.length).padStart(2, "0")}</span>

@@ -85,6 +85,8 @@ export const allProjects: PortfolioProject[] = [
     duration: "Apr 2021 - Aug 2021 (second year of high school)",
     visibility: "public",
     featured: true,
+    contribution:
+      "Registered the company and built an early prototype for a social platform focused on physical meetups after the COVID lockdowns.",
     context:
       "Started building a social platform to facilitate physical meetups, such as social training and events, as the COVID lockdown was coming to an end. I registered the company, built an early prototype, and spoke with mentors, but soon realized I did not yet have the software skills needed to build it.\n\nThat knowledge gap motivated me to start programming. I began with Harvard's online CS50: Introduction to Computer Science course and changed subjects at school to pursue this direction.",
     methods: [
@@ -164,7 +166,7 @@ export const allProjects: PortfolioProject[] = [
   },
   {
     slug: "flipper-zero-exploration",
-    title: "Flipper Zero exploration",
+    title: "Flipper Zero explorations",
     category: "Free time",
     duration: "Aug 2022 - Sep 2023",
     visibility: "public",

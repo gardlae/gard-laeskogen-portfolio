@@ -56,7 +56,7 @@ const personStructuredData = {
   name: site.name,
   url: site.canonicalUrl,
   email: `mailto:${site.email}`,
-  sameAs: [site.linkedin, site.github, site.yCombinator],
+  sameAs: [site.linkedin, site.yCombinator],
   homeLocation: { "@type": "Place", name: site.location },
   alumniOf: {
     "@type": "CollegeOrUniversity",
@@ -68,6 +68,11 @@ const personStructuredData = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://marvelapp.com" rel="preconnect" />
+        <link crossOrigin="" href="https://m3-static.marvelapp.com" rel="preconnect" />
+        <link crossOrigin="" href="https://marvel-live.freetls.fastly.net" rel="preconnect" />
+      </head>
       <body>
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personStructuredData).replace(/</g, "\\u003c") }}
