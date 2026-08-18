@@ -3890,6 +3890,42 @@ button {
   object-position: right center;
 }
 
+.hero-media-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.hero-media-panel {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  background: #202629;
+}
+
+.hero-media-panel + .hero-media-panel {
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.hero-media-panel picture,
+.hero-media-panel img {
+  object-fit: cover;
+}
+
+.hero-media-panel-drone picture,
+.hero-media-panel-drone img {
+  object-position: 30% center;
+}
+
+.hero-media-panel-servo picture,
+.hero-media-panel-servo img {
+  object-position: center;
+}
+
+.hero-media-panel-military picture,
+.hero-media-panel-military img {
+  object-position: 52% center;
+}
+
 @media (max-width: 1080px) {
   .home-project-row {
     grid-template-columns: 48px minmax(0, 0.78fr) minmax(0, 1fr);

@@ -164,13 +164,31 @@ export default function Home() {
   return (
     <main>
       <section className="home-hero" aria-labelledby="home-title">
-        <div className="hero-media hero-media-field">
-          <ResponsiveImage
-            alt="Gard Laeskogen during field experience in the Norwegian Armed Forces"
-            priority
-            sizes="100vw"
-            src={site.storyPoster}
-          />
+        <div className="hero-media hero-media-grid">
+          <div className="hero-media-panel hero-media-panel-drone">
+            <ResponsiveImage
+              alt="FPV drone in flight"
+              priority
+              sizes="(max-width: 768px) 34vw, 33vw"
+              src="/media/fpv-drone-flight.jpg"
+            />
+          </div>
+          <div className="hero-media-panel hero-media-panel-servo">
+            <ResponsiveImage
+              alt="Analog servo controller assembled on a breadboard"
+              priority
+              sizes="(max-width: 768px) 34vw, 33vw"
+              src="/media/servo-breadboard-full.jpg"
+            />
+          </div>
+          <div className="hero-media-panel hero-media-panel-military">
+            <ResponsiveImage
+              alt="Gard Laeskogen during field experience in the Norwegian Armed Forces"
+              priority
+              sizes="(max-width: 768px) 34vw, 33vw"
+              src={site.storyPoster}
+            />
+          </div>
         </div>
         <div className="hero-scrim" aria-hidden="true" />
         <div className="hero-content page-shell">

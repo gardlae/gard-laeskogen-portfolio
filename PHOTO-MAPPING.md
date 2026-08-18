@@ -22,11 +22,11 @@ Approved for public website: Yes
 | Published file | Current assignment | Placement | Approval |
 | --- | --- | --- | --- |
 | `distributed-elevator-system.jpg` (source: `signal-2026-07-11-07-30-23-935.png`) | `distributed-elevator-system` | Cover | Confirmed by Gard |
-| `fpv-drone-flight.jpg` (source: `drone.jpg`) | `fpv-drone-builds` | Cover | Confirmed by Gard |
+| `fpv-drone-flight.jpg` (source: `drone.jpg`) | `fpv-drone-builds` | Cover and homepage technical panel | Confirmed by Gard |
 | `story-clip-2.mp4` (first five seconds of source video) | `fpv-drone-builds` | Supporting video | Confirmed by Gard |
 | `servo-labeled-system.png` (English version of `signal-2026-07-11-07-26-27-941.jpg`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
 | `control-system-diagram.png` (source: `control-system-diagram-english.png`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
-| `servo-breadboard-full.jpg` (source: `IMG_0168.jpg`) | `analog-servo-controller` | Cover | Confirmed by Gard |
+| `servo-breadboard-full.jpg` (source: `IMG_0168.jpg`) | `analog-servo-controller` | Cover and homepage technical panel | Confirmed by Gard |
 | `servo-schematic.png` (source: `signal-2026-07-11-07-26-27-941_002.png`) | `analog-servo-controller` | Supporting | Confirmed by Gard |
 | `tieup-first-sketch.png` (source: `IMG_3466.PNG`) | `tieup-social-platform` | Cover | Confirmed by Gard |
 | `family-business.jpg` | Unused | None | Removed from public experience per Gard |
