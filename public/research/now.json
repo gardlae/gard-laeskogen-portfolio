@@ -3,8 +3,8 @@
   "url": "https://www.gardlaeskogen.com/research",
   "status": "in-preparation",
   "arxiv_id": null,
-  "updated": "2026-11-19T01:02Z",
-  "commit": "c17c4fc",
+  "updated": "2026-11-19T01:14Z",
+  "commit": "6d19dc1",
   "runs": 4056,
   "runs_by_kind": {
     "data": 12,
@@ -57,8 +57,8 @@
     "due": "2026-11-21"
   },
   "paper": {
-    "pages": "?",
-    "results_filled": 0,
+    "pages": "11",
+    "results_filled": 8,
     "results_total": 28,
     "pdf": null
   },

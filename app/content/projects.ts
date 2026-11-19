@@ -13,15 +13,15 @@ export const allProjects: PortfolioProject[] = [
     status: "In progress · paper in preparation",
     page: "/research",
     context:
-      "Drones are starting to plan their motion with learned world models: small neural networks that predict how the drone will move. Every 10 milliseconds the controller tries hundreds of candidate actions through the model, so how much planning fits in each step depends on the computer on board. Move the same controller to a cheaper board or a busier GPU and it plans less, or too late. Today the only way to find out what that costs is to fly it.",
+      "Drones are starting to plan their motion with learned world models: small neural networks that predict how the drone will move. Every 10 milliseconds the controller tries hundreds of candidate actions through the model, so how much planning fits in each step depends on the computer on board. Move the same controller to a cheaper board or a busier GPU and it plans less, or too late. Today the only way to find out what that costs is to test the controller on each computer.",
     contribution:
-      "I built a test harness in which the same world-model controller runs on physically different computers, from a Raspberry Pi to a desktop GPU, while a simulator plays the drone. The question is whether three timing numbers, which do not depend on which computer produced them, predict how accurately the drone follows its path. If they do, a few minutes of timing measurements on a new board can stand in for a flight test.",
+      "I built a test harness in which the same world-model controller runs on physically different computers, from a Raspberry Pi to a desktop GPU, while a simulator plays the drone. The question is whether three timing numbers, which mean the same thing on every computer, predict how accurately the drone follows its path. If they do, a few minutes of timing measurements on a new board could stand in for testing the controller there.",
     methods: [
       "world models (JEPA)",
       "sampling-based MPC (MPPI)",
       "embedded GPUs",
       "software-in-the-loop simulation",
-      "pre-registered experiments",
+      "hypotheses written down in advance",
     ],
     cover: {
       kind: "graphic",
@@ -46,7 +46,7 @@ export const allProjects: PortfolioProject[] = [
     contribution:
       "Our team built and compared three kinds of estimator: a small convolutional network that compares consecutive frames, ported to C++ and WebAssembly with SIMD and int16 arithmetic; a recurrent network with memory across frames; and an estimator that uses no images at all, only the gyroscope and a speed prior. Across our uploads the compute per frame differs by a factor of more than 10,000.",
     outcome:
-      "In the first stage our most accurate upload reached 0.415 m mean trajectory error at about 2 million compute units per frame, and our cheapest reached 0.55 m at 250 units without looking at a single image. The metric aligned each trajectory before scoring it, so a constant speed error cost nothing; the second stage changes the metric. Every upload can be rebuilt byte for byte from a tagged commit.",
+      "In the first stage our most accurate upload reached 0.415 m mean trajectory error at about 2 million compute units per frame, and our cheapest reached 0.55 m at 250 units without looking at a single image. Our C++ uploads can be rebuilt byte for byte from a tagged commit.",
     constraints:
       "A team project: the results are the team's.",
     methods: [

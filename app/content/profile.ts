@@ -20,7 +20,7 @@ export const site: SiteConfig = {
 // Homepage introduction. Draft wording for Gard to approve; facts follow the CV of 2026-11-18.
 export const intro: string[] = [
   "I'm a visiting graduate student at UC Berkeley, doing research with Prof. Alexandre M. Bayen on learned world models for drone control. My question is what happens when a learned controller has to run on the small computer a drone actually carries, and how much that computer decides how well the drone flies. At home I study Cybernetics and Robotics at NTNU, with autonomous systems as my main profile.",
-  "Before Berkeley I co-founded a UAV unit in the Norwegian Armed Forces and led its R&D branch, building and modifying more than 20 drone configurations with Norwegian and international partners. This summer I wrote computer-vision software for a counter-UAS startup in the United Kingdom.",
+  "Before Berkeley I co-founded a UAV unit in the Norwegian Armed Forces and coordinated its R&D branch, working on technical development with Norwegian and international partners. Across work and free time I have built or modified more than 20 drone configurations. This summer I wrote computer-vision software for a counter-UAS startup in the United Kingdom.",
   "Until I was 14, my plan was to become the world's best cross-country skier. I still race: I won my class at the Trondheim Marathon in 2:51 and won the Berkeley Trail Adventure 50 km in August 2026. I grew up working in my family's hotel, Sundvolden, and later sat on its board.",
 ];
 
