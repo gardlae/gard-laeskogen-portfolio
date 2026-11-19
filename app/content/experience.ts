@@ -95,7 +95,7 @@ export const professionalExperience: ExperienceItem[] = [
   },
   {
     period: "Aug 2022 - Aug 2023",
-    role: "Paratrooper",
+    role: "Operator, Specialist", // the earlier site's title (user, 2026-11-19); the PDF CV says Paratrooper
     place: "Norwegian Armed Forces",
     location: "Norway",
     responsibilities: [
