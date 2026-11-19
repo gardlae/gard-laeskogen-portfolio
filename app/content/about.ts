@@ -16,14 +16,6 @@ export const sportsAchievements: SportsAchievement[] = [
     event: "Berkeley Trail Adventure, 50 km",
   },
   {
-    year: "2016",
-    sport: "Running",
-    result: "Fastest 10 km in Norway in my age class · 35:12",
-    event: "Youth 10 km statistics",
-    category: "Boys 12-13",
-    href: "https://www.kondis.no/statistikk/ungdomsstatistikk-2016-10-km-gutter/junior/1530144",
-  },
-  {
     year: "2024",
     sport: "Triathlon",
     result: "Winner",
@@ -38,6 +30,18 @@ export const sportsAchievements: SportsAchievement[] = [
     event: "Trondheim Marathon",
     category: "Men 18–22",
     href: "https://marathonview.net/race/137720?category=M18-22",
+  },
+];
+
+// Youth results (2015-2017), kept but not shown on the CV (user, 2026-11-18).
+export const youthAchievements: SportsAchievement[] = [
+  {
+    year: "2016",
+    sport: "Running",
+    result: "Fastest 10 km in Norway in my age class · 35:12",
+    event: "Youth 10 km statistics",
+    category: "Boys 12-13",
+    href: "https://www.kondis.no/statistikk/ungdomsstatistikk-2016-10-km-gutter/junior/1530144",
   },
   {
     year: "2015",

@@ -13,7 +13,7 @@ import { PlannerHero } from "./PlannerHero";
 import { ProjectCard, ResearchCard } from "./ProjectCard";
 import { ResponsiveImage } from "./ResponsiveImage";
 
-type SummaryRow = { start: string; end: string; roles: string[]; place: string };
+type SummaryRow = { start: string; end: string; role: string; place: string };
 
 function yearSpan(period: string) {
   const years = period.match(/\b(?:19|20)\d{2}\b/g) ?? [];
@@ -24,40 +24,22 @@ function formatSpan({ start, end }: SummaryRow) {
   return start === end ? start : `${start} – ${end}`;
 }
 
-// Consecutive roles at the same place share one row, e.g. the three Armed Forces roles.
+// One row per role, each with its own years, newest first.
 function ExperienceSummary() {
-  const rows: SummaryRow[] = research.map((item) => ({
-    ...yearSpan(item.period),
-    roles: ["Research"],
-    place: `${item.place} (${item.advisor})`,
-  }));
-
-  for (const item of professionalExperience) {
-    const span = yearSpan(item.period);
-    const last = rows.at(-1);
-    if (last && last.place === item.place) {
-      last.roles.push(item.role.replace(/ \(part-time\)$/, ""));
-      last.start = span.start < last.start ? span.start : last.start;
-      // "present" sorts after any year
-      last.end = span.end > last.end ? span.end : last.end;
-    } else {
-      rows.push({ ...span, roles: [item.role], place: item.place });
-    }
-  }
-
-  for (const item of leadershipAndActivities.slice(0, 2)) {
-    rows.push({ ...yearSpan(item.period), roles: [item.role], place: item.place.split(" - ")[0] });
-  }
-
-  // Newest first: by end year ("present" first), then by start year.
+  const rows: SummaryRow[] = [
+    ...research.map((item) => ({ ...yearSpan(item.period), role: "Independent research", place: item.place })),
+    ...professionalExperience.map((item) => ({ ...yearSpan(item.period), role: item.role, place: item.place })),
+    ...leadershipAndActivities.slice(0, 2).map((item) => ({ ...yearSpan(item.period), role: item.role, place: item.place.split(" - ")[0] })),
+  ];
+  // "present" sorts after any year
   rows.sort((a, b) => b.end.localeCompare(a.end) || b.start.localeCompare(a.start));
 
   return (
     <ul className="timeline measure">
       {rows.map((row) => (
-        <li key={`${row.place}-${row.start}`}>
+        <li key={`${row.role}-${row.start}`}>
           <span className="meta">{formatSpan(row)}</span>
-          <p><strong>{row.roles.join(" / ")}</strong> <span>· {row.place}</span></p>
+          <p><strong>{row.role}</strong> <span>· {row.place}</span></p>
         </li>
       ))}
     </ul>

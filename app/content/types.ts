@@ -123,7 +123,8 @@ export type SkillGroup = {
 export type ResearchItem = {
   period: string;
   place: string;
-  advisor: string;
+  /** Who grants the research credits; not an advisor or collaborator. */
+  credits: string;
   title: string;
   summary: string;
   href?: `/${string}`;

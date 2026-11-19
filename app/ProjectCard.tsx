@@ -23,7 +23,7 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
 export function ResearchCard({ item }: { item: ResearchItem }) {
   return (
     <article className="research-card">
-      <p className="meta">{[item.name, `${item.place}, with ${item.advisor}`].filter(Boolean).join(" · ")}</p>
+      <p className="meta">{[item.name, item.place].filter(Boolean).join(" · ")}</p>
       <h3>{item.href ? <a href={item.href}>{item.question ?? item.title}</a> : item.question ?? item.title}</h3>
       <p className="summary">{item.plain ?? item.summary}</p>
       {item.status && <p className="meta">{item.status}</p>}

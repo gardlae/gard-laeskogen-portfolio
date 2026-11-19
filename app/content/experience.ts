@@ -13,14 +13,14 @@ export const research: ResearchItem[] = [
   {
     period: "Aug 2026 - present",
     place: "UC Berkeley",
-    advisor: "Prof. Alexandre M. Bayen",
+    credits: "Research credits with Prof. Alexandre M. Bayen",
     title: "JEPA world models for quadrotor control under compute constraints",
     summary: "Studying how latent world model MPC performs under different compute budgets.",
     href: "/research",
     name: "TickJEPA",
     question: "How much computer does a learned drone controller need?",
     plain:
-      "A small learned world model plans the drone's motion a hundred times a second, so the computer on board decides how much planning gets done. I am testing, in simulation with real computers timing the planner, whether three timing numbers predict how well the drone follows its path on a computer it was never tested on.",
+      "A small learned world model plans the drone's motion twenty times a second, so the computer on board decides how much planning gets done. I am testing, in simulation with real computers timing the planner, whether three timing numbers predict how well the drone follows its path on a computer it was never tested on.",
     status: "In progress · paper in preparation",
   },
 ];
@@ -221,7 +221,7 @@ export const education: EducationItem[] = [
     qualification: "MSc Cybernetics and Robotics",
     location: "Trondheim, Norway",
     status: "current",
-    detail: "Main profile: Autonomous Systems. Three academic years completed.",
+    detail: "Five-year integrated master's programme; main profile: Autonomous Systems. Three academic years completed.",
   },
 ];
 
