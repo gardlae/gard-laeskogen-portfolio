@@ -223,10 +223,11 @@ export function PlannerHero() {
         </p>
       </div>
       <figcaption>
-        A toy drone planning live in your browser. Every step it tries {computer.samples} possible futures (thin lines) and
-        flies the best one; orange marks a step where the plan came too late. Move your pointer to steer the target, and
-        switch computers to see what a slower board costs. The watts are each computer&rsquo;s rough power draw; the planner
-        settings are illustrative, not measurements, and the real ones are on <a href="/research">the Exploration page</a>.
+        A toy drone planning live in your browser: every step it tries {computer.samples} possible futures (thin lines) and
+        flies the best; orange marks a late plan. Steer the target with your pointer and switch computers to see what a
+        smaller one costs. Watts are rough power draw; the planner settings are illustrative, and the real measurements are
+        on <a href="/research">the Exploration page</a>. Drone 2027 is a projection: NVIDIA&rsquo;s Jetson Orin Nano 2, due
+        in the first half of 2027 and claimed to run inference twice as fast, with a leaner world model.
       </figcaption>
     </figure>
   );

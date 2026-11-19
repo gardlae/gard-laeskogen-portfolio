@@ -6,11 +6,15 @@
 // Plain names with a rough power draw as the scale (user, 2026-11-19: "Jetson" means nothing to most people,
 // and prices go stale). The figures are the research's real devices: an RTX 5080 (360 W board power), a Jetson
 // Orin Nano in its 25 W mode, a Raspberry Pi 5 under load. The samples and late rates are illustrative.
+// "Drone 2027" is a projection (user, 2026-11-19): NVIDIA's Jetson Orin Nano 2, announced 25 Aug 2026 for the
+// first half of 2027 with a claimed 2x the inference speed of the Orin Nano Super, running a leaner world model.
+// The list runs from most to least capable; scripts/planner-check.ts holds the page to that order.
 export type Computer = { id: string; label: string; power: string; samples: number; lateRate: number };
 
 export const COMPUTERS: Computer[] = [
   { id: "gpu", label: "Desktop GPU", power: "~360 W", samples: 512, lateRate: 0 },
-  { id: "jetson", label: "Drone computer", power: "~25 W", samples: 32, lateRate: 0.15 },
+  { id: "drone2027", label: "Drone 2027", power: "~25 W, projected", samples: 160, lateRate: 0.03 },
+  { id: "jetson", label: "Drone today", power: "~25 W", samples: 32, lateRate: 0.15 },
   { id: "pi", label: "Raspberry Pi", power: "~10 W", samples: 8, lateRate: 0.45 },
 ];
 

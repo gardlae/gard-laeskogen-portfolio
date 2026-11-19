@@ -296,7 +296,20 @@ main { display: block; }
   margin-top: 12px;
 }
 
-.planner-switch { display: inline-flex; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 8px; }
+/* the separators are the 1px gaps showing the container's background */
+.planner-switch {
+  display: inline-grid;
+  grid-auto-flow: column;
+  gap: 1px;
+  overflow: hidden;
+  background: var(--line-strong);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+}
+
+@media (max-width: 560px) {
+  .planner-switch { display: grid; grid-auto-flow: row; grid-template-columns: 1fr 1fr; width: 100%; }
+}
 
 .planner-switch button {
   display: flex;
@@ -310,8 +323,6 @@ main { display: block; }
   font: 600 14px/1.2 var(--font-sans);
   cursor: pointer;
 }
-
-.planner-switch button + button { border-left: 1px solid var(--line-strong); }
 
 .planner-switch button:hover { color: var(--ink); }
 
