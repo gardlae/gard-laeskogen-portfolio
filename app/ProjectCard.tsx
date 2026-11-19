@@ -2,6 +2,12 @@ import Link from "next/link";
 import type { PortfolioProject, ResearchItem } from "./content";
 import { ProjectMediaView } from "./ProjectMedia";
 
+// Skills read as keywords: capitalised first letter, the project's own order.
+export function skillList(project: PortfolioProject, limit?: number) {
+  const skills = project.methods.map((method) => method[0].toUpperCase() + method.slice(1));
+  return limit ? skills.slice(0, limit) : skills;
+}
+
 export function projectSummary(project: PortfolioProject) {
   return project.subtitle || project.outcome || project.contribution || project.context || "";
 }
@@ -15,6 +21,7 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
       <p className="meta">{project.category} · {project.duration}</p>
       <h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3>
       <p className="clamp">{project.subtitle || project.contribution || project.context || project.outcome}</p>
+      {project.methods.length > 0 && <p className="card-skills">{skillList(project, 4).join(" · ")}</p>}
     </li>
   );
 }

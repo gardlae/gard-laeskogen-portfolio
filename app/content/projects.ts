@@ -4,25 +4,28 @@ export const allProjects: PortfolioProject[] = [
   {
     slug: "compute-aware-vio",
     title: "Compute-aware VIO",
-    subtitle: "How little computing does a drone need to know where it is?",
+    subtitle: "Camera and IMU state estimation for a drone, built to run on very little compute.",
     category: "Course project · UC Berkeley",
     duration: "Nov 2026 - present",
     visibility: "public",
     featured: true,
     context:
-      "A team project in Navigation for Physical AI (EECS 216) at UC Berkeley. The task is visual-inertial odometry: estimate a drone camera's position and velocity from camera frames (20 per second) and an inertial sensor (200 samples per second), delivered as a single WebAssembly module. A class leaderboard ranks every estimator on two axes at once: its trajectory error and the compute it spends per frame.",
+      "Team project in Navigation for Physical AI (EECS 216). Estimate a drone camera's position and velocity from camera frames (20 Hz) and an IMU (200 Hz), shipped as a single WebAssembly module and scored on both accuracy and compute per frame.",
     contribution:
-      "Our team built and compared three kinds of estimator: a small convolutional network that compares consecutive frames, starting from the course's example network and retrained on our own data, then ported to C++ and WebAssembly with SIMD and int16 arithmetic; a recurrent network with memory across frames; and an estimator that uses no images at all, only the gyroscope and a speed prior. Across our uploads the compute per frame differs by a factor of more than 10,000.",
-    outcome:
-      "In the first stage, scored as the mean trajectory error after the leaderboard aligns each estimated trajectory with the true one, our most accurate upload reached 0.415 m at about 2 million compute units per frame, and our cheapest reached 0.55 m at 250 units without looking at a single image. The second stage uses a new, harder set of flights, on which all our first-stage uploads score between 2.6 and 2.8 m; that work continues. Our C++ uploads can be rebuilt byte for byte from a tagged commit.",
-    constraints:
-      "A team project: the results are the team's. The second leaderboard stage runs until the end of November.",
+      "- Trained small convolutional networks in PyTorch that predict the camera's motion between two frames from the images and preintegrated IMU data, starting from the course's example network.\n- Ported the network to C++ and compiled it to WebAssembly with SIMD convolutions and int16 quantization: 3 to 10 times less compute than the Python runtime.\n- Built a recurrent (GRU) variant with memory across frames, trained on whole flights.\n- Built a gyroscope-only estimator as a near-zero-compute baseline.\n- Generated training data in the HyperDrone simulator and kept every upload reproducible from a tagged commit.",
     methods: [
+      "PyTorch",
+      "C++",
+      "WebAssembly",
+      "SIMD",
+      "int16 quantization",
       "visual-inertial odometry",
+      "sensor fusion",
       "IMU preintegration",
-      "convolutional and recurrent networks",
-      "C++ and WebAssembly",
-      "SIMD and int16 quantisation",
+      "CNN",
+      "GRU",
+      "OpenCV",
+      "simulation data generation",
     ],
     cover: {
       kind: "graphic",

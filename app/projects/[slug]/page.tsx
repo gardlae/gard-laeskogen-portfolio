@@ -6,11 +6,21 @@ import {
   publicProjects,
   site,
 } from "../../content";
-import { projectSummary } from "../../ProjectCard";
+import { projectSummary, skillList } from "../../ProjectCard";
 import { ProjectMediaView } from "../../ProjectMedia";
 import { TieUpDemo } from "../../TieUpDemo";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
+
+// Paragraphs, or a bullet list where every line of a block starts with "- ".
+function TextBlocks({ text }: { text: string }) {
+  return text.split("\n\n").map((block) => {
+    const lines = block.split("\n");
+    return lines.every((line) => line.startsWith("- "))
+      ? <ul key={block.slice(0, 40)}>{lines.map((line) => <li key={line}>{line.slice(2)}</li>)}</ul>
+      : <p key={block.slice(0, 40)}>{block}</p>;
+  });
+}
 
 export function generateStaticParams() {
   return publicProjects.map((project) => ({ slug: project.slug }));
@@ -87,6 +97,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="meta">{project.category} · {project.duration}</p>
           <h1>{project.title}</h1>
           {project.subtitle && <p className="subtitle">{project.subtitle}</p>}
+          {project.methods.length > 0 && (
+            <p className="skills-line"><span>Skills</span>{skillList(project).join(" · ")}</p>
+          )}
           {externalLinks.length > 0 && (
             <p className="links">
               {externalLinks.map((link) => (
@@ -108,17 +121,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           {sections.map((section) => (
             <section key={section.label}>
               <h2>{section.label}</h2>
-              {section.value?.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              {section.value && <TextBlocks text={section.value} />}
             </section>
           ))}
         </div>
-
-        {project.methods.length > 0 && (
-          <section className="methods" aria-labelledby="methods-title">
-            <h2 id="methods-title">Methods and tools</h2>
-            <p>{project.methods.map((method, i) => (i === 0 ? method[0].toUpperCase() + method.slice(1) : method)).join(", ")}</p>
-          </section>
-        )}
 
         {tieUpPrototype && (
           <section className="project-gallery" aria-labelledby="prototype-title">
