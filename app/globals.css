@@ -299,7 +299,11 @@ main { display: block; }
 .planner-switch { display: inline-flex; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 8px; }
 
 .planner-switch button {
-  padding: 7px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 6px 12px;
   border: 0;
   background: var(--paper);
   color: var(--soft);
@@ -310,6 +314,8 @@ main { display: block; }
 .planner-switch button + button { border-left: 1px solid var(--line-strong); }
 
 .planner-switch button:hover { color: var(--ink); }
+
+.planner-switch small { font-size: 12px; font-weight: 600; opacity: 0.75; }
 
 .planner-switch button[aria-checked="true"] { background: var(--ink); color: var(--paper); }
 

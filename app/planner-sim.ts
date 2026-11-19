@@ -3,12 +3,15 @@
 // and follows the weighted best. The "computers" set how many futures fit in a tick and how often the
 // plan arrives late. Toy physics, not data. Kept free of React so scripts/planner-check.ts can run it.
 
-export type Computer = { id: string; label: string; samples: number; lateRate: number };
+// Plain names with a rough price as the scale a visitor knows (user, 2026-11-19: "Jetson" means nothing to most
+// people). The prices are the research's real devices: an RTX 5080, a Jetson Orin Nano kit, a Raspberry Pi 5.
+// The samples and late rates are illustrative, not measurements.
+export type Computer = { id: string; label: string; price: string; samples: number; lateRate: number };
 
 export const COMPUTERS: Computer[] = [
-  { id: "gpu", label: "Desktop GPU", samples: 512, lateRate: 0 },
-  { id: "jetson", label: "Jetson", samples: 32, lateRate: 0.15 },
-  { id: "pi", label: "Raspberry Pi", samples: 8, lateRate: 0.45 },
+  { id: "gpu", label: "Desktop GPU", price: "~$1,000", samples: 512, lateRate: 0 },
+  { id: "jetson", label: "Drone computer", price: "~$250", samples: 32, lateRate: 0.15 },
+  { id: "pi", label: "Raspberry Pi", price: "~$60", samples: 8, lateRate: 0.45 },
 ];
 
 export const DT = 1 / 30; // control tick, s

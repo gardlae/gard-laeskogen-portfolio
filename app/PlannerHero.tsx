@@ -212,7 +212,8 @@ export function PlannerHero() {
               role="radio"
               type="button"
             >
-              {c.label}
+              <span>{c.label}</span>
+              <small>{c.price}</small>
             </button>
           ))}
         </div>
