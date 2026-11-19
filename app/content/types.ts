@@ -134,6 +134,23 @@ export type ResearchItem = {
   status?: string;
 };
 
+export type BlogPost = {
+  slug: string;
+  /** The Storytelling post ID, e.g. 001-rank-right-not-right. */
+  id: string;
+  title: string;
+  /** YYYY-MM-DD: published, else approved. */
+  date: string;
+  status: string;
+  summary: string;
+  paragraphs: string[];
+  graphic?: { src: string; alt: string; width: number; height: number };
+  carousel?: string;
+  linkedin?: string;
+  /** Imported with --drafts for a local look; never shown in a production build. */
+  draft?: boolean;
+};
+
 export type SportsAchievement = {
   year: string;
   sport: string;

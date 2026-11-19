@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 const navigation = [
   { href: "/research", label: "Research", match: ["/research"], plain: true },
   { href: "/portfolio", label: "Portfolio", match: ["/portfolio", "/projects"], plain: false },
+  { href: "/blog", label: "Blog", match: ["/blog"], plain: false },
   { href: "/cv", label: "CV", match: ["/cv"], plain: false },
 ];
 

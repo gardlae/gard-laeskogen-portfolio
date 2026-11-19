@@ -5,12 +5,12 @@ export const allProjects: PortfolioProject[] = [
     slug: "compute-aware-vio",
     title: "Compute-aware VIO",
     subtitle: "How little computing does a drone need to know where it is?",
-    category: "Course project (Project 3) · UC Berkeley",
+    category: "Course project · UC Berkeley",
     duration: "Nov 2026 - present",
     visibility: "public",
     featured: true,
     context:
-      "Project 3 in Navigation for Physical AI (EECS 216) at UC Berkeley, a team project. The task is visual-inertial odometry: estimate a drone camera's position and velocity from camera frames (20 per second) and an inertial sensor (200 samples per second), delivered as a single WebAssembly module. A class leaderboard ranks every estimator on two axes at once: its trajectory error and the compute it spends per frame.",
+      "A team project in Navigation for Physical AI (EECS 216) at UC Berkeley. The task is visual-inertial odometry: estimate a drone camera's position and velocity from camera frames (20 per second) and an inertial sensor (200 samples per second), delivered as a single WebAssembly module. A class leaderboard ranks every estimator on two axes at once: its trajectory error and the compute it spends per frame.",
     contribution:
       "Our team built and compared three kinds of estimator: a small convolutional network that compares consecutive frames, ported to C++ and WebAssembly with SIMD and int16 arithmetic; a recurrent network with memory across frames; and an estimator that uses no images at all, only the gyroscope and a speed prior. Across our uploads the compute per frame differs by a factor of more than 10,000.",
     outcome:

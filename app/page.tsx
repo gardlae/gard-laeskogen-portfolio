@@ -6,7 +6,10 @@ import {
   professionalExperience,
   research,
   site,
+  visiblePosts,
 } from "./content";
+import { BlogCard } from "./BlogCard";
+import { PlannerHero } from "./PlannerHero";
 import { ProjectCard, ResearchCard } from "./ProjectCard";
 import { ResponsiveImage } from "./ResponsiveImage";
 
@@ -64,8 +67,8 @@ function ExperienceSummary() {
 export default function Home() {
   return (
     <main className="shell">
-      <section className="intro" aria-labelledby="home-title">
-        <div className="intro-head">
+      <section className="hero" aria-labelledby="home-title">
+        <div className="hero-text">
           {site.portrait && (
             <div className="portrait">
               <ResponsiveImage alt={site.portrait.alt} priority sizes="160px" src={site.portrait.src} />
@@ -82,10 +85,12 @@ export default function Home() {
             <li><a href="/Gard-Laeskogen-CV.pdf" rel="noreferrer" target="_blank">CV (PDF)</a></li>
           </ul>
         </div>
-        <div className="intro-text measure">
-          {intro.map((paragraph) => <p key={paragraph.slice(0, 32)}>{paragraph}</p>)}
-        </div>
+        <PlannerHero />
       </section>
+
+      <div className="intro-text measure">
+        {intro.map((paragraph) => <p key={paragraph.slice(0, 32)}>{paragraph}</p>)}
+      </div>
 
       <section className="section" aria-labelledby="research-title">
         <div className="section-head">
@@ -104,6 +109,18 @@ export default function Home() {
           {featuredProjects.map((project) => <ProjectCard key={project.slug} project={project} />)}
         </ul>
       </section>
+
+      {visiblePosts.length > 0 && (
+        <section className="section" aria-labelledby="blog-title">
+          <div className="section-head">
+            <h2 id="blog-title">From the blog</h2>
+            <Link className="more-link" href="/blog">All posts →</Link>
+          </div>
+          <ul className="blog-grid">
+            {visiblePosts.slice(0, 3).map((post) => <BlogCard key={post.slug} post={post} />)}
+          </ul>
+        </section>
+      )}
 
       <section className="section" aria-labelledby="experience-title">
         <div className="section-head">

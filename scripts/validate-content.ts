@@ -3,6 +3,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { allProjects, featuredProjects, publicProjects } from "../app/content/projects.ts";
 import { leadershipAndActivities, professionalExperience } from "../app/content/experience.ts";
+import { blogPosts } from "../app/content/blog-posts.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const errors: string[] = [];
@@ -97,9 +98,18 @@ const knownRoutes = new Set([
   "/sports",
   "/philosophy",
   "/research",
+  "/blog",
   "/Gard-Laeskogen-CV.pdf",
 ]);
 for (const project of publicProjects) knownRoutes.add(`/projects/${project.slug}`);
+
+for (const post of blogPosts) {
+  if (post.draft) fail(`Blog: ${post.id} is a draft (imported with --drafts); re-run scripts/import-blog.mjs without it before committing`);
+  if (!["approved", "scheduled", "published"].includes(post.status)) fail(`Blog: ${post.id} has status ${post.status}`);
+  if (!slugPattern.test(post.slug)) fail(`Blog: invalid slug ${post.slug}`);
+  if (post.graphic && !existsSync(join(root, "public", post.graphic.src))) fail(`Blog: missing ${post.graphic.src}`);
+  knownRoutes.add(`/blog/${post.slug}`);
+}
 
 const sourceFiles = [
   "app/page.tsx",
@@ -109,6 +119,8 @@ const sourceFiles = [
   "app/portfolio/page.tsx",
   "app/cv/page.tsx",
   "app/projects/[slug]/page.tsx",
+  "app/blog/page.tsx",
+  "app/BlogCard.tsx",
 ];
 
 for (const sourceFile of sourceFiles) {

@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { publicProjects, site } from "./content";
+import { publicProjects, site, visiblePosts } from "./content";
 import { researchPage } from "./research/research-page";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date("2026-11-18");
-  const pages = ["", "/portfolio", "/cv", ...(researchPage.publish ? ["/research"] : [])];
+  const pages = ["", "/portfolio", "/blog", "/cv", ...(researchPage.publish ? ["/research"] : [])];
 
   return [
     ...pages.map((path, index) => ({
@@ -18,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "yearly" as const,
       priority: project.featured ? 0.8 : 0.6,
+    })),
+    ...visiblePosts.map((post) => ({
+      url: `${site.canonicalUrl}/blog/${post.slug}`,
+      lastModified: new Date(`${post.date}T12:00:00Z`),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
     })),
   ];
 }

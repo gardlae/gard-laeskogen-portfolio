@@ -8,10 +8,11 @@ Personal CV and technical portfolio for Gard Laeskogen.
 
 ## Public Structure
 
-The homepage (`/`) introduces Gard (with a portrait once `site.portrait` is set in `app/content/profile.ts`), the research, three selected projects and a short experience list. The navigation has three pages:
+The homepage (`/`) opens with Gard's name beside a live planner (`app/PlannerHero.tsx`, simulation in `app/planner-sim.ts`): a small drone controller running in the browser, with a switch between three computers. Below come the introduction (with a portrait once `site.portrait` is set in `app/content/profile.ts`), the research, three selected projects, the latest blog posts once there are any, and a short experience list. The site is light only. The navigation has three pages:
 
 - `Research` at `/research`: the research page, generated outside this repository (see below)
 - `Portfolio` at `/portfolio`: every public project
+- `Blog` at `/blog`: posts imported from the Storytelling repository (see below)
 - `CV` at `/cv`: the full CV, with the PDF at `/Gard-Laeskogen-CV.pdf`
 
 Every public project has a direct route at `/projects/[slug]`. Research (TickJEPA) is not a portfolio project: it has its own page and the homepage's Research section. The old Drive section is gone: athletics are on the CV (`/cv#athletics`), and `/about`, `/sports` and `/philosophy` redirect. Flipper Zero exploration and the coming-soon Cutlery Sorting Machine are intentionally public. The unfinished standalone Investment section remains excluded from navigation and search indexing. Contact details live in the footer.
@@ -25,6 +26,20 @@ python3 site/build.py --portfolio ~/Github/gard-laeskogen-portfolio
 ```
 
 It writes `app/research/research-page.ts` (served by `app/research/route.ts`) and `public/research/` (status JSON, social image, and the paper files once the PDF is public). Do not edit those files by hand; rebuild instead, then commit and deploy as usual. The page repeats this site's header, footer, fonts and colours, so a change to `app/globals.css` tokens or to `SiteHeader`/`SiteFooter` needs the same change in `YouOnAI/site/template.html`. It stays `noindex` until the research project sets `publish` to true.
+
+### The blog
+
+Posts come from the private Storytelling repository (`gardlae/Storytelling`), where they are drafted, chosen and approved. Only posts whose `metadata.json` status is `approved`, `scheduled` or `published` are imported (a post can opt out with `"website": false`):
+
+```bash
+node scripts/import-blog.mjs ~/Berkeley/Storytelling      # pull that repository first
+```
+
+It writes `app/content/blog-posts.ts` and `public/blog/<slug>/` (graphic and carousel PDF); commit both. `--drafts` also imports candidates for a local look on the dev server only: builds drop drafts and `pnpm content:check` refuses them, so re-run without it before committing.
+
+### The planner
+
+`pnpm planner:check` runs the planner's simulation for 40 s per computer and fails unless each slower computer tracks at least 30% worse, which is what the caption claims.
 
 ## Edit Content
 
