@@ -4,32 +4,24 @@ import { ProjectCard } from "../ProjectCard";
 
 export const metadata = buildPageMetadata({
   title: "Portfolio",
-  description: "Research, course projects and hardware builds by Gard Laeskogen: world models for drone control, visual-inertial odometry, UAV builds, distributed systems and analog control.",
+  description: "Projects by Gard Laeskogen: visual-inertial odometry on a compute budget, UAV builds, distributed systems, analog control and more.",
   path: "/portfolio",
 });
 
 export default function PortfolioPage() {
-  const current = publicProjects.filter((project) => project.current);
-  const earlier = publicProjects.filter((project) => !project.current);
-
   return (
     <main className="shell page-top">
       <header className="page-head measure">
         <h1>Portfolio</h1>
-        <p>Research, coursework and things I have built, at work, at school and in my free time.</p>
+        <p>
+          Things I have built at school, at work and in my free time. My research has its own page:{" "}
+          <a href="/research">Research</a>.
+        </p>
       </header>
 
-      <section className="section" aria-labelledby="now-title">
-        <div className="section-head"><h2 id="now-title">Now</h2></div>
+      <section className="section" aria-label="Projects">
         <ul className="project-grid">
-          {current.map((project) => <ProjectCard key={project.slug} project={project} />)}
-        </ul>
-      </section>
-
-      <section className="section" aria-labelledby="earlier-title">
-        <div className="section-head"><h2 id="earlier-title">Earlier projects</h2></div>
-        <ul className="project-grid">
-          {earlier.map((project) => <ProjectCard key={project.slug} project={project} />)}
+          {publicProjects.map((project) => <ProjectCard key={project.slug} project={project} />)}
         </ul>
       </section>
     </main>

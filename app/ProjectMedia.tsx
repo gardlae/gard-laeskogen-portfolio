@@ -11,7 +11,7 @@ type ProjectMediaViewProps = {
 // Planning time per control step against the deadline (dashed); late steps in warm. Illustrative, not data.
 const LATENCY_BARS = [52, 60, 48, 57, 63, 50, 92, 58, 47, 55, 61, 84, 95, 56, 49, 59, 53, 62, 50, 88, 57, 51];
 
-function LatencyMotif() {
+export function LatencyMotif() {
   return (
     <svg aria-hidden="true" className="motif" viewBox="0 0 220 110">
       {LATENCY_BARS.map((height, i) => (

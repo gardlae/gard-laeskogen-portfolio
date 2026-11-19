@@ -6,7 +6,7 @@ import {
   publicProjects,
   site,
 } from "../../content";
-import { projectHref, projectSummary } from "../../ProjectCard";
+import { projectSummary } from "../../ProjectCard";
 import { ProjectMediaView } from "../../ProjectMedia";
 import { TieUpDemo } from "../../TieUpDemo";
 
@@ -87,9 +87,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <p className="meta">{project.category} · {project.duration}</p>
           <h1>{project.title}</h1>
           {project.subtitle && <p className="subtitle">{project.subtitle}</p>}
-          {(project.page || externalLinks.length > 0) && (
+          {externalLinks.length > 0 && (
             <p className="links">
-              {project.page && <a href={projectHref(project)}>Read the full write-up →</a>}
               {externalLinks.map((link) => (
                 <a href={link.href} key={link.href} rel="noreferrer" target="_blank">{link.label} ↗</a>
               ))}

@@ -8,13 +8,13 @@ Personal CV and technical portfolio for Gard Laeskogen.
 
 ## Public Structure
 
-The homepage (`/`) introduces Gard, the current work, three selected projects and a short experience list. The navigation has three pages:
+The homepage (`/`) introduces Gard (with a portrait once `site.portrait` is set in `app/content/profile.ts`), the research, three selected projects and a short experience list. The navigation has three pages:
 
 - `Research` at `/research`: the research page, generated outside this repository (see below)
-- `Portfolio` at `/portfolio`: every public project, current work first
+- `Portfolio` at `/portfolio`: every public project
 - `CV` at `/cv`: the full CV, with the PDF at `/Gard-Laeskogen-CV.pdf`
 
-Every public project has a direct route at `/projects/[slug]`; a project with a `page` (TickJEPA) links there instead. The old Drive section is gone: athletics are on the CV (`/cv#athletics`), and `/about`, `/sports` and `/philosophy` redirect. Flipper Zero exploration and the coming-soon Cutlery Sorting Machine are intentionally public. The unfinished standalone Investment section remains excluded from navigation and search indexing. Contact details live in the footer.
+Every public project has a direct route at `/projects/[slug]`. Research (TickJEPA) is not a portfolio project: it has its own page and the homepage's Research section. The old Drive section is gone: athletics are on the CV (`/cv#athletics`), and `/about`, `/sports` and `/philosophy` redirect. Flipper Zero exploration and the coming-soon Cutlery Sorting Machine are intentionally public. The unfinished standalone Investment section remains excluded from navigation and search indexing. Contact details live in the footer.
 
 ### The research page
 
@@ -98,20 +98,19 @@ The content validator checks slugs, dates, public copy, media and responsive var
 
 The canonical origin is `https://www.gardlaeskogen.com`. The application includes canonical and social metadata, Person and CreativeWork structured data, `robots.txt`, and a sitemap containing only public routes.
 
-Source is mirrored to GitHub and the OpenAI Sites remote. The current Sites project ID is stored in `.openai/hosting.json`. Publishing through the Sites deployment flow builds from `main` and serves the custom domain.
+The site runs on Cloudflare Workers (worker `gard-laeskogen-portfolio`). **Cloudflare Workers Builds** is connected to this GitHub repository, so deploying is a push:
 
-For a direct Cloudflare Worker deployment, configure any optional public environment variables and run:
-
-```bash
-pnpm deploy
-```
-
-That command builds the vinext application and deploys the generated `dist/server/wrangler.json` configuration. The root `wrangler.jsonc` supplies the Worker entry point and non-secret defaults.
-
-Push source changes to GitHub with:
+- A push to `main` builds and deploys production, `www.gardlaeskogen.com`.
+- A push to any other branch builds a preview version that does not touch production. Its link appears on the commit's "Workers Builds" check on GitHub (and in the Cloudflare dashboard under the worker's deployments). Use it to share a change before merging.
 
 ```bash
-git add .
-git commit -m "Describe the change"
-git push github main
+git switch -c my-change
+git commit -am "Describe the change"
+git push -u origin my-change     # preview link on the commit's check
 ```
+
+Merge the branch into `main` (a pull request or `git push origin my-change:main`) to publish it.
+
+To update the research page: run `python3 site/build.py --portfolio ~/Github/gard-laeskogen-portfolio` in the YouOnAI repository, then commit `app/research/` and `public/research/` here and push as above.
+
+A manual deployment from this machine is also possible after `wrangler login`: `pnpm deploy` builds the vinext application and deploys `dist/server/wrangler.json`; the root `wrangler.jsonc` supplies the Worker entry point and non-secret defaults. `.openai/hosting.json` is left from the earlier OpenAI Sites setup.

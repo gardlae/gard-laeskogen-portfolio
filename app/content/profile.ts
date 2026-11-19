@@ -24,10 +24,6 @@ export const intro: string[] = [
   "Until I was 14, my plan was to become the world's best cross-country skier. I still race: I won my class at the Trondheim Marathon in 2:51 and won the Berkeley Trail Adventure 50 km in August 2026. I grew up working in my family's hotel, Sundvolden, and later sat on its board.",
 ];
 
-// One sentence that ties the two current projects together on the homepage.
-export const currentWorkIntro =
-  "Both projects ask how much computing a drone really needs: one for deciding what to do, the other for knowing where it is.";
-
 export const recruiterOverview = {
   focus: "Cybernetics / UAV systems / leadership",
   summary:

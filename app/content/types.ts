@@ -7,6 +7,8 @@ export type SiteConfig = {
   location: string;
   headline: string;
   roles: string[];
+  /** Portrait for the homepage, under public/media (with -640/-768/-1280 variants). Hidden when unset. */
+  portrait?: { src: string; alt: string };
   canonicalUrl: string;
   bookingUrl: string;
 };
@@ -48,12 +50,6 @@ export type PortfolioProject = {
   duration: string;
   visibility: ProjectVisibility;
   featured: boolean;
-  /** Shown under "Current work" on the homepage. */
-  current?: boolean;
-  /** Status line for current work, e.g. "In progress". */
-  status?: string;
-  /** An internal page that replaces /projects/[slug] as the main link, e.g. "/research". */
-  page?: `/${string}`;
   context?: string;
   role?: string;
   challenge?: string;
@@ -131,6 +127,11 @@ export type ResearchItem = {
   title: string;
   summary: string;
   href?: `/${string}`;
+  /** Homepage card: project name, plain-language question, what is being done, and where it stands. */
+  name?: string;
+  question?: string;
+  plain?: string;
+  status?: string;
 };
 
 export type SportsAchievement = {

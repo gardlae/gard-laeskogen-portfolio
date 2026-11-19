@@ -277,42 +277,56 @@ main { display: block; }
   .intro-text { margin-top: 8px; }
 }
 
-/* Current work */
+/* Research card (homepage) */
 
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-
-@media (max-width: 760px) {
-  .work-grid { grid-template-columns: 1fr; }
-}
-
-.work-card {
+.research-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 24px 24px 22px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  gap: 24px 40px;
+  align-items: center;
+  padding: 28px 28px 26px;
   background: var(--sheet);
   border: 1px solid var(--line);
   border-radius: 8px;
 }
 
-.work-card:hover { border-color: var(--line-strong); }
+.research-card:hover { border-color: var(--line-strong); }
 
-.work-card h3 { font: 500 1.4rem/1.2 var(--font-serif); }
+.research-card > div:first-child { display: flex; flex-direction: column; gap: 10px; }
 
-.work-card h3 a { color: var(--ink); text-decoration: none; }
+.research-card h3 { font: 500 1.55rem/1.2 var(--font-serif); }
 
-.work-card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 8px; }
+.research-card h3 a { color: var(--ink); text-decoration: none; }
 
-.work-card .question { color: var(--ink); font-size: 1.06rem; line-height: 1.45; }
+.research-card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 8px; }
 
-.work-card .summary { font-size: 15.5px; line-height: 1.55; }
+.research-card:hover h3 a { color: var(--signal); }
 
-.work-card .meta:last-child { margin-top: auto; padding-top: 6px; }
+.research-card .summary { max-width: 600px; font-size: 16px; line-height: 1.55; }
+
+.research-card-figure { padding: 12px 0; }
+
+.research-card-figure .motif { display: block; width: 100%; height: auto; overflow: visible; }
+
+@media (max-width: 760px) {
+  .research-card { grid-template-columns: 1fr; padding: 22px 20px; }
+  .research-card-figure { max-width: 260px; }
+}
+
+/* Portrait (homepage, shown when site.portrait is set) */
+
+.portrait {
+  position: relative;
+  overflow: hidden;
+  width: 132px;
+  aspect-ratio: 1;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: var(--tint);
+}
+
+.portrait img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Project grid (homepage and portfolio) */
 

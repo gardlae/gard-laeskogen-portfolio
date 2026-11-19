@@ -2,53 +2,21 @@ import type { PortfolioProject } from "./types";
 
 export const allProjects: PortfolioProject[] = [
   {
-    slug: "tickjepa",
-    title: "TickJEPA",
-    subtitle: "How much computer does a learned drone controller need?",
-    category: "Research · UC Berkeley",
-    duration: "Nov 2026 - present",
-    visibility: "public",
-    featured: false,
-    current: true,
-    status: "In progress · paper in preparation",
-    page: "/research",
-    context:
-      "Drones are starting to plan their motion with learned world models: small neural networks that predict how the drone will move. Every 10 milliseconds the controller tries hundreds of candidate actions through the model, so how much planning fits in each step depends on the computer on board. Move the same controller to a cheaper board or a busier GPU and it plans less, or too late. Today the only way to find out what that costs is to test the controller on each computer.",
-    contribution:
-      "I built a test harness in which the same world-model controller runs on physically different computers, from a Raspberry Pi to a desktop GPU, while a simulator plays the drone. The question is whether three timing numbers, which mean the same thing on every computer, predict how accurately the drone follows its path. If they do, a few minutes of timing measurements on a new board could stand in for testing the controller there.",
-    methods: [
-      "world models (JEPA)",
-      "sampling-based MPC (MPPI)",
-      "embedded GPUs",
-      "software-in-the-loop simulation",
-      "hypotheses written down in advance",
-    ],
-    cover: {
-      kind: "graphic",
-      label: "TickJEPA",
-      detail: "Research",
-      motif: "latency",
-    },
-    media: [],
-  },
-  {
-    slug: "compute-constrained-vio",
-    title: "Compute-constrained VIO",
+    slug: "compute-aware-vio",
+    title: "Compute-aware VIO",
     subtitle: "How little computing does a drone need to know where it is?",
-    category: "Course project · UC Berkeley",
+    category: "Course project (Project 3) · UC Berkeley",
     duration: "Nov 2026 - present",
     visibility: "public",
-    featured: false,
-    current: true,
-    status: "Team project · second leaderboard stage in progress",
+    featured: true,
     context:
-      "A team project in Navigation for Physical AI (EECS 216) at UC Berkeley. The task is visual-inertial odometry: estimate a drone camera's position and velocity from camera frames (20 per second) and an inertial sensor (200 samples per second), delivered as a single WebAssembly module. A class leaderboard ranks every estimator on two axes at once: its trajectory error and the compute it spends per frame.",
+      "Project 3 in Navigation for Physical AI (EECS 216) at UC Berkeley, a team project. The task is visual-inertial odometry: estimate a drone camera's position and velocity from camera frames (20 per second) and an inertial sensor (200 samples per second), delivered as a single WebAssembly module. A class leaderboard ranks every estimator on two axes at once: its trajectory error and the compute it spends per frame.",
     contribution:
       "Our team built and compared three kinds of estimator: a small convolutional network that compares consecutive frames, ported to C++ and WebAssembly with SIMD and int16 arithmetic; a recurrent network with memory across frames; and an estimator that uses no images at all, only the gyroscope and a speed prior. Across our uploads the compute per frame differs by a factor of more than 10,000.",
     outcome:
       "In the first stage our most accurate upload reached 0.415 m mean trajectory error at about 2 million compute units per frame, and our cheapest reached 0.55 m at 250 units without looking at a single image. Our C++ uploads can be rebuilt byte for byte from a tagged commit.",
     constraints:
-      "A team project: the results are the team's.",
+      "A team project: the results are the team's. The second leaderboard stage runs until the end of November.",
     methods: [
       "visual-inertial odometry",
       "IMU preintegration",
@@ -136,7 +104,7 @@ export const allProjects: PortfolioProject[] = [
     category: "School",
     duration: "Jan 2023 - Mar 2023",
     visibility: "public",
-    featured: true,
+    featured: false,
     contribution:
       "Built and tested an analog servo motor control system for a DC motor, including speed and position measurement, controller tuning, and frequency-response analysis.",
     methods: [
@@ -289,10 +257,6 @@ export const publicProjects = allProjects.filter(
 
 export const featuredProjects = publicProjects.filter(
   (project) => project.featured,
-);
-
-export const currentProjects = publicProjects.filter(
-  (project) => project.current,
 );
 
 export function getPublicProject(slug: string) {

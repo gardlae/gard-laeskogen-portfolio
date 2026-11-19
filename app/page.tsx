@@ -1,7 +1,5 @@
 import Link from "next/link";
 import {
-  currentProjects,
-  currentWorkIntro,
   featuredProjects,
   intro,
   leadershipAndActivities,
@@ -9,7 +7,8 @@ import {
   research,
   site,
 } from "./content";
-import { ProjectCard, WorkCard } from "./ProjectCard";
+import { ProjectCard, ResearchCard } from "./ProjectCard";
+import { ResponsiveImage } from "./ResponsiveImage";
 
 type SummaryRow = { start: string; end: string; roles: string[]; place: string };
 
@@ -67,6 +66,11 @@ export default function Home() {
     <main className="shell">
       <section className="intro" aria-labelledby="home-title">
         <div className="intro-head">
+          {site.portrait && (
+            <div className="portrait">
+              <ResponsiveImage alt={site.portrait.alt} priority sizes="160px" src={site.portrait.src} />
+            </div>
+          )}
           <h1 id="home-title">{site.name}</h1>
           <p className="intro-roles">
             {site.roles.map((role) => <span key={role}>{role}</span>)}
@@ -83,15 +87,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section" aria-labelledby="current-title">
+      <section className="section" aria-labelledby="research-title">
         <div className="section-head">
-          <h2 id="current-title">Current work</h2>
+          <h2 id="research-title">Research</h2>
           <a className="more-link" href="/research">Research page →</a>
         </div>
-        <p className="section-lead">{currentWorkIntro}</p>
-        <div className="work-grid">
-          {currentProjects.map((project) => <WorkCard key={project.slug} project={project} />)}
-        </div>
+        {research.map((item) => <ResearchCard item={item} key={item.title} />)}
       </section>
 
       <section className="section" aria-labelledby="projects-title">
