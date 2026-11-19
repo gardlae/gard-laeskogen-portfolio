@@ -1,275 +1,115 @@
 import Link from "next/link";
 import {
-  education,
+  currentProjects,
+  currentWorkIntro,
+  featuredProjects,
+  intro,
   leadershipAndActivities,
   professionalExperience,
-  publicProjects,
-  recruiterOverview,
+  research,
   site,
-  sportsAchievements,
-  sportsIntro,
 } from "./content";
-import { ProjectMediaView } from "./ProjectMedia";
-import { ResponsiveImage } from "./ResponsiveImage";
-import { TieUpDemo } from "./TieUpDemo";
+import { ProjectCard, WorkCard } from "./ProjectCard";
 
-function summary(project: (typeof publicProjects)[number]) {
-  return project.outcome || project.contribution || project.context || "";
+type SummaryRow = { start: string; end: string; roles: string[]; place: string };
+
+function yearSpan(period: string) {
+  const years = period.match(/\b(?:19|20)\d{2}\b/g) ?? [];
+  return { start: years[0] ?? "", end: /present/i.test(period) ? "present" : years.at(-1) ?? "" };
 }
 
-function PortfolioPreview({ project, index }: {
-  project: (typeof publicProjects)[number];
-  index: number;
-}) {
-  const isTieUp = project.slug === "tieup-social-platform";
-  const media = project.slug === "hospitality-investment-analysis"
-    ? []
-    : [project.cover, ...project.media].slice(0, 2);
-
-  return (
-    <article
-      className={`home-project-row home-project-row-${project.slug}${media.length === 0 ? " home-project-row-text-only" : ""}${isTieUp ? " home-project-row-prototype" : ""}`}
-      id={`project-${project.slug}`}
-    >
-      <div className="home-project-index">{String(index + 1).padStart(2, "0")}</div>
-      {isTieUp ? (
-        <div className="home-project-prototype">
-          <p className="eyebrow">Interactive prototype</p>
-          <TieUpDemo compact />
-        </div>
-      ) : media.length > 0 && (
-        <div className="home-project-media" aria-label={`${project.title} media`}>
-          {media.map((item, mediaIndex) => (
-            <ProjectMediaView
-              key={`${project.slug}-${mediaIndex}`}
-              media={item}
-              sizes="(max-width: 768px) 46vw, 24vw"
-            />
-          ))}
-        </div>
-      )}
-      <div className="home-project-copy">
-        <div className="home-project-meta">
-          <span>{project.category}</span>
-          <span>{project.duration}</span>
-        </div>
-        <h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3>
-        <p>{summary(project)}</p>
-        <ul className="home-project-methods" aria-label="Selected methods">
-          {project.methods.slice(0, 3).map((method) => <li key={method}>{method}</li>)}
-        </ul>
-        <Link className="project-detail-link" href={`/projects/${project.slug}`} aria-label={`View project: ${project.title}`}>
-          View project <span aria-hidden="true">↗</span>
-        </Link>
-      </div>
-    </article>
-  );
+function formatSpan({ start, end }: SummaryRow) {
+  return start === end ? start : `${start} – ${end}`;
 }
 
-function ExperienceCompact() {
-  const entries = [...professionalExperience, ...leadershipAndActivities];
+// Consecutive roles at the same place share one row, e.g. the three Armed Forces roles.
+function ExperienceSummary() {
+  const rows: SummaryRow[] = research.map((item) => ({
+    ...yearSpan(item.period),
+    roles: ["Research"],
+    place: `${item.place} (${item.advisor})`,
+  }));
+
+  for (const item of professionalExperience) {
+    const span = yearSpan(item.period);
+    const last = rows.at(-1);
+    if (last && last.place === item.place) {
+      last.roles.push(item.role.replace(/ \(part-time\)$/, ""));
+      last.start = span.start < last.start ? span.start : last.start;
+      // "present" sorts after any year
+      last.end = span.end > last.end ? span.end : last.end;
+    } else {
+      rows.push({ ...span, roles: [item.role], place: item.place });
+    }
+  }
+
+  for (const item of leadershipAndActivities.slice(0, 2)) {
+    rows.push({ ...yearSpan(item.period), roles: [item.role], place: item.place.split(" - ")[0] });
+  }
+
+  // Newest first: by end year ("present" first), then by start year.
+  rows.sort((a, b) => b.end.localeCompare(a.end) || b.start.localeCompare(a.start));
 
   return (
-    <section className="home-section home-cv" id="cv" aria-labelledby="cv-title">
-      <div className="page-shell">
-        <header className="home-section-heading">
-          <div>
-            <p className="eyebrow">02 / Experience</p>
-            <h2 id="cv-title">Experience / CV</h2>
-          </div>
-          <div className="home-cv-actions">
-            <a
-              className="button button-dark"
-              href="/Gard-Laeskogen-CV.pdf"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Open CV as PDF
-            </a>
-          </div>
-        </header>
-
-        <div className="home-education-strip" aria-label="Education">
-          {education.map((item) => (
-            <article key={item.institution}>
-              <time>{item.period}</time>
-              <h3>{item.qualification}</h3>
-              <p>{item.institution}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="home-experience-list">
-          {entries.map((item, index) => (
-            <details
-              className="home-experience-entry"
-              key={`${item.role}-${item.period}`}
-            >
-              <summary>
-                <time>{item.period}</time>
-                <div>
-                  <h3>{item.role}</h3>
-                  <p>{item.place}{item.location ? ` / ${item.location}` : ""}</p>
-                </div>
-                <span className="home-experience-index">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <span aria-hidden="true" className="home-experience-toggle">+</span>
-              </summary>
-
-              <div className="home-experience-details">
-                {item.summary && <p>{item.summary}</p>}
-
-                {item.positions && item.positions.length > 0 && (
-                  <div>
-                    <h4>Positions</h4>
-                    <ul>
-                      {item.positions.map((position) => <li key={position}>{position}</li>)}
-                    </ul>
-                  </div>
-                )}
-
-                {item.responsibilities && item.responsibilities.length > 0 && (
-                  <div>
-                    <h4>Responsibilities</h4>
-                    <ul>
-                      {item.responsibilities.map((responsibility) => (
-                        <li key={responsibility}>{responsibility}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {item.impact && item.impact.length > 0 && (
-                  <div>
-                    <h4>Impact</h4>
-                    <ul>
-                      {item.impact.map((impact) => <li key={impact}>{impact}</li>)}
-                    </ul>
-                  </div>
-                )}
-
-                {item.recommendation && (
-                  <blockquote>{item.recommendation}</blockquote>
-                )}
-
-                {item.links && item.links.length > 0 && (
-                  <div className="home-experience-links">
-                    {item.links.map((link) => (
-                      <a href={link.href} key={link.href} rel="noreferrer" target="_blank">
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
+    <ul className="timeline measure">
+      {rows.map((row) => (
+        <li key={`${row.place}-${row.start}`}>
+          <span className="meta">{formatSpan(row)}</span>
+          <p><strong>{row.roles.join(" / ")}</strong> <span>· {row.place}</span></p>
+        </li>
+      ))}
+    </ul>
   );
 }
 
 export default function Home() {
-  const featuredSports = sportsAchievements;
-
   return (
-    <main>
-      <section className="home-hero" aria-labelledby="home-title">
-        <div className="hero-media hero-media-grid">
-          <div className="hero-media-panel hero-media-panel-drone">
-            <ResponsiveImage
-              alt="FPV drone in flight"
-              priority
-              sizes="(max-width: 768px) 43vw, 22vw"
-              src="/media/fpv-drone-flight.jpg"
-            />
-          </div>
-          <div className="hero-media-panel hero-media-panel-servo">
-            <ResponsiveImage
-              alt="Analog servo controller assembled on a breadboard"
-              priority
-              sizes="(max-width: 768px) 43vw, 22vw"
-              src="/media/servo-breadboard-full.jpg"
-            />
-          </div>
-          <div className="hero-media-panel hero-media-panel-military">
-            <ResponsiveImage
-              alt="Gard Laeskogen during field experience in the Norwegian Armed Forces"
-              priority
-              sizes="(max-width: 768px) 52vw, 43vw"
-              src={site.storyPoster}
-            />
-          </div>
+    <main className="shell">
+      <section className="intro" aria-labelledby="home-title">
+        <div className="intro-head">
+          <h1 id="home-title">{site.name}</h1>
+          <p className="intro-roles">
+            {site.roles.map((role) => <span key={role}>{role}</span>)}
+          </p>
+          <ul className="contact-links" aria-label="Contact and profiles">
+            <li><a href={`mailto:${site.email}`}>Email</a></li>
+            <li><a href={site.linkedin} rel="noreferrer" target="_blank">LinkedIn</a></li>
+            <li><a href={site.github} rel="noreferrer" target="_blank">GitHub</a></li>
+            <li><a href="/Gard-Laeskogen-CV.pdf" rel="noreferrer" target="_blank">CV (PDF)</a></li>
+          </ul>
         </div>
-        <div className="hero-content page-shell">
-          <p className="eyebrow">{recruiterOverview.focus}</p>
-          <h1 id="home-title">Gard Laeskogen</h1>
-          <p className="hero-role">{site.headline}</p>
-          <p className="hero-summary">{recruiterOverview.summary}</p>
-          <div className="hero-actions" aria-label="Primary actions">
-            <a className="button button-light" href="#portfolio">Selected Portfolio</a>
-            <a
-              className="button button-quiet"
-              href="/Gard-Laeskogen-CV.pdf"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Open CV
-            </a>
-          </div>
-          <p className="hero-location">{site.location} <span aria-hidden="true">·</span> <a href={`mailto:${site.email}`}>Get in touch ↗</a></p>
-        </div>
-        <a className="hero-scroll-action" href="#portfolio" aria-label="Scroll to Selected Portfolio">
-          <span>Explore the work</span>
-          <b aria-hidden="true">↓</b>
-        </a>
-      </section>
-
-      <section className="home-section home-portfolio" id="portfolio" aria-labelledby="portfolio-title">
-        <div className="page-shell">
-          <header className="home-section-heading">
-            <p className="eyebrow">01 / Selected Portfolio</p>
-            <h2 id="portfolio-title">Public technical work.</h2>
-          </header>
-          <div className="home-project-list">
-            {publicProjects.map((project, index) => (
-              <PortfolioPreview index={index} key={project.slug} project={project} />
-            ))}
-          </div>
+        <div className="intro-text measure">
+          {intro.map((paragraph) => <p key={paragraph.slice(0, 32)}>{paragraph}</p>)}
         </div>
       </section>
 
-      <ExperienceCompact />
-
-      <section className="home-section home-story" id="story" aria-labelledby="story-title">
-        <div className="page-shell home-story-grid">
-          <header className="home-section-heading">
-            <p className="eyebrow">03 / Drive</p>
-            <h2 id="story-title">What shaped the work.</h2>
-            <p>{sportsIntro}</p>
-          </header>
-
-          <div className="home-story-panel">
-            <section aria-labelledby="sports-title">
-              <h3 id="sports-title">Sports</h3>
-              {featuredSports.map((achievement) => (
-                <a href={achievement.href} key={`${achievement.year}-${achievement.event}`} rel="noreferrer" target="_blank">
-                  <time>{achievement.year}</time>
-                  <span>{achievement.result}</span>
-                  <strong>{achievement.event}</strong>
-                </a>
-              ))}
-            </section>
-            <section aria-labelledby="principles-title">
-              <h3 id="principles-title">Why I do what I do</h3>
-              <p className="principles-summary">
-                I know there is a better version of myself, and I strive to become it.
-              </p>
-            </section>
-          </div>
+      <section className="section" aria-labelledby="current-title">
+        <div className="section-head">
+          <h2 id="current-title">Current work</h2>
+          <a className="more-link" href="/research">Research page →</a>
         </div>
+        <p className="section-lead">{currentWorkIntro}</p>
+        <div className="work-grid">
+          {currentProjects.map((project) => <WorkCard key={project.slug} project={project} />)}
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="projects-title">
+        <div className="section-head">
+          <h2 id="projects-title">Selected projects</h2>
+          <Link className="more-link" href="/portfolio">All projects →</Link>
+        </div>
+        <ul className="project-grid">
+          {featuredProjects.map((project) => <ProjectCard key={project.slug} project={project} />)}
+        </ul>
+      </section>
+
+      <section className="section" aria-labelledby="experience-title">
+        <div className="section-head">
+          <h2 id="experience-title">Experience</h2>
+          <Link className="more-link" href="/cv">Full CV →</Link>
+        </div>
+        <ExperienceSummary />
       </section>
     </main>
   );

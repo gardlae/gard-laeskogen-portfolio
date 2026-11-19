@@ -47,7 +47,7 @@ Approved for public website: Yes
 | Published file | Current assignment | Placement | Approval |
 | --- | --- | --- | --- |
 | `family-business-portrait.jpg` | Unused | None | Removed from public experience per Gard |
-| `military-field.jpg` (source: `IMG_9094.jpg`) | Story | Military portrait | Confirmed by Gard |
-| `military-hero.jpg` (source: `IMG_9093.jpg`) | Homepage | Hero | Confirmed as the less-cropped military alternative |
+| `military-field.jpg` (source: `IMG_9094.jpg`) | Unused, file removed | None | Removed from the site per Gard (2026-11-18 redesign) |
+| `military-hero.jpg` (source: `IMG_9093.jpg`) | Unused, file removed | None | Removed from the site per Gard (2026-11-18 redesign) |
 
 When a mapping is confirmed, update the approval column to `Confirmed by Gard`, update the relevant entry in `app/content/projects.ts`, `app/content/experience.ts`, or `app/content/profile.ts`, and run `pnpm check` before deployment.

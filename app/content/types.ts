@@ -6,10 +6,9 @@ export type SiteConfig = {
   yCombinator: string;
   location: string;
   headline: string;
+  roles: string[];
   canonicalUrl: string;
   bookingUrl: string;
-  storyVideo?: string;
-  storyPoster: string;
 };
 export type ProjectVisibility = "public" | "draft";
 
@@ -31,6 +30,8 @@ export type ProjectMedia =
       kind: "graphic";
       label: string;
       detail?: string;
+      /** A small line drawing behind the label. */
+      motif?: "latency" | "trajectory";
     };
 
 export type ProjectLink = {
@@ -41,10 +42,18 @@ export type ProjectLink = {
 export type PortfolioProject = {
   slug: string;
   title: string;
+  /** Plain-language line under the title. */
+  subtitle?: string;
   category: string;
   duration: string;
   visibility: ProjectVisibility;
   featured: boolean;
+  /** Shown under "Current work" on the homepage. */
+  current?: boolean;
+  /** Status line for current work, e.g. "In progress". */
+  status?: string;
+  /** An internal page that replaces /projects/[slug] as the main link, e.g. "/research". */
+  page?: `/${string}`;
   context?: string;
   role?: string;
   challenge?: string;
@@ -113,4 +122,22 @@ export type Hackathon = {
 export type SkillGroup = {
   label: string;
   values: string[];
+};
+
+export type ResearchItem = {
+  period: string;
+  place: string;
+  advisor: string;
+  title: string;
+  summary: string;
+  href?: `/${string}`;
+};
+
+export type SportsAchievement = {
+  year: string;
+  sport: string;
+  result: string;
+  event: string;
+  category?: string;
+  href?: string;
 };

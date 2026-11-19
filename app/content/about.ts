@@ -1,3 +1,5 @@
+import type { SportsAchievement } from "./types";
+
 export const personalBackground = {
   intro:
     "I combine engineering work with practical execution, leadership, and experience from operational environments.",
@@ -6,7 +8,13 @@ export const personalBackground = {
 export const sportsIntro =
   "Until age 14, one of my dreams was to become the world's best cross-country skier. This was my life. Preparing for this dream built many of the traits that still define me.";
 
-export const sportsAchievements = [
+export const sportsAchievements: SportsAchievement[] = [
+  {
+    year: "2026",
+    sport: "Trail running",
+    result: "Winner",
+    event: "Berkeley Trail Adventure, 50 km",
+  },
   {
     year: "2016",
     sport: "Running",

@@ -2,23 +2,44 @@ import type {
   AcademicArea,
   EducationItem,
   ExperienceItem,
+  ResearchItem,
   SelectedCourse,
   SkillGroup,
 } from "./types";
 
-// Source: CV notes for website.docx. Gard owns and approves the wording in this file.
+// Source: CV notes for website.docx, updated from the CV of 2026-11-18.
+// Gard owns and approves the wording in this file.
+export const research: ResearchItem[] = [
+  {
+    period: "Aug 2026 - present",
+    place: "UC Berkeley",
+    advisor: "Prof. Alexandre M. Bayen",
+    title: "JEPA world models for quadrotor control under compute constraints",
+    summary: "Studying how latent world model MPC performs under different compute budgets.",
+    href: "/research",
+  },
+];
+
 export const professionalExperience: ExperienceItem[] = [
   {
-    period: "Jun 2026 - Aug 2026",
+    period: "Aug 2026 - present",
+    role: "Student Assistant to Prof. Trond Peterson",
+    place: "UC Berkeley",
+    location: "Berkeley, United States",
+    evidence: [],
+  },
+  {
+    period: "Jun 2026 - Jul 2026",
     role: "Computer Vision Intern",
-    place: "Stealth startup",
+    place: "Stealth defense startup",
     location: "United Kingdom",
     responsibilities: [
-      "Worked on a CUAS system.",
+      "Developed computer-vision software for a counter-UAS system.",
       "Conducted testing.",
       "Debugged computer-vision software.",
       "Developed internal tools.",
     ],
+    impact: ["Offered a full-time engineering role on the founding team after two weeks."],
     evidence: [
       {
         src: "/media/stealth-startup-mark.jpg",
@@ -51,18 +72,13 @@ export const professionalExperience: ExperienceItem[] = [
     ],
   },
   {
-    period: "Aug 2023 - Aug 2024",
-    role: "Operator, Specialist",
+    period: "Aug 2023 - Aug 2026",
+    role: "Instructor (part-time)",
     place: "Norwegian Armed Forces",
     location: "Norway",
     responsibilities: [
-      "Worked in small teams capable of completing extended missions in hostile environments.",
-      "Instructed units in complex mission-solving techniques.",
-      "Handled complex communication systems during missions.",
-    ],
-    impact: [
-      "Developed expertise in rapid decision-making, teamwork, and resilience under extreme conditions.",
-      "Awarded first place in an internal competition focused on physical and technical skills.",
+      "Instructed various units in complex mission-solving techniques.",
+      "Handled complex communication systems and UAV platforms.",
     ],
     evidence: [
       {
@@ -73,8 +89,29 @@ export const professionalExperience: ExperienceItem[] = [
     ],
   },
   {
-    period: "Aug 2017 - Aug 2023",
-    role: "Part-time Employee and Board Member",
+    period: "Aug 2022 - Aug 2023",
+    role: "Paratrooper",
+    place: "Norwegian Armed Forces",
+    location: "Norway",
+    responsibilities: [
+      "Worked in small teams capable of completing extended missions in hostile environments.",
+    ],
+    impact: [
+      "Passed special forces selection, completed by fewer than 1% of candidates.",
+      "Awarded first place in a competition focused on physical and technical skills.",
+      "Developed expertise in rapid decision-making, teamwork, and resilience under extreme conditions.",
+    ],
+    evidence: [
+      {
+        src: "/media/norwegian-armed-forces-mark.jpg",
+        alt: "Norwegian Armed Forces mark",
+        presentation: "mark",
+      },
+    ],
+  },
+  {
+    period: "Aug 2017 - Aug 2022",
+    role: "Hotel Trainee and Board Member",
     place: "Sundvolden Hotel",
     location: "Krokkleiva, Norway",
     summary: "Our family business.",
@@ -166,20 +203,20 @@ export const leadershipAndActivities: ExperienceItem[] = [
 
 export const education: EducationItem[] = [
   {
-    period: "2023 - Expected Jun 2028",
+    period: "Aug 2026 - Jun 2027",
+    institution: "University of California, Berkeley",
+    qualification: "Graduate visiting student, Berkeley International Study Program (BISP)",
+    location: "California, United States",
+    status: "current",
+    detail: "Navigation for physical AI, control of autonomous flight, modelling and simulation of drone-based systems. Auditing VLAs and robotic learning (Prof. Sergey Levine) and AI safety.",
+  },
+  {
+    period: "Aug 2023 - Jun 2028",
     institution: "Norwegian University of Science and Technology (NTNU)",
     qualification: "MSc Cybernetics and Robotics",
     location: "Trondheim, Norway",
     status: "current",
-    detail: "Three academic years completed / Main profile: Autonomous Systems",
-  },
-  {
-    period: "Aug 2026 - Jun 2027",
-    institution: "University of California, Berkeley",
-    qualification: "Graduate student, Berkeley International Study Program",
-    location: "California, United States",
-    status: "upcoming",
-    detail: "Graduate coursework in robotics and AI",
+    detail: "Main profile: Autonomous Systems. Three academic years completed.",
   },
 ];
 
@@ -291,6 +328,26 @@ export const skillGroups: SkillGroup[] = [
 ];
 
 export const featuredSkills = skillGroups.flatMap((group) => group.values);
+
+// The four skill lines of the CV of 2026-11-18, shown on the CV page.
+export const cvSkills: SkillGroup[] = [
+  {
+    label: "Robotics and autonomy",
+    values: ["Computer vision", "robotic learning", "world models", "MPC"],
+  },
+  {
+    label: "Programming",
+    values: ["Python", "C/C++", "Git", "AI-enhanced workflows with Claude, Codex and OpenRouter"],
+  },
+  {
+    label: "Hardware and design",
+    values: ["FPV and fixed-wing UAVs", "RF and communication systems", "analog circuits", "CAD tools", "3D printing"],
+  },
+  {
+    label: "Languages",
+    values: ["Norwegian (native)", "English (fluent)"],
+  },
+];
 
 // Backwards-compatible export for any code importing the original name.
 export const experience = professionalExperience;

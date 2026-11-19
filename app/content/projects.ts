@@ -2,6 +2,69 @@ import type { PortfolioProject } from "./types";
 
 export const allProjects: PortfolioProject[] = [
   {
+    slug: "tickjepa",
+    title: "TickJEPA",
+    subtitle: "How much computer does a learned drone controller need?",
+    category: "Research · UC Berkeley",
+    duration: "Nov 2026 - present",
+    visibility: "public",
+    featured: false,
+    current: true,
+    status: "In progress · paper in preparation",
+    page: "/research",
+    context:
+      "Drones are starting to plan their motion with learned world models: small neural networks that predict how the drone will move. Every 10 milliseconds the controller tries hundreds of candidate actions through the model, so how much planning fits in each step depends on the computer on board. Move the same controller to a cheaper board or a busier GPU and it plans less, or too late. Today the only way to find out what that costs is to fly it.",
+    contribution:
+      "I built a test harness in which the same world-model controller runs on physically different computers, from a Raspberry Pi to a desktop GPU, while a simulator plays the drone. The question is whether three timing numbers, which do not depend on which computer produced them, predict how accurately the drone follows its path. If they do, a few minutes of timing measurements on a new board can stand in for a flight test.",
+    methods: [
+      "world models (JEPA)",
+      "sampling-based MPC (MPPI)",
+      "embedded GPUs",
+      "software-in-the-loop simulation",
+      "pre-registered experiments",
+    ],
+    cover: {
+      kind: "graphic",
+      label: "TickJEPA",
+      detail: "Research",
+      motif: "latency",
+    },
+    media: [],
+  },
+  {
+    slug: "compute-constrained-vio",
+    title: "Compute-constrained VIO",
+    subtitle: "How little computing does a drone need to know where it is?",
+    category: "Course project · UC Berkeley",
+    duration: "Nov 2026 - present",
+    visibility: "public",
+    featured: false,
+    current: true,
+    status: "Team project · second leaderboard stage in progress",
+    context:
+      "A team project in Navigation for Physical AI (EECS 216) at UC Berkeley. The task is visual-inertial odometry: estimate a drone camera's position and velocity from camera frames (20 per second) and an inertial sensor (200 samples per second), delivered as a single WebAssembly module. A class leaderboard ranks every estimator on two axes at once: its trajectory error and the compute it spends per frame.",
+    contribution:
+      "Our team built and compared three kinds of estimator: a small convolutional network that compares consecutive frames, ported to C++ and WebAssembly with SIMD and int16 arithmetic; a recurrent network with memory across frames; and an estimator that uses no images at all, only the gyroscope and a speed prior. Across our uploads the compute per frame differs by a factor of more than 10,000.",
+    outcome:
+      "In the first stage our most accurate upload reached 0.415 m mean trajectory error at about 2 million compute units per frame, and our cheapest reached 0.55 m at 250 units without looking at a single image. The metric aligned each trajectory before scoring it, so a constant speed error cost nothing; the second stage changes the metric. Every upload can be rebuilt byte for byte from a tagged commit.",
+    constraints:
+      "A team project: the results are the team's.",
+    methods: [
+      "visual-inertial odometry",
+      "IMU preintegration",
+      "convolutional and recurrent networks",
+      "C++ and WebAssembly",
+      "SIMD and int16 quantisation",
+    ],
+    cover: {
+      kind: "graphic",
+      label: "VIO",
+      detail: "Course project",
+      motif: "trajectory",
+    },
+    media: [],
+  },
+  {
     slug: "fpv-drone-builds",
     title: "FPV-drone builds",
     category: "Work and free time",
@@ -38,12 +101,42 @@ export const allProjects: PortfolioProject[] = [
     ],
   },
   {
+    slug: "distributed-elevator-system",
+    title: "Distributed elevator system",
+    category: "School",
+    duration: "Jan 2026 - May 2026",
+    visibility: "public",
+    featured: true,
+    contribution:
+      "Built software for coordinating multiple elevators, with distributed call handling.",
+    methods: [
+      "Real-time systems",
+      "distributed systems",
+      "networking",
+      "fault tolerance",
+      "concurrency",
+      "state machines",
+    ],
+    cover: {
+      kind: "image",
+      src: "/media/distributed-elevator-system.jpg",
+      alt: "Laboratory elevator rigs used for distributed control testing",
+    },
+    media: [],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/vehoug/TTK4145.git",
+      },
+    ],
+  },
+  {
     slug: "analog-servo-controller",
     title: "Analog servo controller",
     category: "School",
     duration: "Jan 2023 - Mar 2023",
     visibility: "public",
-    featured: false,
+    featured: true,
     contribution:
       "Built and tested an analog servo motor control system for a DC motor, including speed and position measurement, controller tuning, and frequency-response analysis.",
     methods: [
@@ -79,65 +172,20 @@ export const allProjects: PortfolioProject[] = [
     ],
   },
   {
-    slug: "tieup-social-platform",
-    title: "Social platform (TieUp)",
+    slug: "cutlery-sorting-machine",
+    title: "Cutlery sorting machine - coming soon",
     category: "Free time",
-    duration: "Apr 2021 - Aug 2021 (second year of high school)",
+    duration: "Jul 2026 - Present",
     visibility: "public",
-    featured: true,
-    contribution:
-      "Registered the company and built an early prototype for a social platform focused on physical meetups after the COVID lockdowns.",
-    context:
-      "Started building a social platform to facilitate physical meetups, such as social training and events, as the COVID lockdown was coming to an end. I registered the company, built an early prototype, and spoke with mentors, but soon realized I did not yet have the software skills needed to build it.\n\nThat knowledge gap motivated me to start programming. I began with Harvard's online CS50: Introduction to Computer Science course and changed subjects at school to pursue this direction.",
-    methods: [
-      "Company registration",
-      "grant applications",
-      "prototyping",
-      "mentor outreach",
-      "early-stage product development",
-    ],
+    featured: false,
+    context: "Coming soon.",
+    methods: ["mechatronics", "sensors", "mechanical layout", "prototyping"],
     cover: {
-      kind: "image",
-      src: "/media/tieup-first-sketch.png",
-      alt: "Early hand-drawn TieUp login and sign-up interface",
+      kind: "graphic",
+      label: "Coming soon",
+      detail: "Cutlery sorting machine",
     },
     media: [],
-    links: [
-      {
-        label: "Prototype",
-        href: "https://marvelapp.com/prototype/14aj7hae/screen/78212187",
-      },
-    ],
-  },
-  {
-    slug: "distributed-elevator-system",
-    title: "Distributed elevator system",
-    category: "School",
-    duration: "Jan 2026 - May 2026",
-    visibility: "public",
-    featured: true,
-    contribution:
-      "Built software for coordinating multiple elevators, with distributed call handling.",
-    methods: [
-      "Real-time systems",
-      "distributed systems",
-      "networking",
-      "fault tolerance",
-      "concurrency",
-      "state machines",
-    ],
-    cover: {
-      kind: "image",
-      src: "/media/distributed-elevator-system.jpg",
-      alt: "Laboratory elevator rigs used for distributed control testing",
-    },
-    media: [],
-    links: [
-      {
-        label: "GitHub",
-        href: "https://github.com/vehoug/TTK4145.git",
-      },
-    ],
   },
   {
     slug: "hospitality-investment-analysis",
@@ -186,20 +234,35 @@ export const allProjects: PortfolioProject[] = [
     media: [],
   },
   {
-    slug: "cutlery-sorting-machine",
-    title: "Cutlery sorting machine - coming soon",
+    slug: "tieup-social-platform",
+    title: "Social platform (TieUp)",
     category: "Free time",
-    duration: "Jul 2026 - Present",
+    duration: "Apr 2021 - Aug 2021 (second year of high school)",
     visibility: "public",
     featured: false,
-    context: "Coming soon.",
-    methods: ["mechatronics", "sensors", "mechanical layout", "prototyping"],
+    contribution:
+      "Registered the company and built an early prototype for a social platform focused on physical meetups after the COVID lockdowns.",
+    context:
+      "Started building a social platform to facilitate physical meetups, such as social training and events, as the COVID lockdown was coming to an end. I registered the company, built an early prototype, and spoke with mentors, but soon realized I did not yet have the software skills needed to build it.\n\nThat knowledge gap motivated me to start programming. I began with Harvard's online CS50: Introduction to Computer Science course and changed subjects at school to pursue this direction.",
+    methods: [
+      "Company registration",
+      "grant applications",
+      "prototyping",
+      "mentor outreach",
+      "early-stage product development",
+    ],
     cover: {
-      kind: "graphic",
-      label: "Coming soon",
-      detail: "Cutlery sorting machine",
+      kind: "image",
+      src: "/media/tieup-first-sketch.png",
+      alt: "Early hand-drawn TieUp login and sign-up interface",
     },
     media: [],
+    links: [
+      {
+        label: "Prototype",
+        href: "https://marvelapp.com/prototype/14aj7hae/screen/78212187",
+      },
+    ],
   },
   {
     slug: "sundvolden-hotel-project",
@@ -226,6 +289,10 @@ export const publicProjects = allProjects.filter(
 
 export const featuredProjects = publicProjects.filter(
   (project) => project.featured,
+);
+
+export const currentProjects = publicProjects.filter(
+  (project) => project.current,
 );
 
 export function getPublicProject(slug: string) {

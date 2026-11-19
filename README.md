@@ -8,13 +8,23 @@ Personal CV and technical portfolio for Gard Laeskogen.
 
 ## Public Structure
 
-The primary navigation is consolidated onto homepage anchors:
+The homepage (`/`) introduces Gard, the current work, three selected projects and a short experience list. The navigation has three pages:
 
-- `Portfolio` at `/#portfolio`
-- `CV` at `/#cv`
-- `Drive` at `/#drive`
+- `Research` at `/research`: the research page, generated outside this repository (see below)
+- `Portfolio` at `/portfolio`: every public project, current work first
+- `CV` at `/cv`: the full CV, with the PDF at `/Gard-Laeskogen-CV.pdf`
 
-Every public project has a direct route at `/projects/[slug]`. Legacy section routes redirect to the matching homepage anchor. Flipper Zero exploration and the coming-soon Cutlery Sorting Machine are intentionally public. The unfinished standalone Investment section remains excluded from navigation and search indexing. Contact details live in the one-line footer.
+Every public project has a direct route at `/projects/[slug]`; a project with a `page` (TickJEPA) links there instead. The old Drive section is gone: athletics are on the CV (`/cv#athletics`), and `/about`, `/sports` and `/philosophy` redirect. Flipper Zero exploration and the coming-soon Cutlery Sorting Machine are intentionally public. The unfinished standalone Investment section remains excluded from navigation and search indexing. Contact details live in the footer.
+
+### The research page
+
+`/research` is a complete HTML page written by the research repository's site generator (`YouOnAI/site/build.py`), which reads every number from the experiment run log:
+
+```bash
+python3 site/build.py --portfolio ~/Github/gard-laeskogen-portfolio
+```
+
+It writes `app/research/research-page.ts` (served by `app/research/route.ts`) and `public/research/` (status JSON, social image, and the paper files once the PDF is public). Do not edit those files by hand; rebuild instead, then commit and deploy as usual. The page repeats this site's header, footer, fonts and colours, so a change to `app/globals.css` tokens or to `SiteHeader`/`SiteFooter` needs the same change in `YouOnAI/site/template.html`. It stays `noindex` until the research project sets `publish` to true.
 
 ## Edit Content
 

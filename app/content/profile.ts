@@ -2,17 +2,32 @@ import type { SiteConfig } from "./types";
 
 export const site: SiteConfig = {
   name: "Gard Laeskogen",
-  email: "gard@sundvolden.no",
+  // Matches the CV of 2026-11-18. The previous address was gard@sundvolden.no.
+  email: "gardlae@berkeley.edu",
   linkedin: "https://www.linkedin.com/in/gard-laeskogen",
   github: "https://github.com/gardlae",
   yCombinator: "https://www.startupschool.org/cofounder-matching",
   location: "California, USA",
-  headline: "M. Sc. Cybernetics and Robotics | NTNU",
+  headline: "Visiting graduate student at UC Berkeley · MSc Cybernetics and Robotics, NTNU",
+  roles: [
+    "Visiting graduate student, UC Berkeley",
+    "MSc Cybernetics and Robotics, NTNU",
+  ],
   canonicalUrl: "https://www.gardlaeskogen.com",
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL ?? "https://cal.com/gard-laeskogen-s4byyh/quick-chat",
-  storyVideo: process.env.NEXT_PUBLIC_STORY_VIDEO || undefined,
-  storyPoster: "/media/military-hero.jpg",
 };
+
+// Homepage introduction. Draft wording for Gard to approve; facts follow the CV of 2026-11-18.
+export const intro: string[] = [
+  "I'm a visiting graduate student at UC Berkeley, doing research with Prof. Alexandre M. Bayen on learned world models for drone control. My question is what happens when a learned controller has to run on the small computer a drone actually carries, and how much that computer decides how well the drone flies. At home I study Cybernetics and Robotics at NTNU, with autonomous systems as my main profile.",
+  "Before Berkeley I co-founded a UAV unit in the Norwegian Armed Forces and led its R&D branch, building and modifying more than 20 drone configurations with Norwegian and international partners. This summer I wrote computer-vision software for a counter-UAS startup in the United Kingdom.",
+  "Until I was 14, my plan was to become the world's best cross-country skier. I still race: I won my class at the Trondheim Marathon in 2:51 and won the Berkeley Trail Adventure 50 km in August 2026. I grew up working in my family's hotel, Sundvolden, and later sat on its board.",
+];
+
+// One sentence that ties the two current projects together on the homepage.
+export const currentWorkIntro =
+  "Both projects ask how much computing a drone really needs: one for deciding what to do, the other for knowing where it is.";
+
 export const recruiterOverview = {
   focus: "Cybernetics / UAV systems / leadership",
   summary:

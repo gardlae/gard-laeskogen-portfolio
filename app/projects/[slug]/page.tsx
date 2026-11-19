@@ -5,8 +5,8 @@ import {
   getPublicProject,
   publicProjects,
   site,
-  type PortfolioProject,
 } from "../../content";
+import { projectHref, projectSummary } from "../../ProjectCard";
 import { ProjectMediaView } from "../../ProjectMedia";
 import { TieUpDemo } from "../../TieUpDemo";
 
@@ -14,10 +14,6 @@ type ProjectPageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return publicProjects.map((project) => ({ slug: project.slug }));
-}
-
-function projectDescription(project: PortfolioProject) {
-  return project.outcome || project.contribution || project.context || project.title;
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
@@ -30,11 +26,11 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const socialTitle = `${project.title} | ${site.name}`;
   return {
     title: project.title,
-    description: projectDescription(project),
+    description: projectSummary(project),
     alternates: { canonical: url },
     openGraph: {
       title: socialTitle,
-      description: projectDescription(project),
+      description: projectSummary(project),
       images: [image],
       type: "article",
       url,
@@ -42,7 +38,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
-      description: projectDescription(project),
+      description: projectSummary(project),
       images: [image],
     },
   };
@@ -56,118 +52,106 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const index = publicProjects.findIndex((item) => item.slug === slug);
   const previous = publicProjects[(index - 1 + publicProjects.length) % publicProjects.length];
   const next = publicProjects[(index + 1) % publicProjects.length];
-  const leadText = project.outcome || project.contribution || project.context;
-  const remainingSections = [
-    { label: "Context", value: project.context === leadText ? undefined : project.context },
-    { label: "Gard's role", value: project.role },
+  const sections = [
+    { label: "Context", value: project.context },
     { label: "Challenge", value: project.challenge },
-    { label: "Outcome", value: project.outcome === leadText ? undefined : project.outcome },
+    { label: "Contribution", value: project.contribution },
+    { label: "Role", value: project.role },
+    { label: "Outcome", value: project.outcome },
     { label: "Constraints", value: project.constraints },
   ].filter((section) => section.value);
   const tieUpPrototype = project.slug === "tieup-social-platform"
     ? project.links?.find((link) => link.label === "Prototype")
     : undefined;
-  const externalLinks = project.links?.filter((link) => link !== tieUpPrototype);
+  const externalLinks = project.links?.filter((link) => link !== tieUpPrototype) ?? [];
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: project.title,
-    description: projectDescription(project),
+    description: projectSummary(project),
     url: `${site.canonicalUrl}/projects/${project.slug}`,
     author: { "@type": "Person", name: site.name, url: site.canonicalUrl },
   };
 
   return (
-    <main>
+    <main className="shell page-top">
       <script
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         type="application/ld+json"
       />
-      <article className={`page-shell project-page project-page-${project.slug} page-top`}>
-        <nav className="project-toolbar" aria-label="Project position">
-          <Link href="/#portfolio">← All projects</Link>
-          <span>{String(index + 1).padStart(2, "0")} / {String(publicProjects.length).padStart(2, "0")}</span>
-        </nav>
+      <article className="measure">
+        <Link className="back-link" href="/portfolio">← Portfolio</Link>
 
-        <section className="project-hero">
-          <ProjectMediaView media={project.cover} priority sizes="(max-width: 900px) 100vw, 58vw" />
-          <div className="project-hero-copy">
-            <p className="eyebrow">{project.category}</p>
-            <h1>{project.title}</h1>
-            <dl>
-              <div><dt>Duration</dt><dd>{project.duration}</dd></div>
-              {project.role && <div><dt>Role</dt><dd>{project.role}</dd></div>}
-            </dl>
-            {leadText && (
-              <div className="project-lead-text">
-                <h2>{project.outcome ? "Outcome" : project.contribution ? "Contribution" : "Context"}</h2>
-                {leadText.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-              </div>
-            )}
-            {externalLinks && externalLinks.length > 0 && (
-              <div className="project-external-links">
-                {externalLinks.map((link) => (
-                  <a href={link.href} key={link.href} rel="noreferrer" target="_blank">{link.label} ↗</a>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-
-        {(remainingSections.length > 0 || project.methods.length > 0) && (
-          <section className="case-details" aria-label="Case study details">
-            <div className="case-copy">
-              {remainingSections.map((section) => (
-                <div key={section.label}>
-                  <h2>{section.label}</h2>
-                  {section.value?.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                </div>
+        <header className="project-head">
+          <p className="meta">{project.category} · {project.duration}</p>
+          <h1>{project.title}</h1>
+          {project.subtitle && <p className="subtitle">{project.subtitle}</p>}
+          {(project.page || externalLinks.length > 0) && (
+            <p className="links">
+              {project.page && <a href={projectHref(project)}>Read the full write-up →</a>}
+              {externalLinks.map((link) => (
+                <a href={link.href} key={link.href} rel="noreferrer" target="_blank">{link.label} ↗</a>
               ))}
+            </p>
+          )}
+        </header>
+
+        {project.cover.kind !== "graphic" && (
+          <div className="project-cover">
+            <div className="thumb">
+              <ProjectMediaView media={project.cover} priority sizes="(max-width: 720px) 100vw, 680px" />
             </div>
-            <aside>
-              <p className="eyebrow">Methods</p>
-              <ul>{project.methods.map((method) => <li key={method}>{method}</li>)}</ul>
-            </aside>
-          </section>
+          </div>
         )}
 
-        {project.media.length > 0 && (
-          <section className="evidence-section" aria-labelledby="evidence-title">
-            <header className="section-heading">
-              <div><p className="eyebrow">Evidence</p><h2 id="evidence-title">Project media</h2></div>
-            </header>
-            <div className="media-strip">
-              {project.media.map((media) => (
-                <ProjectMediaView
-                  key={media.kind === "graphic" ? media.label : media.src}
-                  media={media}
-                  sizes="(max-width: 768px) 82vw, 36vw"
-                />
-              ))}
-            </div>
+        <div className="case">
+          {sections.map((section) => (
+            <section key={section.label}>
+              <h2>{section.label}</h2>
+              {section.value?.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </section>
+          ))}
+        </div>
+
+        {project.methods.length > 0 && (
+          <section className="methods" aria-labelledby="methods-title">
+            <h2 id="methods-title">Methods and tools</h2>
+            <p>{project.methods.map((method, i) => (i === 0 ? method[0].toUpperCase() + method.slice(1) : method)).join(", ")}</p>
           </section>
         )}
 
         {tieUpPrototype && (
-          <section className="prototype-section" aria-labelledby="prototype-title">
-            <header className="section-heading">
-              <div><p className="eyebrow">Prototype</p><h2 id="prototype-title">Marvel demo</h2></div>
-            </header>
+          <section className="project-gallery" aria-labelledby="prototype-title">
+            <h2 id="prototype-title">Interactive prototype</h2>
             <TieUpDemo />
           </section>
         )}
-
-        <nav className="project-pagination" aria-label="Project navigation">
-          <Link href={`/projects/${previous.slug}`}>
-            <span>Previous</span><strong>← {previous.title}</strong>
-          </Link>
-          <Link href="/#portfolio"><span>Index</span><strong>All projects</strong></Link>
-          <Link href={`/projects/${next.slug}`}>
-            <span>Next</span><strong>{next.title} →</strong>
-          </Link>
-        </nav>
       </article>
+
+      {project.media.length > 0 && (
+        <section className="project-gallery" aria-labelledby="media-title">
+          <h2 id="media-title">Images and video</h2>
+          <div className="media-grid">
+            {project.media.map((media) => (
+              <ProjectMediaView
+                key={media.kind === "graphic" ? media.label : media.src}
+                media={media}
+                sizes="(max-width: 640px) 92vw, 520px"
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <nav className="pager" aria-label="More projects">
+        <Link href={`/projects/${previous.slug}`}>
+          <span>Previous</span><strong>← {previous.title}</strong>
+        </Link>
+        <Link href={`/projects/${next.slug}`}>
+          <span>Next</span><strong>{next.title} →</strong>
+        </Link>
+      </nav>
     </main>
   );
 }

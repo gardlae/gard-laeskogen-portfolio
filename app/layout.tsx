@@ -5,14 +5,16 @@ import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import "./globals.css";
 
+const description =
+  "Gard Laeskogen: visiting graduate student at UC Berkeley and MSc student in Cybernetics and Robotics at NTNU, working on learned world models for drone control under compute constraints.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.canonicalUrl),
   title: {
     default: "Gard Laeskogen",
     template: "%s | Gard Laeskogen",
   },
-  description:
-    "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
+  description,
   alternates: { canonical: site.canonicalUrl },
   icons: {
     icon: [
@@ -29,15 +31,13 @@ export const metadata: Metadata = {
     url: site.canonicalUrl,
     siteName: site.name,
     title: "Gard Laeskogen",
-    description:
-      "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
+    description,
     images: [{ url: "/social-card.jpg", width: 1200, height: 630, alt: "Gard Laeskogen" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Gard Laeskogen",
-    description:
-      "Technical portfolio across cybernetics, UAV systems, analog electronics, operations, and leadership.",
+    description,
     images: ["/social-card.jpg"],
   },
   robots: { index: true, follow: true },
@@ -47,7 +47,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#f4f3ef",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#141617" },
+  ],
 };
 
 const personStructuredData = {
@@ -56,22 +59,25 @@ const personStructuredData = {
   name: site.name,
   url: site.canonicalUrl,
   email: `mailto:${site.email}`,
-  sameAs: [site.linkedin, site.yCombinator],
+  sameAs: [site.linkedin, site.github],
+  affiliation: [
+    { "@type": "CollegeOrUniversity", name: "University of California, Berkeley" },
+    { "@type": "CollegeOrUniversity", name: "Norwegian University of Science and Technology (NTNU)" },
+  ],
   homeLocation: { "@type": "Place", name: site.location },
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Norwegian University of Science and Technology (NTNU)",
   },
-  knowsAbout: ["Cybernetics", "Robotics", "UAV systems", "Analog electronics", "Leadership"],
+  knowsAbout: ["Cybernetics", "Robotics", "World models", "Model predictive control", "UAV systems"],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
-        <link href="https://marvelapp.com" rel="preconnect" />
-        <link crossOrigin="" href="https://m3-static.marvelapp.com" rel="preconnect" />
-        <link crossOrigin="" href="https://marvel-live.freetls.fastly.net" rel="preconnect" />
+        <link as="font" crossOrigin="" href="/fonts/SourceSans3-normal-latin.woff2" rel="preload" type="font/woff2" />
+        <link as="font" crossOrigin="" href="/fonts/SourceSerif4-normal-latin.woff2" rel="preload" type="font/woff2" />
       </head>
       <body>
         <script

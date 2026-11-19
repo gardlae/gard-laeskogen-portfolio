@@ -2,75 +2,32 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
+// /research is a generated HTML page served by a route handler, so it gets a plain link
+// (a full page load) rather than client-side navigation.
 const navigation = [
-  { href: "/#portfolio", label: "Portfolio" },
-  { href: "/#cv", label: "CV" },
-  { href: "/#story", label: "Drive" },
+  { href: "/research", label: "Research", match: ["/research"], plain: true },
+  { href: "/portfolio", label: "Portfolio", match: ["/portfolio", "/projects"], plain: false },
+  { href: "/cv", label: "CV", match: ["/cv"], plain: false },
 ];
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-
-  function isActive(href: string) {
-    if (href === "/#portfolio") {
-      return pathname.startsWith("/portfolio") || pathname.startsWith("/projects");
-    }
-    if (href === "/#cv") return pathname.startsWith("/cv");
-    if (href === "/#story") return pathname.startsWith("/about");
-    return pathname === "/";
-  }
 
   return (
     <header className="site-header">
-      <div className="header-inner">
-        <Link className="site-brand" href="/">
-          <span aria-hidden="true" className="site-brand-mark" />
-          <strong>Gard Laeskogen</strong>
-        </Link>
-
-        <nav className="desktop-nav" aria-label="Primary navigation">
-          {navigation.map((item) => (
-            <Link
-              aria-current={isActive(item.href) ? "page" : undefined}
-              href={item.href}
-              key={item.href}
-            >
-              {item.label}
-            </Link>
-          ))}
+      <div className="shell site-header-inner">
+        <Link className="site-name" href="/">Gard Laeskogen</Link>
+        <nav className="site-nav" aria-label="Primary navigation">
+          {navigation.map((item) => {
+            const current = item.match.some((prefix) => pathname.startsWith(prefix)) ? "page" : undefined;
+            return item.plain ? (
+              <a aria-current={current} href={item.href} key={item.href}>{item.label}</a>
+            ) : (
+              <Link aria-current={current} href={item.href} key={item.href}>{item.label}</Link>
+            );
+          })}
         </nav>
-
-        <button
-          aria-controls="mobile-navigation"
-          aria-expanded={open}
-          aria-label={open ? "Close navigation" : "Open navigation"}
-          className="menu-button"
-          onClick={() => setOpen((value) => !value)}
-          type="button"
-        >
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-        </button>
-
-        <div className={open ? "mobile-navigation is-open" : "mobile-navigation"} id="mobile-navigation">
-          <nav aria-label="Mobile navigation">
-            {navigation.map((item, index) => (
-              <Link
-                aria-current={isActive(item.href) ? "page" : undefined}
-                href={item.href}
-                key={item.href}
-                onClick={() => setOpen(false)}
-              >
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
       </div>
     </header>
   );

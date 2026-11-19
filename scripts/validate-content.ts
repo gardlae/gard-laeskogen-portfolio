@@ -96,17 +96,24 @@ const knownRoutes = new Set([
   "/request",
   "/sports",
   "/philosophy",
+  "/research",
   "/Gard-Laeskogen-CV.pdf",
 ]);
 for (const project of publicProjects) knownRoutes.add(`/projects/${project.slug}`);
+
+for (const project of allProjects) {
+  if (project.page && !knownRoutes.has(project.page)) fail(`${project.title}: unknown page ${project.page}`);
+  if (project.current && project.visibility !== "public") fail(`${project.title}: current work must be public`);
+}
 
 const sourceFiles = [
   "app/page.tsx",
   "app/SiteHeader.tsx",
   "app/SiteFooter.tsx",
+  "app/ProjectCard.tsx",
   "app/portfolio/page.tsx",
   "app/cv/page.tsx",
-  "app/about/page.tsx",
+  "app/projects/[slug]/page.tsx",
 ];
 
 for (const sourceFile of sourceFiles) {
