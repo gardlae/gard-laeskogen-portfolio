@@ -98,10 +98,11 @@ The content validator checks slugs, dates, public copy, media and responsive var
 
 The canonical origin is `https://www.gardlaeskogen.com`. The application includes canonical and social metadata, Person and CreativeWork structured data, `robots.txt`, and a sitemap containing only public routes.
 
-The site runs on Cloudflare Workers (worker `gard-laeskogen-portfolio`). **Cloudflare Workers Builds** is connected to this GitHub repository, so deploying is a push:
+The site runs on Cloudflare Workers (worker `gard-laeskogen-portfolio`). **Cloudflare Workers Builds** is connected to this GitHub repository, so deploying is a push.
 
-- A push to `main` builds and deploys production, `www.gardlaeskogen.com`.
-- A push to any other branch builds a preview version that does not touch production. Its link appears on the commit's "Workers Builds" check on GitHub (and in the Cloudflare dashboard under the worker's deployments). Use it to share a change before merging.
+**Branch builds and previews.** Settings > Build in the Cloudflare dashboard has two commands. The **Deploy command** (`npx wrangler deploy`) runs for the production branch, `main`. The **Version command** runs for every other branch. It must be `npx wrangler versions upload`: on 2026-11-18 it was `npx wrangler deploy`, so pushing the branch `redesign-research` published it to `www.gardlaeskogen.com`. Preview URLs are enabled (Settings > Domains: `*-gard-laeskogen-portfolio.gard-c95.workers.dev`), and the worker serves `gardlaeskogen.com` and `www.gardlaeskogen.com`.
+
+After that, a push to `main` deploys production, and a push to any other branch uploads a preview version that does not touch production. Its link appears on the commit's "Workers Builds" check on GitHub (and under the worker's deployments in the dashboard). Use it to share a change before merging.
 
 ```bash
 git switch -c my-change
