@@ -4,6 +4,7 @@ import {
   leadershipAndActivities,
   professionalExperience,
   publicProjects,
+  recruiterOverview,
   site,
   sportsAchievements,
   sportsIntro,
@@ -42,15 +43,24 @@ function PortfolioPreview({ project, index }: {
             <ProjectMediaView
               key={`${project.slug}-${mediaIndex}`}
               media={item}
-              sizes="(max-width: 768px) 48vw, 18vw"
+              sizes="(max-width: 768px) 46vw, 24vw"
             />
           ))}
         </div>
       )}
       <div className="home-project-copy">
-        <h3>{project.title}</h3>
+        <div className="home-project-meta">
+          <span>{project.category}</span>
+          <span>{project.duration}</span>
+        </div>
+        <h3><Link href={`/projects/${project.slug}`}>{project.title}</Link></h3>
         <p>{summary(project)}</p>
-        <Link href={`/projects/${project.slug}`}>Details</Link>
+        <ul className="home-project-methods" aria-label="Selected methods">
+          {project.methods.slice(0, 3).map((method) => <li key={method}>{method}</li>)}
+        </ul>
+        <Link className="project-detail-link" href={`/projects/${project.slug}`} aria-label={`View project: ${project.title}`}>
+          View project <span aria-hidden="true">↗</span>
+        </Link>
       </div>
     </article>
   );
@@ -63,7 +73,10 @@ function ExperienceCompact() {
     <section className="home-section home-cv" id="cv" aria-labelledby="cv-title">
       <div className="page-shell">
         <header className="home-section-heading">
-          <p className="eyebrow" id="cv-title">Experience / CV</p>
+          <div>
+            <p className="eyebrow">02 / Experience</p>
+            <h2 id="cv-title">Experience / CV</h2>
+          </div>
           <div className="home-cv-actions">
             <a
               className="button button-dark"
@@ -169,7 +182,7 @@ export default function Home() {
             <ResponsiveImage
               alt="FPV drone in flight"
               priority
-              sizes="(max-width: 768px) 34vw, 33vw"
+              sizes="(max-width: 768px) 43vw, 22vw"
               src="/media/fpv-drone-flight.jpg"
             />
           </div>
@@ -177,7 +190,7 @@ export default function Home() {
             <ResponsiveImage
               alt="Analog servo controller assembled on a breadboard"
               priority
-              sizes="(max-width: 768px) 34vw, 33vw"
+              sizes="(max-width: 768px) 43vw, 22vw"
               src="/media/servo-breadboard-full.jpg"
             />
           </div>
@@ -185,16 +198,16 @@ export default function Home() {
             <ResponsiveImage
               alt="Gard Laeskogen during field experience in the Norwegian Armed Forces"
               priority
-              sizes="(max-width: 768px) 34vw, 33vw"
+              sizes="(max-width: 768px) 52vw, 43vw"
               src={site.storyPoster}
             />
           </div>
         </div>
-        <div className="hero-scrim" aria-hidden="true" />
         <div className="hero-content page-shell">
-          <p className="eyebrow">Builder-operator / {site.location}</p>
+          <p className="eyebrow">{recruiterOverview.focus}</p>
           <h1 id="home-title">Gard Laeskogen</h1>
           <p className="hero-role">{site.headline}</p>
+          <p className="hero-summary">{recruiterOverview.summary}</p>
           <div className="hero-actions" aria-label="Primary actions">
             <a className="button button-light" href="#portfolio">Selected Portfolio</a>
             <a
@@ -205,11 +218,11 @@ export default function Home() {
             >
               Open CV
             </a>
-            <a className="text-action" href={`mailto:${site.email}`}>{site.email}</a>
           </div>
+          <p className="hero-location">{site.location} <span aria-hidden="true">·</span> <a href={`mailto:${site.email}`}>Get in touch ↗</a></p>
         </div>
         <a className="hero-scroll-action" href="#portfolio" aria-label="Scroll to Selected Portfolio">
-          <span>Selected Portfolio</span>
+          <span>Explore the work</span>
           <b aria-hidden="true">↓</b>
         </a>
       </section>
@@ -217,7 +230,7 @@ export default function Home() {
       <section className="home-section home-portfolio" id="portfolio" aria-labelledby="portfolio-title">
         <div className="page-shell">
           <header className="home-section-heading">
-            <p className="eyebrow">Selected Portfolio</p>
+            <p className="eyebrow">01 / Selected Portfolio</p>
             <h2 id="portfolio-title">Public technical work.</h2>
           </header>
           <div className="home-project-list">
@@ -233,7 +246,7 @@ export default function Home() {
       <section className="home-section home-story" id="story" aria-labelledby="story-title">
         <div className="page-shell home-story-grid">
           <header className="home-section-heading">
-            <p className="eyebrow">Drive</p>
+            <p className="eyebrow">03 / Drive</p>
             <h2 id="story-title">What shaped the work.</h2>
             <p>{sportsIntro}</p>
           </header>
