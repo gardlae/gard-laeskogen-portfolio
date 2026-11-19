@@ -10,15 +10,14 @@ export const allProjects: PortfolioProject[] = [
     visibility: "public",
     featured: true,
     context:
-      "Team project in Navigation for Physical AI (EECS 216). Estimate a drone camera's position and velocity from camera frames (20 Hz) and an IMU (200 Hz), shipped as a single WebAssembly module and scored on both accuracy and compute per frame.",
+      "Team project in Navigation for Physical AI (EECS 216), where I led the work and wrote most of the code. The task: estimate a drone camera's position and velocity from camera frames (20 Hz) and an IMU (200 Hz), shipped as a single WebAssembly module and scored on both accuracy and compute per frame.",
     contribution:
-      "- Trained small convolutional networks in PyTorch that predict the camera's motion between two frames from the images and preintegrated IMU data, starting from the course's example network.\n- Ported the network to C++ and compiled it to WebAssembly with SIMD convolutions and int16 quantization: 3 to 10 times less compute than the Python runtime.\n- Built a recurrent (GRU) variant with memory across frames, trained on whole flights.\n- Built a gyroscope-only estimator as a near-zero-compute baseline.\n- Generated training data in the HyperDrone simulator and kept every upload reproducible from a tagged commit.",
+      "- Built the training pipeline in PyTorch: small convolutional networks that predict the camera's motion between two frames from the images and preintegrated IMU data, starting from the course's example network.\n- Generated the training data in the HyperDrone simulator.\n- Ported the network to C++ and compiled it to WebAssembly with SIMD convolutions, including reduced-rate builds: 3 to 10 times less compute than the Python runtime.\n- Built a recurrent (GRU) variant with memory across frames, trained on whole flights, and a gyroscope-only estimator as a near-zero-compute baseline.\n- Set up the repository so every leaderboard upload can be rebuilt byte for byte from a tagged commit.\n\nTeammates added int16 quantization of the network and classical filter-based estimators.",
     methods: [
       "PyTorch",
       "C++",
       "WebAssembly",
       "SIMD",
-      "int16 quantization",
       "visual-inertial odometry",
       "sensor fusion",
       "IMU preintegration",
