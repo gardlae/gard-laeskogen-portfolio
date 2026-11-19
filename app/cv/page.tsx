@@ -81,7 +81,7 @@ export default function CvPage() {
                 <h3>{item.title}</h3>
                 <p className="org">{item.place}, {item.advisor}</p>
                 <p>{item.summary}</p>
-                {item.href && <p className="links"><a href={item.href}>Research page</a></p>}
+                {item.href && <p className="links"><a href={item.href}>Read more</a></p>}
               </div>
             </div>
           ))}

@@ -94,8 +94,8 @@ export default function Home() {
 
       <section className="section" aria-labelledby="research-title">
         <div className="section-head">
-          <h2 id="research-title">Research</h2>
-          <a className="more-link" href="/research">Research page →</a>
+          <h2 id="research-title">Exploration</h2>
+          <a className="more-link" href="/research">Read more →</a>
         </div>
         {research.map((item) => <ResearchCard item={item} key={item.title} />)}
       </section>

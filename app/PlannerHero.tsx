@@ -224,7 +224,7 @@ export function PlannerHero() {
       <figcaption>
         A drone planning live in your browser. Every step it tries {computer.samples} possible futures (thin lines) and flies
         the best one; orange marks a step where the plan came too late. Move your pointer to steer the target, and switch
-        computers to see what a slower board costs. That trade-off is <a href="/research">my research</a>.
+        computers to see what a slower board costs. That trade-off is <a href="/research">what I am exploring</a>.
       </figcaption>
     </figure>
   );

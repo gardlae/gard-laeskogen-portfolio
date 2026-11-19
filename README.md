@@ -10,12 +10,12 @@ Personal CV and technical portfolio for Gard Laeskogen.
 
 The homepage (`/`) opens with Gard's name beside a live planner (`app/PlannerHero.tsx`, simulation in `app/planner-sim.ts`): a small drone controller running in the browser, with a switch between three computers. Below come the introduction (with a portrait once `site.portrait` is set in `app/content/profile.ts`), the research, three selected projects, the latest blog posts once there are any, and a short experience list. The site is light only. The navigation has three pages:
 
-- `Research` at `/research`: the research page, generated outside this repository (see below)
+- `Exploration` at `/research`: the research page, generated outside this repository (see below). The menu says Exploration (user, 2026-11-18); the address stays `/research`, which the paper cites.
 - `Portfolio` at `/portfolio`: every public project
 - `Blog` at `/blog`: posts imported from the Storytelling repository (see below)
 - `CV` at `/cv`: the full CV, with the PDF at `/Gard-Laeskogen-CV.pdf`
 
-Every public project has a direct route at `/projects/[slug]`. Research (TickJEPA) is not a portfolio project: it has its own page and the homepage's Research section. The old Drive section is gone: athletics are on the CV (`/cv#athletics`), and `/about`, `/sports` and `/philosophy` redirect. Flipper Zero exploration and the coming-soon Cutlery Sorting Machine are intentionally public. The unfinished standalone Investment section remains excluded from navigation and search indexing. Contact details live in the footer.
+Every public project has a direct route at `/projects/[slug]`. Research (TickJEPA) is not a portfolio project: it has its own page and the homepage's Exploration section. The old Drive section is gone: athletics are on the CV (`/cv#athletics`), and `/about`, `/sports` and `/philosophy` redirect. Flipper Zero exploration and the coming-soon Cutlery Sorting Machine are intentionally public. The unfinished standalone Investment section remains excluded from navigation and search indexing. Contact details live in the footer.
 
 ### The research page
 

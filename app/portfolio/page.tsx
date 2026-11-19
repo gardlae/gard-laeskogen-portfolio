@@ -14,8 +14,8 @@ export default function PortfolioPage() {
       <header className="page-head measure">
         <h1>Portfolio</h1>
         <p>
-          Things I have built at school, at work and in my free time. My research has its own page:{" "}
-          <a href="/research">Research</a>.
+          Things I have built at school, at work and in my free time. What I am exploring at Berkeley has its own
+          page: <a href="/research">Exploration</a>.
         </p>
       </header>
 

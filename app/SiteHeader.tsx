@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 // /research is a generated HTML page served by a route handler, so it gets a plain link
 // (a full page load) rather than client-side navigation.
 const navigation = [
-  { href: "/research", label: "Research", match: ["/research"], plain: true },
+  { href: "/research", label: "Exploration", match: ["/research"], plain: true },
   { href: "/portfolio", label: "Portfolio", match: ["/portfolio", "/projects"], plain: false },
   { href: "/blog", label: "Blog", match: ["/blog"], plain: false },
   { href: "/cv", label: "CV", match: ["/cv"], plain: false },
